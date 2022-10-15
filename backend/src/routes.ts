@@ -1,9 +1,13 @@
 import { Router } from 'express'
-import { ILicense, isLicense } from './models/License'
+
 import { IReview, isReview } from './models/Review'
-import { IPlayer, isPlayer } from './models/Player'
+
 import { isUser, IUser } from './models/User'
-import { findOne, insert, findMany, update, remove } from './shared/dbFunctions'
+
+import { IPlayer, isPlayer } from './models/Player'
+import { ILicense, isLicense } from './models/License'
+import { IPlan, isPlan } from './models/Plan'
+import { findMany, findOne, insert, remove, update } from './shared/dbFunctions'
 
 const router = Router()
 
@@ -38,9 +42,9 @@ router.post('/player', async (req, res) => {
 })
 
 router.put('/player', async (req, res) => {
-  const data:IPlayer = req.body
+  const data: IPlayer = req.body
 
-  if(!isPlayer(data)) {
+  if (!isPlayer(data)) {
     res.status(500).end()
     return
   }
@@ -78,7 +82,7 @@ router.post('/license', async (req, res) => {
     res.status(500).end()
   }
 
-  const license = await insert<ILicense>('license', data)
+  const license = await insert<ILicense>('licenses', data)
 
   res.json(license)
 })
@@ -97,7 +101,7 @@ router.put(`/license`, async (req, res) => {
 
 router.delete('/license/:id', async (req, res) => {
   const { id } = req.params
-  await remove <ILicense>('licenses', id)
+  await remove<ILicense>('licenses', id)
 
   res.status(204).end()
 })
@@ -121,7 +125,7 @@ router.get('/review/:id', async (req, res) => {
 
 router.post('/review', async (req, res) => {
   const data: IReview = req.body
-  
+
   if (!isReview(data)) {
     res.status(500).end()
     return
@@ -133,9 +137,9 @@ router.post('/review', async (req, res) => {
 })
 
 router.put('/review', async (req, res) => {
-  const data:IReview = req.body
+  const data: IReview = req.body
 
-  if(!isReview(data)) {
+  if (!isReview(data)) {
     res.status(500).end()
     return
   }
@@ -145,15 +149,36 @@ router.put('/review', async (req, res) => {
   res.json(review)
 })
 
+// Plan router
+router.get('/plan', async (_req, res) => {
+  const plans = await findMany<IPlan>('plans')
+  res.json(plans)
+})
+
+router.get('/plan/:id', async (req, res) => {
+  const { id } = req.params
+  const plan = await findOne<IPlan>('plans', id)
+  res.json(plan)
+})
+
+router.post('/plan', async (req, res) => {
+  const data = req.body
+
+  if (!isPlan(data)) {
+    res.status(500).end()
+    return
+  }
+  const plan = await insert<IPlan>('plans', data)
+
+  res.json(plan)
+})
+
 router.delete('/review/:id', async (req, res) => {
   const { id } = req.params
-  await remove <IReview>('reviews', id)
+  await remove<IReview>('reviews', id)
 
   res.status(204).end()
 })
-
-
-
 
 // User Routes
 router.get('/user', async (_req, res) => {
@@ -199,5 +224,25 @@ router.delete('/user/:id', async (req, res) => {
   res.status(204).end()
 })
 // End user routes
+
+router.put('/plan', async (req, res) => {
+  const data: IPlan = req.body
+
+  if (!isPlan(data)) {
+    res.status(500).end()
+    return
+  }
+
+  const plan = await update<IPlan>('plans', data)
+
+  res.json(plan)
+})
+
+router.delete('/plan/:id', async (req, res) => {
+  const { id } = req.params
+  await remove<IPlan>('plans', id)
+
+  res.status(204).end()
+})
 
 export { router }
