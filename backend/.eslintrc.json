@@ -1,0 +1,17 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["airbnb-base", "airbnb-typescript/base", "prettier"],
+  "plugins": ["prettier"],
+  "overrides": [],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "global-player/backend/tsconfig.json",
+  },
+  "rules": {
+    "prettier/prettier": ["error"]
+  }
+}
