@@ -14,7 +14,7 @@ export interface IReview {
     }
 
     const missingProperties = Object.keys(schema)
-    .filter((key) => review(key) === undefined && key !== '_id')
+    .filter((key) => review[key] === undefined && key !== '_id')
     .map((key) => key as keyof IReview)
     .map((key) => new Error(`Document is missing ${key} ${schema[key]}`))
 

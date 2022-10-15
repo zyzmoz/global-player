@@ -30,7 +30,7 @@ export interface IPlayer {
     }
 
     const missingProperties = Object.keys(schema)
-    .filter((key) => player(key) === undefined && key !== '_id')
+    .filter((key) => player[key] === undefined && key !== '_id')
     .map((key) => key as keyof IPlayer)
     .map((key) => new Error(`Document is missing ${key} ${schema[key]}`))
 

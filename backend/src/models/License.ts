@@ -16,7 +16,7 @@ export interface ILicense {
     }
 
     const missingProperties = Object.keys(schema)
-    .filter((key) => license(key) === undefined && key !== '_id')
+    .filter((key) => license[key] === undefined && key !== '_id')
     .map((key) => key as keyof ILicense)
     .map((key) => new Error(`Document is missing ${key} ${schema[key]}`))
 
