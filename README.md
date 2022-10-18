@@ -22,6 +22,10 @@ Hiring a Pro Player is tricky as a number of factors count when selecting a new 
 - Railway
 - Netlify
 
+## Config
+
+### Backend
+Create a `.env` file inside the `backend` folder based on `.env.example` and fill the variables accordingly to your environment
 
 ## System Design
 ## Data Model
