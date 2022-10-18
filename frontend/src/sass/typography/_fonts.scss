@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;700&display=swap');
+
+p,
+body {
+  font-family: 'Gothic A1', sans-serif;
+  .large {
+    font-size: 16pt;
+  }
+
+  .medium {
+    font-size: 14pt;
+  }
+
+  .small {
+    font-size: 12pt;
+  }
+
+  .x-small {
+    font-size: 10pt;
+  }
+
+  @media screen and (min-width: 600px) {
+    .large {
+      font-size: 20pt;
+    }
+
+    .medium {
+      font-size: 16pt;
+    }
+
+    .small {
+      font-size: 14pt;
+    }
+
+    .x-small {
+      font-size: 10pt;
+    }
+  }
+}
