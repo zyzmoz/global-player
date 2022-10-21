@@ -1,8 +1,11 @@
 header {
+  padding: 1rem;
+
   .main-footer {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    align-items: center;
 
     .logo-desktop {
       display: none;
@@ -12,14 +15,26 @@ header {
   .nav-header-menu {
     display: none;
   }
+
+  .side-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+  }
 }
 
 @media screen and (min-width: 600px) {
   header {
-    padding: 1rem;
 
-    .side-button {
-      display: none;
+    .main-footer {
+      .logo-desktop {
+        display: block;
+      }
+      .logo-mobile {
+        display: none;
+      }
     }
 
     .nav-header-menu {
@@ -28,13 +43,12 @@ header {
       justify-content: right;
       gap: 1rem;
 
-      img {
-        display: none;
-      }
-
       button {
         display: none;
       }
+    }
+    .side-button {
+      display: none;
     }
   }
 }
