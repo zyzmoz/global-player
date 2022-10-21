@@ -2,7 +2,12 @@
 /* RESET */
 @import 'reset/reset';
 
-/* RESET */
+/* MEDIA */
 @import 'media/media';
+
+/* TYPOGRAPHY */
 @import 'typography/fonts';
 
+/* NAVIGATION */
+@import 'navigation/header';
+@import 'navigation/navigation';
