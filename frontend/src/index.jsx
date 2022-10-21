@@ -5,6 +5,7 @@ import App from './App'
 import Storybook from './storybook/storybook'
 import reportWebVitals from './reportWebVitals'
 import './sass/style.scss'
+import Login from './components/Login/Login'
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: 'storybook',
     element: <Storybook />,
+  },
+  {
+    path: 'login',
+    element: <Login />,
   },
 ])
 
