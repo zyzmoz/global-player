@@ -1,0 +1,21 @@
+.avatar {
+  display: flex;
+  height: 110px;
+  width: 110px;
+  flex-direction: column;
+  position: relative;
+  .role {
+    position: absolute;
+    bottom: -20px;
+    width: inherit;
+    text-align: center;
+
+    svg {
+      width: 32px;
+      height: 32px;
+      border: 1px solid black;
+      border-radius: 50%;
+      background-color: rgba($color: #fff, $alpha: 0.7);
+    }
+  }
+}

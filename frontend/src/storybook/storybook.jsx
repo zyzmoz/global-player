@@ -3,6 +3,7 @@ import Input from '../components/Input/Input'
 import Header from '../components/Header/Header'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
 import { AddIcon } from '../components/Icon/icons'
+import Avatar from '../components/Avatar/Avatar'
 
 function Storybook() {
   return (
@@ -24,7 +25,6 @@ function Storybook() {
         <hr />
       </div>
       <hr />
-
       <div className="input-component">
         <h1>Input Component</h1>
         <h2>Props:</h2>
@@ -36,12 +36,7 @@ function Storybook() {
           <li>type: password | text | number</li>
           <li>text: Value</li>
         </ul>
-        <Input
-          label="This is a label"
-          placeholder="Type your text"
-          onChange={(e) => console.log(e.target.value)}
-          defaultValue="test"
-        />
+        <Input label="This is a label" placeholder="Type your text" onChange={(e) => console.log(e.target.value)} />
       </div>
       <hr />
 
@@ -54,6 +49,19 @@ function Storybook() {
           <li>stroke: color</li>
         </ul>
         <AddIcon fill="black" stroke="black" />
+        <hr />
+      </div>
+
+      <div className="avatar-component">
+        <h1>Avatar Component</h1>
+        <h2>Props:</h2>
+
+        <ul>
+          <li>summonerIcon: Image Url</li>
+          <li>role: Player position</li>
+          <li>alt: Image Alt Text </li>
+        </ul>
+        <Avatar />
       </div>
       <hr />
     </div>

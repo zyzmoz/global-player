@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 
-function Input({ placeholder, defaultValue, onChange, label, type, text }) {
+function Input({ placeholder, onChange, label, type, text }) {
   // Generates an unique id
   const id = `input=${Math.floor(Math.random() * 9999)}`
 
@@ -15,21 +15,13 @@ function Input({ placeholder, defaultValue, onChange, label, type, text }) {
   return (
     <div className="input">
       {label && <label htmlFor={id}>{label}</label>}
-      <input
-        id={id}
-        type={type}
-        placeholder={placeholder}
-        defaultValue={defaultValue}
-        onChange={handleChange}
-        value={inputValue}
-      />
+      <input id={id} type={type} placeholder={placeholder} onChange={handleChange} value={inputValue} />
     </div>
   )
 }
 
 Input.propTypes = {
   placeholder: PropTypes.string,
-  defaultValue: PropTypes.string,
   onChange: PropTypes.func,
   label: PropTypes.string,
   type: PropTypes.string,
@@ -38,7 +30,6 @@ Input.propTypes = {
 
 Input.defaultProps = {
   placeholder: 'Placeholder',
-  defaultValue: '',
   onChange: (e) => e.target.value,
   type: 'text',
   text: '',
