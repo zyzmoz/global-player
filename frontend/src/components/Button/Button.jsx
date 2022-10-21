@@ -11,10 +11,10 @@ function Button({ buttonType, text, onClick, disabled }) {
 export default Button
 
 Button.defaultProps = {
-  buttonType: PropTypes.string,
-  text: PropTypes.string,
-  onClick: PropTypes.func,
-  disabled: PropTypes.bool,
+  buttonType: 'button',
+  text: '',
+  onClick: () => {},
+  disabled: true,
 }
 
 Button.propTypes = {
