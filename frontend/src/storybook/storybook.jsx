@@ -2,6 +2,7 @@ import BodyText from '../components/BodyText/BodyText'
 import Input from '../components/Input/Input'
 import Header from '../components/Header/Header'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
+import Footer from '../components/Footer/Footer'
 import { AddIcon } from '../components/Icon/icons'
 import Avatar from '../components/Avatar/Avatar'
 import Table from '../components/Table/Table'
@@ -106,6 +107,7 @@ function Storybook() {
         </Card>
       </div>
       <hr />
+      <Footer />
     </div>
   )
 }
