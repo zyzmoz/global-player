@@ -41,7 +41,7 @@ function Storybook() {
           <li>type: password | text | number</li>
           <li>text: Value</li>
         </ul>
-        <Input label="This is a label" placeholder="Type your text" onChange={(e) => console.log(e.target.value)} />
+        <Input label="This is a label" placeholder="Type your text" onChange={(e) => e} />
       </div>
       <hr />
 
