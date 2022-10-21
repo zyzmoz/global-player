@@ -2,6 +2,7 @@ import BodyText from '../components/BodyText/BodyText'
 import Input from '../components/Input/Input'
 import Header from '../components/Header/Header'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
+import { AddIcon } from '../components/Icon/icons'
 
 function Storybook() {
   return (
@@ -41,6 +42,18 @@ function Storybook() {
           onChange={(e) => console.log(e.target.value)}
           defaultValue="test"
         />
+      </div>
+      <hr />
+
+      <div className="icon-component">
+        <h1>Icon Component</h1>
+        <h2>Props:</h2>
+
+        <ul>
+          <li>fill: color</li>
+          <li>stroke: color</li>
+        </ul>
+        <AddIcon fill="black" stroke="black" />
       </div>
       <hr />
     </div>
