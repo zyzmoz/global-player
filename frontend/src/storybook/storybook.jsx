@@ -4,6 +4,10 @@ import Header from '../components/Header/Header'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
 import { AddIcon } from '../components/Icon/icons'
 import Avatar from '../components/Avatar/Avatar'
+import Table from '../components/Table/Table'
+import TableHeader from '../components/Table/TableHeader'
+import TableItem from '../components/Table/TableItem'
+import Card from '../components/Card/Card'
 
 function Storybook() {
   return (
@@ -62,6 +66,44 @@ function Storybook() {
           <li>alt: Image Alt Text </li>
         </ul>
         <Avatar />
+      </div>
+      <hr />
+
+      <div className="table-component">
+        <h1>Table Component</h1>
+
+        <Table>
+          <TableHeader
+            headers={[
+              { property: 'email', title: 'Email' },
+              { property: 'name', title: 'Name' },
+            ]}
+          />
+          {[
+            {
+              name: 'Daniel',
+              email: 'daniel@email.com',
+            },
+          ].map((item) => (
+            <TableItem
+              item={item}
+              headers={[
+                { property: 'email', title: 'Email' },
+                { property: 'name', title: 'Name' },
+              ]}
+            />
+          ))}
+        </Table>
+      </div>
+      <hr />
+
+      <div className="card-component">
+        <h1>Card Component</h1>
+        <h2>Props:</h2>
+
+        <Card>
+          <Avatar />
+        </Card>
       </div>
       <hr />
     </div>
