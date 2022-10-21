@@ -14,7 +14,7 @@ Button.defaultProps = {
   buttonType: 'button',
   text: '',
   onClick: () => {},
-  disabled: true,
+  disabled: false,
 }
 
 Button.propTypes = {
