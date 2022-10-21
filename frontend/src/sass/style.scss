@@ -7,6 +7,7 @@
 
 /* TYPOGRAPHY */
 @import 'typography/fonts';
+@import 'variables/colors';
 
 /* NAVIGATION */
 @import 'navigation/header';
@@ -15,3 +16,15 @@
 /* Base Elements */
 @import 'base-elements/index';
 @import 'navigation/footer';
+/* BUTTON */
+@import 'base-elements/button';
+
+/* NAVIGATION */
+@import 'navigation/header';
+@import 'navigation/navigation';
+
+/* Base Elements */
+@import 'base-elements/index';
+@import 'navigation/footer';
+/* SITE-LAYOUT */
+@import 'site-layout/index';

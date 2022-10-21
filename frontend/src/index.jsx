@@ -6,6 +6,10 @@ import Storybook from './storybook/storybook'
 import reportWebVitals from './reportWebVitals'
 import './sass/style.scss'
 import Login from './components/Login/Login'
+<<<<<<< HEAD
+=======
+import LandingPage from './pages/LandingPage'
+>>>>>>> bc67f34 (landing page on progress)
 
 const router = createBrowserRouter([
   {
@@ -19,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: 'login',
     element: <Login />,
+  },
+  {
+    path: 'landingpage',
+    element: <LandingPage />,
   },
 ])
 

@@ -1,0 +1,191 @@
+.header-full-size {
+  height: 100vh;
+  background-image: radial-gradient(85.99% 85.99% at 47.4% 16.42%, rgba(8, 2, 53, 0.4) 0%, #080235 100%),
+    url(../../assets/images/background-league-of-legends.png);
+  background-position: center top;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+
+  .down-icon-container {
+    align-self: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+}
+
+.landing-page-info {
+  display: flex;
+  flex-flow: column;
+  max-width: 70%;
+  align-self: center;
+
+  h1 {
+    color: $primary-color-bright-green;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  p {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .button {
+    align-self: center;
+  }
+}
+
+.feauture-wrapper {
+  margin: 0 3rem 0 3rem;
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+
+  h1 {
+    text-align: center;
+    margin: 3rem 0 2rem 0;
+  }
+
+  p {
+    text-align: center;
+  }
+}
+
+.section-title {
+  margin: 3rem;
+}
+
+.landing-page-info .button {
+  @include primary-default-button-mobile();
+}
+
+.section-title {
+  h1 {
+    margin-bottom: 3rem;
+  }
+}
+
+.feauture-container-right,
+.feauture-container-left {
+  margin-bottom: 8rem;
+}
+
+// table container
+.table-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+
+  h1,
+  button {
+    margin: 5rem 0 5rem 0;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  //header
+  .header-full-size {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-size: cover;
+
+    header {
+      grid-column: span 2;
+    }
+
+    .landing-page-info {
+      grid-column: 2/3;
+      max-width: 70%;
+      align-self: center;
+
+      h1 {
+        margin-bottom: 2rem;
+        color: white;
+        text-align: left;
+      }
+
+      p {
+        margin-bottom: 2rem;
+        text-align: left;
+      }
+
+      .button {
+        align-self: auto
+      }
+
+      .landing-page-info .button {
+        @include primary-default-button-desktop();
+      }
+    }
+
+    .down-icon-container {
+      grid-column: span 2;
+      align-items: center;
+      align-self: flex-end;
+      display: flex;
+      justify-content: center;
+      padding-bottom: 1rem;
+    }
+  }
+
+  // features
+  .section-title {
+    h1 {
+      margin-bottom: 8rem;
+    }
+  }
+
+  .feauture-container-right,
+  .feauture-container-left {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 6rem;
+    margin-bottom: 8rem;
+
+    h1,
+    p {
+      text-align: left;
+    }
+
+    h1 {
+      margin-bottom: 1.5rem;
+      margin-top: 0;
+    }
+  }
+
+  .feauture-container-right .image-container {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+
+  .image-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+  }
+
+  .image-container img {
+    max-width: 75%;
+  }
+
+  .feauture-container-right .text-container {
+    grid-column: 1/2;
+  }
+
+  .text-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+  }
+
+  // table container
+  .table-wrapper {
+    h1,
+    button {
+      margin: 8rem 0 8rem 0;
+    }
+  }
+}
