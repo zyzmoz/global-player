@@ -1,0 +1,40 @@
+header {
+  .main-footer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    .logo-desktop {
+      display: none;
+    }
+  }
+
+  .nav-header-menu {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  header {
+    padding: 1rem;
+
+    .side-button {
+      display: none;
+    }
+
+    .nav-header-menu {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: right;
+      gap: 1rem;
+
+      img {
+        display: none;
+      }
+
+      button {
+        display: none;
+      }
+    }
+  }
+}
