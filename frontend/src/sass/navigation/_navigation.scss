@@ -1,0 +1,51 @@
+.App {
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow-x: hidden;
+}
+
+.nav-side-menu {
+  background-color: rgba(36, 36, 36, 0.544);
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  height: 100vh;
+  z-index: 100;
+  transform: translateX(100%);
+  transition: all 0.5s;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2rem;
+  overflow: hidden;
+
+  .top-nav-side-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      justify-self: left;
+      text-align: left;
+    }
+    img {
+      justify-self: center;
+    }
+  }
+
+  a {
+    padding-left: 2rem;
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.main-wrapper {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+}
+
+.show-nav-menu {
+  transform: translateX(0);
+}

@@ -1,11 +1,15 @@
+---
+name: Feature Template
+about: Template to used for new features
+title: "feature: <description>"
+labels: 'enhancement'
+assignees: ''
+
+---
+
 # Overview
 
 Text explaining what should be done
-
-# Repro
-
-(When Bugs) Text explaining the steps to reproduce the error
-
 # Acceptance Criteria
 
 Text explaining the outcome 
@@ -13,10 +17,6 @@ Text explaining the outcome
 # Out of Scope
 
 (Optional) Text defining what is not expected to be done
-
-# Failure Cases
-
-(Optional) Text defining when errors occur 
 
 
 **NOTES:** Notes about the ticket

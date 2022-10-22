@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 
 // MongoDB URL
-const url = `mongodb+srv://dev:dev-chan@cluster0.gizbjqq.mongodb.net/?retryWrites=true&w=majority`
+const url = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.gizbjqq.mongodb.net/?retryWrites=true&w=majority`
 const client = new MongoClient(url)
 
 const dbName = 'globalPlayerDB';
