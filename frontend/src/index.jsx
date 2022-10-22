@@ -6,6 +6,7 @@ import Storybook from './storybook/storybook'
 import reportWebVitals from './reportWebVitals'
 import './sass/style.scss'
 import Login from './components/Login/Login'
+import LandingPage from './pages/LandingPage'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: 'login',
     element: <Login />,
+  },
+  {
+    path: 'landingpage',
+    element: <LandingPage />,
   },
 ])
 

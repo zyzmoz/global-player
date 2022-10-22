@@ -6,6 +6,7 @@ footer {
 
     .footer-mobile-logo {
         order: 2;
+        align-self: center;
     }
 
     .footer-desktop-logo {
@@ -14,8 +15,14 @@ footer {
 
     .nav-links-footer {
         display: flex;
-        flex-flow: column nowrap;
+        flex-flow: row nowrap;
+        justify-content: space-around;
         gap: .5rem;
+    }
+
+    .nav-links-footer a {
+        text-decoration: none;
+        color: $neutral-color-white;
     }
 }
 

@@ -1,4 +1,22 @@
-img {
+.feauture-wrapper img {
   max-width: 100%;
   height: auto;
+  border-radius: 0 30px;
+  margin-right: 0;
 }
+
+.image-container img {
+  outline: 3px solid #7DFAA4;
+
+}
+
+.video-wrapper {
+  border-top: 3px solid #7DFAA4;
+  border-bottom: 3px solid #7DFAA4;
+}
+
+iframe {
+  width: 100vw;
+  height: calc(100vw/1.77);
+  margin: 0;
+ }
