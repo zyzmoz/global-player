@@ -15,6 +15,16 @@
   }
 }
 
+.landing-page-container {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+}
+
+.landing-page {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .landing-page-info {
   display: flex;
   flex-flow: column;
@@ -113,7 +123,7 @@
       }
 
       .button {
-        align-self: auto
+        align-self: auto;
       }
 
       .landing-page-info .button {
