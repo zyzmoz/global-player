@@ -9,6 +9,7 @@ import Table from '../components/Table/Table'
 import TableHeader from '../components/Table/TableHeader'
 import TableItem from '../components/Table/TableItem'
 import Card from '../components/Card/Card'
+import Tag from '../components/Tag/Tag'
 
 function Storybook() {
   return (
@@ -97,17 +98,16 @@ function Storybook() {
         </Table>
       </div>
       <hr />
-
       <div className="card-component">
         <h1>Card Component</h1>
         <h2>Props:</h2>
-
         <Card>
           <Avatar />
         </Card>
       </div>
       <hr />
       <Footer />
+      <Tag text="Deffensive" reviews="25" />
     </div>
   )
 }
