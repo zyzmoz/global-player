@@ -1,19 +1,22 @@
 import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Button from '../Button/Button'
+import { SettingsIcon, LogoutIcon } from '../Icon/icons'
 
 function ProfilePopUp({ userId }) {
-    return (
-        <div className="profile-pop-up">
-            <NavLink to="/AccountSettings">
-                Account Settings
-            </NavLink>
-            <NavLink to="/Terms">
-                Terms
-            </NavLink>
-            <Button onClick={} className="logout-button" text="Log out" />
-        </div>
-    )
+  const accountUrl = `/AccountSettings/${userId}`
+  const logoutText = `${(<LogoutIcon fill="#7DFAA4" stroke="#7DFAA4" />)} Log out`
+
+  return (
+    <div className="profile-pop-up">
+      <NavLink to={accountUrl}>
+        <SettingsIcon fill="#7DFAA4" stroke="#7DFAA4" />
+        Account Settings
+      </NavLink>
+      <NavLink to="/Terms">Terms</NavLink>
+      <Button className="logout-button" text={logoutText} />
+    </div>
+  )
 }
 
 export default ProfilePopUp
