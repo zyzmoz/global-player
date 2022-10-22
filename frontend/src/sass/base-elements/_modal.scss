@@ -1,0 +1,11 @@
+.modal-show {
+    z-index: 100;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-hide {
+    display: none;
+}
