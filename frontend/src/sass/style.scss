@@ -30,6 +30,10 @@
 @import 'site-layout/index';
 
 /* TABLES */
-@import 'tables/tables'
+@import 'tables/tables';
 
 
+@import 'navigation/sidebar';
+
+/* ACCESSIBILITY */
+@import 'accessibility/visually-hidden';
