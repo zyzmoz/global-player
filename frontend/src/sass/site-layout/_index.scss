@@ -1,4 +1,7 @@
 @import './plans-page';
+.App {
+  color: white;
+}
 
 .header-full-size {
   height: 100vh;
@@ -28,6 +31,7 @@
   display: grid;
   grid-template-columns: 1fr;
   overflow: hidden;
+  overflow-x: hidden;
 }
 
 .landing-page-info {
@@ -227,3 +231,20 @@
     }
   }
 }
+
+// Toast Component
+
+.toast-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+
+  .toast-x-btn {
+    align-self: flex-end;   
+  }
+}
+
+.hide-toast-wrapper {
+  display: none;
+}
+
+// End Toast Component

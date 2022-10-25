@@ -13,6 +13,7 @@ import Tag from '../components/Tag/Tag'
 import LineChart from '../components/LineChart/LineChart'
 import DoughnutChart from '../components/DoughnutChart/DoughnutChart'
 import Accordion from '../components/Accordion/Accordion'
+import Toast from '../components/Toast/Toast'
 
 function Storybook() {
   return (
@@ -149,6 +150,19 @@ function Storybook() {
 
       <Footer />
       <Tag text="Deffensive" reviews="25" />
+
+      {/* <div className="toast-wrapper">
+        <button type="button">
+          <CrossIcon fill="#7DFAA4" stroke="#7DFAA4" />
+        </button>
+        <div className="toast-content">
+          <CheckIcon fill="#7DFAA4" stroke="#7DFAA4" />
+          <Headline fontSize="24px" color="white" textAlign="center" text="Welcome to Global player!" />
+          <BodyText fontSize="16px" color="white" textAlign="center" text="Your account has been created" />
+        </div>
+      </div> */}
+
+      <Toast />
     </div>
   )
 }
