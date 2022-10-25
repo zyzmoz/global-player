@@ -10,6 +10,7 @@ import TableHeader from '../components/Table/TableHeader'
 import TableItem from '../components/Table/TableItem'
 import Card from '../components/Card/Card'
 import Tag from '../components/Tag/Tag'
+import LineChart from '../components/LineChart/LineChart'
 
 function Storybook() {
   return (
@@ -104,6 +105,23 @@ function Storybook() {
         <Card>
           <Avatar />
         </Card>
+      </div>
+      <hr />
+      <div className="linechart-component">
+        <h1>LineChart Component</h1>
+        <h2>Props:</h2>
+        <LineChart
+          width="400px"
+          height="400px"
+          playerA={{
+            label: 'Player A',
+            data: [8, 3, 2, 2.17, 1, 0.5, 4.75],
+          }}
+          playerB={{
+            label: 'Player B',
+            data: [1.9, 4.57, 1.46, 4, 3, 1, 1.57],
+          }}
+        />
       </div>
       <hr />
       <Footer />
