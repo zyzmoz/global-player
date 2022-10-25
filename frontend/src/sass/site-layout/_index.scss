@@ -1,3 +1,7 @@
+.App {
+  color: white;
+}
+
 .header-full-size {
   height: 100vh;
   background-image: radial-gradient(85.99% 85.99% at 47.4% 16.42%, rgba(8, 2, 53, 0.4) 0%, #080235 100%),
@@ -23,6 +27,7 @@
 .landing-page {
   display: grid;
   grid-template-columns: 1fr;
+  overflow-x: hidden;
 }
 
 .landing-page-info {
@@ -199,3 +204,20 @@
     }
   }
 }
+
+// Toast Component
+
+.toast-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+
+  .toast-x-btn {
+    align-self: flex-end;   
+  }
+}
+
+.hide-toast-wrapper {
+  display: none;
+}
+
+// End Toast Component

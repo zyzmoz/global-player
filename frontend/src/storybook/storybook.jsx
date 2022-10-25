@@ -10,6 +10,7 @@ import TableHeader from '../components/Table/TableHeader'
 import TableItem from '../components/Table/TableItem'
 import Card from '../components/Card/Card'
 import Tag from '../components/Tag/Tag'
+import Toast from '../components/Toast/Toast'
 
 function Storybook() {
   return (
@@ -108,6 +109,19 @@ function Storybook() {
       <hr />
       <Footer />
       <Tag text="Deffensive" reviews="25" />
+
+      {/* <div className="toast-wrapper">
+        <button type="button">
+          <CrossIcon fill="#7DFAA4" stroke="#7DFAA4" />
+        </button>
+        <div className="toast-content">
+          <CheckIcon fill="#7DFAA4" stroke="#7DFAA4" />
+          <Headline fontSize="24px" color="white" textAlign="center" text="Welcome to Global player!" />
+          <BodyText fontSize="16px" color="white" textAlign="center" text="Your account has been created" />
+        </div>
+      </div> */}
+
+      <Toast />
     </div>
   )
 }
