@@ -1,4 +1,4 @@
-// Colors 
+// Colors
 $primary-color-bright-green: #7dfaa4;
 $primary-color-deep-purple: #402cac;
 $secondary-color-magical-green: #29d37a;
@@ -6,7 +6,7 @@ $secondary-color-sky-blue: #53bcf9;
 $neutral-color-white: #ffffff;
 $neutral-color-dark-blue: #080235;
 
-
 body {
-    background: $neutral-color-dark-blue;
-  }
+  background: $neutral-color-dark-blue;
+  color: $primary-color-bright-green;
+}
