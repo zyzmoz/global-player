@@ -1,16 +1,16 @@
 export interface IUser {
-    licenseId: string
-    _id: string
-    firstName: string
-    lastName: string
-    email: string
-    companyId: string
-    isPlayer: boolean
-    playerId: string
+  licenseId: string
+  _id: string
+  firstName: string
+  lastName: string
+  email: string
+  companyId: string
+  isPlayer: boolean
+  playerId: string
 }
 
 export const isUser = (user: any): user is IUser => {
-    const schema: Record<keyof IUser, string> = {
+  const schema: Record<keyof IUser, string> = {
     licenseId: 'string',
     _id: 'string',
     firstName: 'string',
@@ -19,12 +19,12 @@ export const isUser = (user: any): user is IUser => {
     companyId: 'string',
     isPlayer: 'boolean',
     playerId: 'string',
-    }
+  }
 
-    const missingProperties = Object.keys(schema)
+  const missingProperties = Object.keys(schema)
     .filter((key) => user[key] === undefined && key !== '_id')
     .map((key) => key as keyof IUser)
     .map((key) => new Error(`Document is missing ${key} ${schema[key]}`))
 
-    return missingProperties.length === 0
+  return missingProperties.length === 0
 }
