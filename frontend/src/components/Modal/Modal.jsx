@@ -5,7 +5,7 @@ function Modal({ backgroundColor, children, isOpen }) {
     <div
       className={isOpen ? 'modal-show' : 'modal-hide'}
       style={{
-        width: '100vh',
+        width: '100%',
         height: '100vh',
         backgroundColor,
       }}
