@@ -7,11 +7,12 @@ import reportWebVitals from './reportWebVitals'
 import './sass/style.scss'
 import Login from './components/Login/Login'
 import LandingPage from './pages/LandingPage'
+import PlansPage from './pages/PlansPage'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <LandingPage />,
   },
   {
     path: 'storybook',
@@ -22,8 +23,12 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: 'landingpage',
-    element: <LandingPage />,
+    path: 'app',
+    element: <App />,
+  },
+  {
+    path: 'plans',
+    element: <PlansPage />,
   },
 ])
 

@@ -1,0 +1,15 @@
+.card {
+  box-sizing: border-box;
+  padding: 2px;
+  background: $border-gradient-color;
+  overflow: hidden;
+  border-radius: 25px;
+  .card-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    height: 100%;
+    background: $background-gradient-color;
+  }
+}

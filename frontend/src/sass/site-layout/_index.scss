@@ -1,3 +1,5 @@
+@import './plans-page';
+
 .header-full-size {
   height: 100vh;
   background-image: radial-gradient(85.99% 85.99% at 47.4% 16.42%, rgba(8, 2, 53, 0.4) 0%, #080235 100%),
@@ -16,13 +18,16 @@
 }
 
 .landing-page-container {
+  width: 100%;
   grid-column: 1/-1;
   grid-row: 1/-1;
+  overflow: hidden;
 }
 
 .landing-page {
   display: grid;
   grid-template-columns: 1fr;
+  overflow: hidden;
 }
 
 .landing-page-info {
