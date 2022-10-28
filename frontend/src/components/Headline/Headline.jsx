@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 function Headline({ fontSize, color, textAlign, text }) {
   return (
     <h1
+      className={fontSize}
       style={{
-        fontSize,
         color,
         textAlign,
       }}
@@ -17,7 +17,7 @@ function Headline({ fontSize, color, textAlign, text }) {
 export default Headline
 
 Headline.defaultProps = {
-  fontSize: '20pt',
+  fontSize: 'large',
   color: 'white',
   textAlign: 'left',
   text: '',
