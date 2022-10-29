@@ -11,6 +11,7 @@ import TableItem from '../components/Table/TableItem'
 import Card from '../components/Card/Card'
 import Tag from '../components/Tag/Tag'
 import LineChart from '../components/LineChart/LineChart'
+import DoughnutChart from '../components/DoughnutChart/DoughnutChart'
 
 function Storybook() {
   return (
@@ -120,6 +121,18 @@ function Storybook() {
           playerB={{
             label: 'Player B',
             data: [1.9, 4.57, 1.46, 4, 3, 1, 1.57],
+          }}
+        />
+      </div>
+      <hr />
+      <div className="doughnutchart-component">
+        <h1>DoughnutChart Component</h1>
+        <h2>Props:</h2>
+        <DoughnutChart
+          width="300px"
+          height="300px"
+          winRate={{
+            data: [5, 4],
           }}
         />
       </div>
