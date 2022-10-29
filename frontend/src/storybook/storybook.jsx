@@ -107,21 +107,15 @@ function Storybook() {
         </Card>
       </div>
       <hr />
+      <Toast
+        className="toast-wrapper"
+        pageRoute="landingpage"
+        headlineToast="Welcome to Global Player !"
+        bodyToast="Your account has been created"
+        buttonTextToast="Let's go to Landinpage!"
+      />
       <Footer />
       <Tag text="Deffensive" reviews="25" />
-
-      {/* <div className="toast-wrapper">
-        <button type="button">
-          <CrossIcon fill="#7DFAA4" stroke="#7DFAA4" />
-        </button>
-        <div className="toast-content">
-          <CheckIcon fill="#7DFAA4" stroke="#7DFAA4" />
-          <Headline fontSize="24px" color="white" textAlign="center" text="Welcome to Global player!" />
-          <BodyText fontSize="16px" color="white" textAlign="center" text="Your account has been created" />
-        </div>
-      </div> */}
-
-      <Toast />
     </div>
   )
 }

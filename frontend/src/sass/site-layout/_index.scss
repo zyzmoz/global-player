@@ -100,6 +100,22 @@
   }
 }
 
+// Toast Component
+.toast-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+
+  .button {
+    width: auto;
+    height: 50px;
+  }
+
+  .toast-cta-btn {
+    align-self: flex-end;   
+  }
+}
+// End Toast Component
+
 @media screen and (min-width: 600px) {
   //header
   .header-full-size {
@@ -204,20 +220,3 @@
     }
   }
 }
-
-// Toast Component
-
-.toast-wrapper {
-  display: flex;
-  flex-flow: column nowrap;
-
-  .toast-x-btn {
-    align-self: flex-end;   
-  }
-}
-
-.hide-toast-wrapper {
-  display: none;
-}
-
-// End Toast Component
