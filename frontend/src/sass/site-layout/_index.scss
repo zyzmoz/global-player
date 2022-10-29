@@ -30,10 +30,6 @@
 .landing-page {
   display: grid;
   grid-template-columns: 1fr;
-<<<<<<< HEAD
-  overflow: hidden;
-=======
->>>>>>> a2df87d (toast component)
   overflow-x: hidden;
 }
 
@@ -107,6 +103,7 @@
   }
 }
 
+<<<<<<< HEAD
 // Accordion Component
 .accordion-wrapper {
   display: flex;
@@ -129,6 +126,23 @@
   }
 }
 // End Accordion Component
+=======
+// Toast Component
+.toast-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+
+  .button {
+    width: auto;
+    height: 50px;
+  }
+
+  .toast-cta-btn {
+    align-self: flex-end;   
+  }
+}
+// End Toast Component
+>>>>>>> b87a007 (toast component improved)
 
 @media screen and (min-width: 600px) {
   //header
@@ -234,20 +248,3 @@
     }
   }
 }
-
-// Toast Component
-
-.toast-wrapper {
-  display: flex;
-  flex-flow: column nowrap;
-
-  .toast-x-btn {
-    align-self: flex-end;   
-  }
-}
-
-.hide-toast-wrapper {
-  display: none;
-}
-
-// End Toast Component

@@ -1,12 +1,15 @@
+import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { CheckIcon, CrossIcon } from '../Icon/icons'
+import { CheckIcon } from '../Icon/icons'
 import BodyText from '../BodyText/BodyText'
 import Headline from '../Headline/Headline'
+import Button from '../Button/Button'
 
-function Toast({ className }) {
-  const toggleCloseBtn = () => {
-    const toastComponent = document.querySelector('.toast-wrapper')
-    toastComponent.classList.toggle('hide-toast-wrapper')
+function Toast({ className, pageRoute, headlineToast, bodyToast, buttonTextToast }) {
+  const navigate = useNavigate()
+
+  const navigateToPage = () => {
+    navigate(`/${pageRoute}`)
   }
 
   return (
@@ -14,25 +17,21 @@ function Toast({ className }) {
       className={className}
       style={{
         background: '#402CAC',
-        maxWidth: '1212px',
-        maxHeight: '545px',
         border: '3px solid #7DFAA4',
         borderRadius: '25px',
         boxShadow: '0px 26px 54px rgba(8,2,53,0.48',
       }}
     >
-      <button
-        onClick={() => toggleCloseBtn()}
-        type="button"
-        className="toast-x-btn"
-        style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-      >
-        <CrossIcon fill="#7DFAA4" stroke="#7DFAA4" />
-      </button>
       <div className="toast-main-content" style={{ textAlign: 'center' }}>
         <CheckIcon fill="#7DFAA4" stroke="#7DFAA4" />
-        <Headline fontSize="24px" color="white" textAlign="center" text="Welcome to Global player!" />
-        <BodyText fontSize="16px" color="white" textAlign="center" text="Your account has been created" />
+        <Headline fontSize="24px" color="white" textAlign="center" text={headlineToast} />
+        <BodyText fontSize="16px" color="white" textAlign="center" text={bodyToast} />
+        <Button
+          text={buttonTextToast}
+          onClick={() => navigateToPage()}
+          className="toast-cta-btn"
+          style={{ buttonWidth: '400px' }}
+        />
       </div>
     </div>
   )
@@ -41,9 +40,17 @@ function Toast({ className }) {
 export default Toast
 
 Toast.defaultProps = {
-  className: 'toast-wrapper',
+  className: '',
+  pageRoute: '',
+  headlineToast: '',
+  bodyToast: '',
+  buttonTextToast: '',
 }
 
 Toast.propTypes = {
   className: PropTypes.string,
+  pageRoute: PropTypes.string,
+  headlineToast: PropTypes.string,
+  bodyToast: PropTypes.string,
+  buttonTextToast: PropTypes.string,
 }

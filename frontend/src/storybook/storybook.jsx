@@ -148,21 +148,15 @@ function Storybook() {
         fullText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non porta felis. Aliquam augue leo, scelerisque sit amet rutrum a, gravida sed augue. Donec congue venenatis lacus, nec consectetur dolor commodo non. Donec sed aliquet lorem. Phasellus eu mi ligula."
       />
 
+      <Toast
+        className="toast-wrapper"
+        pageRoute="landingpage"
+        headlineToast="Welcome to Global Player !"
+        bodyToast="Your account has been created"
+        buttonTextToast="Let's go to Landinpage!"
+      />
       <Footer />
       <Tag text="Deffensive" reviews="25" />
-
-      {/* <div className="toast-wrapper">
-        <button type="button">
-          <CrossIcon fill="#7DFAA4" stroke="#7DFAA4" />
-        </button>
-        <div className="toast-content">
-          <CheckIcon fill="#7DFAA4" stroke="#7DFAA4" />
-          <Headline fontSize="24px" color="white" textAlign="center" text="Welcome to Global player!" />
-          <BodyText fontSize="16px" color="white" textAlign="center" text="Your account has been created" />
-        </div>
-      </div> */}
-
-      <Toast />
     </div>
   )
 }
