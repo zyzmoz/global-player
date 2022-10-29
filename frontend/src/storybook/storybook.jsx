@@ -12,6 +12,7 @@ import Card from '../components/Card/Card'
 import Tag from '../components/Tag/Tag'
 import LineChart from '../components/LineChart/LineChart'
 import DoughnutChart from '../components/DoughnutChart/DoughnutChart'
+import Accordion from '../components/Accordion/Accordion'
 
 function Storybook() {
   return (
@@ -137,6 +138,15 @@ function Storybook() {
         />
       </div>
       <hr />
+      <Accordion
+        headerText="How can I change my plan?"
+        fullText="Go inside your settings account on the account icon and select to change your plan, select the plan you’d like to be a part of and pay the difference if needed. The plan can also be updated by clicking on the button “Upgrade plan” on the main menu on the left of the screen."
+      />
+      <Accordion
+        headerText="How can I update my password?"
+        fullText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non porta felis. Aliquam augue leo, scelerisque sit amet rutrum a, gravida sed augue. Donec congue venenatis lacus, nec consectetur dolor commodo non. Donec sed aliquet lorem. Phasellus eu mi ligula."
+      />
+
       <Footer />
       <Tag text="Deffensive" reviews="25" />
     </div>

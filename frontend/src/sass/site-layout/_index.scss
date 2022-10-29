@@ -100,6 +100,29 @@
   }
 }
 
+// Accordion Component
+.accordion-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  background: #402cac;
+  border: 3px solid $primary-color-bright-green;
+  border-radius: 10px;
+  padding: 1.5rem 1rem;
+  margin-bottom: 0.5rem;
+
+  .up-down-btn {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+}
+// End Accordion Component
+
 @media screen and (min-width: 600px) {
   //header
   .header-full-size {
