@@ -13,6 +13,7 @@ import Tag from '../components/Tag/Tag'
 import LineChart from '../components/LineChart/LineChart'
 import DoughnutChart from '../components/DoughnutChart/DoughnutChart'
 import Accordion from '../components/Accordion/Accordion'
+import Toast from '../components/Toast/Toast'
 
 function Storybook() {
   return (
@@ -147,6 +148,13 @@ function Storybook() {
         fullText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non porta felis. Aliquam augue leo, scelerisque sit amet rutrum a, gravida sed augue. Donec congue venenatis lacus, nec consectetur dolor commodo non. Donec sed aliquet lorem. Phasellus eu mi ligula."
       />
 
+      <Toast
+        className="toast-wrapper"
+        pageRoute="landingpage"
+        headlineToast="Welcome to Global Player !"
+        bodyToast="Your account has been created"
+        buttonTextToast="Let's go to Landinpage!"
+      />
       <Footer />
       <Tag text="Deffensive" reviews="25" />
     </div>

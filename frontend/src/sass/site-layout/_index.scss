@@ -1,4 +1,7 @@
 @import './plans-page';
+.App {
+  color: white;
+}
 
 .header-full-size {
   height: 100vh;
@@ -27,7 +30,7 @@
 .landing-page {
   display: grid;
   grid-template-columns: 1fr;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .landing-page-info {
@@ -100,6 +103,7 @@
   }
 }
 
+<<<<<<< HEAD
 // Accordion Component
 .accordion-wrapper {
   display: flex;
@@ -122,6 +126,23 @@
   }
 }
 // End Accordion Component
+=======
+// Toast Component
+.toast-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+
+  .button {
+    width: auto;
+    height: 50px;
+  }
+
+  .toast-cta-btn {
+    align-self: flex-end;   
+  }
+}
+// End Toast Component
+>>>>>>> b87a007 (toast component improved)
 
 @media screen and (min-width: 600px) {
   //header

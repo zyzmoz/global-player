@@ -19,7 +19,7 @@
 @include primary-default-button-mobile();
 
 @mixin primary-default-button-desktop {
-  .button {
+  .landing-page-container .button {
     background-color: $primary-color-bright-green;
     color: $neutral-color-dark-blue;
     // font-size: 24pt;
