@@ -9,6 +9,10 @@ import Table from '../components/Table/Table'
 import TableHeader from '../components/Table/TableHeader'
 import TableItem from '../components/Table/TableItem'
 import Card from '../components/Card/Card'
+import Tag from '../components/Tag/Tag'
+import LineChart from '../components/LineChart/LineChart'
+import DoughnutChart from '../components/DoughnutChart/DoughnutChart'
+import Accordion from '../components/Accordion/Accordion'
 
 function Storybook() {
   return (
@@ -97,17 +101,54 @@ function Storybook() {
         </Table>
       </div>
       <hr />
-
       <div className="card-component">
         <h1>Card Component</h1>
         <h2>Props:</h2>
-
         <Card>
           <Avatar />
         </Card>
       </div>
       <hr />
+      <div className="linechart-component">
+        <h1>LineChart Component</h1>
+        <h2>Props:</h2>
+        <LineChart
+          width="400px"
+          height="400px"
+          playerA={{
+            label: 'Player A',
+            data: [8, 3, 2, 2.17, 1, 0.5, 4.75],
+          }}
+          playerB={{
+            label: 'Player B',
+            data: [1.9, 4.57, 1.46, 4, 3, 1, 1.57],
+          }}
+        />
+      </div>
+      <hr />
+      <div className="doughnutchart-component">
+        <h1>DoughnutChart Component</h1>
+        <h2>Props:</h2>
+        <DoughnutChart
+          width="300px"
+          height="300px"
+          winRate={{
+            data: [5, 4],
+          }}
+        />
+      </div>
+      <hr />
+      <Accordion
+        headerText="How can I change my plan?"
+        fullText="Go inside your settings account on the account icon and select to change your plan, select the plan you’d like to be a part of and pay the difference if needed. The plan can also be updated by clicking on the button “Upgrade plan” on the main menu on the left of the screen."
+      />
+      <Accordion
+        headerText="How can I update my password?"
+        fullText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non porta felis. Aliquam augue leo, scelerisque sit amet rutrum a, gravida sed augue. Donec congue venenatis lacus, nec consectetur dolor commodo non. Donec sed aliquet lorem. Phasellus eu mi ligula."
+      />
+
       <Footer />
+      <Tag text="Deffensive" reviews="25" />
     </div>
   )
 }

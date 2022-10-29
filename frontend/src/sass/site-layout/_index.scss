@@ -1,3 +1,5 @@
+@import './plans-page';
+
 .header-full-size {
   height: 100vh;
   background-image: radial-gradient(85.99% 85.99% at 47.4% 16.42%, rgba(8, 2, 53, 0.4) 0%, #080235 100%),
@@ -16,13 +18,16 @@
 }
 
 .landing-page-container {
+  width: 100%;
   grid-column: 1/-1;
   grid-row: 1/-1;
+  overflow: hidden;
 }
 
 .landing-page {
   display: grid;
   grid-template-columns: 1fr;
+  overflow: hidden;
 }
 
 .landing-page-info {
@@ -94,6 +99,29 @@
     margin: 5rem 0 5rem 0;
   }
 }
+
+// Accordion Component
+.accordion-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  background: #402cac;
+  border: 3px solid $primary-color-bright-green;
+  border-radius: 10px;
+  padding: 1.5rem 1rem;
+  margin-bottom: 0.5rem;
+
+  .up-down-btn {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+}
+// End Accordion Component
 
 @media screen and (min-width: 600px) {
   //header

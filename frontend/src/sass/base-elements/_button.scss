@@ -1,22 +1,22 @@
 @mixin primary-default-button-mobile {
-    .button {
-      background-color: $primary-color-bright-green;
-      color: $neutral-color-dark-blue;
-      font-size: 18pt;
-      font-weight: 500;
-      border-radius: 15px;
-      width: 127px;
-      height: 63px;
-      border: none;
-      cursor: pointer;
-    }
-  
-    .button:hover {
-      background: radial-gradient(105.5% 711.76% at 0% 49.35%, #d7ffe3 0%, rgba(255, 255, 255, 0) 100%), #16ff8c;
-    }
+  .button {
+    background-color: $primary-color-bright-green;
+    color: $neutral-color-dark-blue;
+    font-size: 18pt;
+    font-weight: 500;
+    border-radius: 15px;
+    width: auto;
+    height: 63px;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
   }
-  @include primary-default-button-mobile();
 
+  .button:hover {
+    background: radial-gradient(105.5% 711.76% at 0% 49.35%, #d7ffe3 0%, rgba(255, 255, 255, 0) 100%), #16ff8c;
+  }
+}
+@include primary-default-button-mobile();
 
 @mixin primary-default-button-desktop {
   .button {
@@ -25,10 +25,12 @@
     // font-size: 24pt;
     font-weight: 500;
     border-radius: 15px;
-    width: 200px;
+    width: auto;
     height: 77px;
     border: none;
     cursor: pointer;
+    padding: 1rem;
+
   }
 
   .button:hover {

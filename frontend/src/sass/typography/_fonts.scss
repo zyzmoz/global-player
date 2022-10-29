@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;1,600&family=Gothic+A1:wght@400;700&display=swap');
 
 p,
 body {
@@ -34,6 +34,45 @@ body {
 
     .x-small {
       font-size: 10pt;
+    }
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Chakra Petch', sans-serif;
+  .large {
+    font-size: 48pt;
+  }
+
+  .medium {
+    font-size: 40pt;
+  }
+
+  .small {
+    font-size: 36pt;
+  }
+
+  .x-small {
+    font-size: 24pt;
+  }
+
+  @media screen and (min-width: 600px) {
+    .large {
+      font-size: 32pt;
+    }
+
+    .medium {
+      font-size: 24pt;
+    }
+
+    .small {
+      font-size: 20pt;
+    }
+
+    .x-small {
+      font-size: 16pt;
     }
   }
 }
