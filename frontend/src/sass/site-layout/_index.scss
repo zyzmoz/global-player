@@ -101,17 +101,38 @@
 }
 
 // Toast Component
+.toast {
+  background: $border-gradient-color;
+  padding: 2px;
+  overflow: hidden;
+  border-radius: 25px;
+  display: flex;
+}
+
 .toast-wrapper {
   display: flex;
+  flex: 1;
   flex-flow: column nowrap;
+  background: $background-gradient-color;
+  border-radius: 25px;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    margin: 1rem .5rem;
+  }
 
   .button {
+    margin: 1rem 0 1rem 0;
     width: auto;
     height: 50px;
+    padding: 0 1.5rem;
+ 
   }
 
   .toast-cta-btn {
-    align-self: flex-end;   
+    align-self: flex-end;
   }
 }
 // End Toast Component

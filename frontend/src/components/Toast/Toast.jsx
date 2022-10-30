@@ -5,7 +5,7 @@ import BodyText from '../BodyText/BodyText'
 import Headline from '../Headline/Headline'
 import Button from '../Button/Button'
 
-function Toast({ className, pageRoute, headlineToast, bodyToast, buttonTextToast }) {
+function Toast({ pageRoute, headlineToast, bodyToast, buttonTextToast }) {
   const navigate = useNavigate()
 
   const navigateToPage = () => {
@@ -13,25 +13,12 @@ function Toast({ className, pageRoute, headlineToast, bodyToast, buttonTextToast
   }
 
   return (
-    <div
-      className={className}
-      style={{
-        background: '#402CAC',
-        border: '3px solid #7DFAA4',
-        borderRadius: '25px',
-        boxShadow: '0px 26px 54px rgba(8,2,53,0.48',
-      }}
-    >
-      <div className="toast-main-content" style={{ textAlign: 'center' }}>
+    <div className="toast">
+      <div className="toast-wrapper" style={{ textAlign: 'center' }}>
         <CheckIcon fill="#7DFAA4" stroke="#7DFAA4" />
         <Headline fontSize="24px" color="white" textAlign="center" text={headlineToast} />
         <BodyText fontSize="16px" color="white" textAlign="center" text={bodyToast} />
-        <Button
-          text={buttonTextToast}
-          onClick={() => navigateToPage()}
-          className="toast-cta-btn"
-          style={{ buttonWidth: '400px' }}
-        />
+        <Button text={buttonTextToast} onClick={() => navigateToPage()} className="toast-cta-btn" />
       </div>
     </div>
   )
@@ -40,7 +27,6 @@ function Toast({ className, pageRoute, headlineToast, bodyToast, buttonTextToast
 export default Toast
 
 Toast.defaultProps = {
-  className: '',
   pageRoute: '',
   headlineToast: '',
   bodyToast: '',
@@ -48,7 +34,6 @@ Toast.defaultProps = {
 }
 
 Toast.propTypes = {
-  className: PropTypes.string,
   pageRoute: PropTypes.string,
   headlineToast: PropTypes.string,
   bodyToast: PropTypes.string,
