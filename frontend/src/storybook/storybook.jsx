@@ -149,7 +149,6 @@ function Storybook() {
       />
 
       <Toast
-        className="toast-wrapper"
         pageRoute="landingpage"
         headlineToast="Welcome to Global Player !"
         bodyToast="Your account has been created"
