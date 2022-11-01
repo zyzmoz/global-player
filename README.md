@@ -8,7 +8,7 @@
 
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/825b8803-4ce4-40b3-ae63-7d2a00703bcb/deploy-status)](https://app.netlify.com/sites/eclectic-mermaid-dda420/deploys)
-[![Railway Status](https://badgen.net/https/hello-world-api-a6r4v0841jq0.runkit.sh?icon=https%3A%2F%2Frailway.app%2Fbrand%2Flogo-light.svg)](https://railway.app/project/df85c0e4-dcc3-4f1a-b250-61c1bbf73d09/service/b6cc9fde-15ed-484d-b19f-9f065e8ed627)
+[![Railway Status](https://badgen.net/https/hello-world-api-3f0o4an80873.runkit.sh/?icon=https%3A%2F%2Frailway.app%2Fbrand%2Flogo-light.svg)](https://railway.app/project/df85c0e4-dcc3-4f1a-b250-61c1bbf73d09/service/b6cc9fde-15ed-484d-b19f-9f065e8ed627)
 
 
 Hiring a Pro Player is tricky as a number of factors count when selecting a new hire. To solve that Supernova is creating a data-oriented platform to deliver the right information needed to select new Pro Players.

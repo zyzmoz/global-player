@@ -5,6 +5,9 @@ import planRouter from './plan'
 import playerMatchRouter from './playerMatch'
 import reviewRouter from './review'
 import licenseRouter from './license'
+import { getPlayers } from '../integrations/RiotAPI'
+import { insertMany } from '../shared/dbFunctions'
+import { IPlayer } from '../models/Player'
 
 const router = Router()
 
@@ -17,7 +20,10 @@ router.post('/seed', async (req, res) => {
   const { password } = req.body
   if (password === process.env.SEED_PASSWORD) {
     // Run Seed Function
-    res.status(200).json({}).end()
+    const players = await getPlayers()
+    await insertMany<IPlayer>('players', players)
+    
+    res.status(200).json(players).end()
   }
 
   res.status(401).end()
