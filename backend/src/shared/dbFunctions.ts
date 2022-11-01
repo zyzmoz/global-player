@@ -47,14 +47,19 @@ const insertMany = async <T>(collectionName: string, obj: T[]): Promise<boolean>
   return acknowledged
 }
 
-const update = async <T>(collectionName: string, obj: T & { _id: string }): Promise<T> => {
+const update = async <T>(collectionName: string, obj: T & { _id: string }, options: any = null): Promise<T> => {
   const db = await DbConnection.getInstance()
   const collection = db.collection(collectionName)
 
   const { _id, ...rest } = obj
-
-  await collection.updateOne({ _id: new ObjectId(_id) }, { $set: rest })
-  const data = await collection.findOne({ _id: new ObjectId(_id) })
+  let data
+  if (!options) {
+    await collection.updateOne({ _id: new ObjectId(_id) }, { $set: rest })
+    data = await collection.findOne({ _id: new ObjectId(_id) })
+  } else {
+    await collection.updateOne(options, { $set: rest })
+    data = await collection.findOne(options)
+  }
 
   return data as T
 }

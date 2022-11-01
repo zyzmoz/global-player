@@ -5,7 +5,7 @@ import planRouter from './plan'
 import playerMatchRouter from './playerMatch'
 import reviewRouter from './review'
 import licenseRouter from './license'
-import { getPlayers } from '../integrations/RiotAPI'
+import { getPlayers, getPuuidAndProfileIcon } from '../integrations/RiotAPI'
 import { insertMany } from '../shared/dbFunctions'
 import { IPlayer } from '../models/Player'
 
@@ -22,6 +22,7 @@ router.post('/seed', async (req, res) => {
     // Run Seed Function
     const players = await getPlayers()
     await insertMany<IPlayer>('players', players)
+    await getPuuidAndProfileIcon(players[0])
     
     res.status(200).json(players).end()
   }

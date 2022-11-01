@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { update } from '../shared/dbFunctions'
 /*
   20 requests every 1 second
   100 requests every 2 minutes
@@ -24,7 +25,23 @@ const getPlayers = async () => {
 }
 
 // AccountV4: puuid
-const getPuuidAndProfileIcon = (summonerData) => {
+const getPuuidAndProfileIcon = async (summonerData) => {
+  const { summonerId } = summonerData
+  const res = await axios
+    .get(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/${summonerId}`, {
+      headers: {
+        'X-Riot-Token': process.env.RIOT_API_KEY || '',
+      },
+    })
+    .catch((error) => ({ error }))
+  const { error, data } = res as any
+
+  if (error) return
+
+  const { puuid, profileIconId } = data
+
+  await update('players', { ...summonerData, puuid, profileIconId }, { summonerId })
+
   // https://na1.api.riotgames.com/lol/summoner/v4/summoners/${summonerId}
   // use summonerId
   // get puuid
@@ -43,4 +60,4 @@ const getPuuidAndProfileIcon = (summonerData) => {
 //  Until we Iterate into all users
 // 1000 * 120
 
-export { getPlayers, getPuuid }
+export { getPlayers, getPuuidAndProfileIcon }
