@@ -40,7 +40,9 @@ const getPuuidAndProfileIcon = async (summonerData) => {
 
   const { puuid, profileIconId } = data
 
-  await update('players', { ...summonerData, puuid, profileIconId }, { summonerId })
+  const player = await update('players', { ...summonerData, puuid, profileIconId }, { summonerId })
+
+  return player
 
   // https://na1.api.riotgames.com/lol/summoner/v4/summoners/${summonerId}
   // use summonerId
@@ -51,6 +53,19 @@ const getPuuidAndProfileIcon = async (summonerData) => {
 }
 
 // MatchesV4: Matches
+const getMatchIds = async (puuid: string) => {
+  const res = await axios
+    .get(`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids`, {
+      headers: {
+        'X-Riot-Token': process.env.RIOT_API_KEY || '',
+      },
+    })
+    .catch((error) => ({ error }))
+  const { error, data } = res as any
+
+  if (error) return
+  return data as string[]
+}
 
 // MatchesV4: Match details
 
@@ -60,4 +75,4 @@ const getPuuidAndProfileIcon = async (summonerData) => {
 //  Until we Iterate into all users
 // 1000 * 120
 
-export { getPlayers, getPuuidAndProfileIcon }
+export { getPlayers, getPuuidAndProfileIcon, getMatchIds }
