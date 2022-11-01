@@ -4,19 +4,19 @@ import { findMany, findOne, insert, remove, update } from '../shared/dbFunctions
 
 const router = Router()
 
-router.get('/playermatch', async (_req, res) => {
+router.get('/', async (_req, res) => {
   const matches = await findMany<IPlayerMatch>('playermatches')
   res.json(matches)
 })
 
-router.get(`/playermatch/:id`, async (req, res) => {
+router.get(`/:id`, async (req, res) => {
   const { id } = req.params
   const match = await findOne<IPlayerMatch>('playermatches', id)
 
   res.json(match)
 })
 
-router.post('/playermatch', async (req, res) => {
+router.post('/', async (req, res) => {
   const data: IPlayerMatch = req.body
   if (!isPlayerMatch(data)) {
     res.status(500).end()
@@ -28,7 +28,7 @@ router.post('/playermatch', async (req, res) => {
   res.json(match)
 })
 
-router.put('/playermatch', async (req, res) => {
+router.put('/', async (req, res) => {
   const data: IPlayerMatch = req.body
 
   if (!isPlayerMatch(data)) {
@@ -41,7 +41,7 @@ router.put('/playermatch', async (req, res) => {
   res.json(match)
 })
 
-router.delete('/playermatch/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   const { id } = req.params
   await remove<IPlayerMatch>('playermatches', id)
 
