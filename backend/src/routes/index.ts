@@ -5,8 +5,8 @@ import planRouter from './plan'
 import playerMatchRouter from './playerMatch'
 import reviewRouter from './review'
 import licenseRouter from './license'
-import { getMatchIds, getPlayers, getPuuidAndProfileIcon } from '../integrations/RiotAPI'
-import { insertMany } from '../shared/dbFunctions'
+import { getMatchesDetails, getMatchIds, getPlayers, getPuuidAndProfileIcon } from '../integrations/RiotAPI'
+import { insert, insertMany } from '../shared/dbFunctions'
 import { IPlayer } from '../models/Player'
 
 const router = Router()
@@ -24,8 +24,10 @@ router.post('/seed', async (req, res) => {
     await insertMany<IPlayer>('players', players)
     const player = await getPuuidAndProfileIcon(players[0])
     const matchIds = await getMatchIds(player.puuid)
+    const matchDetails = await getMatchesDetails(matchIds![0], player.puuid)
+    const playerMatch = await insert('playerMatches', { ...matchDetails, playerId: player._id })
 
-    res.status(200).json(matchIds).end()
+    res.status(200).json(playerMatch).end()
   }
 
   res.status(401).end()

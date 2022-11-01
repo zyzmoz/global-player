@@ -69,10 +69,27 @@ const getMatchIds = async (puuid: string) => {
 
 // MatchesV4: Match details
 
+const getMatchesDetails = async (matchId: string, puuid: string) => {
+  const res = await axios
+    .get(`https://americas.api.riotgames.com/lol/match/v5/matches/${matchId}`, {
+      headers: {
+        'X-Riot-Token': process.env.RIOT_API_KEY || '',
+      },
+    })
+    .catch((error) => ({ error }))
+  const { error, data } = res as any
+
+  if (error) return
+  const { info } = data
+  const matchDetails = info.participants.find((player) => player.puuid === puuid)
+
+  return matchDetails
+}
+
 // Get Initial Data;
 // fetches 100 times that wait 2 minutes
 //  ^ based on players, then 20 players every 2 minutes
 //  Until we Iterate into all users
 // 1000 * 120
 
-export { getPlayers, getPuuidAndProfileIcon, getMatchIds }
+export { getPlayers, getPuuidAndProfileIcon, getMatchIds, getMatchesDetails }
