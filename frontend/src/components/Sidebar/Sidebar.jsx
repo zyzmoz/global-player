@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import Image from '../Image/Image'
 import { DashboardIcon, VectorIcon, CompareIcon, Group15Icon } from '../Icon/icons'
+import Colors from '../../sass/variables/_colors.scss'
 
 function Sidebar() {
   const smallLogo = './logos/smallLogo.png'
@@ -14,19 +15,19 @@ function Sidebar() {
       </div>
       <div>
         <NavLink to="/Dashboard" className="sidebar-link">
-          <DashboardIcon />
+          <DashboardIcon stroke={Colors.primaryColorBrightGreen} />
           <span className="visually-hidden">Dashboard</span>
         </NavLink>
         <NavLink to="/Favorites" className="sidebar-link">
-          <VectorIcon />
+          <VectorIcon stroke={Colors.primaryColorBrightGreen} />
           <span className="visually-hidden">Favorites</span>
         </NavLink>
         <NavLink to="/Compare" className="sidebar-link">
-          <CompareIcon />
+          <CompareIcon fill={Colors.primaryColorBrightGreen} />
           <span className="visually-hidden">Compare</span>
         </NavLink>
         <NavLink to="/Help" className="sidebar-link">
-          <Group15Icon />
+          <Group15Icon stroke={Colors.primaryColorBrightGreen} />
           <span className="visually-hidden">Help</span>
         </NavLink>
       </div>

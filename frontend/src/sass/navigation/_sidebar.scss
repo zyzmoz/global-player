@@ -1,4 +1,5 @@
-.sidebar .visually-hidden {
+.sidebar {
+  .visually-hidden {
     clip: unset;
     clip-path: unset;
     height: unset;
@@ -6,9 +7,9 @@
     position: unset;
     white-space: unset;
     width: unset;
-}
+  }
 
-.sidebar:hover .visually-hidden {
+  &:hover .visually-hidden {
     clip: unset;
     clip-path: unset;
     height: unset;
@@ -16,4 +17,12 @@
     position: unset;
     white-space: unset;
     width: unset;
+  }
+
+  a.sidebar-link {
+      text-decoration: none;
+      color: $primary-color-bright-green;
+      display: flex;
+      align-items: center;
+  }
 }
