@@ -83,12 +83,19 @@ function Storybook() {
             headers={[
               { property: 'email', title: 'Email' },
               { property: 'name', title: 'Name' },
+              { property: 'phone', title: 'Phone' },
             ]}
           />
           {[
             {
               name: 'Daniel',
               email: 'daniel@email.com',
+              phone: '0808908',
+            },
+            {
+              name: 'Diego',
+              email: 'diego@email.com',
+              phone: '123457',
             },
           ].map((item) => (
             <TableItem
@@ -96,6 +103,7 @@ function Storybook() {
               headers={[
                 { property: 'email', title: 'Email' },
                 { property: 'name', title: 'Name' },
+                { property: 'phone', title: 'Phone' },
               ]}
             />
           ))}
