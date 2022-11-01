@@ -7,58 +7,65 @@
 
 */
 
-import { ObjectId } from "mongodb"
-import DbConnection from "./database"
+import { ObjectId } from 'mongodb'
+import DbConnection from './database'
 
 const findOne = async <T>(collectionName: string, id: string): Promise<any> => {
-    const db = await DbConnection.getInstance()
-    const collection = db.collection(collectionName)
-  
-    const data = await collection.findOne({ _id: new ObjectId(id) })
+  const db = await DbConnection.getInstance()
+  const collection = db.collection(collectionName)
 
-    return data as T
+  const data = await collection.findOne({ _id: new ObjectId(id) })
+
+  return data as T
 }
 
 const findMany = async <T>(collectionName: string): Promise<T[]> => {
-    const db = await DbConnection.getInstance()
-    const collection = db.collection(collectionName)
-  
-    const data = await collection.find({}).toArray()
+  const db = await DbConnection.getInstance()
+  const collection = db.collection(collectionName)
 
-    return data as T[]
+  const data = await collection.find({}).toArray()
+
+  return data as T[]
 }
 
 const insert = async <T>(collectionName: string, obj: T): Promise<T> => {
-    const db = await DbConnection.getInstance()
-    const collection = db.collection(collectionName)
+  const db = await DbConnection.getInstance()
+  const collection = db.collection(collectionName)
 
-    const { insertId } = await collection.insertOne(obj)
-    const data = await collection.findOne({ _id: new ObjectId(insertId) })
+  const { insertId } = await collection.insertOne(obj)
+  const data = await collection.findOne({ _id: new ObjectId(insertId) })
 
-    return data as T
+  return data as T
 }
 
-const update = async <T> (collectionName: string, obj: T & { _id: string }): Promise<T> => {
-    const db = await DbConnection.getInstance()
-    const collection = db.collection(collectionName)
+const insertMany = async <T>(collectionName: string, obj: T[]): Promise<boolean> => {
+  const db = await DbConnection.getInstance()
+  const collection = db.collection(collectionName)
 
-    const { _id, ...rest } = obj
+  const { acknowledged } = await collection.insertMany(obj)
 
-    await collection.updateOne({ _id: new ObjectId(_id) }, { $set: rest })
-    const data = await collection.findOne({ _id: new ObjectId(_id) })
+  return acknowledged
+}
 
-    return data as T
+const update = async <T>(collectionName: string, obj: T & { _id: string }): Promise<T> => {
+  const db = await DbConnection.getInstance()
+  const collection = db.collection(collectionName)
+
+  const { _id, ...rest } = obj
+
+  await collection.updateOne({ _id: new ObjectId(_id) }, { $set: rest })
+  const data = await collection.findOne({ _id: new ObjectId(_id) })
+
+  return data as T
 }
 
 const remove = async <T>(collectionName: string, id: string): Promise<T> => {
-    const db = await DbConnection.getInstance()
-    const collection = db.collection(collectionName)
+  const db = await DbConnection.getInstance()
+  const collection = db.collection(collectionName)
 
-    const data = await collection.remove({ _id: new ObjectId(id) })
+  const data = await collection.remove({ _id: new ObjectId(id) })
 
-    return data as T
+  return data as T
 }
 
-export {
-    findOne, findMany, insert, update, remove
-}
+export { findOne, findMany, insert, insertMany, update, remove }

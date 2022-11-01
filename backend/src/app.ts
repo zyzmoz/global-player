@@ -8,6 +8,8 @@ app.use(appStatus())
 
 app.use(express.json())
 
+// TODO - Authorization
+
 app.use('/api/v1', router)
 app.use('/api/v1', playerMatchRouter)
 
