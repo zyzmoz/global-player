@@ -11,7 +11,8 @@ export interface IPlayerMatch {
 }
 
 export const isPlayerMatch = (match: any): match is IPlayerMatch => {
-  const schema: Record<keyof Omit<IPlayerMatch, '_id'>, string> = {
+  const schema: Record<keyof IPlayerMatch, string> = {
+    _id: 'string',
     playerId: 'string',
     role: 'string',
     championName: 'string',
@@ -23,7 +24,7 @@ export const isPlayerMatch = (match: any): match is IPlayerMatch => {
   }
 
   const missingProperties = Object.keys(schema)
-    .filter((key) => match[key] === undefined)
+    .filter((key) => match[key] === undefined && key !== '_id')
     .map((key) => key as keyof IPlayerMatch)
     .map((key) => new Error(`Document is missing ${key} ${schema[key]}`))
 
