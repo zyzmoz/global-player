@@ -5,9 +5,10 @@ import App from './App'
 import Storybook from './storybook/storybook'
 import reportWebVitals from './reportWebVitals'
 import './sass/style.scss'
-import Login from './components/Login/Login'
+import Login from './pages/Login'
 import LandingPage from './pages/LandingPage'
 import PlansPage from './pages/PlansPage'
+import TopPlayersPage from './pages/TopPlayersPage'
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: 'plans',
     element: <PlansPage />,
+  },
+  {
+    path: 'TopPlayers',
+    element: <TopPlayersPage />,
   },
 ])
 

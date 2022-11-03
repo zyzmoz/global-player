@@ -1,0 +1,305 @@
+.top-players-page {
+  display: grid;
+
+  .nav-side-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  .main-contents {
+    display: flex;
+    flex-flow: column;
+    gap: 3rem;
+  }
+  .main-contents > h1 {
+    font-size: 2rem;
+  }
+
+  input[type='search'] {
+    display: none;
+  }
+  ::placeholder {
+    color: #5637ff;
+    padding-left: 1rem;
+  }
+
+  .userIcon {
+    display: none;
+  }
+
+  .card-container-wrapper {
+    display: flex;
+    flex-flow: column;
+    gap: 5rem;
+  }
+  .card-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .card {
+    margin: auto;
+    .card-content {
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .winrate-kda-wrapper {
+      display: grid;
+      grid-gap: 1rem;
+      grid-template-columns: 1.5fr 1fr;
+    }
+    .kda-wrapper {
+      display: flex;
+      flex-flow: column;
+      gap: 0.1rem;
+      font-size: 0.875rem;
+      p:nth-child(2) {
+        padding-bottom: 0.6rem;
+      }
+      p:nth-child(3) {
+        font-weight: bold;
+      }
+    }
+    .top-players-personal-skills {
+      display: flex;
+      flex-flow: column;
+      gap: 0.5rem;
+      padding: 1.3rem 1.8rem;
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+      background: $background-gradient-color;
+      font-size: 0.7rem;
+    }
+    .progressbar-wrapper {
+      width: 12rem;
+    }
+    .label-progressbar-wrapper {
+      display: flex;
+      flex-flow: column;
+      gap: 0.1rem;
+    }
+    .doughnut-chart {
+      position: relative;
+    }
+    #winrate {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 1.8rem;
+      p {
+        font-size: 16pt;
+        font-weight: bold;
+        letter-spacing: normal;
+        font-family: 'Chakra Petch', sans-serif;
+      }
+    }
+    .doughnut-chart p,
+    .kda-wrapper p:nth-child(1),
+    .winrate-kda-wrapper + p,
+    .top-players-personal-skills > p {
+      letter-spacing: 0.32em;
+      font-size: 0.7rem;
+    }
+    .button {
+      background-color: unset;
+      border: 2px solid $primary-color-bright-green;
+      color: $primary-color-bright-green;
+      font-size: 1rem;
+      height: 3.5rem;
+      width: 8rem;
+      &:hover {
+        background: unset;
+      }
+    }
+  }
+
+  .down-icon-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  // Best Player Ranking Table
+  .table-headline-container h1:nth-child(1) {
+    font-size: 2rem;
+  }
+
+  .table {
+    margin: auto;
+    color: $neutral-color-white;
+    background-origin: border-box;
+    border: 2px solid transparent;
+    border-collapse: collapse;
+    border-radius: 25px;
+    font-size: 0.875rem;
+    background-image: linear-gradient(180deg, #7dfaa4 0%, #7856ff 50%, #7dfaa4 100%);
+    .icon {
+      width: 2.1rem;
+      height: auto;
+    }
+  }
+  tr:nth-child(n) {
+    background: #281f5a;
+  }
+  tr:nth-child(1) {
+    background: $background-gradient-color;
+    color: $secondary-color-sky-blue;
+    border-radius: 25px;
+    border-bottom: 1px solid $primary-color-deep-purple;
+  }
+  tr:nth-child(2n) {
+    background: #160f4b;
+  }
+
+  th {
+    font-weight: normal;
+    font-family: 'Chakra Petch', sans-serif;
+    padding: 1.2rem 0.8rem;
+    text-align: center;
+  }
+  td {
+    padding: 0.8rem;
+    text-align: center;
+  }
+  th:nth-child(1) {
+    border-top-left-radius: 25px;
+  }
+  th:nth-last-child(1) {
+    border-top-right-radius: 25px;
+  }
+  tr:nth-last-child(1) td:nth-child(1) {
+    border-bottom-left-radius: 25px;
+  }
+  tr:nth-last-child(1) td:nth-last-child(1) {
+    border-bottom-right-radius: 25px;
+  }
+  td:nth-last-child(1) {
+    padding-bottom: 0;
+  }
+  td .name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  td:nth-child(4) {
+    color: $primary-color-bright-green;
+  }
+  .personality {
+    display: flex;
+    flex-flow: column;
+    gap: 0.3rem;
+  }
+
+  .button {
+    font-size: 1rem;
+    width: 8.688rem;
+    height: 3.313rem;
+    font-weight: 700;
+  }
+
+  // Desktop View
+  @media screen and (min-width: 600px) {
+    header {
+      display: none;
+    }
+    footer {
+      display: none;
+    }
+  }
+  @media screen and (min-width: 1000px) {
+    .nav-side-menu {
+      display: none;
+    }
+
+    .main-contents {
+      padding: 3rem;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 15.625rem;
+    }
+
+    input[type='search'] {
+      display: block;
+      border-radius: 10px;
+      background-color: #19124d;
+      border: 1px solid #5637ff;
+      width: 300px;
+      height: 35px;
+    }
+    .userIcon {
+      display: block;
+    }
+    .search-userIcon-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .main-contents > h1 {
+      font-size: 2.5rem;
+    }
+
+    .card-container-wrapper {
+      flex-flow: row;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .card-container:nth-child(1) {
+      order: 0;
+    }
+    .card-container:nth-child(2) {
+      order: -1;
+    }
+    .card-container:nth-child(3) {
+      order: 1;
+    }
+
+    .down-icon-container {
+      display: none;
+    }
+
+    // Table for desktop view
+    .table {
+      font-size: 1.25rem;
+    }
+    th {
+      padding: 1.5rem 1.2rem;
+    }
+    td {
+      padding: 1.2rem;
+    }
+    td .name {
+      gap: 1rem;
+    }
+  }
+
+  // Table for mobile view
+  @media screen and (max-width: 1000px) {
+    th:nth-child(6),
+    th:nth-child(7) {
+      display: none;
+    }
+    td:nth-child(6),
+    td:nth-child(7) {
+      display: none;
+    }
+    th:nth-child(5) {
+      border-top-right-radius: 25px;
+    }
+    tr:nth-last-child(1) td:nth-child(5) {
+      border-bottom-right-radius: 25px;
+    }
+  }
+}

@@ -1,15 +1,16 @@
 import { Doughnut } from 'react-chartjs-2'
 import PropTypes, { number } from 'prop-types'
+import Colors from '../../sass/variables/_colors.scss'
 
-import Headline from '../Headline/Headline'
+import BodyText from '../BodyText/BodyText'
 
 function DoughnutChart({ width, height, winRate, title }) {
   const data = {
-    labels: ['Win', 'Loss'],
+    labels: [],
     datasets: [
       {
         ...winRate,
-        backgroundColor: ['#53bcf9', '#402cac'],
+        backgroundColor: [`${Colors.secondaryColorSkyBlue}`, `${Colors.primaryColorDeepPurple}`],
         borderWidth: 0,
       },
     ],
@@ -17,13 +18,17 @@ function DoughnutChart({ width, height, winRate, title }) {
 
   return (
     <div
+      className="doughnut-chart"
       style={{
         height,
         width,
       }}
     >
-      <Headline text={title} textAlign="center" />
-      <Doughnut data={data} />
+      <BodyText text={title} textAlign="center" color={Colors.primaryColorBrightGreen} />
+      <Doughnut data={data} options={{ cutout: '63%' }} />
+      <div id="winrate">
+        <BodyText text="80%" textAlign="center" />
+      </div>
     </div>
   )
 }
@@ -33,7 +38,7 @@ export default DoughnutChart
 DoughnutChart.defaultProps = {
   width: '100%',
   height: '100%',
-  title: 'Win Rate',
+  title: '',
 }
 
 DoughnutChart.propTypes = {

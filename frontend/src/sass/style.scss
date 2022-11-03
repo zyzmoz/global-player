@@ -26,9 +26,11 @@
 /* Base Elements */
 @import 'base-elements/index';
 @import 'navigation/footer';
+@import 'base-elements/progressbar';
 
 /* SITE-LAYOUT */
 @import 'site-layout/index';
+@import 'site-layout/top-players-page';
 
 /* TABLES */
 @import 'tables/tables';

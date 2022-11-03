@@ -15,6 +15,7 @@ import DoughnutChart from '../components/DoughnutChart/DoughnutChart'
 import Accordion from '../components/Accordion/Accordion'
 import Toast from '../components/Toast/Toast'
 import RadarChart from '../components/RadarChart/RadarChart'
+import ProgressBar from '../components/ProgressBar/ProgressBar'
 
 function Storybook() {
   return (
@@ -161,6 +162,12 @@ function Storybook() {
         headerText="How can I update my password?"
         fullText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non porta felis. Aliquam augue leo, scelerisque sit amet rutrum a, gravida sed augue. Donec congue venenatis lacus, nec consectetur dolor commodo non. Donec sed aliquet lorem. Phasellus eu mi ligula."
       />
+      <div className="progressbar-component">
+        <h1>ProgressBar Component</h1>
+        <h2>Props:</h2>
+        <ProgressBar widthSize="300px" progress={80} text="Team Player" />
+      </div>
+      <hr />
 
       <Toast
         pageRoute="landingpage"
