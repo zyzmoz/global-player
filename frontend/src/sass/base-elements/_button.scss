@@ -10,6 +10,10 @@
     border: none;
     cursor: pointer;
     padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
   }
 
   .button:hover {
@@ -29,7 +33,6 @@
     border: none;
     cursor: pointer;
     padding: 1rem;
-
   }
 
   .button:hover {

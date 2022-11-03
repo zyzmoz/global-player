@@ -10,10 +10,10 @@ function Sidebar() {
     <div className="sidebar">
       <div className="logo">
         <NavLink to="/">
-          <Image imageUrl={smallLogo} alt="Global Player logo" className="logo-mobile" imageWidth="33px" />
+          <Image imageUrl={smallLogo} alt="Global Player logo" className="logo-sidebar" imageWidth="76px" />
         </NavLink>
       </div>
-      <div>
+      <div className="sidebar-menu">
         <NavLink to="/Dashboard" className="sidebar-link">
           <DashboardIcon stroke={Colors.primaryColorBrightGreen} />
           <span className="visually-hidden">Dashboard</span>
@@ -26,6 +26,7 @@ function Sidebar() {
           <CompareIcon fill={Colors.primaryColorBrightGreen} />
           <span className="visually-hidden">Compare</span>
         </NavLink>
+
         <NavLink to="/Help" className="sidebar-link">
           <Group15Icon stroke={Colors.primaryColorBrightGreen} />
           <span className="visually-hidden">Help</span>

@@ -5,7 +5,7 @@
 }
 
 .nav-side-menu {
-  background-color: rgba(36, 36, 36, .8);
+  background: $togglemenu-background-gradient-color;
   grid-column: 1/-1;
   grid-row: 1/-1;
   height: 100vh;
@@ -14,7 +14,6 @@
   transition: all 0.5s;
   display: flex;
   flex-flow: column nowrap;
-  gap: 2rem;
   overflow: hidden;
 
   .top-nav-side-menu {
@@ -22,7 +21,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    background: #222;
 
     button {
       background: none;
@@ -37,9 +35,14 @@
   }
 
   a {
-    padding-left: 2rem;
+    padding: 2rem;
+    padding-left: 3rem;
+    margin: 0 2rem;
     text-decoration: none;
     color: white;
+    border-bottom: 2px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, rgba(125, 250, 164, 0%), rgba(125, 250, 164, 100%), rgba(125, 250, 164, 0%));
   }
 }
 
