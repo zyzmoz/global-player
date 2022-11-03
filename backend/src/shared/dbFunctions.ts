@@ -19,11 +19,11 @@ const findOne = async <T>(collectionName: string, id: string): Promise<any> => {
   return data as T
 }
 
-const findMany = async <T>(collectionName: string): Promise<T[]> => {
+const findMany = async <T>(collectionName: string, where: any = {}, sort: any = {}, limit: number = 1000): Promise<T[]> => {
   const db = await DbConnection.getInstance()
   const collection = db.collection(collectionName)
 
-  const data = await collection.find({}).toArray()
+  const data = await collection.find(where).sort(sort).limit(limit).toArray()
 
   return data as T[]
 }
@@ -68,9 +68,19 @@ const remove = async <T>(collectionName: string, id: string): Promise<T> => {
   const db = await DbConnection.getInstance()
   const collection = db.collection(collectionName)
 
-  const data = await collection.remove({ _id: new ObjectId(id) })
+  const data = await collection.deleteOne({ _id: new ObjectId(id) })
 
   return data as T
 }
 
-export { findOne, findMany, insert, insertMany, update, remove }
+const removeAll = async <T>(collectionName: string, where: any): Promise<T> => {
+
+  const db = await DbConnection.getInstance()
+  const collection = db.collection(collectionName)
+
+  const data = await collection.deleteMany(where)
+
+  return data as T
+}
+
+export { findOne, findMany, insert, insertMany, update, remove, removeAll }
