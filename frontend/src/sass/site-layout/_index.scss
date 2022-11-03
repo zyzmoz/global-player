@@ -1,6 +1,10 @@
 @import './plans-page';
 .App {
   color: white;
+  
+  .radarchart-component {
+    margin: 4rem 0 4rem 0;
+  }
 }
 
 .header-full-size {

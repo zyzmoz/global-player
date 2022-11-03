@@ -14,6 +14,7 @@ import LineChart from '../components/LineChart/LineChart'
 import DoughnutChart from '../components/DoughnutChart/DoughnutChart'
 import Accordion from '../components/Accordion/Accordion'
 import Toast from '../components/Toast/Toast'
+import RadarChart from '../components/RadarChart/RadarChart'
 
 function Storybook() {
   return (
@@ -145,6 +146,11 @@ function Storybook() {
             data: [5, 4],
           }}
         />
+        <div className="radarchart-component">
+          <h1>RadarChart Component</h1>
+          <h2>Props:</h2>
+          <RadarChart width="350px" height="auto" playerSkills={{ data: [8, 6, 7, 6, 6, 8] }} />
+        </div>
       </div>
       <hr />
       <Accordion
