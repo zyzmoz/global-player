@@ -5,6 +5,7 @@ import planRouter from './plan'
 import playerMatchRouter from './playerMatch'
 import reviewRouter from './review'
 import licenseRouter from './license'
+import analyticsRouter from './analytics'
 import { seedPlayers } from '../integrations/RiotAPI'
 
 const router = Router()
@@ -32,5 +33,6 @@ router.use('/plan', planRouter)
 router.use('/playerMatch', playerMatchRouter)
 router.use('/review', reviewRouter)
 router.use('/license', licenseRouter)
+router.use('/analytics', analyticsRouter)
 
 export { router }
