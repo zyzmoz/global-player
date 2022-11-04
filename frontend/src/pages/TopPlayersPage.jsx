@@ -1,6 +1,5 @@
 import { useQuery } from 'react-query'
 import axios from 'axios'
-import env from 'react-dotenv'
 import Headline from '../components/Headline/Headline'
 import Table from '../components/Table/Table'
 import TableHeader from '../components/Table/TableHeader'
@@ -23,14 +22,12 @@ import { DownIcon, SupportIcon, UserIcon } from '../components/Icon/icons'
 
 function TopPlayersPage() {
   const { data: topPlayers } = useQuery('topPlayersData', () =>
-    axios.get(`${env.SERVER_URL}/api/v1/analytics/top-players`)
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/top-players`)
   )
 
   const { data: allPlayers } = useQuery('allPlayersData', () =>
-    axios.get(`${env.SERVER_URL}/api/v1/analytics/all-players`)
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/all-players`)
   )
-
-  console.log({ topPlayers, allPlayers })
 
   return (
     <div className="top-players-page">
