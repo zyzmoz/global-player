@@ -1,20 +1,20 @@
 import PropTypes from 'prop-types'
-import { JungleIcon, MidLaneIcon, TopLaneIcon, BotLaneIcon, SupportIcon } from '../Icon/icons'
 import Image from '../Image/Image'
+import RoleIcons from '../RoleIcons/RoleIcons'
+import Colors from '../../sass/variables/_colors.scss'
 
 function Avatar({ summonerIcon, role, alt }) {
-  const RoleIcon = {
-    JUNGLE: <JungleIcon fill="black" stroke="black" />,
-    TOP: <TopLaneIcon fill="black" stroke="black" />,
-    MIDDLE: <MidLaneIcon fill="black" stroke="black" />,
-    CARRY: <BotLaneIcon fill="black" stroke="black" />,
-    SUPPORT: <SupportIcon fill="black" stroke="black" />,
-  }
-
   return (
     <div className="avatar">
-      <Image radius="50%" imageUrl={summonerIcon} imageHeight="110px" imageWidth="110px" imageBorder="2px" alt={alt} />
-      <div className="role">{RoleIcon[role]}</div>
+      <Image
+        radius="50%"
+        imageUrl={summonerIcon}
+        imageHeight="110px"
+        imageWidth="110px"
+        imageBorder={`2px solid ${Colors.primaryColorBrightGreen}`}
+        alt={alt}
+      />
+      <div className="role">{RoleIcons(role)}</div>
     </div>
   )
 }
@@ -29,6 +29,6 @@ Avatar.propTypes = {
 
 Avatar.defaultProps = {
   summonerIcon: 'https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/27.png',
-  role: 'SUPPORT',
+  role: '',
   alt: 'Player Icon',
 }

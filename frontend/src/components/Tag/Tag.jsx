@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import BodyText from '../BodyText/BodyText'
 
 function Tag({ reviews, text }) {
-  const tagText = `${text} (${reviews})`
+  const tagText = `${text} ${reviews}`
 
   return (
     <div

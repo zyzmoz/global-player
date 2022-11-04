@@ -1,15 +1,19 @@
 @mixin primary-default-button-mobile {
-  .button {
+  .button  {
     background-color: $primary-color-bright-green;
     color: $neutral-color-dark-blue;
-    font-size: 18pt;
+    font-size: 14pt;
     font-weight: 500;
     border-radius: 15px;
     width: auto;
-    height: 63px;
+    height: 50px;
     border: none;
     cursor: pointer;
     padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
   }
 
   .button:hover {
@@ -18,11 +22,31 @@
 }
 @include primary-default-button-mobile();
 
+@mixin secondary-button {
+  .secondary {
+    background-color: #080235;
+    color: $primary-color-bright-green;
+    font-size: 14pt;
+    font-weight: 500;
+    border-radius: 15px;
+    width: auto;
+    height: 50px;
+    border: 2px solid $primary-color-bright-green;
+    cursor: pointer;
+    padding: 1rem;
+    line-height: 0;
+  }
+
+  .secondary:hover {
+    background: #080235;
+  }
+}
+@include secondary-button();
+
 @mixin primary-default-button-desktop {
-  .button {
-    background-color: $primary-color-bright-green;
+  .landing-page-container .button {
+    background: $primary-color-bright-green;
     color: $neutral-color-dark-blue;
-    // font-size: 24pt;
     font-weight: 500;
     border-radius: 15px;
     width: auto;
@@ -30,11 +54,23 @@
     border: none;
     cursor: pointer;
     padding: 1rem;
-
   }
-
   .button:hover {
     background: radial-gradient(105.5% 711.76% at 0% 49.35%, #d7ffe3 0%, rgba(255, 255, 255, 0) 100%), #16ff8c;
   }
 }
 @include primary-default-button-desktop();
+
+@mixin btn-no-background {
+  .btn-no-background {
+    background: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-no-background:hover {
+    background: none;
+  }
+}
+@include btn-no-background();

@@ -1,19 +1,57 @@
-.sidebar .visually-hidden {
-    clip: unset;
-    clip-path: unset;
-    height: unset;
-    overflow: unset;
-    position: unset;
-    white-space: unset;
-    width: unset;
+.sidebar {
+  display: none;
 }
 
-.sidebar:hover .visually-hidden {
-    clip: unset;
-    clip-path: unset;
-    height: unset;
-    overflow: unset;
-    position: unset;
-    white-space: unset;
-    width: unset;
+@media screen and (min-width: 1000px) {
+  .sidebar {
+    padding: 3rem 0;
+    height: 100vh;
+    width: 8.563rem;
+    border-right: 2px solid $primary-color-bright-green;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-flow: column;
+    gap: 4rem;
+    background-color: $neutral-color-dark-blue;
+    z-index: 100;
+
+    .logo {
+      display: flex;
+      justify-content: center;
+    }
+    .sidebar-menu {
+      flex-grow: 1;
+      display: flex;
+      flex-flow: column;
+      padding-left: 2.5rem;
+      gap: 2rem;
+      a {
+        gap: 1rem;
+      }
+    }
+
+    &:hover .visually-hidden {
+      clip: unset;
+      clip-path: unset;
+      height: unset;
+      overflow: unset;
+      position: unset;
+      white-space: unset;
+      width: unset;
+    }
+
+    &:hover {
+      width: 15.625rem;
+    }
+
+    a.sidebar-link {
+      text-decoration: none;
+      color: $primary-color-bright-green;
+      display: flex;
+      align-items: center;
+    }
+  }
 }

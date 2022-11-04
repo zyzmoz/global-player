@@ -13,6 +13,9 @@ import Tag from '../components/Tag/Tag'
 import LineChart from '../components/LineChart/LineChart'
 import DoughnutChart from '../components/DoughnutChart/DoughnutChart'
 import Accordion from '../components/Accordion/Accordion'
+import Toast from '../components/Toast/Toast'
+import RadarChart from '../components/RadarChart/RadarChart'
+import ProgressBar from '../components/ProgressBar/ProgressBar'
 
 function Storybook() {
   return (
@@ -82,12 +85,19 @@ function Storybook() {
             headers={[
               { property: 'email', title: 'Email' },
               { property: 'name', title: 'Name' },
+              { property: 'phone', title: 'Phone' },
             ]}
           />
           {[
             {
               name: 'Daniel',
               email: 'daniel@email.com',
+              phone: '0808908',
+            },
+            {
+              name: 'Diego',
+              email: 'diego@email.com',
+              phone: '123457',
             },
           ].map((item) => (
             <TableItem
@@ -95,6 +105,7 @@ function Storybook() {
               headers={[
                 { property: 'email', title: 'Email' },
                 { property: 'name', title: 'Name' },
+                { property: 'phone', title: 'Phone' },
               ]}
             />
           ))}
@@ -136,6 +147,11 @@ function Storybook() {
             data: [5, 4],
           }}
         />
+        <div className="radarchart-component">
+          <h1>RadarChart Component</h1>
+          <h2>Props:</h2>
+          <RadarChart width="350px" height="auto" playerSkills={{ data: [8, 6, 7, 6, 6, 8] }} />
+        </div>
       </div>
       <hr />
       <Accordion
@@ -146,7 +162,19 @@ function Storybook() {
         headerText="How can I update my password?"
         fullText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non porta felis. Aliquam augue leo, scelerisque sit amet rutrum a, gravida sed augue. Donec congue venenatis lacus, nec consectetur dolor commodo non. Donec sed aliquet lorem. Phasellus eu mi ligula."
       />
+      <div className="progressbar-component">
+        <h1>ProgressBar Component</h1>
+        <h2>Props:</h2>
+        <ProgressBar widthSize="300px" progress={80} text="Team Player" />
+      </div>
+      <hr />
 
+      <Toast
+        pageRoute="landingpage"
+        headlineToast="Welcome to Global Player !"
+        bodyToast="Your account has been created"
+        buttonTextToast="Let's go to Landinpage!"
+      />
       <Footer />
       <Tag text="Deffensive" reviews="25" />
     </div>

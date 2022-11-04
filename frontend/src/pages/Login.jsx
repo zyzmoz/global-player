@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import BodyText from '../BodyText/BodyText'
-import Button from '../Button/Button'
-import Input from '../Input/Input'
-import Headline from '../Headline/Headline'
+import BodyText from '../components/BodyText/BodyText'
+import Button from '../components/Button/Button'
+import Input from '../components/Input/Input'
+import Headline from '../components/Headline/Headline'
 
 function Login() {
   return (

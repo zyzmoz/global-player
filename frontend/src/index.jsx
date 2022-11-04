@@ -1,13 +1,19 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import Storybook from './storybook/storybook'
 import reportWebVitals from './reportWebVitals'
 import './sass/style.scss'
-import Login from './components/Login/Login'
+import Login from './pages/Login'
 import LandingPage from './pages/LandingPage'
 import PlansPage from './pages/PlansPage'
+import TopPlayersPage from './pages/TopPlayersPage'
+import PlayerDetailsPage from './pages/PlayerDetailsPage'
+import CreateAccount from './pages/CreateAccount'
+import CreateAccountPlayer from './pages/CreateAccountPlayer'
+import CreateAccountRecruiter from './pages/CreateAccountRecruiter'
 
 const router = createBrowserRouter([
   {
@@ -30,12 +36,37 @@ const router = createBrowserRouter([
     path: 'plans',
     element: <PlansPage />,
   },
+  {
+    path: 'TopPlayers',
+    element: <TopPlayersPage />,
+  },
+  {
+    path: 'player-details',
+    element: <PlayerDetailsPage />,
+  },
+  {
+    path: 'createaccount',
+    element: <CreateAccount />,
+  },
+  {
+    path: 'createaccountplayer',
+    element: <CreateAccountPlayer />,
+  },
+  {
+    path: 'createaccountrecruiter',
+    element: <CreateAccountRecruiter />,
+  },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
+
+const queryClient = new QueryClient()
+
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 )
 
