@@ -12,7 +12,7 @@
   overflow: hidden;
   padding: 0;
 }
-main {
+.player-details-wrapper-1 main {
   margin-top: 1rem;
   min-width: 270px;
   max-width: 400px;
@@ -307,7 +307,7 @@ main {
 
 /////////////////////// DESKTOP VIEW ///////////////////////
 @media screen and (min-width: 1010px) {
-  main {
+  .player-details-wrapper-1 main {
     display: grid;
     grid-gap: 1.5rem;
     grid-template-columns: 1fr 2fr;

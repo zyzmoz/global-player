@@ -1,0 +1,124 @@
+.create-account-page-player {
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow-x: hidden;
+}
+
+.create-account-page-player-container {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+
+  h1 {
+    color: #7dfaa4;
+    font-size: 32px;
+    padding-bottom: 3rem;
+  }
+}
+
+.create-account-page-player-container form {
+  max-width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+  flex-flow: column nowrap;
+
+  div:nth-of-type(1) label,
+    div:nth-of-type(2) label,
+    div:nth-of-type(3) label,
+    div:nth-of-type(4) label {
+      padding-bottom: 0.5rem;
+    }
+}
+
+.create-account-page-player-container form div {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.create-account-page-player-container form div:nth-of-type(5) {
+  flex-flow: row nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+}
+
+// .create-account-page-player-container form div:nth-of-type(5) input {
+//   all: unset;
+
+//   border: 2px solid #7dfaa4;
+
+//   background: linear-gradient(180deg, #402CAC 0%, #1A1051 100%);
+//   border-radius: 10px;
+
+//   width: 30px;
+//   height: 30px;
+
+//   display: inline-block;
+// }
+
+// .create-account-page-player-container form div:nth-of-type(5) input:checked {
+//     background-color: blue;
+//   }
+
+.create-account-page-player-container form div:nth-of-type(5) label {
+  order: 2;
+  color: white;
+}
+
+.create-account-page-player-container form div:nth-of-type(1) input,
+.create-account-page-player-container form div:nth-of-type(2) input,
+.create-account-page-player-container form div:nth-of-type(3) input,
+.create-account-page-player-container form div:nth-of-type(4) input {
+  box-sizing: border-box;
+
+  width: 100%;
+  height: 36px;
+
+  background: linear-gradient(180deg, #402cac 0%, #1a1051 100%);
+  border-radius: 25px;
+  color: white;
+
+  padding: 1rem;
+}
+
+.have-an-account {
+  text-align: center;
+  padding-top: 1rem;
+  font-size: 12px;
+
+  p {
+    display: inline;
+  }
+
+  a {
+    color: #7dfaa4;
+  }
+}
+
+.create-account-page-player-container a {
+  text-decoration: none;
+}
+
+.create-account-button {
+  display: flex;
+  justify-content: center;
+}
+
+.create-account-button p {
+  background-color: #7dfaa4;
+  border-radius: 10px;
+  width: 205px;
+  padding: 0.5rem 0;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 600px) {
+  .create-account-page-player-container form {
+    max-width: 500px;
+    gap: 2rem;
+  }
+}
