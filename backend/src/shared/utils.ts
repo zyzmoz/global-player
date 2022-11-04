@@ -4,7 +4,20 @@ import { findMany, insert, removeAll } from './dbFunctions'
 const DECIMAL_PLACES = Math.pow(10, 1)
 
 export const getPlayerAnalysis = async (player) => {
-  const { summonerName, wins, losses, _id, puuid, firstName, lastName, profileIconId } = player
+  const {
+    summonerName,
+    wins,
+    losses,
+    _id,
+    puuid,
+    firstName,
+    lastName,
+    profileIconId,
+    freshBlood,
+    inactive,
+    veteran,
+    hotStreak,
+  } = player
 
   let matches = await findMany('playerMatches', {
     playerId: _id,
@@ -89,9 +102,13 @@ export const getPlayerAnalysis = async (player) => {
     kills: Math.round((kdaData.kills / matches.length) * DECIMAL_PLACES) / DECIMAL_PLACES,
     deaths: Math.round((kdaData.deaths / matches.length) * DECIMAL_PLACES) / DECIMAL_PLACES,
     assists: Math.round((kdaData.assists / matches.length) * DECIMAL_PLACES) / DECIMAL_PLACES,
-    pkill: Math.round((100/((kdaData.kills + kdaData.assists) / kdaData.deaths)) * DECIMAL_PLACES) / DECIMAL_PLACES,
+    pkill: Math.round((100 / ((kdaData.kills + kdaData.assists) / kdaData.deaths)) * DECIMAL_PLACES) / DECIMAL_PLACES,
     wins,
     losses,
+    freshBlood,
+    inactive,
+    veteran,
+    hotStreak,
   }
 
   return data
