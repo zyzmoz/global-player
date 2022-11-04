@@ -36,6 +36,7 @@ import { ReactComponent as UpIcon } from '../../assets/icons/Up.svg'
 import { ReactComponent as UserIcon } from '../../assets/icons/User.svg'
 import { ReactComponent as VectorIcon } from '../../assets/icons/Vector.svg'
 import { ReactComponent as WorldIcon } from '../../assets/icons/World.svg'
+import { ReactComponent as LikeIcon } from '../../assets/icons/Like.svg'
 
 export {
   AddIcon,
@@ -76,4 +77,5 @@ export {
   UserIcon,
   VectorIcon,
   WorldIcon,
+  LikeIcon,
 }

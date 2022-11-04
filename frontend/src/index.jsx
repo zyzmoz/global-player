@@ -10,6 +10,7 @@ import Login from './pages/Login'
 import LandingPage from './pages/LandingPage'
 import PlansPage from './pages/PlansPage'
 import TopPlayersPage from './pages/TopPlayersPage'
+import PlayerDetailsPage from './pages/PlayerDetailsPage'
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: 'TopPlayers',
     element: <TopPlayersPage />,
+  },
+  {
+    path: 'player-details',
+    element: <PlayerDetailsPage />,
   },
 ])
 

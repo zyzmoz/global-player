@@ -83,27 +83,7 @@
       flex-flow: column;
       gap: 0.1rem;
     }
-    .doughnut-chart {
-      position: relative;
-    }
-    #winrate {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-top: 1.8rem;
-      p {
-        font-size: 16pt;
-        font-weight: bold;
-        letter-spacing: normal;
-        font-family: 'Chakra Petch', sans-serif;
-      }
-    }
-    .doughnut-chart p,
+
     .kda-wrapper p:nth-child(1),
     .winrate-kda-wrapper + p,
     .top-players-personal-skills > p {
@@ -190,7 +170,7 @@
     justify-content: flex-start;
     align-items: center;
     gap: 0.5rem;
-    padding-left: .3rem;
+    padding-left: 0.3rem;
     font-size: 0.875rem;
   }
   td:nth-child(4) {

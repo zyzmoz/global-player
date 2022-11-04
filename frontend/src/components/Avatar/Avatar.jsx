@@ -1,11 +1,19 @@
 import PropTypes from 'prop-types'
 import Image from '../Image/Image'
 import RoleIcons from '../RoleIcons/RoleIcons'
+import Colors from '../../sass/variables/_colors.scss'
 
 function Avatar({ summonerIcon, role, alt }) {
   return (
     <div className="avatar">
-      <Image radius="50%" imageUrl={summonerIcon} imageHeight="110px" imageWidth="110px" imageBorder="2px" alt={alt} />
+      <Image
+        radius="50%"
+        imageUrl={summonerIcon}
+        imageHeight="110px"
+        imageWidth="110px"
+        imageBorder={`2px solid ${Colors.primaryColorBrightGreen}`}
+        alt={alt}
+      />
       <div className="role">{RoleIcons(role)}</div>
     </div>
   )
@@ -21,6 +29,6 @@ Avatar.propTypes = {
 
 Avatar.defaultProps = {
   summonerIcon: 'https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/27.png',
-  role: 'SUPPORT',
+  role: '',
   alt: 'Player Icon',
 }
