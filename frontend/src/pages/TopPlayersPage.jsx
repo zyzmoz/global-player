@@ -1,3 +1,6 @@
+import { useQuery } from 'react-query'
+import axios from 'axios'
+import env from 'react-dotenv'
 import Headline from '../components/Headline/Headline'
 import Table from '../components/Table/Table'
 import TableHeader from '../components/Table/TableHeader'
@@ -15,19 +18,20 @@ import Button from '../components/Button/Button'
 import Colors from '../sass/variables/_colors.scss'
 import Footer from '../components/Footer/Footer'
 import Image from '../components/Image/Image'
-import {
-  DownIcon,
-  SupportIcon,
-  JungleIcon,
-  TopLaneIcon,
-  MidLaneIcon,
-  BotLaneIcon,
-  UserIcon,
-} from '../components/Icon/icons'
-
-const randomImage1 = 'https://picsum.photos/100/100?random=1'
+import RoleIcons from '../components/RoleIcons/RoleIcons'
+import { DownIcon, SupportIcon, UserIcon } from '../components/Icon/icons'
 
 function TopPlayersPage() {
+  const { data: topPlayers } = useQuery('topPlayersData', () =>
+    axios.get(`${env.SERVER_URL}/api/v1/analytics/top-players`)
+  )
+
+  const { data: allPlayers } = useQuery('allPlayersData', () =>
+    axios.get(`${env.SERVER_URL}/api/v1/analytics/all-players`)
+  )
+
+  console.log({ topPlayers, allPlayers })
+
   return (
     <div className="top-players-page">
       <RecruitersPagesNavMenu className="nav-side-menu" />
@@ -43,25 +47,39 @@ function TopPlayersPage() {
           <div className="card-container">
             <SupportIcon className="Icon" fill={Colors.primaryColorBrightGreen} />
             <Card width="18.125rem">
-              <Headline text="Draven" color={Colors.primaryColorBrightGreen} textAlign="center" />
-              <Avatar />
-              <Headline text="Grandmaster" textAlign="center" fontSize="small" />
+              <Headline
+                text={topPlayers?.data[0].summonerName}
+                color={Colors.primaryColorBrightGreen}
+                textAlign="center"
+              />
+              <Avatar
+                role={topPlayers?.data[0].role}
+                summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${topPlayers?.data[0].profileIconId}.png`}
+              />
+              <Headline text={topPlayers?.data[0].rank} textAlign="center" fontSize="small" />
               <div className="winrate-kda-wrapper">
                 <DoughnutChart
                   title="WIN RATE"
                   width="7rem"
-                  winRate={{
-                    data: [6, 5],
+                  playerData={{
+                    data: [topPlayers?.data[0].wins, topPlayers?.data[0].losses],
                   }}
+                  winRate={topPlayers?.data[0].winRate}
                 />
                 <div className="kda-wrapper">
                   <BodyText text="KDA" color={Colors.primaryColorBrightGreen} />
-                  <BodyText text="7.1 / 7.4 / 9.7" />
-                  <BodyText text="2.27:1" />
-                  <BodyText text="P/Kill 55%" />
+                  <BodyText
+                    text={`${topPlayers?.data[0].kills} / ${topPlayers?.data[0].deaths} / ${topPlayers?.data[0].assists}`}
+                  />
+                  <BodyText text={`${topPlayers?.data[0].kda}:1`} />
+                  <BodyText text={`P/Kill ${topPlayers?.data[0].pkill}%`} />
                 </div>
               </div>
-              <BodyText text="MATCHES: 38.137" color={Colors.primaryColorBrightGreen} textAlign="center" />
+              <BodyText
+                text={`MATCHES: ${topPlayers?.data[0].matches}`}
+                color={Colors.primaryColorBrightGreen}
+                textAlign="center"
+              />
               <div className="top-players-personal-skills">
                 <BodyText text="PERSONAL SKILLS" color={Colors.primaryColorBrightGreen} />
                 <div className="label-progressbar-wrapper">
@@ -83,25 +101,39 @@ function TopPlayersPage() {
           <div className="card-container">
             <SupportIcon className="Icon" fill={Colors.primaryColorBrightGreen} />
             <Card width="18.125rem">
-              <Headline text="Draven" color={Colors.primaryColorBrightGreen} textAlign="center" />
-              <Avatar />
-              <Headline text="Grandmaster" textAlign="center" fontSize="small" />
+              <Headline
+                text={topPlayers?.data[1].summonerName}
+                color={Colors.primaryColorBrightGreen}
+                textAlign="center"
+              />
+              <Avatar
+                role={topPlayers?.data[1].role}
+                summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${topPlayers?.data[1].profileIconId}.png`}
+              />
+              <Headline text={topPlayers?.data[1].rank} textAlign="center" fontSize="small" />
               <div className="winrate-kda-wrapper">
                 <DoughnutChart
                   title="WIN RATE"
                   width="7rem"
-                  winRate={{
-                    data: [6, 5],
+                  playerData={{
+                    data: [topPlayers?.data[1].wins, topPlayers?.data[1].losses],
                   }}
+                  winRate={topPlayers?.data[1].winRate}
                 />
                 <div className="kda-wrapper">
                   <BodyText text="KDA" color={Colors.primaryColorBrightGreen} />
-                  <BodyText text="7.1 / 7.4 / 9.7" />
-                  <BodyText text="2.27:1" />
-                  <BodyText text="P/Kill 55%" />
+                  <BodyText
+                    text={`${topPlayers?.data[1].kills} / ${topPlayers?.data[1].deaths} / ${topPlayers?.data[1].assists}`}
+                  />
+                  <BodyText text={`${topPlayers?.data[1].kda}:1`} />
+                  <BodyText text={`P/Kill ${topPlayers?.data[1].pkill}%`} />
                 </div>
               </div>
-              <BodyText text="MATCHES: 38.137" color={Colors.primaryColorBrightGreen} textAlign="center" />
+              <BodyText
+                text={`MATCHES: ${topPlayers?.data[1].matches}`}
+                color={Colors.primaryColorBrightGreen}
+                textAlign="center"
+              />
               <div className="top-players-personal-skills">
                 <BodyText text="PERSONAL SKILLS" color={Colors.primaryColorBrightGreen} />
                 <div className="label-progressbar-wrapper">
@@ -123,25 +155,39 @@ function TopPlayersPage() {
           <div className="card-container">
             <SupportIcon className="Icon" fill={Colors.primaryColorBrightGreen} />
             <Card width="18.125rem">
-              <Headline text="Draven" color={Colors.primaryColorBrightGreen} textAlign="center" />
-              <Avatar />
-              <Headline text="Grandmaster" textAlign="center" fontSize="small" />
+              <Headline
+                text={topPlayers?.data[2].summonerName}
+                color={Colors.primaryColorBrightGreen}
+                textAlign="center"
+              />
+              <Avatar
+                role={topPlayers?.data[2].role}
+                summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${topPlayers?.data[2].profileIconId}.png`}
+              />
+              <Headline text={topPlayers?.data[2].rank} textAlign="center" fontSize="small" />
               <div className="winrate-kda-wrapper">
                 <DoughnutChart
                   title="WIN RATE"
                   width="7rem"
-                  winRate={{
-                    data: [6, 5],
+                  playerData={{
+                    data: [topPlayers?.data[2].wins, topPlayers?.data[2].losses],
                   }}
+                  winRate={topPlayers?.data[2].winRate}
                 />
                 <div className="kda-wrapper">
                   <BodyText text="KDA" color={Colors.primaryColorBrightGreen} />
-                  <BodyText text="7.1 / 7.4 / 9.7" />
-                  <BodyText text="2.27:1" />
-                  <BodyText text="P/Kill 55%" />
+                  <BodyText
+                    text={`${topPlayers?.data[2].kills} / ${topPlayers?.data[2].deaths} / ${topPlayers?.data[2].assists}`}
+                  />
+                  <BodyText text={`${topPlayers?.data[2].kda}:1`} />
+                  <BodyText text={`P/Kill ${topPlayers?.data[2].pkill}%`} />
                 </div>
               </div>
-              <BodyText text="MATCHES: 38.137" color={Colors.primaryColorBrightGreen} textAlign="center" />
+              <BodyText
+                text={`MATCHES: ${topPlayers?.data[2].matches}`}
+                color={Colors.primaryColorBrightGreen}
+                textAlign="center"
+              />
               <div className="top-players-personal-skills">
                 <BodyText text="PERSONAL SKILLS" color={Colors.primaryColorBrightGreen} />
                 <div className="label-progressbar-wrapper">
@@ -173,7 +219,7 @@ function TopPlayersPage() {
           <TableHeader
             headers={[
               { property: 'rank', title: 'Rank' },
-              { property: 'name', title: 'Name' },
+              { property: 'summonerName', title: 'Name' },
               { property: 'role', title: 'Role' },
               { property: 'winRate', title: 'Win Rate' },
               { property: 'kda', title: 'KDA' },
@@ -181,116 +227,45 @@ function TopPlayersPage() {
               { property: 'personality', title: 'Personality' },
             ]}
           />
-          {[
-            {
+          {allPlayers?.data?.map((player) => {
+            const playerData = {
               rank: '1',
-              name: (
+              summonerName: (
                 <div className="name">
-                  <Image imageUrl={randomImage1} imageWidth="2.25rem" imageHeight="2.25rem" />
-                  Darius
+                  <Image
+                    imageUrl={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${player.profileIconId}.png`}
+                    imageWidth="2.25rem"
+                    imageHeight="2.25rem"
+                  />
+                  {player.summonerName}
                 </div>
               ),
-              role: <TopLaneIcon className="icon" fill={Colors.primaryColorBrightGreen} />,
-              winRate: '63.2%',
-              kda: '8.7 / 5.8 / 6.0',
-              matches: '38,137',
+              role: RoleIcons(player.role, Colors.primaryColorBrightGreen),
+              winRate: `${player.winRate}%`,
+              kda: `${player.kills} / ${player.deaths} / ${player.assists}`,
+              matches: `${player.matches}`,
               personality: (
                 <div className="personality">
                   <ProgressBar progress={80} widthSize="140px" heightSize="16px" />
                   <BodyText text="Team Player" textAlign="center" fontSize="small" />
                 </div>
               ),
-            },
-            {
-              rank: '2',
-              name: (
-                <div className="name">
-                  <Image imageUrl={randomImage1} imageWidth="2.25rem" imageHeight="2.25rem" />
-                  Darius
-                </div>
-              ),
-              role: <MidLaneIcon className="icon" fill={Colors.primaryColorBrightGreen} />,
-              winRate: '63.2%',
-              kda: '8.7 / 5.8 / 6.0',
-              matches: '38,137',
-              personality: (
-                <div className="personality">
-                  <ProgressBar progress={80} widthSize="140px" heightSize="16px" />
-                  <BodyText text="Team Player" textAlign="center" fontSize="small" />
-                </div>
-              ),
-            },
-            {
-              rank: '3',
-              name: (
-                <div className="name">
-                  <Image imageUrl={randomImage1} imageWidth="2.25rem" imageHeight="2.25rem" />
-                  Darius
-                </div>
-              ),
-              role: <BotLaneIcon className="icon" fill={Colors.primaryColorBrightGreen} />,
-              winRate: '63.2%',
-              kda: '8.7 / 5.8 / 6.0',
-              matches: '38,137',
-              personality: (
-                <div className="personality">
-                  <ProgressBar progress={80} widthSize="140px" heightSize="16px" />
-                  <BodyText text="Team Player" textAlign="center" fontSize="small" />
-                </div>
-              ),
-            },
-            {
-              rank: '4',
-              name: (
-                <div className="name">
-                  <Image imageUrl={randomImage1} imageWidth="2.25rem" imageHeight="2.25rem" />
-                  Darius
-                </div>
-              ),
-              role: <SupportIcon className="icon" fill={Colors.primaryColorBrightGreen} />,
-              winRate: '63.2%',
-              kda: '8.7 / 5.8 / 6.0',
-              matches: '38,137',
-              personality: (
-                <div className="personality">
-                  <ProgressBar progress={80} widthSize="140px" heightSize="16px" />
-                  <BodyText text="Team Player" textAlign="center" fontSize="small" />
-                </div>
-              ),
-            },
-            {
-              rank: '5',
-              name: (
-                <div className="name">
-                  <Image imageUrl={randomImage1} imageWidth="2.25rem" imageHeight="2.25rem" />
-                  Darius
-                </div>
-              ),
-              role: <JungleIcon className="icon" fill={Colors.primaryColorBrightGreen} />,
-              winRate: '63.2%',
-              kda: '8.7 / 5.8 / 6.0',
-              matches: '38,137',
-              personality: (
-                <div className="personality">
-                  <ProgressBar progress={80} widthSize="140px" heightSize="16px" />
-                  <BodyText text="Team Player" textAlign="center" fontSize="small" />
-                </div>
-              ),
-            },
-          ].map((item) => (
-            <TableItem
-              item={item}
-              headers={[
-                { property: 'rank', title: 'Rank' },
-                { property: 'name', title: 'Name' },
-                { property: 'role', title: 'Role' },
-                { property: 'winRate', title: 'Win Rate' },
-                { property: 'kda', title: 'KDA' },
-                { property: 'matches', title: 'Matches' },
-                { property: 'personality', title: 'Personality' },
-              ]}
-            />
-          ))}
+            }
+            return (
+              <TableItem
+                item={playerData}
+                headers={[
+                  { property: 'rank', title: 'Rank' },
+                  { property: 'summonerName', title: 'Name' },
+                  { property: 'role', title: 'Role' },
+                  { property: 'winRate', title: 'Win Rate' },
+                  { property: 'kda', title: 'KDA' },
+                  { property: 'matches', title: 'Matches' },
+                  { property: 'personality', title: 'Personality' },
+                ]}
+              />
+            )
+          })}
         </Table>
         <Button text="Show more" />
         <Footer />

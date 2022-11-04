@@ -1,20 +1,12 @@
 import PropTypes from 'prop-types'
-import { JungleIcon, MidLaneIcon, TopLaneIcon, BotLaneIcon, SupportIcon } from '../Icon/icons'
 import Image from '../Image/Image'
+import RoleIcons from '../RoleIcons/RoleIcons'
 
 function Avatar({ summonerIcon, role, alt }) {
-  const RoleIcon = {
-    JUNGLE: <JungleIcon fill="black" stroke="black" />,
-    TOP: <TopLaneIcon fill="black" stroke="black" />,
-    MIDDLE: <MidLaneIcon fill="black" stroke="black" />,
-    CARRY: <BotLaneIcon fill="black" stroke="black" />,
-    SUPPORT: <SupportIcon fill="black" stroke="black" />,
-  }
-
   return (
     <div className="avatar">
       <Image radius="50%" imageUrl={summonerIcon} imageHeight="110px" imageWidth="110px" imageBorder="2px" alt={alt} />
-      <div className="role">{RoleIcon[role]}</div>
+      <div className="role">{RoleIcons(role)}</div>
     </div>
   )
 }
