@@ -33,13 +33,13 @@ export const getPlayerAnalysis = async (player) => {
         acc.jungle++
       }
       if (rec.role === 'MIDDLE' || rec.teamPosition === 'MIDDLE') {
-        acc.mid++
+        acc.middle++
       }
       if (rec.role === 'SUPPORT' || rec.teamPosition === 'SUPPORT') {
         acc.support++
       }
       if (rec.role === 'BOT' || rec.teamPosition === 'BOT') {
-        acc.bot++
+        acc.carry++
       }
       if (rec.role === 'TOP' || rec.teamPosition === 'TOP') {
         acc.top++
@@ -47,7 +47,7 @@ export const getPlayerAnalysis = async (player) => {
 
       return acc
     },
-    { support: 0, jungle: 0, mid: 0, bot: 0, top: 0, kda: 0 }
+    { support: 0, jungle: 0, middle: 0, carry: 0, top: 0, kda: 0 }
   )
 
   const kdaData: any = matches.reduce(
@@ -90,6 +90,8 @@ export const getPlayerAnalysis = async (player) => {
     deaths: Math.round((kdaData.deaths / matches.length) * DECIMAL_PLACES) / DECIMAL_PLACES,
     assists: Math.round((kdaData.assists / matches.length) * DECIMAL_PLACES) / DECIMAL_PLACES,
     pkill: Math.round((100/((kdaData.kills + kdaData.assists) / kdaData.deaths)) * DECIMAL_PLACES) / DECIMAL_PLACES,
+    wins,
+    losses,
   }
 
   return data
