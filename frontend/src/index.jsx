@@ -11,6 +11,9 @@ import LandingPage from './pages/LandingPage'
 import PlansPage from './pages/PlansPage'
 import TopPlayersPage from './pages/TopPlayersPage'
 import PlayerDetailsPage from './pages/PlayerDetailsPage'
+import CreateAccount from './pages/CreateAccount'
+import CreateAccountPlayer from './pages/CreateAccountPlayer'
+import CreateAccountRecruiter from './pages/CreateAccountRecruiter'
 
 const router = createBrowserRouter([
   {
@@ -40,6 +43,18 @@ const router = createBrowserRouter([
   {
     path: 'player-details',
     element: <PlayerDetailsPage />,
+  },
+  {
+    path: 'createaccount',
+    element: <CreateAccount />,
+  },
+  {
+    path: 'createaccountplayer',
+    element: <CreateAccountPlayer />,
+  },
+  {
+    path: 'createaccountrecruiter',
+    element: <CreateAccountRecruiter />,
   },
 ])
 
