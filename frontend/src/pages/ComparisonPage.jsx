@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import Headline from '../components/Headline/Headline'
 import Sidebar from '../components/Sidebar/Sidebar'
 import RecruitersPagesNavMenu from '../components/Header/RecruitersPagesNavMenu'
@@ -10,6 +11,7 @@ import Footer from '../components/Footer/Footer'
 import { UserIcon, CrossIcon, CompareIcon, AddIcon } from '../components/Icon/icons'
 
 function ComparisonPage() {
+  const navigate = useNavigate()
   return (
     <div className="comparison-page">
       <RecruitersPagesNavMenu className="nav-side-menu" />
@@ -42,7 +44,7 @@ function ComparisonPage() {
           <Card width="14rem" height="26rem">
             <div className="add-container">
               <div className="addicon-container">
-                <AddIcon className="addIcon" fill="white" />
+                <AddIcon onClick={() => navigate('/player-comparison-select-page')} className="addIcon" fill="white" />
               </div>
             </div>
           </Card>

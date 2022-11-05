@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header/Header'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
 import { CrossIcon, DeleteIcon, DownIcon } from '../components/Icon/icons'
@@ -10,6 +11,7 @@ import Footer from '../components/Footer/Footer'
 import Colors from '../sass/variables/_colors.scss'
 
 function PlayerComparisonSelectPage() {
+  const navigate = useNavigate()
   return (
     <div className="player-comparison-select-page-wrapper">
       <LandingPageNavMenu className="nav-side-menu" />
@@ -161,7 +163,7 @@ function PlayerComparisonSelectPage() {
               <button type="button" className="down-btn no-background-btn">
                 <DownIcon fill={Colors.primaryColorBrightGreen} />
               </button>
-              <Button text="Compare" />
+              <Button onClick={() => navigate('/comparison-results')} text="Compare" />
             </section>
           </main>
 
