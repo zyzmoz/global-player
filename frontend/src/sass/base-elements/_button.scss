@@ -74,3 +74,15 @@
   }
 }
 @include btn-no-background();
+
+.button-outline {
+  background-color: transparent;
+  border: 2px solid $primary-color-bright-green;
+  color: $primary-color-bright-green;
+  font-size: 1rem;
+  height: 3.5rem;
+  width: 8rem;
+  &:hover {
+    background: unset;
+  }
+}

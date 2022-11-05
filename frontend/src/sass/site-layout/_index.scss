@@ -1,10 +1,11 @@
 @import './plans-page';
 @import './player-details-page';
 @import './create-account';
+@import './player-review';
 
 .App {
   color: white;
-  
+
   .radarchart-component {
     margin: 4rem 0 4rem 0;
   }

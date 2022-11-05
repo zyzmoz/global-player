@@ -41,3 +41,10 @@
 
 /* ACCESSIBILITY */
 @import 'accessibility/visually-hidden';
+
+.hr-divider {
+  border: 0;
+  height: 3px;
+  background-image: linear-gradient(to right, rgba(125, 250, 164, 0), rgba(125, 250, 164, 1), rgba(125, 250, 164, 0));
+  margin-bottom: 1rem;
+}

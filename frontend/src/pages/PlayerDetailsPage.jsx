@@ -39,7 +39,8 @@ function PlayerDetailsPage() {
     navigate(`/`)
   }
   const navigateToPlayerSkills = () => {
-    navigate(`/`)
+    context.setPlayerData(playerDetail.data)
+    navigate('/player-review-overview')
   }
 
   return (
