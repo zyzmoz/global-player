@@ -15,6 +15,7 @@ import CreateAccount from './pages/CreateAccount'
 import CreateAccountPlayer from './pages/CreateAccountPlayer'
 import CreateAccountRecruiter from './pages/CreateAccountRecruiter'
 import PlayerProvider from './context/PlayerContext'
+import ComparisonPage from './pages/ComparisonPage'
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
   {
     path: 'createaccountrecruiter',
     element: <CreateAccountRecruiter />,
+  },
+  {
+    path: 'comparison',
+    element: <ComparisonPage />,
   },
 ])
 
