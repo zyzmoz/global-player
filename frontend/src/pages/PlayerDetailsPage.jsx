@@ -36,7 +36,7 @@ function PlayerDetailsPage() {
       player1: id,
       player2: null,
     })
-    navigate(`/`)
+    navigate(`/comparison`)
   }
   const navigateToPlayerSkills = () => {
     context.setPlayerData(playerDetail.data)

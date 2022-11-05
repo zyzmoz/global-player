@@ -15,12 +15,9 @@ import CreateAccount from './pages/CreateAccount'
 import CreateAccountPlayer from './pages/CreateAccountPlayer'
 import CreateAccountRecruiter from './pages/CreateAccountRecruiter'
 import PlayerProvider from './context/PlayerContext'
-<<<<<<< HEAD
 import ComparisonPage from './pages/ComparisonPage'
-=======
 import PlayerReviewOverview from './pages/PlayerReviewOverview'
 import ReviewPlayer from './pages/ReviewPlayer'
->>>>>>> 3e2108f (feature: Create Player Review Page)
 
 const router = createBrowserRouter([
   {
