@@ -1,4 +1,5 @@
 import { getMatchesDetails, getMatchIds } from '../integrations/RiotAPI'
+import { IReview } from '../models/Review'
 import { findMany, insert, removeAll } from './dbFunctions'
 
 const DECIMAL_PLACES = Math.pow(10, 1)
@@ -112,4 +113,56 @@ export const getPlayerAnalysis = async (player) => {
   }
 
   return data
+}
+
+export const getPlayerReviews = (reviews: IReview[]) => {
+  const r: any = reviews.reduce(
+    (acc: any, rec: any) => {
+      acc = {
+        teamPlayer: acc.teamPlayer + (rec.teamPlayer ?? 0),
+        leadership: acc.leadership + (rec.leadership ?? 0),
+        criticalThinking: acc.criticalThinking + (rec.criticalThinking ?? 0),
+        problemSolving: acc.problemSolving + (rec.problemSolving ?? 0),
+        coordination: rec.coordination ? acc.coordination + 1 : acc.coordination,
+        deffensive: rec.deffensive ? acc.deffensive + 1 : acc.deffensive,
+        dueling: rec.dueling ? acc.dueling + 1 : acc.dueling,
+        farming: rec.farming ? acc.farming + 1 : acc.farming,
+        offensive: rec.offensive ? acc.offensive + 1 : acc.offensive,
+        picking: rec.picking ? acc.picking + 1 : acc.picking,
+        reactionTime: rec.reactionTime ? acc.reactionTime + 1 : acc.reactionTime,
+        roaming: rec.roaming ? acc.roaming + 1 : acc.roaming,
+        skirmishing: rec.skirmishing ? acc.skirmishing + 1 : acc.skirmishing,
+        steadiness: rec.steadiness ? acc.steadiness + 1 : acc.steadiness,
+        timing: rec.timing ? acc.timing + 1 : acc.timing,
+      }
+      return acc
+    },
+    {
+      teamPlayer: 0,
+      leadership: 0,
+      criticalThinking: 0,
+      problemSolving: 0,
+      coordination: 0,
+      deffensive: 0,
+      dueling: 0,
+      farming: 0,
+      offensive: 0,
+      picking: 0,
+      reactionTime: 0,
+      roaming: 0,
+      skirmishing: 0,
+      steadiness: 0,
+      timing: 0,
+    }
+  )
+
+  const total = {
+    ...r,
+    teamPlayer: r.teamPlayer / reviews.length,
+    leadership: r.leadership / reviews.length,
+    criticalThinking: r.criticalThinking / reviews.length,
+    problemSolving: r.problemSolving / reviews.length,
+  }
+
+  return total
 }

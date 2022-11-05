@@ -9,10 +9,19 @@ export const PlayerContext = React.createContext({
     player2: null,
   },
   setPlayersToCompare: () => {},
+  playerData: {
+    id: null,
+    summonerName: null,
+  },
+  setPlayerData: () => {},
 })
 
 function PlayerProvider({ children }) {
   const [playerId, setPlayerId] = useState(null)
+  const [playerData, setPlayerData] = useState({
+    id: null,
+    summonerName: null,
+  })
   const [playersToCompare, setPlayersToCompare] = useState({
     player1: null,
     player2: null,
@@ -24,6 +33,8 @@ function PlayerProvider({ children }) {
       value={{
         playerId,
         setPlayerId,
+        playerData,
+        setPlayerData,
         playersToCompare,
         setPlayersToCompare,
       }}

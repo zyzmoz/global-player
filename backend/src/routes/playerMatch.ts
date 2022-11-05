@@ -11,6 +11,10 @@ router.get('/', async (_req, res) => {
 
 router.get(`/:id`, async (req, res) => {
   const { id } = req.params
+  if (!id || id === 'null') {
+    res.status(400).end()
+    return
+  }
   const match = await findOne<IPlayerMatch>('playerMatches', id)
 
   res.json(match)
@@ -43,6 +47,10 @@ router.put('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   const { id } = req.params
+  if (!id || id === 'null') {
+    res.status(400).end()
+    return
+  }
   await remove<IPlayerMatch>('playerMatches', id)
 
   res.status(204).end()

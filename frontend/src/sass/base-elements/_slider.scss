@@ -1,0 +1,53 @@
+.slider-container {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type='range'].slider {
+  height: 2.2em;
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+input[type='range'].slider::-webkit-slider-runnable-track {
+  background-color: $primary-color-deep-purple;
+}
+
+input[type='range'].slider:focus {
+  outline: none;
+}
+
+/*webkit*/
+input[type='range'].slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 2em;
+  height: 2em;
+  border-radius: 1em;
+  background: linear-gradient(180.67deg, #bbffd0 2.62%, #7dfaa4 26.31%, #108a36 99.43%);
+  border: none;
+  box-shadow: 0 0 2px black;
+  margin-top: calc(max((1em - 1px - 1px) * 0.5, 0px) - 2em * 0.5);
+}
+
+input[type='range'].slider::-webkit-slider-runnable-track {
+  height: 1em;
+  border: 1px solid $primary-color-bright-green;
+  border-radius: 0.5em;
+  box-shadow: none;
+}
+
+input[type='range'].slider::-webkit-slider-thumb:hover {
+  background: linear-gradient(180.67deg, #bbffd0 2.62%, #7dfaa4 26.31%, #108a36 99.43%);
+}
+
+input[type='range'].slider:hover::-webkit-slider-runnable-track {
+  border-color: $primary-color-bright-green;
+}
+
+input[type='range'].slider::-webkit-slider-thumb:active {
+  background: linear-gradient(180.67deg, #bbffd0 2.62%, #7dfaa4 26.31%, #108a36 99.43%);
+}
+
+input[type='range'].slider:active::-webkit-slider-runnable-track {
+  border-color: $primary-color-bright-green;
+}

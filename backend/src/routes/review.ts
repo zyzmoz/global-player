@@ -2,21 +2,22 @@ import { Router } from 'express'
 
 import { IReview, isReview } from '../models/Review'
 
-import { findMany, findOne, insert, remove, update } from '../shared/dbFunctions'
+import { findMany, insert, remove, update } from '../shared/dbFunctions'
+import { getPlayerReviews } from '../shared/utils'
 
 const router = Router()
 
-router.get('/', async (_req, res) => {
-  const reviews = await findMany<IReview>('reviews')
-  res.json(reviews)
-})
+router.get('/:playerId', async (req, res) => {
+  const { playerId } = req.params
+  if (!playerId || playerId === 'null') {
+    res.status(400).end()
+    return
+  }
+  const review = await findMany<IReview>('reviews', { playerId })
 
-router.get('/:id', async (req, res) => {
-  // res.send('This is a test')
-  const { id } = req.params
-  const review = await findOne<IReview>('reviews', id)
+  const finalReview = getPlayerReviews(review)
 
-  res.json(review)
+  res.json(finalReview)
 })
 
 router.post('/', async (req, res) => {
@@ -47,6 +48,10 @@ router.put('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   const { id } = req.params
+  if (!id || id === 'null') {
+    res.status(400).end()
+    return
+  }
   await remove<IReview>('reviews', id)
 
   res.status(204).end()
