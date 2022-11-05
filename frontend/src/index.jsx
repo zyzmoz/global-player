@@ -18,6 +18,7 @@ import PlayerProvider from './context/PlayerContext'
 import ComparisonPage from './pages/ComparisonPage'
 import PlayerReviewOverview from './pages/PlayerReviewOverview'
 import ReviewPlayer from './pages/ReviewPlayer'
+import ComparisonResultsPage from './pages/ComparisonResultsPage'
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
   {
     path: 'review-player',
     element: <ReviewPlayer />,
+  },
+  {
+    path: 'comparison-results',
+    element: <ComparisonResultsPage />,
   },
 ])
 
