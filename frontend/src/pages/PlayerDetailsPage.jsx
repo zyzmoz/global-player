@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 import axios from 'axios'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
 import Header from '../components/Header/Header'
@@ -16,10 +16,13 @@ import DoughnutChart from '../components/DoughnutChart/DoughnutChart'
 import { CheckIcon, LikeIcon, CrossIcon } from '../components/Icon/icons'
 import Footer from '../components/Footer/Footer'
 import Colors from '../sass/variables/_colors.scss'
+import { PlayerContext } from '../context/PlayerContext'
 
 function PlayerDetailsPage() {
+  const context = React.useContext(PlayerContext)
+
   const { data: playerDetail } = useQuery('playerDetail', () =>
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/player/6360a91735cadfcd8230dd7e`)
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/player/${context.playerId}`)
   )
 
   const [likeIt, setLikeIt] = useState(false)
@@ -28,7 +31,11 @@ function PlayerDetailsPage() {
   const navigateToContactPlayer = () => {
     navigate(`/`)
   }
-  const navigateToComparePlayer = () => {
+  const navigateToComparePlayer = (id) => {
+    context.setPlayersToCompare({
+      player1: id,
+      player2: null,
+    })
     navigate(`/`)
   }
   const navigateToPlayerSkills = () => {
