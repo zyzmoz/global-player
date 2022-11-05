@@ -14,7 +14,7 @@
 }
 .player-details-wrapper-1 main {
   margin-top: 1rem;
-  min-width: 270px;
+  min-width: 366px;
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
@@ -70,12 +70,18 @@
       margin-top: 1rem;
       gap: 2rem;
 
-      .background-icon:nth-child(1) {
+      .background-icon .role {
         width: 38px;
         height: 38px;
         border: 2px solid $primary-color-bright-green;
         border-radius: 50%;
         background-color: $primary-color-deep-purple;
+
+        svg {
+          width: 35px;
+          height: 35px;
+          fill: white;
+        }
       }
     }
   }
@@ -171,6 +177,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 
+    #winrate {
+      p {
+        background-color: red;
+      }
+    }
+
     h1 {
       font-family: 'Gothic A1', sans-serif;
       font-size: 16px;
@@ -233,7 +245,7 @@
     letter-spacing: 4px;
   }
   .kda-container {
-    margin: 5rem 2rem;
+    margin: 5rem 0.5rem;
     display: flex;
     gap: 1.5rem;
     flex-flow: row nowrap;
@@ -471,7 +483,6 @@
         display: flex;
         flex-flow: row nowrap;
 
-
         .kda-container {
           margin: 0;
           margin-left: 0.9rem;
@@ -537,6 +548,7 @@
 
         .title-icon-container {
           margin-bottom: 1rem;
+          gap: 1rem ;
         }
       }
     }
