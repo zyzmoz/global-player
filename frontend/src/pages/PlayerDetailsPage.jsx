@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useQuery } from 'react-query'
+import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
 import Header from '../components/Header/Header'
@@ -27,6 +29,11 @@ function PlayerDetailsPage() {
   const navigateToPlayerSkills = () => {
     navigate(`/`)
   }
+
+  const { data: playerDetail } = useQuery('playerDetail', () =>
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/player/6360a91735cadfcd8230dd7e`)
+  )
+  console.log(playerDetail)
 
   return (
     <div className="player-details-wrapper-1">

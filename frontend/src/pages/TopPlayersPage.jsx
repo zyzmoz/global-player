@@ -22,7 +22,7 @@ import { DownIcon, SupportIcon, UserIcon } from '../components/Icon/icons'
 
 function TopPlayersPage() {
   const { data: topPlayers } = useQuery('topPlayersData', () =>
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/top-players`)
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/player/`)
   )
 
   const { data: allPlayers } = useQuery('allPlayersData', () =>

@@ -1,0 +1,16 @@
+.login-page {
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+
+    .login-page-wrapper {
+        flex-grow: 1;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        h1 {
+            font-size: 2rem;
+        }
+    }
+}
