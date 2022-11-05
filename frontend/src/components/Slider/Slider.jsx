@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types'
 
-function Slider({ type, minValue, maxValue, value, onChange }) {
+const id = Math.round(Math.random() * 1000)
+function Slider({ type, minValue, maxValue, value, onChange, label }) {
+  const handleChange = (evt) => {
+    onChange(Number(evt.target.value))
+  }
   return (
-    <div className="slider">
-      <input type={type} min={minValue} max={maxValue} value={value} onChange={onChange} />
+    <div className="slider-container">
+      <label htmlFor={id}>{label}</label>
+      <input className="slider" type={type} min={minValue} max={maxValue} value={value} onChange={handleChange} />
     </div>
   )
 }
@@ -15,6 +20,7 @@ Slider.defaultProps = {
   minValue: 0,
   maxValue: 100,
   value: 50,
+  label: '',
   onChange: () => {},
 }
 
@@ -23,5 +29,6 @@ Slider.propTypes = {
   minValue: PropTypes.number,
   maxValue: PropTypes.number,
   value: PropTypes.number,
+  label: PropTypes.string,
   onChange: PropTypes.func,
 }

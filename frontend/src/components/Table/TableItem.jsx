@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 
-function TableItem({ item, headers }) {
+function TableItem({ item, headers, onClick }) {
   const columns = headers.map((h) => h.property)
   return (
-    <tr>
+    <tr onClick={onClick}>
       {columns.map((col) => (
         <td>{item[col]}</td>
       ))}
@@ -13,7 +13,12 @@ function TableItem({ item, headers }) {
 
 export default TableItem
 
+TableItem.defaultProps = {
+  onClick: () => {},
+}
+
 TableItem.propTypes = {
   item: PropTypes.objectOf().isRequired,
   headers: PropTypes.arrayOf({}).isRequired,
+  onClick: PropTypes.func,
 }

@@ -1,0 +1,152 @@
+.comparison-results-page {
+  .nav-side-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  .comparison-results-page-wrapper {
+    display: flex;
+    flex-flow: column;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .card-content {
+    padding: 0.5rem 0.5rem 1rem 0.5rem;
+    justify-content: center;
+    .cross-icon-container {
+      text-align: right;
+      height: 1.6rem;
+    }
+    .crossIcon {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+    .card-content-container {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+    .avatar + h1 {
+      font-size: 1rem;
+    }
+    .kda-wrapper,
+    .pkill-wrapper {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      font-size: 1rem;
+    }
+  }
+  .comparison-cards-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // Winrate Section
+  .winrate-cards-container {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    .winrate-cards-wrapper {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .card-content {
+      padding: 1rem;
+    }
+    .doughnut-chart {
+      padding: 2rem;
+    }
+  }
+
+  // Overall Rating Section
+  .overall-rating-cards-container {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    .overall-rating-cards-wrapper {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .badge-score-wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+    .icon-text-wrapper {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+      .icon {
+        width: 9.375rem;
+        height: 9.375rem;
+      }
+    }
+    .name-tier-wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  // Skills Section
+  .skills-cards-container {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    .skills-cards-wrapper {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .card-content {
+      gap: 1rem;
+    }
+    .name-avatar-wrapper {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .personal-skills-wrapper {
+      display: flex;
+      flex-flow: column;
+      gap: 1rem;
+      padding: 1rem;
+      padding-bottom: 3rem;
+      border-bottom: 2px solid $primary-color-bright-green;
+    }
+    .progressbar-wrapper {
+      display: flex;
+      flex-flow: column;
+      gap: 0.8rem;
+    }
+    .tech-skills-wrapper {
+      padding: 1rem;
+      padding-top: 3rem;
+    }
+  }
+
+  // Statistics Section
+  .statistics-headline-wrapper {
+    padding-bottom: 1rem;
+  }
+}

@@ -14,6 +14,11 @@ import PlayerDetailsPage from './pages/PlayerDetailsPage'
 import CreateAccount from './pages/CreateAccount'
 import CreateAccountPlayer from './pages/CreateAccountPlayer'
 import CreateAccountRecruiter from './pages/CreateAccountRecruiter'
+import PlayerProvider from './context/PlayerContext'
+import ComparisonPage from './pages/ComparisonPage'
+import PlayerReviewOverview from './pages/PlayerReviewOverview'
+import ReviewPlayer from './pages/ReviewPlayer'
+import ComparisonResultsPage from './pages/ComparisonResultsPage'
 
 const router = createBrowserRouter([
   {
@@ -56,6 +61,22 @@ const router = createBrowserRouter([
     path: 'createaccountrecruiter',
     element: <CreateAccountRecruiter />,
   },
+  {
+    path: 'comparison',
+    element: <ComparisonPage />,
+  },
+  {
+    path: 'player-review-overview',
+    element: <PlayerReviewOverview />,
+  },
+  {
+    path: 'review-player',
+    element: <ReviewPlayer />,
+  },
+  {
+    path: 'comparison-results',
+    element: <ComparisonResultsPage />,
+  },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -64,9 +85,11 @@ const queryClient = new QueryClient()
 
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <PlayerProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </PlayerProvider>
   </React.StrictMode>
 )
 

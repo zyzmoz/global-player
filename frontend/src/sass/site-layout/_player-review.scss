@@ -1,0 +1,66 @@
+.player-review {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  padding-left: 17.625rem;;
+
+  .nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  h1,
+  p {
+    margin-bottom: 1rem;
+  }
+
+  .progressbar-wrapper {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .progressbar-wrapper, .slider-container {
+    padding: 1rem;
+  }
+
+  .player-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    padding: 4rem;
+  }
+
+  .techinical-skills{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem
+  }
+
+  .review-buttons {
+    display: flex;
+    flex-flow: column wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    button {
+      margin: 0.5rem;
+    }
+  }
+  .submit-wrapper {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    padding: 4rem;
+  }
+
+  @media screen and (min-width: 600px) {
+    margin: 0 auto;
+    .review-buttons {
+      justify-content: unset;
+    }
+  }
+}

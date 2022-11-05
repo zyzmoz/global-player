@@ -2,7 +2,21 @@ export interface IReview {
   _id: string
   playerId: string
   userId: number
-  review: string
+  teamPlayer: number
+  leadership: number
+  criticalThinking: number
+  problemSolving: number
+  coordination: boolean
+  deffensive: boolean
+  dueling: boolean
+  farming: boolean
+  offensive: boolean
+  picking: boolean
+  reactionTime: boolean
+  roaming: boolean
+  skirmishing: boolean
+  steadiness: boolean
+  timing: boolean
 }
 
 export const isReview = (review: any): review is IReview => {
@@ -10,7 +24,21 @@ export const isReview = (review: any): review is IReview => {
     _id: 'string',
     playerId: 'string',
     userId: 'number',
-    review: 'string',
+    teamPlayer: 'number',
+    leadership: 'number',
+    criticalThinking: 'number',
+    problemSolving: 'number',
+    coordination: 'boolean',
+    deffensive: 'boolean',
+    dueling: 'boolean',
+    farming: 'boolean',
+    offensive: 'boolean',
+    picking: 'boolean',
+    reactionTime: 'boolean',
+    roaming: 'boolean',
+    skirmishing: 'boolean',
+    steadiness: 'boolean',
+    timing: 'boolean',
   }
 
   const missingProperties = Object.keys(schema)

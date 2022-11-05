@@ -1,0 +1,67 @@
+.comparison-page {
+  display: grid;
+
+  .nav-side-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  .main-contents {
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+  }
+
+  .userIcon {
+    display: none;
+  }
+
+  .card-content {
+    padding: 0.5rem 0.5rem 1rem 0.5rem;
+    justify-content: center;
+    .cross-icon-container {
+      text-align: right;
+      height: 1.6rem;
+    }
+    .crossIcon {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+    .card-content-container {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+    .avatar + h1 {
+      font-size: 1rem;
+    }
+    .kda-wrapper,
+    .pkill-wrapper {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      font-size: 1rem;
+    }
+  }
+  .comparison-cards-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  .add-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .addIcon {
+          cursor: pointer;
+      }
+  }
+}

@@ -12,6 +12,10 @@ router.get('/', async (_req, res) => {
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params
+  if (!id || id === 'null') {
+    res.status(400).end()
+    return
+  }
   const plan = await findOne<IPlan>('plans', id)
   res.json(plan)
 })
@@ -43,6 +47,10 @@ router.put('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   const { id } = req.params
+  if (!id || id === 'null') {
+    res.status(400).end()
+    return
+  }
   await remove<IPlan>('plans', id)
 
   res.status(204).end()
