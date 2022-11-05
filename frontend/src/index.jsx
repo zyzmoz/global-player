@@ -14,6 +14,7 @@ import PlayerDetailsPage from './pages/PlayerDetailsPage'
 import CreateAccount from './pages/CreateAccount'
 import CreateAccountPlayer from './pages/CreateAccountPlayer'
 import CreateAccountRecruiter from './pages/CreateAccountRecruiter'
+import PlayerProvider from './context/PlayerContext'
 
 const router = createBrowserRouter([
   {
@@ -64,9 +65,11 @@ const queryClient = new QueryClient()
 
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <PlayerProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </PlayerProvider>
   </React.StrictMode>
 )
 

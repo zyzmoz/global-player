@@ -1,3 +1,5 @@
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import axios from 'axios'
 import Headline from '../components/Headline/Headline'
@@ -19,8 +21,12 @@ import Footer from '../components/Footer/Footer'
 import Image from '../components/Image/Image'
 import RoleIcons from '../components/RoleIcons/RoleIcons'
 import { DownIcon, SupportIcon, UserIcon } from '../components/Icon/icons'
+import { PlayerContext } from '../context/PlayerContext'
 
 function TopPlayersPage() {
+  const navigate = useNavigate()
+  const context = React.useContext(PlayerContext)
+
   const { data: topPlayers } = useQuery('topPlayersData', () =>
     axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/top-players`)
   )
@@ -28,6 +34,11 @@ function TopPlayersPage() {
   const { data: allPlayers } = useQuery('allPlayersData', () =>
     axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/all-players`)
   )
+
+  const navigateToDetails = (id) => {
+    context.setPlayerId(id)
+    navigate('/player-details')
+  }
 
   return (
     <div className="top-players-page">
@@ -92,7 +103,7 @@ function TopPlayersPage() {
                   <ProgressBar progress={60} heightSize="1.125rem" />
                 </div>
               </div>
-              <Button text="See more" />
+              <Button onClick={() => navigateToDetails(topPlayers?.data[0].id)} text="See more" />
             </Card>
           </div>
           <div className="card-container">
@@ -146,7 +157,7 @@ function TopPlayersPage() {
                   <ProgressBar progress={60} heightSize="1.125rem" />
                 </div>
               </div>
-              <Button text="See more" />
+              <Button onClick={() => navigateToDetails(topPlayers?.data[1].id)} text="See more" />
             </Card>
           </div>
           <div className="card-container">
@@ -200,7 +211,7 @@ function TopPlayersPage() {
                   <ProgressBar progress={60} heightSize="1.125rem" />
                 </div>
               </div>
-              <Button text="See more" />
+              <Button onClick={() => navigateToDetails(topPlayers?.data[2].id)} text="See more" />
             </Card>
           </div>
         </div>
@@ -250,6 +261,7 @@ function TopPlayersPage() {
             }
             return (
               <TableItem
+                onClick={() => navigateToDetails(player.id)}
                 item={playerData}
                 headers={[
                   { property: 'rank', title: 'Rank' },
