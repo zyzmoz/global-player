@@ -1,3 +1,6 @@
+import { useQuery } from 'react-query'
+import axios from 'axios'
+import React from 'react'
 import RecruitersPagesNavMenu from '../components/Header/RecruitersPagesNavMenu'
 import Header from '../components/Header/Header'
 import Headline from '../components/Headline/Headline'
@@ -14,8 +17,21 @@ import LineChart from '../components/LineChart/LineChart'
 // import TableHeader from '../components/Table/TableHeader'
 // import TableItem from '../components/Table/TableItem'
 import Colors from '../sass/variables/_colors.scss'
+import { PlayerContext } from '../context/PlayerContext'
 
 function ComparisonResultsPage() {
+  const context = React.useContext(PlayerContext)
+
+  const { data: player1 } = useQuery('player1', () =>
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/player/${context.playersToCompare.player1}`)
+  )
+
+  const { data: player2 } = useQuery('player2', () =>
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/player/${context.playersToCompare.player2}`)
+  )
+
+  console.log(player1, player2)
+
   return (
     <div className="comparison-results-page">
       <RecruitersPagesNavMenu className="nav-side-menu" />
@@ -29,18 +45,21 @@ function ComparisonResultsPage() {
               <CrossIcon className="crossIcon" fill={Colors.primaryColorBrightGreen} />
             </div>
             <div className="card-content-container">
-              <Headline text="Draven" color={Colors.primaryColorBrightGreen} />
-              <Avatar />
-              <Headline text="Grandmaster" />
+              <Headline text={player1?.data.summonerName} color={Colors.primaryColorBrightGreen} />
+              <Avatar
+                role={player1?.data.role}
+                summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${player1?.data.profileIconId}.png`}
+              />
+              <Headline text={player1?.data.rank} />
               <div className="kda-wrapper">
                 <BodyText text="KDA" color={Colors.primaryColorBrightGreen} />
-                <BodyText text="7.1 / 7.4 / 9/7" />
+                <BodyText text={`${player1?.data.kills} / ${player1?.data.deaths} / ${player1?.data.assists}`} />
               </div>
               <div className="pkill-wrapper">
-                <BodyText text="2.27:1" />
-                <BodyText text="P/Kill 55%" />
+                <BodyText text={`${player1?.data.kda}:1`} />
+                <BodyText text={`P/Kill ${player1?.data.pkill}%`} />
               </div>
-              <BodyText text="Matches: 20" color={Colors.primaryColorBrightGreen} />
+              <BodyText text={`Matches: ${player1?.data.matches}`} color={Colors.primaryColorBrightGreen} />
             </div>
           </Card>
           <CompareIcon className="compareIcon" fill={Colors.primaryColorBrightGreen} />
@@ -49,18 +68,21 @@ function ComparisonResultsPage() {
               <CrossIcon className="crossIcon" fill={Colors.primaryColorBrightGreen} />
             </div>
             <div className="card-content-container">
-              <Headline text="Draven" color={Colors.primaryColorBrightGreen} />
-              <Avatar />
-              <Headline text="Grandmaster" />
+              <Headline text={player2?.data.summonerName} color={Colors.primaryColorBrightGreen} />
+              <Avatar
+                role={player2?.data.role}
+                summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${player2?.data.profileIconId}.png`}
+              />
+              <Headline text={player2?.data.rank} />
               <div className="kda-wrapper">
                 <BodyText text="KDA" color={Colors.primaryColorBrightGreen} />
-                <BodyText text="7.1 / 7.4 / 9/7" />
+                <BodyText text={`${player2?.data.kills} / ${player2?.data.deaths} / ${player2?.data.assists}`} />
               </div>
               <div className="pkill-wrapper">
-                <BodyText text="2.27:1" />
-                <BodyText text="P/Kill 55%" />
+                <BodyText text={`${player2?.data.kda}:1`} />
+                <BodyText text={`P/Kill ${player2?.data.pkill}%`} />
               </div>
-              <BodyText text="Matches: 20" color={Colors.primaryColorBrightGreen} />
+              <BodyText text={`Matches: ${player2?.data.matches}`} color={Colors.primaryColorBrightGreen} />
             </div>
           </Card>
         </div>
@@ -73,21 +95,21 @@ function ComparisonResultsPage() {
             <Card width="18rem">
               <DoughnutChart
                 playerData={{
-                  data: [3, 5],
+                  data: [player1?.data.wins, player1?.data.losses],
                 }}
-                winRate={70}
+                winRate={player1?.data.winRate}
               />
-              <BodyText text="Draven" color={Colors.primaryColorBrightGreen} />
+              <BodyText text={player1?.data.summonerName} color={Colors.primaryColorBrightGreen} />
             </Card>
             <CompareIcon className="compareIcon" fill={Colors.primaryColorBrightGreen} />
             <Card width="18rem">
               <DoughnutChart
                 playerData={{
-                  data: [3, 5],
+                  data: [player2?.data.wins, player2?.data.losses],
                 }}
-                winRate={70}
+                winRate={player2?.data.winRate}
               />
-              <BodyText text="Draven" color={Colors.primaryColorBrightGreen} />
+              <BodyText text={player2?.data.summonerName} color={Colors.primaryColorBrightGreen} />
             </Card>
           </div>
         </div>
@@ -107,7 +129,7 @@ function ComparisonResultsPage() {
                 <BodyText text="Pro Player" color={Colors.primaryColorBrightGreen} />
               </div>
               <div className="name-tier-wrapper">
-                <BodyText text="Draven" color={Colors.primaryColorBrightGreen} />
+                <BodyText text={player1?.data.summonerName} color={Colors.primaryColorBrightGreen} />
                 <BodyText text="Tier 4" color={Colors.secondaryColorSkyBlue} />
               </div>
             </Card>
@@ -122,7 +144,7 @@ function ComparisonResultsPage() {
                 <BodyText text="Pro Player" color={Colors.primaryColorBrightGreen} />
               </div>
               <div className="name-tier-wrapper">
-                <BodyText text="Draven" color={Colors.primaryColorBrightGreen} />
+                <BodyText text={player2?.data.summonerName} color={Colors.primaryColorBrightGreen} />
                 <BodyText text="Tier 4" color={Colors.secondaryColorSkyBlue} />
               </div>
             </Card>
@@ -136,8 +158,10 @@ function ComparisonResultsPage() {
           <div className="skills-cards-wrapper">
             <Card width="18rem">
               <div className="name-avatar-wrapper">
-                <BodyText text="Draven" color={Colors.primaryColorBrightGreen} />
-                <Avatar />
+                <BodyText text={player1?.data.summonerName} color={Colors.primaryColorBrightGreen} />
+                <Avatar
+                  summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${player1?.data.profileIconId}.png`}
+                />
               </div>
               <div className="personal-skills-wrapper">
                 <BodyText text="Personal Skills" color={Colors.secondaryColorSkyBlue} />
@@ -155,8 +179,10 @@ function ComparisonResultsPage() {
             <CompareIcon className="compareIcon" fill={Colors.primaryColorBrightGreen} />
             <Card width="18rem">
               <div className="name-avatar-wrapper">
-                <BodyText text="Draven" color={Colors.primaryColorBrightGreen} />
-                <Avatar />
+                <BodyText text={player2?.data.summonerName} color={Colors.primaryColorBrightGreen} />
+                <Avatar
+                  summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${player2?.data.profileIconId}.png`}
+                />
               </div>
               <div className="personal-skills-wrapper">
                 <BodyText text="Personal Skills" color={Colors.secondaryColorSkyBlue} />
