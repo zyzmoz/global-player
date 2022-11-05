@@ -21,7 +21,6 @@ function PlayerDetailsPage() {
   const { data: playerDetail } = useQuery('playerDetail', () =>
     axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/player/6360a91735cadfcd8230dd7e`)
   )
-  console.log(playerDetail)
 
   const [likeIt, setLikeIt] = useState(false)
 
