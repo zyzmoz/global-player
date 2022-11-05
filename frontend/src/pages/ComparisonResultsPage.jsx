@@ -30,8 +30,6 @@ function ComparisonResultsPage() {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/player/${context.playersToCompare.player2}`)
   )
 
-  console.log(player1, player2)
-
   return (
     <div className="comparison-results-page">
       <RecruitersPagesNavMenu className="nav-side-menu" />
