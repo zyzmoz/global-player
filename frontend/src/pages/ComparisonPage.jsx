@@ -12,6 +12,11 @@ import { UserIcon, CrossIcon, CompareIcon, AddIcon } from '../components/Icon/ic
 
 function ComparisonPage() {
   const navigate = useNavigate()
+
+  const navigateToComparisonSelect = () => {
+    navigate('/player-comparison-select-page')
+  }
+
   return (
     <div className="comparison-page">
       <RecruitersPagesNavMenu className="nav-side-menu" />
@@ -44,7 +49,7 @@ function ComparisonPage() {
           <Card width="14rem" height="26rem">
             <div className="add-container">
               <div className="addicon-container">
-                <AddIcon onClick={() => navigate('/player-comparison-select-page')} className="addIcon" fill="white" />
+                <AddIcon onClick={navigateToComparisonSelect} className="addIcon" fill="white" />
               </div>
             </div>
           </Card>
