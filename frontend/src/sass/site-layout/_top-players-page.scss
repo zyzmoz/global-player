@@ -238,6 +238,8 @@
       justify-content: center;
     }
     .card-container:nth-child(1) {
+      transform: scale(1.10);
+      margin: 0 1rem;
       order: 0;
     }
     .card-container:nth-child(2) {
