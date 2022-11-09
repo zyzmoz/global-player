@@ -1,7 +1,7 @@
 ---
 name: Bug Template
 about: Template to used for bugs
-title: "bug: <description>"
+title: "bug: <page> - <description>"
 labels: 'bug'
 assignees: ''
 
