@@ -235,9 +235,9 @@ function TopPlayersPage() {
               { property: 'personality', title: 'Personality' },
             ]}
           />
-          {allPlayers?.data?.map((player) => {
+          {allPlayers?.data?.map((player, i) => {
             const playerData = {
-              rank: '1',
+              rank: `#${i + 3}`,
               summonerName: (
                 <div className="name">
                   <Image
