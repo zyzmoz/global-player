@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import axios from 'axios'
@@ -11,13 +12,31 @@ import BodyText from '../components/BodyText/BodyText'
 import Avatar from '../components/Avatar/Avatar'
 import Footer from '../components/Footer/Footer'
 import Colors from '../sass/variables/_colors.scss'
+import { PlayerContext } from '../context/PlayerContext'
 
 function PlayerComparisonSelectPage() {
+  const { playersToCompare, setPlayersToCompare } = useContext(PlayerContext)
   const navigate = useNavigate()
 
   const { data: allPlayers } = useQuery('allPlayersData', () =>
     axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/all-players`)
   )
+
+  const handlePlayerSelectionBtn = (playerId) => {
+    if (!playersToCompare.player1) {
+      setPlayersToCompare({ ...playersToCompare, player1: playerId })
+    }
+
+    if (!playersToCompare.player2) {
+      setPlayersToCompare({ ...playersToCompare, player2: playerId })
+    }
+  }
+
+  const navigateToComparisonResults = () => {
+    if (playersToCompare.player1 && playersToCompare.player2) {
+      navigate('/comparison-results')
+    }
+  }
 
   return (
     <div className="player-comparison-select-page-wrapper">
@@ -61,133 +80,29 @@ function PlayerComparisonSelectPage() {
 
             <section className="add-player-wrapper">
               <BodyText text="Often compared with..." color={Colors.secondaryColorSkyBlue} textAlign="left" />
-              <div className="avatar-name-container-btn">
-                <div className="avatar-name-container">
-                  <Avatar
-                    summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${allPlayers?.data[48].profileIconId}.png`}
-                  />
+              {allPlayers?.data?.map((player) => (
+                <div className="avatar-name-container-btn">
+                  <div className="avatar-name-container">
+                    <Avatar
+                      summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${player.profileIconId}.png`}
+                    />
 
-                  <BodyText text={allPlayers?.data[48].summonerName} color={Colors.secondaryColorSkyBlue} />
+                    <BodyText text={player.summonerName} color={Colors.secondaryColorSkyBlue} />
+                  </div>
+                  <button
+                    onClick={() => handlePlayerSelectionBtn(player.id)}
+                    type="button"
+                    className="add-vs-btn no-background-btn"
+                    style={{ color: Colors.primaryColorBrightGreen }}
+                  >
+                    + VS
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  className="add-vs-btn no-background-btn"
-                  style={{ color: Colors.primaryColorBrightGreen }}
-                >
-                  + VS
-                </button>
-              </div>
-              <div className="avatar-name-container-btn">
-                <div className="avatar-name-container">
-                  <Avatar
-                    summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${allPlayers?.data[30].profileIconId}.png`}
-                  />
-                  <BodyText text={allPlayers?.data[30].summonerName} color={Colors.secondaryColorSkyBlue} />
-                </div>
-                <button
-                  type="button"
-                  className="add-vs-btn no-background-btn"
-                  style={{ color: Colors.primaryColorBrightGreen }}
-                >
-                  + VS
-                </button>
-              </div>
-              <div className="avatar-name-container-btn">
-                <div className="avatar-name-container">
-                  <Avatar
-                    summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${allPlayers?.data[13].profileIconId}.png`}
-                  />
-                  <BodyText text={allPlayers?.data[13].summonerName} color={Colors.secondaryColorSkyBlue} />
-                </div>
-                <button
-                  type="button"
-                  className="add-vs-btn no-background-btn"
-                  style={{ color: Colors.primaryColorBrightGreen }}
-                >
-                  + VS
-                </button>
-              </div>
-              <div className="avatar-name-container-btn">
-                <div className="avatar-name-container">
-                  <Avatar
-                    summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${allPlayers?.data[10].profileIconId}.png`}
-                  />
-                  <BodyText text={allPlayers?.data[10].summonerName} color={Colors.secondaryColorSkyBlue} />
-                </div>
-                <button
-                  type="button"
-                  className="add-vs-btn no-background-btn"
-                  style={{ color: Colors.primaryColorBrightGreen }}
-                >
-                  + VS
-                </button>
-              </div>
-
-              <div className="avatar-name-container-btn hide-til-activate">
-                <div className="avatar-name-container">
-                  <Avatar
-                    summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${allPlayers?.data[45].profileIconId}.png`}
-                  />
-                  <BodyText text={allPlayers?.data[45].summonerName} color={Colors.secondaryColorSkyBlue} />
-                </div>
-                <button
-                  type="button"
-                  className="add-vs-btn no-background-btn"
-                  style={{ color: Colors.primaryColorBrightGreen }}
-                >
-                  + VS
-                </button>
-              </div>
-              <div className="avatar-name-container-btn hide-til-activate">
-                <div className="avatar-name-container">
-                  <Avatar
-                    summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${allPlayers?.data[8].profileIconId}.png`}
-                  />
-                  <BodyText text={allPlayers?.data[8].summonerName} color={Colors.secondaryColorSkyBlue} />
-                </div>
-                <button
-                  type="button"
-                  className="add-vs-btn no-background-btn"
-                  style={{ color: Colors.primaryColorBrightGreen }}
-                >
-                  + VS
-                </button>
-              </div>
-              <div className="avatar-name-container-btn hide-til-activate">
-                <div className="avatar-name-container">
-                  <Avatar
-                    summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${allPlayers?.data[56].profileIconId}.png`}
-                  />
-                  <BodyText text={allPlayers?.data[56].summonerName} color={Colors.secondaryColorSkyBlue} />
-                </div>
-                <button
-                  type="button"
-                  className="add-vs-btn no-background-btn"
-                  style={{ color: Colors.primaryColorBrightGreen }}
-                >
-                  + VS
-                </button>
-              </div>
-              <div className="avatar-name-container-btn hide-til-activate">
-                <div className="avatar-name-container">
-                  <Avatar
-                    summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${allPlayers?.data[10].profileIconId}.png`}
-                  />
-                  <BodyText text={allPlayers?.data[10].summonerName} color={Colors.secondaryColorSkyBlue} />
-                </div>
-                <button
-                  type="button"
-                  className="add-vs-btn no-background-btn"
-                  style={{ color: Colors.primaryColorBrightGreen }}
-                >
-                  + VS
-                </button>
-              </div>
-
+              ))}
               <button type="button" className="down-btn no-background-btn">
                 <DownIcon fill={Colors.primaryColorBrightGreen} />
               </button>
-              <Button onClick={() => navigate('/comparison-results')} text="Compare" />
+              <Button onClick={navigateToComparisonResults} text="Compare" />
             </section>
           </main>
 

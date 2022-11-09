@@ -31,9 +31,9 @@ function PlayerDetailsPage() {
   const navigateToContactPlayer = () => {
     navigate(`/`)
   }
-  const navigateToComparePlayer = (id) => {
+  const navigateToComparePlayer = () => {
     context.setPlayersToCompare({
-      player1: id,
+      player1: playerDetail?.data.id,
       player2: null,
     })
     navigate(`/comparison`)
