@@ -8,8 +8,8 @@ function Input({ placeholder, onChange, label, type, text }) {
   const [inputValue, setInputValue] = useState(text)
 
   const handleChange = (evt) => {
-    setInputValue(evt.target.text)
-    onChange(evt.target.text)
+    setInputValue(evt.target.value)
+    onChange(evt.target.value)
   }
 
   return (

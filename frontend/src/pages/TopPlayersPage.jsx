@@ -22,13 +22,18 @@ import Image from '../components/Image/Image'
 import RoleIcons from '../components/RoleIcons/RoleIcons'
 import { DownIcon, SupportIcon, UserIcon } from '../components/Icon/icons'
 import { PlayerContext } from '../context/PlayerContext'
+import withAuthentication from '../hoc/withAuthentication'
 
 function TopPlayersPage() {
   const navigate = useNavigate()
   const context = React.useContext(PlayerContext)
 
   const { data: topPlayers } = useQuery('topPlayersData', () =>
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/top-players`)
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/top-players`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+      },
+    })
   )
 
   const { data: allPlayers } = useQuery('allPlayersData', () =>
@@ -283,4 +288,4 @@ function TopPlayersPage() {
   )
 }
 
-export default TopPlayersPage
+export default withAuthentication(TopPlayersPage)
