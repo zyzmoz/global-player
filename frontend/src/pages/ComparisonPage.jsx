@@ -23,10 +23,12 @@ function ComparisonPage() {
       <Header />
       <Sidebar />
       <div className="main-contents">
-        <UserIcon className="userIcon" fill={Colors.primaryColorBrightGreen} />
+        <div className="userIcon-wrapper">
+          <UserIcon className="userIcon" fill={Colors.primaryColorBrightGreen} />
+        </div>
         <Headline text="Player Comparison" color={Colors.primaryColorBrightGreen} textAlign="center" fontSize="2rem" />
         <div className="comparison-cards-container">
-          <Card width="14rem" height="26rem">
+          <Card width="13rem" height="26rem">
             <div className="cross-icon-container">
               <CrossIcon className="crossIcon" fill={Colors.primaryColorBrightGreen} />
             </div>
@@ -45,12 +47,19 @@ function ComparisonPage() {
               <BodyText text="Matches: 20" color={Colors.primaryColorBrightGreen} />
             </div>
           </Card>
-          <CompareIcon className="compareIcon" fill={Colors.primaryColorBrightGreen} />
-          <Card width="14rem" height="26rem">
-            <div className="add-container">
+          <div className="comparisonIcon-wrapper">
+            <CompareIcon className="compareIcon" fill={Colors.primaryColorBrightGreen} />
+          </div>
+          <Card width="13rem" height="26rem">
+            <div className="add-card-container">
+              <span className="span1" />
+              <span className="span2" />
               <div className="addicon-container">
                 <AddIcon onClick={navigateToComparisonSelect} className="addIcon" fill="white" />
               </div>
+              <BodyText text="Add Player" textAlign="center" />
+              <span className="span3" />
+              <span className="span4" />
             </div>
           </Card>
         </div>
