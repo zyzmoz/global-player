@@ -20,13 +20,13 @@ function CreateAccount() {
 
           <div className="choices-container">
             <div className="choice-container">
-              <NavLink to="/CreateAccountPlayer">
+              <NavLink to="/create-account-player">
                 <Image imageUrl={playerIcon} imageWidth="67px" imageHeight="auto" alt="Player Icon" />
                 <BodyText text="I'm a player" fontSize="16pt" color="#000000" textAlign="center" />
               </NavLink>
             </div>
             <div className="choice-container">
-              <NavLink to="/CreateAccountRecruiter">
+              <NavLink to="/create-account-recruiter">
                 <Image imageUrl={recruiterIcon} imageWidth="105px" imageHeight="auto" alt="Recruiter Icon" />
                 <BodyText text="I'm a recruiter" fontSize="16pt" color="#000000" textAlign="center" />
               </NavLink>

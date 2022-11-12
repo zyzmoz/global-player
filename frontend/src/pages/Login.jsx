@@ -46,7 +46,7 @@ function Login() {
         </Link>
         <Button onClick={handleLogin} text="Login" />
         <BodyText text="New here?" />
-        <Link to="/">
+        <Link to="/create-account">
           <BodyText text="Create an account" color={Colors.primaryColorBrightGreen} />
         </Link>
       </div>
