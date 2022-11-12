@@ -20,6 +20,11 @@
     display: none;
   }
 
+  .card {
+    width: 13rem;
+    height: 26rem;
+  }
+
   .card-content {
     padding: 0.5rem 0.5rem 1rem 0.5rem;
     justify-content: center;
@@ -87,7 +92,7 @@
     span {
       background: rgba(217, 217, 217, 0.3);
       border-radius: 40px;
-      margin-bottom: .8rem;
+      margin-bottom: 0.8rem;
     }
     .span1 {
       width: 9rem;
@@ -137,11 +142,51 @@
       margin: 3rem 3rem 0 0;
       cursor: pointer;
     }
-    .comparisonIcon-wrapper {
-      position: unset;
-    }
     .comparison-cards-container {
       margin-bottom: 5rem;
+      gap: 2rem;
+    }
+    .card {
+      width: 16rem;
+      height: 30rem;
+    }
+    .card-content {
+      .card-content-container {
+        gap: 1rem;
+      }
+    }
+    .comparisonIcon-wrapper {
+      position: unset;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      .border1-around-compareIcon {
+        height: 9.5rem;
+        border: 1px solid;
+        border-image-slice: 1;
+        border-image-source: linear-gradient(to top, rgba(125, 250, 164, 100%), rgba(125, 250, 164, 0%));
+      }
+      .border2-around-compareIcon {
+        height: 9.5rem;
+        border: 1px solid;
+        border-image-slice: 1;
+        border-image-source: linear-gradient(to top, rgba(125, 250, 164, 0%), rgba(125, 250, 164, 100%));
+      }
+    }
+    .add-card-container {
+      gap: 0.5rem;
+      span {
+        border-radius: 15px;
+      }
+      .span1,
+      .span3,
+      .span4 {
+        width: 10rem;
+      }
+      p {
+        width: 10rem;
+        border-radius: 15px;
+      }
     }
   }
 }

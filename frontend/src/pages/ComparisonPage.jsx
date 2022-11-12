@@ -28,7 +28,7 @@ function ComparisonPage() {
         </div>
         <Headline text="Player Comparison" color={Colors.primaryColorBrightGreen} textAlign="center" fontSize="2rem" />
         <div className="comparison-cards-container">
-          <Card width="13rem" height="26rem">
+          <Card>
             <div className="cross-icon-container">
               <CrossIcon className="crossIcon" fill={Colors.primaryColorBrightGreen} />
             </div>
@@ -48,9 +48,11 @@ function ComparisonPage() {
             </div>
           </Card>
           <div className="comparisonIcon-wrapper">
+            <span className="border1-around-compareIcon" />
             <CompareIcon className="compareIcon" fill={Colors.primaryColorBrightGreen} />
+            <span className="border2-around-compareIcon" />
           </div>
-          <Card width="13rem" height="26rem">
+          <Card>
             <div className="add-card-container">
               <span className="span1" />
               <span className="span2" />
