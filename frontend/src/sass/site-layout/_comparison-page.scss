@@ -10,42 +10,62 @@
   }
 
   .main-contents {
-      display: flex;
-      flex-flow: column;
-      justify-content: space-between;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    gap: 3rem;
   }
 
-  .userIcon {
+  .userIcon-wrapper {
     display: none;
+  }
+
+  .card {
+    width: 13rem;
+    height: 26rem;
   }
 
   .card-content {
     padding: 0.5rem 0.5rem 1rem 0.5rem;
     justify-content: center;
+    position: relative;
     .cross-icon-container {
       text-align: right;
       height: 1.6rem;
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
     }
     .crossIcon {
-      width: 1.6rem;
-      height: 1.6rem;
+      width: 2rem;
+      height: 2rem;
+      cursor: pointer;
     }
     .card-content-container {
       display: flex;
       flex-flow: column;
       justify-content: center;
       align-items: center;
-      gap: 1rem;
+      gap: 0.5rem;
+      h1 {
+        font-size: 1.6rem;
+      }
     }
     .avatar + h1 {
-      font-size: 1rem;
+      font-size: 1.2rem;
+    }
+    p {
+      font-size: 1.2rem;
     }
     .kda-wrapper,
     .pkill-wrapper {
       display: flex;
       flex-flow: column;
       align-items: center;
-      font-size: 1rem;
+    }
+    .kda-wrapper p:nth-child(1),
+    .pkill-wrapper p:nth-child(1) {
+      font-weight: bold;
     }
   }
   .comparison-cards-container {
@@ -54,14 +74,119 @@
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    gap: 1rem;
+    position: relative;
   }
-
-  .add-container {
+  .comparisonIcon-wrapper {
+    position: absolute;
+    z-index: 10;
+  }
+  // Add card
+  .add-card-container {
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    span {
+      background: rgba(217, 217, 217, 0.3);
+      border-radius: 40px;
+      margin-bottom: 0.8rem;
+    }
+    .span1 {
+      width: 9rem;
+      height: 2.5rem;
+    }
+    .span2 {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      margin-bottom: 2.9rem;
+    }
+    .span3 {
+      width: 9rem;
+      height: 3.8rem;
+    }
+    .span4 {
+      width: 9rem;
+      height: 1.8rem;
+    }
+    p {
+      background: rgba(217, 217, 217, 0.3);
+      border-radius: 50px;
+      width: 9rem;
+      margin-bottom: 1.3rem;
+    }
+    .addicon-container {
+      position: absolute;
       display: flex;
       justify-content: center;
-      align-items: center;
-      .addIcon {
-          cursor: pointer;
+    }
+    .addIcon {
+      cursor: pointer;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    header,
+    footer {
+      display: none;
+    }
+    .userIcon-wrapper {
+      display: flex;
+      justify-content: end;
+      align-items: end;
+      margin: 3rem 3rem 0 0;
+      cursor: pointer;
+    }
+    .comparison-cards-container {
+      margin-bottom: 5rem;
+      gap: 2rem;
+    }
+    .card {
+      width: 16rem;
+      height: 30rem;
+    }
+    .card-content {
+      .card-content-container {
+        gap: 1rem;
       }
+    }
+    .comparisonIcon-wrapper {
+      position: unset;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      .border1-around-compareIcon {
+        height: 9.5rem;
+        border: 1px solid;
+        border-image-slice: 1;
+        border-image-source: linear-gradient(to top, rgba(125, 250, 164, 100%), rgba(125, 250, 164, 0%));
+      }
+      .border2-around-compareIcon {
+        height: 9.5rem;
+        border: 1px solid;
+        border-image-slice: 1;
+        border-image-source: linear-gradient(to top, rgba(125, 250, 164, 0%), rgba(125, 250, 164, 100%));
+      }
+    }
+    .add-card-container {
+      gap: 0.5rem;
+      span {
+        border-radius: 15px;
+      }
+      .span1,
+      .span3,
+      .span4 {
+        width: 10rem;
+      }
+      p {
+        width: 10rem;
+        border-radius: 15px;
+      }
+    }
   }
 }
