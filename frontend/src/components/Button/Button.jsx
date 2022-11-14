@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 
-function Button({ buttonType, text, onClick, disabled }) {
+function Button({ buttonType, text, onClick, disabled, type }) {
   return (
-    <button type="button" onClick={onClick} disabled={disabled} className={`button ${buttonType}`}>
+    // eslint-disable-next-line react/button-has-type
+    <button type={type} onClick={onClick} disabled={disabled} className={`button ${buttonType}`}>
       {text}
     </button>
   )
@@ -15,6 +16,7 @@ Button.defaultProps = {
   text: '',
   onClick: () => {},
   disabled: false,
+  type: 'button',
 }
 
 Button.propTypes = {
@@ -22,4 +24,5 @@ Button.propTypes = {
   text: PropTypes.string,
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
+  type: PropTypes.string,
 }

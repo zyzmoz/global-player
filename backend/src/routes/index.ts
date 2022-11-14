@@ -19,7 +19,6 @@ router.use((req: any, _res, next) => {
 
   if (headers && headers.authorization && headers.authorization.split(' ')[0] === 'Bearer') {
     jwt.verify(headers.authorization.split(' ')[1], APP_SECRET, (err, decode) => {
-      console.log({ err, decode })
       if (err) {
         req.authorization = null
       }
