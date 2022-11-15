@@ -1,4 +1,6 @@
-import { NavLink } from 'react-router-dom'
+import axios from 'axios'
+import { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
@@ -6,9 +8,13 @@ import Headline from '../components/Headline/Headline'
 import BodyText from '../components/BodyText/BodyText'
 import Input from '../components/Input/Input'
 import Button from '../components/Button/Button'
+import { recruiterSchema } from '../utils/userValidation'
 
 function CreateAccountRecruiter() {
-  const handleSubmit = (evt) => {
+  const [error, setError] = useState(null)
+  const navigate = useNavigate()
+
+  const handleSubmit = async (evt) => {
     evt.preventDefault()
     const { firstName, lastName, email, companyName, jobTitle, password } = evt.target
     const newUser = {
@@ -20,7 +26,17 @@ function CreateAccountRecruiter() {
       password: password.value,
     }
 
-    console.log({ newUser })
+    try {
+      recruiterSchema.validateSync(newUser)
+
+      // create acc
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/auth/create-account`, newUser)
+
+      // navigate to login
+      navigate('/login')
+    } catch (e) {
+      setError(e.message)
+    }
   }
 
   return (
@@ -37,6 +53,7 @@ function CreateAccountRecruiter() {
             <Input id="companyName" placeholder="Enter your company name" label="Comapany Name*" type="text" />
             <Input id="jobTitle" placeholder="Enter your job title" label="Job Title*" type="text" />
             <Input id="password" placeholder="Enter your password" label="Password*" type="password" />
+            {error && <BodyText text={error} color="red" />}
             <Button type="submit" text="Create an Account" />
           </form>
           <div className="have-an-account">

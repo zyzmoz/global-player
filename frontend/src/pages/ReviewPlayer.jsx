@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import { Axios } from 'axios'
 import BodyText from '../components/BodyText/BodyText'
 import Button from '../components/Button/Button'
 import Footer from '../components/Footer/Footer'
@@ -11,8 +11,9 @@ import Sidebar from '../components/Sidebar/Sidebar'
 import Slider from '../components/Slider/Slider'
 import { PlayerContext } from '../context/PlayerContext'
 import Colors from '../sass/variables/_colors.scss'
+import withAuthentication from '../hoc/withAuthentication'
 
-function ReviewPlayer() {
+function ReviewPlayer({ axiosClient }) {
   const { playerData } = useContext(PlayerContext)
   const navigate = useNavigate()
   const [playerReview, setPlayerReview] = useState({
@@ -40,7 +41,7 @@ function ReviewPlayer() {
   }
 
   const handleSubmitReview = async () => {
-    await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/review/`, {
+    await axiosClient.post('/api/v1/review/', {
       ...playerReview,
     })
 
@@ -172,4 +173,12 @@ function ReviewPlayer() {
   )
 }
 
-export default ReviewPlayer
+ReviewPlayer.propTypes = {
+  axiosClient: Axios,
+}
+
+ReviewPlayer.defaultProps = {
+  axiosClient: Axios,
+}
+
+export default withAuthentication(ReviewPlayer)

@@ -32,9 +32,9 @@ router.post('/login', async (req, res) => {
 router.post('/create-account', async (req, res) => {
   const data: IUser = req.body
 
-  const hashPassword = await sha1(req.body.password)
+  const hashPassword = sha1(req.body.password)
 
-  if (!isUser(data)) {
+  if (!data) {
     res.status(500).end()
   }
 

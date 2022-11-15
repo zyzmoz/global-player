@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import BodyText from '../components/BodyText/BodyText'
@@ -14,6 +14,12 @@ function Login() {
   const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (sessionStorage.getItem('token')) {
+      navigate('/topplayers')
+    }
+  }, [navigate])
 
   const handleLogin = async () => {
     const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/auth/login`, {

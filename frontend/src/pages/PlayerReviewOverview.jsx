@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
-import axios from 'axios'
+import { Axios } from 'axios'
 import Button from '../components/Button/Button'
 import { PlayerContext } from '../context/PlayerContext'
 import Footer from '../components/Footer/Footer'
@@ -12,13 +12,12 @@ import Sidebar from '../components/Sidebar/Sidebar'
 import Image from '../components/Image/Image'
 import ProgressBar from '../components/ProgressBar/ProgressBar'
 import RadarChart from '../components/RadarChart/RadarChart'
+import withAuthentication from '../hoc/withAuthentication'
 
-function PlayerReviewOverview() {
+function PlayerReviewOverview({ axiosClient }) {
   const { playerData, playerId } = React.useContext(PlayerContext)
   const navigate = useNavigate()
-  const { data: playerOverview } = useQuery('playerOverview', () =>
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/review/${playerId}`)
-  )
+  const { data: playerOverview } = useQuery('playerOverview', () => axiosClient.get(`/api/v1/review/${playerId}`))
 
   return (
     <div className="player-review">
@@ -96,4 +95,12 @@ function PlayerReviewOverview() {
   )
 }
 
-export default PlayerReviewOverview
+PlayerReviewOverview.propTypes = {
+  axiosClient: Axios,
+}
+
+PlayerReviewOverview.defaultProps = {
+  axiosClient: Axios,
+}
+
+export default withAuthentication(PlayerReviewOverview)
