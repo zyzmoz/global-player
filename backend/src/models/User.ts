@@ -3,8 +3,10 @@ export interface IUser {
   _id: string
   firstName: string
   lastName: string
+  jobTitle: string
   email: string
-  companyId: string
+  password: string
+  companyName: string
   isPlayer: boolean
   playerId: string
 }
@@ -15,8 +17,10 @@ export const isUser = (user: any): user is IUser => {
     _id: 'string',
     firstName: 'string',
     lastName: 'string',
+    jobTitle: 'string',
     email: 'string',
-    companyId: 'string',
+    password: 'string',
+    companyName: 'string',
     isPlayer: 'boolean',
     playerId: 'string',
   }

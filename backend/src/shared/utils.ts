@@ -6,11 +6,11 @@ const DECIMAL_PLACES = Math.pow(10, 1)
 
 export const getPlayerAnalysis = async (player) => {
   const {
+    _id,
+    puuid,
     summonerName,
     wins,
     losses,
-    _id,
-    puuid,
     firstName,
     lastName,
     profileIconId,

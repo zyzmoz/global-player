@@ -2,7 +2,8 @@
   display: grid;
   grid-template-columns: 1fr;
   overflow-x: hidden;
-  padding: 0;
+  padding: 2rem;
+  padding-left: 17.625rem;
 }
 
 .player-details-page-container-1 {
@@ -144,7 +145,8 @@
     display: flex;
     gap: 0.25rem;
     flex-flow: row wrap;
-
+    justify-content: center;
+    align-items: center;
     .tag {
       padding: 1rem 2rem;
     }

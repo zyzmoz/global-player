@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
-import axios from 'axios'
+import { Axios } from 'axios'
 import Headline from '../components/Headline/Headline'
 import Table from '../components/Table/Table'
 import TableHeader from '../components/Table/TableHeader'
@@ -22,23 +22,28 @@ import Image from '../components/Image/Image'
 import RoleIcons from '../components/RoleIcons/RoleIcons'
 import { DownIcon, SupportIcon, UserIcon } from '../components/Icon/icons'
 import { PlayerContext } from '../context/PlayerContext'
+import withAuthentication from '../hoc/withAuthentication'
 
-function TopPlayersPage() {
+function TopPlayersPage({ axiosClient }) {
   const navigate = useNavigate()
   const context = React.useContext(PlayerContext)
 
   const { data: topPlayers } = useQuery('topPlayersData', () =>
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/top-players`)
+    axiosClient.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/top-players`)
   )
 
   const { data: allPlayers } = useQuery('allPlayersData', () =>
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/all-players`)
+    axiosClient.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/all-players`)
   )
 
   const navigateToDetails = (id) => {
     context.setPlayerId(id)
     navigate('/player-details')
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div className="top-players-page">
@@ -283,4 +288,12 @@ function TopPlayersPage() {
   )
 }
 
-export default TopPlayersPage
+TopPlayersPage.propTypes = {
+  axiosClient: Axios,
+}
+
+TopPlayersPage.defaultProps = {
+  axiosClient: Axios,
+}
+
+export default withAuthentication(TopPlayersPage)

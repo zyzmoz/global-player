@@ -1,7 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
-import axios from 'axios'
+import { Axios } from 'axios'
+import Tag from '../components/Tag/Tag'
 import Button from '../components/Button/Button'
 import { PlayerContext } from '../context/PlayerContext'
 import Footer from '../components/Footer/Footer'
@@ -12,13 +13,12 @@ import Sidebar from '../components/Sidebar/Sidebar'
 import Image from '../components/Image/Image'
 import ProgressBar from '../components/ProgressBar/ProgressBar'
 import RadarChart from '../components/RadarChart/RadarChart'
+import withAuthentication from '../hoc/withAuthentication'
 
-function PlayerReviewOverview() {
+function PlayerReviewOverview({ axiosClient }) {
   const { playerData, playerId } = React.useContext(PlayerContext)
   const navigate = useNavigate()
-  const { data: playerOverview } = useQuery('playerOverview', () =>
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/review/${playerId}`)
-  )
+  const { data: playerOverview } = useQuery('playerOverview', () => axiosClient.get(`/api/v1/review/${playerId}`))
 
   return (
     <div className="player-review">
@@ -74,17 +74,25 @@ function PlayerReviewOverview() {
         />
 
         <div className="review-buttons">
-          {playerOverview?.data.coordination ? <Button buttonType="button-outline" text="Coordination" /> : ''}
-          {playerOverview?.data.deffensive ? <Button buttonType="button-outline" text="Deffensive" /> : ''}
-          {playerOverview?.data.dueling ? <Button buttonType="button-outline" text="Dueling" /> : ''}
-          {playerOverview?.data.farming ? <Button buttonType="button-outline" text="Farming" /> : ''}
-          {playerOverview?.data.offensive ? <Button buttonType="button-outline" text="Steadiness" /> : ''}
-          {playerOverview?.data.picking ? <Button buttonType="button-outline" text="Offensive" /> : ''}
-          {playerOverview?.data.reactionTime ? <Button buttonType="button-outline" text="Picking" /> : ''}
-          {playerOverview?.data.skirmishing ? <Button buttonType="button-outline" text="Reaction Time" /> : ''}
-          {playerOverview?.data.steadiness ? <Button buttonType="button-outline" text="Skirmishing" /> : ''}
-          {playerOverview?.data.timing ? <Button buttonType="button-outline" text="Timing" /> : ''}
-          {playerOverview?.data.roaming ? <Button buttonType="button-outline" text="Roaming" /> : ''}
+          {playerOverview?.data.coordination ? (
+            <Tag text="Coordination" reviews={playerOverview?.data.coordination} />
+          ) : (
+            ''
+          )}
+          {playerOverview?.data.deffensive ? <Tag text="Deffensive" reviews={playerOverview?.data.deffensive} /> : ''}
+          {playerOverview?.data.dueling ? <Tag text="Dueling" reviews={playerOverview?.data.dueling} /> : ''}
+          {playerOverview?.data.farming ? <Tag text="Farming" reviews={playerOverview?.data.farming} /> : ''}
+          {playerOverview?.data.offensive ? <Tag text="Steadiness" reviews={playerOverview?.data.offensive} /> : ''}
+          {playerOverview?.data.picking ? <Tag text="Offensive" reviews={playerOverview?.data.picking} /> : ''}
+          {playerOverview?.data.reactionTime ? <Tag text="Picking" reviews={playerOverview?.data.reactionTime} /> : ''}
+          {playerOverview?.data.skirmishing ? (
+            <Tag text="Reaction Time" reviews={playerOverview?.data.skirmishing} />
+          ) : (
+            ''
+          )}
+          {playerOverview?.data.steadiness ? <Tag text="Skirmishing" reviews={playerOverview?.data.steadiness} /> : ''}
+          {playerOverview?.data.timing ? <Tag text="Timing" reviews={playerOverview?.data.timing} /> : ''}
+          {playerOverview?.data.roaming ? <Tag text="Roaming" reviews={playerOverview?.data.roaming} /> : ''}
         </div>
       </div>
 
@@ -96,4 +104,12 @@ function PlayerReviewOverview() {
   )
 }
 
-export default PlayerReviewOverview
+PlayerReviewOverview.propTypes = {
+  axiosClient: Axios,
+}
+
+PlayerReviewOverview.defaultProps = {
+  axiosClient: Axios,
+}
+
+export default withAuthentication(PlayerReviewOverview)

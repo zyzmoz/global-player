@@ -1,9 +1,8 @@
 import { useQuery } from 'react-query'
-import axios from 'axios'
-import React, { useState } from 'react'
+import { Axios } from 'axios'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
-import Header from '../components/Header/Header'
+// import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
 import Headline from '../components/Headline/Headline'
 import BodyText from '../components/BodyText/BodyText'
 import Image from '../components/Image/Image'
@@ -13,16 +12,18 @@ import Button from '../components/Button/Button'
 import Card from '../components/Card/Card'
 import Tag from '../components/Tag/Tag'
 import DoughnutChart from '../components/DoughnutChart/DoughnutChart'
-import { CheckIcon, LikeIcon, CrossIcon } from '../components/Icon/icons'
+import { CheckIcon, LikeIcon, CrossIcon, UserIcon } from '../components/Icon/icons'
 import Footer from '../components/Footer/Footer'
 import Colors from '../sass/variables/_colors.scss'
 import { PlayerContext } from '../context/PlayerContext'
+import withAuthentication from '../hoc/withAuthentication'
+import Sidebar from '../components/Sidebar/Sidebar'
 
-function PlayerDetailsPage() {
+function PlayerDetailsPage({ axiosClient }) {
   const context = React.useContext(PlayerContext)
 
   const { data: playerDetail } = useQuery('playerDetail', () =>
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/player/${context.playerId}`)
+    axiosClient.get(`/api/v1/analytics/player/${context.playerId}`)
   )
 
   const [likeIt, setLikeIt] = useState(false)
@@ -43,13 +44,20 @@ function PlayerDetailsPage() {
     navigate('/player-review-overview')
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className="player-details-wrapper-1">
-      <LandingPageNavMenu className="nav-side-menu" />
+      {/* <LandingPageNavMenu className="nav-side-menu" /> */}
       <div className="player-details-page-container-1">
+        <div className="nav">
+          <CrossIcon onClick={() => navigate(-1)} className="userIcon" fill={Colors.primaryColorBrightGreen} />
+          <UserIcon className="userIcon" fill={Colors.primaryColorBrightGreen} />
+        </div>
+        <Sidebar />
         <div className="player-details-page-wrapper">
-          <Header />
-
           <main>
             <section className="player-information-wrapper">
               <div className="player-information detail">
@@ -219,4 +227,12 @@ function PlayerDetailsPage() {
   )
 }
 
-export default PlayerDetailsPage
+PlayerDetailsPage.propTypes = {
+  axiosClient: Axios,
+}
+
+PlayerDetailsPage.defaultProps = {
+  axiosClient: Axios,
+}
+
+export default withAuthentication(PlayerDetailsPage)

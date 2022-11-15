@@ -2,7 +2,7 @@ import { Router } from 'express'
 
 import { isUser, IUser } from '../models/User'
 
-import { findMany, findOne, insert, remove, update } from '../shared/dbFunctions'
+import { findMany, findOne, remove, update } from '../shared/dbFunctions'
 
 const router = Router()
 
@@ -22,20 +22,8 @@ router.get(`/:id`, async (req, res) => {
   res.json(user)
 })
 
-router.post('/', async (req, res) => {
-  const data: IUser = req.body
-
-  if (!isUser(data)) {
-    res.status(500).end()
-  }
-
-  const user = await insert<IUser>('user', data)
-
-  res.json(user)
-})
-
 router.put(`/`, async (req, res) => {
-  const data = req.body
+  const { password, ...data } = req.body
 
   if (!isUser(data)) {
     res.status(500).end()
