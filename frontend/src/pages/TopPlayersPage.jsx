@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { Axios } from 'axios'
@@ -40,6 +40,10 @@ function TopPlayersPage({ axiosClient }) {
     context.setPlayerId(id)
     navigate('/player-details')
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div className="top-players-page">
