@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query'
-import axios from 'axios'
+import { Axios } from 'axios'
 import React from 'react'
 import RecruitersPagesNavMenu from '../components/Header/RecruitersPagesNavMenu'
 import Header from '../components/Header/Header'
@@ -18,16 +18,17 @@ import LineChart from '../components/LineChart/LineChart'
 // import TableItem from '../components/Table/TableItem'
 import Colors from '../sass/variables/_colors.scss'
 import { PlayerContext } from '../context/PlayerContext'
+import withAuthentication from '../hoc/withAuthentication'
 
-function ComparisonResultsPage() {
+function ComparisonResultsPage({ axiosClient }) {
   const context = React.useContext(PlayerContext)
 
   const { data: player1 } = useQuery('player1', () =>
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/player/${context.playersToCompare.player1}`)
+    axiosClient.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/player/${context.playersToCompare.player1}`)
   )
 
   const { data: player2 } = useQuery('player2', () =>
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/player/${context.playersToCompare.player2}`)
+    axiosClient.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/player/${context.playersToCompare.player2}`)
   )
 
   return (
@@ -275,4 +276,12 @@ function ComparisonResultsPage() {
   )
 }
 
-export default ComparisonResultsPage
+ComparisonResultsPage.propTypes = {
+  axiosClient: Axios,
+}
+
+ComparisonResultsPage.defaultProps = {
+  axiosClient: Axios,
+}
+
+export default withAuthentication(ComparisonResultsPage)

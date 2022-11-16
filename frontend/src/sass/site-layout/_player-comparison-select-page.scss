@@ -17,7 +17,7 @@ body {
   padding: 0;
 }
 
-main {
+.main-player-comparison-select-page {
   min-width: 335px;
   max-width: 450px;
   margin-left: auto;
@@ -152,7 +152,7 @@ main {
 
 /////////////////////// DESKTOP VIEW ///////////////////////
 @media screen and (min-width: 700px) {
-  main {
+  .main-player-comparison-select-page {
     max-width: 700px;
     display: grid;
     gap: 2rem;

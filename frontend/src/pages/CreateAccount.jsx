@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
 import Header from '../components/Header/Header'
 import Headline from '../components/Headline/Headline'
@@ -20,16 +20,16 @@ function CreateAccount() {
 
           <div className="choices-container">
             <div className="choice-container">
-              <NavLink to="/CreateAccountPlayer">
+              <Link to="/create-account-player">
                 <Image imageUrl={playerIcon} imageWidth="67px" imageHeight="auto" alt="Player Icon" />
                 <BodyText text="I'm a player" fontSize="16pt" color="#000000" textAlign="center" />
-              </NavLink>
+              </Link>
             </div>
             <div className="choice-container">
-              <NavLink to="/CreateAccountRecruiter">
+              <Link to="/create-account-recruiter">
                 <Image imageUrl={recruiterIcon} imageWidth="105px" imageHeight="auto" alt="Recruiter Icon" />
                 <BodyText text="I'm a recruiter" fontSize="16pt" color="#000000" textAlign="center" />
-              </NavLink>
+              </Link>
             </div>
           </div>
         </main>

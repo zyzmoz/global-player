@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
-import axios from 'axios'
+import { Axios } from 'axios'
 import Header from '../components/Header/Header'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
 import { CrossIcon, AddIcon, DownIcon } from '../components/Icon/icons'
@@ -13,14 +13,13 @@ import Avatar from '../components/Avatar/Avatar'
 import Footer from '../components/Footer/Footer'
 import Colors from '../sass/variables/_colors.scss'
 import { PlayerContext } from '../context/PlayerContext'
+import withAuthentication from '../hoc/withAuthentication'
 
-function PlayerComparisonSelectPage() {
+function PlayerComparisonSelectPage({ axiosClient }) {
   const { playersToCompare, setPlayersToCompare } = useContext(PlayerContext)
   const navigate = useNavigate()
 
-  const { data: allPlayers } = useQuery('allPlayersData', () =>
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/all-players`)
-  )
+  const { data: allPlayers } = useQuery('allPlayersData', () => axiosClient.get('/api/v1/analytics/all-players'))
 
   const handlePlayerSelectionBtn = (playerId) => {
     if (!playersToCompare.player1) {
@@ -52,7 +51,7 @@ function PlayerComparisonSelectPage() {
             <Headline text="Compare" textAlign="center" color={Colors.primaryColorBrightGreen} fontSize="32px" />
           </div>
 
-          <main>
+          <main className="main-player-comparison-select-page">
             <section className="search-players-wrapper">
               <div className="versus-divider">
                 <div className="vr-divider" />
@@ -113,4 +112,12 @@ function PlayerComparisonSelectPage() {
   )
 }
 
-export default PlayerComparisonSelectPage
+PlayerComparisonSelectPage.propTypes = {
+  axiosClient: Axios,
+}
+
+PlayerComparisonSelectPage.defaultProps = {
+  axiosClient: Axios,
+}
+
+export default withAuthentication(PlayerComparisonSelectPage)
