@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import BodyText from '../BodyText/BodyText'
 
 function Tag({ reviews, text }) {
-  const tagText = `${text} ${reviews}`
+  const tagText = `${reviews} ${text}`
 
   return (
     <div
@@ -18,7 +18,7 @@ function Tag({ reviews, text }) {
         width: 'fit-content',
       }}
     >
-      <BodyText fontSize="20px" color="#7DFAA4" textAlign="center" text={tagText} />
+      <BodyText fontSize="20pt" color="#7DFAA4" textAlign="center" text={tagText} />
     </div>
   )
 }

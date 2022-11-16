@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import PropTypes from 'prop-types'
-import axios from 'axios'
+import { Axios } from 'axios'
 import { PlayerContext } from '../../context/PlayerContext'
 
-function SearchPlayer({ placeholder, className }) {
+function SearchPlayer({ placeholder, className, axiosClient }) {
   const [filteredPlayer, setFilteredPlayer] = useState([])
   const { data: allPlayers } = useQuery('allPlayersData', () =>
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/all-players`)
+    axiosClient.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/all-players`)
   )
 
   const handlerFilter = (event) => {
@@ -54,9 +54,11 @@ export default SearchPlayer
 SearchPlayer.defaultProps = {
   className: '',
   placeholder: '',
+  axiosClient: Axios,
 }
 
 SearchPlayer.propTypes = {
   className: PropTypes.string,
   placeholder: PropTypes.string,
+  axiosClient: Axios,
 }

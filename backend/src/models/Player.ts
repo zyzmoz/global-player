@@ -2,8 +2,6 @@ export interface IPlayer {
   _id: string
   playerId: string
   summonerId: string
-  firstName: string
-  lastName: string
   playerImage: string
   freshBlood: boolean
   wins: number
@@ -22,8 +20,6 @@ export const isPlayer = (player: any): player is IPlayer => {
     _id: 'string',
     playerId: 'string',
     summonerId: 'string',
-    firstName: 'string',
-    lastName: 'string',
     playerImage: 'string',
     freshBlood: 'boolean',
     wins: 'number',

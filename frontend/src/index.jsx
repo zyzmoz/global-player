@@ -51,15 +51,15 @@ const router = createBrowserRouter([
     element: <PlayerDetailsPage />,
   },
   {
-    path: 'createaccount',
+    path: 'create-account',
     element: <CreateAccount />,
   },
   {
-    path: 'createaccountplayer',
+    path: 'create-account-player',
     element: <CreateAccountPlayer />,
   },
   {
-    path: 'createaccountrecruiter',
+    path: 'create-account-recruiter',
     element: <CreateAccountRecruiter />,
   },
   {

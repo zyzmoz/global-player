@@ -18,7 +18,7 @@ function Card({ width, height, backgroundColor, children }) {
 export default Card
 
 Card.defaultProps = {
-  width: '400px',
+  width: '',
   height: '',
   backgroundColor: '#402CAC',
   children: '',

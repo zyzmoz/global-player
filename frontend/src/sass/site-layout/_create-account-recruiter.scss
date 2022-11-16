@@ -30,7 +30,8 @@
       div:nth-of-type(2) label,
       div:nth-of-type(3) label,
       div:nth-of-type(4) label,
-      div:nth-of-type(5) label {
+      div:nth-of-type(5) label,
+      div:nth-of-type(6) label {
         padding-bottom: 0.5rem;
       }
   }
@@ -44,7 +45,8 @@
   .create-account-page-recruiter-container form div:nth-of-type(2) input,
   .create-account-page-recruiter-container form div:nth-of-type(3) input,
   .create-account-page-recruiter-container form div:nth-of-type(4) input,
-  .create-account-page-recruiter-container form div:nth-of-type(5) input {
+  .create-account-page-recruiter-container form div:nth-of-type(5) input,
+  .create-account-page-recruiter-container form div:nth-of-type(6) input {
     box-sizing: border-box;
   
     width: 100%;
