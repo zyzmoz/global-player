@@ -23,7 +23,6 @@
   }
   ::placeholder {
     color: #5637ff;
-    padding-left: 1rem;
   }
 
   .userIcon {
@@ -218,14 +217,46 @@
       border: 1px solid #5637ff;
       width: 300px;
       height: 35px;
+      padding-left: 1rem;
     }
+
+    .search-player-component {
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      .search-player-results {
+        border: 1px solid #5637ff;
+        border-radius: 10px;
+        margin-top: 5px;
+        overflow: hidden;
+        overflow-y: auto;
+        height: 200px;
+
+        .results-as-buttons {
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          flex-flow: column nowrap;
+          width: 100%;
+          color: white;
+          padding: 0.5rem 1rem;
+
+          :hover {
+            color: $primary-color-bright-green;
+          }
+        }
+      }
+    }
+
     .userIcon {
       display: block;
     }
     .search-userIcon-wrapper {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
     }
 
     .main-contents > h1 {
@@ -238,7 +269,7 @@
       justify-content: center;
     }
     .card-container:nth-child(1) {
-      transform: scale(1.10);
+      transform: scale(1.1);
       margin: 0 1rem;
       order: 0;
     }
