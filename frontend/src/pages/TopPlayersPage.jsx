@@ -45,6 +45,7 @@ function TopPlayersPage({ axiosClient }) {
     window.scrollTo(0, 0)
   }, [])
 
+  console.log(topPlayers?.data[0].skills)
   return (
     <div className="top-players-page">
       <RecruitersPagesNavMenu className="nav-side-menu" />
@@ -97,15 +98,15 @@ function TopPlayersPage({ axiosClient }) {
                 <BodyText text="PERSONAL SKILLS" color={Colors.primaryColorBrightGreen} />
                 <div className="label-progressbar-wrapper">
                   <BodyText text="Team Player" />
-                  <ProgressBar progress={100} heightSize="1.125rem" />
+                  <ProgressBar progress={topPlayers?.data[0].skills.personalSkills[0]?.value} heightSize="1.125rem" />
                 </div>
                 <div className="label-progressbar-wrapper">
                   <BodyText text="Agressive" />
-                  <ProgressBar progress={60} heightSize="1.125rem" />
+                  <ProgressBar progress={topPlayers?.data[0].skills.personalSkills[1]?.value} heightSize="1.125rem" />
                 </div>
                 <div className="label-progressbar-wrapper">
                   <BodyText text="Bold" />
-                  <ProgressBar progress={60} heightSize="1.125rem" />
+                  <ProgressBar progress={topPlayers?.data[0].skills.personalSkills[2]?.value} heightSize="1.125rem" />
                 </div>
               </div>
               <Button onClick={() => navigateToDetails(topPlayers?.data[0].id)} text="See more" />
@@ -151,15 +152,15 @@ function TopPlayersPage({ axiosClient }) {
                 <BodyText text="PERSONAL SKILLS" color={Colors.primaryColorBrightGreen} />
                 <div className="label-progressbar-wrapper">
                   <BodyText text="Team Player" />
-                  <ProgressBar progress={100} heightSize="1.125rem" />
+                  <ProgressBar progress={topPlayers?.data[1].skills.personalSkills[0]?.value} heightSize="1.125rem" />
                 </div>
                 <div className="label-progressbar-wrapper">
                   <BodyText text="Agressive" />
-                  <ProgressBar progress={60} heightSize="1.125rem" />
+                  <ProgressBar progress={topPlayers?.data[1].skills.personalSkills[1]?.value} heightSize="1.125rem" />
                 </div>
                 <div className="label-progressbar-wrapper">
                   <BodyText text="Bold" />
-                  <ProgressBar progress={60} heightSize="1.125rem" />
+                  <ProgressBar progress={topPlayers?.data[1].skills.personalSkills[2]?.value} heightSize="1.125rem" />
                 </div>
               </div>
               <Button onClick={() => navigateToDetails(topPlayers?.data[1].id)} text="See more" />
@@ -205,15 +206,15 @@ function TopPlayersPage({ axiosClient }) {
                 <BodyText text="PERSONAL SKILLS" color={Colors.primaryColorBrightGreen} />
                 <div className="label-progressbar-wrapper">
                   <BodyText text="Team Player" />
-                  <ProgressBar progress={100} heightSize="1.125rem" />
+                  <ProgressBar progress={topPlayers?.data[2].skills.personalSkills[0]?.value} heightSize="1.125rem" />
                 </div>
                 <div className="label-progressbar-wrapper">
                   <BodyText text="Agressive" />
-                  <ProgressBar progress={60} heightSize="1.125rem" />
+                  <ProgressBar progress={topPlayers?.data[2].skills.personalSkills[1]?.value} heightSize="1.125rem" />
                 </div>
                 <div className="label-progressbar-wrapper">
                   <BodyText text="Bold" />
-                  <ProgressBar progress={60} heightSize="1.125rem" />
+                  <ProgressBar progress={topPlayers?.data[2].skills.personalSkills[2]?.value} heightSize="1.125rem" />
                 </div>
               </div>
               <Button onClick={() => navigateToDetails(topPlayers?.data[2].id)} text="See more" />
@@ -259,7 +260,11 @@ function TopPlayersPage({ axiosClient }) {
               matches: `${player.matches}`,
               personality: (
                 <div className="personality">
-                  <ProgressBar progress={80} widthSize="140px" heightSize="16px" />
+                  <ProgressBar
+                    progress={player.skills.personalSkills[0]?.value || 0}
+                    widthSize="140px"
+                    heightSize="16px"
+                  />
                   <BodyText text="Team Player" textAlign="center" fontSize="small" />
                 </div>
               ),
