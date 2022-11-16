@@ -52,7 +52,7 @@ function PlayerComparisonSelectPage() {
             <Headline text="Compare" textAlign="center" color={Colors.primaryColorBrightGreen} fontSize="32px" />
           </div>
 
-          <main>
+          <main className="main-player-comparison-select-page">
             <section className="search-players-wrapper">
               <div className="versus-divider">
                 <div className="vr-divider" />

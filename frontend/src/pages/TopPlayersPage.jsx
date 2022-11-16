@@ -9,7 +9,6 @@ import TableItem from '../components/Table/TableItem'
 import Sidebar from '../components/Sidebar/Sidebar'
 import RecruitersPagesNavMenu from '../components/Header/RecruitersPagesNavMenu'
 import Header from '../components/Header/Header'
-import SearchBar from '../components/SearchBar/SearchBar'
 import Card from '../components/Card/Card'
 import Avatar from '../components/Avatar/Avatar'
 import DoughnutChart from '../components/DoughnutChart/DoughnutChart'
@@ -22,6 +21,7 @@ import Image from '../components/Image/Image'
 import RoleIcons from '../components/RoleIcons/RoleIcons'
 import { DownIcon, SupportIcon, UserIcon } from '../components/Icon/icons'
 import { PlayerContext } from '../context/PlayerContext'
+import SearchPlayer from '../components/SearchPlayer.jsx/SearchPlayer'
 
 function TopPlayersPage() {
   const navigate = useNavigate()
@@ -47,7 +47,7 @@ function TopPlayersPage() {
       <Sidebar />
       <div className="main-contents">
         <div className="search-userIcon-wrapper">
-          <SearchBar />
+          <SearchPlayer className="search-player-component" placeholder="Search" />
           <UserIcon className="userIcon" fill={Colors.primaryColorBrightGreen} />
         </div>
         <Headline text="Top Players" color={Colors.primaryColorBrightGreen} textAlign="center" />
