@@ -5,6 +5,20 @@
   display: grid;
   grid-template-columns: 1fr;
   overflow-x: hidden;
+  height: 100vh;
+
+  .vr-divider {
+    display: none;
+  }
+}
+
+.create-account-page-container .header-link {
+  border: 3px solid #7dfaa4;
+  border-radius: 0.5rem;
+  margin-left: 2rem;
+  padding: 0.25rem 1.2rem;
+  text-decoration: none;
+  color: #7dfaa4;
 }
 
 .create-account-page-container {
@@ -13,6 +27,13 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+
+  main {
+    display: unset;
+    max-width: unset;
+    gap: unset;
+    grid-template-columns: unset;
+  }
 }
 
 .create-account-page-container h1 {
@@ -48,6 +69,10 @@
   margin-bottom: 1rem;
 }
 
+.choice-container p:hover {
+  background: radial-gradient(105.5% 711.76% at 0% 49.35%, #d7ffe3 0%, rgba(255, 255, 255, 0) 100%) #16ff8c;
+}
+
 .choice-container a {
   text-decoration: none;
 }
@@ -58,6 +83,10 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    main {
+      width: 800px;
+    }
   }
   .create-account-page-container h1 {
     font-size: 36px;
@@ -73,9 +102,18 @@
     margin-right: auto;
   }
 
-  .choice-container:nth-of-type(1) {
-    border-right: 2px solid #7dfaa4;
-    padding-right: 14%;
+  .vr-divider-create {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(125, 250, 164, 0),
+      rgba(125, 250, 164, 1),
+      rgba(125, 250, 164, 0)
+    );
+    padding: 8rem 1px;
+  }
+
+  .choice-container {
+    padding-bottom: 2rem;
   }
 
   .choice-container:nth-of-type(1) img {

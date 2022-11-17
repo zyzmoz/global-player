@@ -3,6 +3,15 @@
     grid-template-columns: 1fr;
     overflow-x: hidden;
   }
+
+  .create-account-page-recruiter .header-link {
+    border: 3px solid #7dfaa4;
+    border-radius: 0.5rem;
+    margin-left: 2rem;
+    padding: 0.25rem 1.2rem;
+    text-decoration: none;
+    color: #7dfaa4;
+  }
   
   .create-account-page-recruiter-container {
     grid-column: 1/-1;
@@ -94,6 +103,13 @@
     .create-account-page-recruiter-container form {
       max-width: 507px;
       gap: 2rem;
+    }
+
+    .create-account-page-recruiter-container main {
+      display: unset;
+      padding: unset;
+      max-width: unset;
+      margin: unset;
     }
   }
   
