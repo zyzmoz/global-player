@@ -120,6 +120,9 @@
 
   .progress-bar-container {
     margin-bottom: 1.5rem;
+    p {
+      margin-top: 1rem;
+    }
   }
 
   .progress-bar {
@@ -238,6 +241,10 @@
     margin-right: auto;
     #winrate {
       padding-top: 1rem;
+      p {
+        padding-top: 2.5rem;
+        font-size: 20pt;
+      }
     }
   }
   p {
@@ -421,8 +428,8 @@
         .radar-chart {
           display: block;
           grid-column: 3/4;
-        }
 
+        }
         .tag-container {
           display: none;
         }
