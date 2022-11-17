@@ -19,6 +19,7 @@ import { PlayerContext } from '../context/PlayerContext'
 import withAuthentication from '../hoc/withAuthentication'
 import Sidebar from '../components/Sidebar/Sidebar'
 import ProgressBar from '../components/ProgressBar/ProgressBar'
+import RadarChart from '../components/RadarChart/RadarChart'
 
 function PlayerDetailsPage({ axiosClient }) {
   const context = React.useContext(PlayerContext)
@@ -109,18 +110,30 @@ function PlayerDetailsPage({ axiosClient }) {
               <Card width="">
                 <Headline text="PERSONAL SKILLS" />
                 <div className="progress-bar-container">
-                  <BodyText text="Team Player" />
-                  <ProgressBar progress={0} heightSize="1.125rem" />
-
-                  <BodyText text="Agressive" />
-                  <div className="progress-bar">Progres bar here</div>
-                  <BodyText text="Bold" />
-                  <div className="progress-bar">Progres bar here</div>
+                  {playerDetail?.data.skills.personalSkills.map((skill) => (
+                    <>
+                      <BodyText text={skill.personalSkill} />
+                      <ProgressBar progress={skill.value} text={`${skill.value.toFixed(1)}%`} heightSize="1.125rem" />
+                    </>
+                  ))}
                 </div>
                 <div className="hr-divider" />
                 <div className="vr-divider" />
                 <Headline text="TECH SKILLS" />
-                <div className="radar-chart">Radar Chart Here!</div>
+                <RadarChart
+                  width="250px"
+                  height="auto"
+                  playerSkills={{
+                    data: [
+                      playerDetail?.data.skills.skills.farming,
+                      playerDetail?.data.skills.skills.dueling,
+                      playerDetail?.data.skills.skills.timing,
+                      playerDetail?.data.skills.skills.picking,
+                      playerDetail?.data.skills.skills.deffensive,
+                      playerDetail?.data.skills.skills.roaming,
+                    ],
+                  }}
+                />
                 <div className="tag-container">
                   <Tag text="Farming" />
                   <Tag text="Dueling" />

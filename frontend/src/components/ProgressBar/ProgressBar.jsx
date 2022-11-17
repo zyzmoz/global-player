@@ -20,6 +20,9 @@ function ProgressBar({ progress, color, border, borderline, text, widthSize, hei
             backgroundColor: color,
             borderRadius: border,
             height: heightSize,
+            justifyContent: 'end',
+            color: 'white',
+            paddingRight: '4px',
           }}
         >
           {text}
