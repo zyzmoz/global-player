@@ -18,6 +18,7 @@ import Colors from '../sass/variables/_colors.scss'
 import { PlayerContext } from '../context/PlayerContext'
 import withAuthentication from '../hoc/withAuthentication'
 import Sidebar from '../components/Sidebar/Sidebar'
+import ProgressBar from '../components/ProgressBar/ProgressBar'
 
 function PlayerDetailsPage({ axiosClient }) {
   const context = React.useContext(PlayerContext)
@@ -47,6 +48,8 @@ function PlayerDetailsPage({ axiosClient }) {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  console.log({ playerDetail })
 
   return (
     <div className="player-details-wrapper-1">
@@ -107,7 +110,8 @@ function PlayerDetailsPage({ axiosClient }) {
                 <Headline text="PERSONAL SKILLS" />
                 <div className="progress-bar-container">
                   <BodyText text="Team Player" />
-                  <div className="progress-bar">Progres bar here</div>
+                  <ProgressBar progress={0} heightSize="1.125rem" />
+
                   <BodyText text="Agressive" />
                   <div className="progress-bar">Progres bar here</div>
                   <BodyText text="Bold" />

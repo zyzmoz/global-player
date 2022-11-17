@@ -223,15 +223,15 @@ export const getPlayerPersonalSkills = async (playerId: string) => {
   )
 
   const skillMap = {
-    teamPlayer: "Team Player",
-      leadership: "Leadership",
-      criticalThinking: "Critical",
-      problemSolving: 0,
+    teamPlayer: 'Team Player',
+    leadership: 'Leadership',
+    criticalThinking: 'Critical',
+    problemSolving: 'Problem Solving',
   }
 
   const personalSkills = Object.keys(pSkills)
     .map((key) => {
-      return { personalSkill: key, value: pSkills[key] / reviews.length }
+      return { personalSkill: skillMap[key], value: pSkills[key] / reviews.length }
     })
     .sort((a, b) => (a.value > b.value ? -1 : 1))
 

@@ -97,15 +97,15 @@ function TopPlayersPage({ axiosClient }) {
               <div className="top-players-personal-skills">
                 <BodyText text="PERSONAL SKILLS" color={Colors.primaryColorBrightGreen} />
                 <div className="label-progressbar-wrapper">
-                  <BodyText text="Team Player" />
+                  <BodyText text={topPlayers?.data[0].skills.personalSkills[0]?.personalSkill} />
                   <ProgressBar progress={topPlayers?.data[0].skills.personalSkills[0]?.value} heightSize="1.125rem" />
                 </div>
                 <div className="label-progressbar-wrapper">
-                  <BodyText text="Agressive" />
+                  <BodyText text={topPlayers?.data[0].skills.personalSkills[1]?.personalSkill} />
                   <ProgressBar progress={topPlayers?.data[0].skills.personalSkills[1]?.value} heightSize="1.125rem" />
                 </div>
                 <div className="label-progressbar-wrapper">
-                  <BodyText text="Bold" />
+                  <BodyText text={topPlayers?.data[0].skills.personalSkills[2]?.personalSkill} />
                   <ProgressBar progress={topPlayers?.data[0].skills.personalSkills[2]?.value} heightSize="1.125rem" />
                 </div>
               </div>
@@ -151,15 +151,15 @@ function TopPlayersPage({ axiosClient }) {
               <div className="top-players-personal-skills">
                 <BodyText text="PERSONAL SKILLS" color={Colors.primaryColorBrightGreen} />
                 <div className="label-progressbar-wrapper">
-                  <BodyText text="Team Player" />
+                  <BodyText text={topPlayers?.data[1].skills.personalSkills[0]?.personalSkill} />
                   <ProgressBar progress={topPlayers?.data[1].skills.personalSkills[0]?.value} heightSize="1.125rem" />
                 </div>
                 <div className="label-progressbar-wrapper">
-                  <BodyText text="Agressive" />
+                  <BodyText text={topPlayers?.data[1].skills.personalSkills[1]?.personalSkill} />
                   <ProgressBar progress={topPlayers?.data[1].skills.personalSkills[1]?.value} heightSize="1.125rem" />
                 </div>
                 <div className="label-progressbar-wrapper">
-                  <BodyText text="Bold" />
+                  <BodyText text={topPlayers?.data[1].skills.personalSkills[2]?.personalSkill} />
                   <ProgressBar progress={topPlayers?.data[1].skills.personalSkills[2]?.value} heightSize="1.125rem" />
                 </div>
               </div>
@@ -205,15 +205,15 @@ function TopPlayersPage({ axiosClient }) {
               <div className="top-players-personal-skills">
                 <BodyText text="PERSONAL SKILLS" color={Colors.primaryColorBrightGreen} />
                 <div className="label-progressbar-wrapper">
-                  <BodyText text="Team Player" />
+                  <BodyText text={topPlayers?.data[2].skills.personalSkills[0]?.personalSkill} />
                   <ProgressBar progress={topPlayers?.data[2].skills.personalSkills[0]?.value} heightSize="1.125rem" />
                 </div>
                 <div className="label-progressbar-wrapper">
-                  <BodyText text="Agressive" />
+                  <BodyText text={topPlayers?.data[2].skills.personalSkills[1]?.personalSkill} />
                   <ProgressBar progress={topPlayers?.data[2].skills.personalSkills[1]?.value} heightSize="1.125rem" />
                 </div>
                 <div className="label-progressbar-wrapper">
-                  <BodyText text="Bold" />
+                  <BodyText text={topPlayers?.data[2].skills.personalSkills[2]?.personalSkill} />
                   <ProgressBar progress={topPlayers?.data[2].skills.personalSkills[2]?.value} heightSize="1.125rem" />
                 </div>
               </div>
@@ -243,7 +243,7 @@ function TopPlayersPage({ axiosClient }) {
           />
           {allPlayers?.data?.map((player, i) => {
             const playerData = {
-              rank: `#${i + 3}`,
+              rank: `#${i + 4}`,
               summonerName: (
                 <div className="name">
                   <Image
@@ -265,7 +265,7 @@ function TopPlayersPage({ axiosClient }) {
                     widthSize="140px"
                     heightSize="16px"
                   />
-                  <BodyText text="Team Player" textAlign="center" fontSize="small" />
+                  <BodyText text={player.skills.personalSkills[0]?.personalSkill} textAlign="center" fontSize="small" />
                 </div>
               ),
             }
