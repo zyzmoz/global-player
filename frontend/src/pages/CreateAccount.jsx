@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
-import Header from '../components/Header/Header'
+import HeaderCreateAccount from '../components/Header/HeaderCreateAccount'
 import Headline from '../components/Headline/Headline'
 import BodyText from '../components/BodyText/BodyText'
 import Footer from '../components/Footer/Footer'
@@ -12,9 +11,8 @@ function CreateAccount() {
 
   return (
     <div className="create-account-page-choice">
-      <LandingPageNavMenu className="nav-side-menu" />
       <div className="create-account-page-container">
-        <Header />
+        <HeaderCreateAccount linkToNav="/Login" />
         <main>
           <Headline text="Choose your role" color="" fontSize="" textAlign="" />
 
@@ -25,6 +23,8 @@ function CreateAccount() {
                 <BodyText text="I'm a player" fontSize="16pt" color="#000000" textAlign="center" />
               </Link>
             </div>
+            <div className="vr-divider-create" />
+
             <div className="choice-container">
               <Link to="/create-account-recruiter">
                 <Image imageUrl={recruiterIcon} imageWidth="105px" imageHeight="auto" alt="Recruiter Icon" />

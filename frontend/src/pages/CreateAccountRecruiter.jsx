@@ -1,14 +1,13 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
-import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import Headline from '../components/Headline/Headline'
 import BodyText from '../components/BodyText/BodyText'
 import Input from '../components/Input/Input'
 import Button from '../components/Button/Button'
 import { recruiterSchema } from '../utils/userValidation'
+import HeaderCreateAccount from '../components/Header/HeaderCreateAccount'
 
 function CreateAccountRecruiter() {
   const [error, setError] = useState(null)
@@ -41,16 +40,15 @@ function CreateAccountRecruiter() {
 
   return (
     <div className="create-account-page-recruiter">
-      <LandingPageNavMenu className="nav-side-menu" />
       <div className="create-account-page-recruiter-container">
-        <Header />
+        <HeaderCreateAccount linkToNav="/create-account" />
         <main>
           <Headline text="Create an Account" color="#7dfaa4" textAlign="center" />
           <form onSubmit={handleSubmit}>
             <Input id="firstName" placeholder="Enter your first name" label="First Name*" type="text" />
             <Input id="lastName" placeholder="Enter your last name" label="Full Name*" type="text" />
             <Input id="email" placeholder="Enter your email" label="Email*" type="email" />
-            <Input id="companyName" placeholder="Enter your company name" label="Comapany Name*" type="text" />
+            <Input id="companyName" placeholder="Enter your company name" label="Company Name*" type="text" />
             <Input id="jobTitle" placeholder="Enter your job title" label="Job Title*" type="text" />
             <Input id="password" placeholder="Enter your password" label="Password*" type="password" />
             {error && <BodyText text={error} color="red" />}
