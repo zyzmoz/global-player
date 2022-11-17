@@ -45,7 +45,6 @@ function TopPlayersPage({ axiosClient }) {
     window.scrollTo(0, 0)
   }, [])
 
-  console.log(topPlayers?.data[0].skills)
   return (
     <div className="top-players-page">
       <RecruitersPagesNavMenu className="nav-side-menu" />

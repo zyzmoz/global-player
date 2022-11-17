@@ -50,8 +50,6 @@ function PlayerDetailsPage({ axiosClient }) {
     window.scrollTo(0, 0)
   }, [])
 
-  console.log({ playerDetail })
-
   return (
     <div className="player-details-wrapper-1">
       {/* <LandingPageNavMenu className="nav-side-menu" /> */}
