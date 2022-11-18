@@ -6,6 +6,7 @@ import playerMatchRouter from './playerMatch'
 import reviewRouter from './review'
 import licenseRouter from './license'
 import analyticsRouter from './analytics'
+import favoriteRouter from './favorite'
 import { seedPlayers } from '../integrations/RiotAPI'
 import { authMiddleware } from '../middlewares/authMiddleware'
 import jwt from 'jsonwebtoken'
@@ -56,5 +57,6 @@ router.use('/playerMatch', authMiddleware, playerMatchRouter)
 router.use('/review', authMiddleware, reviewRouter)
 router.use('/license', authMiddleware, licenseRouter)
 router.use('/analytics', authMiddleware, analyticsRouter)
+router.use('/favorite', authMiddleware, favoriteRouter)
 
 export { router }
