@@ -240,7 +240,7 @@ function TopPlayersPage({ axiosClient }) {
               { property: 'personality', title: 'Personality' },
             ]}
           />
-          {allPlayers?.data?.map((player, i) => {
+          {allPlayers?.data?.slice(0, 7).map((player, i) => {
             const playerData = {
               rank: `#${i + 4}`,
               summonerName: (
