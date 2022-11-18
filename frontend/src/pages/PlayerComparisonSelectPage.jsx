@@ -4,9 +4,8 @@ import { useQuery } from 'react-query'
 import { Axios } from 'axios'
 import Header from '../components/Header/Header'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
-import { CrossIcon, AddIcon, DownIcon } from '../components/Icon/icons'
+import { CrossIcon, DownIcon } from '../components/Icon/icons'
 import Headline from '../components/Headline/Headline'
-import Input from '../components/Input/Input'
 import Button from '../components/Button/Button'
 import BodyText from '../components/BodyText/BodyText'
 import Avatar from '../components/Avatar/Avatar'
@@ -14,6 +13,7 @@ import Footer from '../components/Footer/Footer'
 import Colors from '../sass/variables/_colors.scss'
 import { PlayerContext } from '../context/PlayerContext'
 import withAuthentication from '../hoc/withAuthentication'
+import SearchPlayerSelection from '../components/SearchPlayerSelection/SearchPlayerSelection'
 
 function PlayerComparisonSelectPage({ axiosClient }) {
   const { playersToCompare, setPlayersToCompare } = useContext(PlayerContext)
@@ -21,13 +21,12 @@ function PlayerComparisonSelectPage({ axiosClient }) {
 
   const { data: allPlayers } = useQuery('allPlayersData', () => axiosClient.get('/api/v1/analytics/all-players'))
 
-  const handlePlayerSelectionBtn = (playerId) => {
+  const handlePlayerSelectionBtn = (player) => {
     if (!playersToCompare.player1) {
-      setPlayersToCompare({ ...playersToCompare, player1: playerId })
+      setPlayersToCompare({ ...playersToCompare, player1: player })
     }
-
     if (!playersToCompare.player2) {
-      setPlayersToCompare({ ...playersToCompare, player2: playerId })
+      setPlayersToCompare({ ...playersToCompare, player2: player })
     }
   }
 
@@ -59,27 +58,29 @@ function PlayerComparisonSelectPage({ axiosClient }) {
                 <div className="vr-divider" />
               </div>
               <div className="input-player-container-1">
-                <Input
+                <SearchPlayerSelection
+                  playerNumber={1}
+                  className="input-100w"
                   color={Colors.primaryColorBrightGreen}
                   placeholder="Type or select a player"
-                  className="input-add-player"
+                  selectedPlayer={playersToCompare.player1}
                 />
-                <button type="button" className="add-input-btn no-background-btn">
-                  <AddIcon fill={Colors.primaryColorBrightGreen} />
-                </button>
               </div>
 
               <div className="input-player-container-2">
-                <Input placeholder="Type or select a player" />
-                <button type="button" className="add-input-btn no-background-btn">
-                  <AddIcon fill={Colors.primaryColorBrightGreen} />
-                </button>
+                <SearchPlayerSelection
+                  playerNumber={2}
+                  className="input-100w"
+                  color={Colors.primaryColorBrightGreen}
+                  placeholder="Type or select a player"
+                  selectedPlayer={playersToCompare.player2}
+                />
               </div>
             </section>
 
             <section className="add-player-wrapper">
               <BodyText text="Often compared with..." color={Colors.secondaryColorSkyBlue} textAlign="left" />
-              {allPlayers?.data?.map((player) => (
+              {allPlayers?.data?.slice(0, 8).map((player) => (
                 <div className="avatar-name-container-btn">
                   <div className="avatar-name-container">
                     <Avatar
@@ -89,7 +90,9 @@ function PlayerComparisonSelectPage({ axiosClient }) {
                     <BodyText text={player.summonerName} color={Colors.secondaryColorSkyBlue} />
                   </div>
                   <button
-                    onClick={() => handlePlayerSelectionBtn(player.id)}
+                    onClick={() => {
+                      handlePlayerSelectionBtn(player)
+                    }}
                     type="button"
                     className="add-vs-btn no-background-btn"
                     style={{ color: Colors.primaryColorBrightGreen }}
