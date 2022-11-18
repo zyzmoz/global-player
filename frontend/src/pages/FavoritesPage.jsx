@@ -1,3 +1,7 @@
+import { Axios } from 'axios'
+import { string } from 'prop-types'
+import { useQuery } from 'react-query'
+import withAutentication from '../hoc/withAuthentication'
 import RecruitersPagesNavMenu from '../components/Header/RecruitersPagesNavMenu'
 import Sidebar from '../components/Sidebar/Sidebar'
 import { UserIcon } from '../components/Icon/icons'
@@ -6,7 +10,13 @@ import Footer from '../components/Footer/Footer'
 import Headline from '../components/Headline/Headline'
 import Favorites from '../components/Favorites/Favorites'
 
-function FavoritesPage() {
+function FavoritesPage({ axiosClient, userId }) {
+  const { data: favoritePlayers } = useQuery('favoritePlayersData', () => {
+    axiosClient.get(`/api/v1/favorite/${userId}`)
+  })
+
+  console.log(favoritePlayers, userId)
+
   return (
     <div className="favorites-page">
       <RecruitersPagesNavMenu className="nav-side-menu" />
@@ -31,4 +41,14 @@ function FavoritesPage() {
   )
 }
 
-export default FavoritesPage
+FavoritesPage.propTypes = {
+  axiosClient: Axios,
+  userId: string,
+}
+
+FavoritesPage.defaultProps = {
+  axiosClient: Axios,
+  userId: '',
+}
+
+export default withAutentication(FavoritesPage)
