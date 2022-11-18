@@ -8,6 +8,7 @@ router.get('/top-players', async (req, res) => {
   const topPlayers = await findMany('players', null, { leaguePoints: -1 }, 3)
   const pr = topPlayers.map(async (p) => await getPlayerAnalysis(p))
   const data = await Promise.all(pr)
+  
   res.status(200).json(data)
 })
 

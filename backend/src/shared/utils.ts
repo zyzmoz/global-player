@@ -1,6 +1,6 @@
 import { getMatchesDetails, getMatchIds } from '../integrations/RiotAPI'
 import { IReview } from '../models/Review'
-import { findMany, insert, removeAll } from './dbFunctions'
+import { findMany, insert, removeAll, update, upsert } from './dbFunctions'
 
 const DECIMAL_PLACES = Math.pow(10, 1)
 
@@ -22,24 +22,47 @@ export const getPlayerAnalysis = async (player) => {
 
   let matches = await findMany('playerMatches', {
     playerId: _id,
-    assists: { $gte: 0 },
   })
 
-  if (matches.length < 2) {
-    await removeAll('playerMatches', { playerId: _id })
+  // get data when no matches
+  if (matches.length === 0) {
     const matchIds = (await getMatchIds(puuid)) || []
-    const prMatches = matchIds.map(async (m) => {
-      const matchDetails = await getMatchesDetails(m, puuid)
-      await insert('playerMatches', { ...matchDetails, playerId: _id })
+    const prMatches = matchIds.map(async (matchId) => {
+      const matchDetails = await getMatchesDetails(matchId, puuid)
+      await insert('playerMatches', { ...matchDetails, playerId: _id, matchId })
     })
-
     await Promise.all(prMatches)
-
-    matches = await findMany('playerMatches', {
-      playerId: _id,
-      assists: { $gte: 0 },
-    })
   }
+
+  // get data about empty matches
+  const emptyMatchesWithoutIds = matches
+    .filter((m: Object) => m.hasOwnProperty('assists') && m.hasOwnProperty('matchId'))
+    .map((m: any) => m._id)
+  await removeAll('playerMatches', { _id: { $in: emptyMatchesWithoutIds } })
+
+  const emptyMatchesWithIds = matches
+    .filter((m: Object) => m.hasOwnProperty('assists') && !m.hasOwnProperty('matchId'))
+    .map((m: any) => ({ _id: m._id, matchId: m.matchId }))
+
+  if (emptyMatchesWithIds.length > 0) {
+    const prMatches = emptyMatchesWithIds.map(async (match) => {
+      const matchDetails = await getMatchesDetails(match.matchId, puuid)
+      await update('playerMatches', { ...matchDetails, playerId: _id, ...match })
+    })
+    await Promise.all(prMatches)
+  }
+
+  const matchIds = (await getMatchIds(puuid)) || []
+  const prMatches = matchIds.map(async (matchId) => {
+    const matchDetails = await getMatchesDetails(matchId, puuid)
+    await insert('playerMatches', { ...matchDetails, playerId: _id, matchId })
+  })
+  await Promise.all(prMatches)
+
+  matches = await findMany('playerMatches', {
+    playerId: _id,
+    assists: { $gte: 0 },
+  })
 
   const roles: any = matches.reduce(
     (acc: any, rec: any) => {
@@ -89,6 +112,8 @@ export const getPlayerAnalysis = async (player) => {
     }
   })
 
+  const skills = await getPlayerPersonalSkills(_id.toString())
+
   const data = {
     id: _id,
     profileIconId,
@@ -110,6 +135,7 @@ export const getPlayerAnalysis = async (player) => {
     inactive,
     veteran,
     hotStreak,
+    skills,
   }
 
   return data
@@ -165,4 +191,72 @@ export const getPlayerReviews = (reviews: IReview[]) => {
   }
 
   return total
+}
+
+export const getPlayerPersonalSkills = async (playerId: string) => {
+  const reviews = await findMany<IReview>('reviews', { playerId })
+  const pSkills: any = reviews.reduce(
+    (acc: any, rec: any) => {
+      acc = {
+        teamPlayer: acc.teamPlayer + (rec.teamPlayer ?? 0),
+        leadership: acc.leadership + (rec.leadership ?? 0),
+        criticalThinking: acc.criticalThinking + (rec.criticalThinking ?? 0),
+        problemSolving: acc.problemSolving + (rec.problemSolving ?? 0),
+      }
+      return acc
+    },
+    {
+      teamPlayer: 0,
+      leadership: 0,
+      criticalThinking: 0,
+      problemSolving: 0,
+    }
+  )
+
+  const skills: any = reviews.reduce(
+    (acc: any, rec: any) => {
+      acc = {
+        coordination: rec.coordination ? acc.coordination + 1 : acc.coordination,
+        deffensive: rec.deffensive ? acc.deffensive + 1 : acc.deffensive,
+        dueling: rec.dueling ? acc.dueling + 1 : acc.dueling,
+        farming: rec.farming ? acc.farming + 1 : acc.farming,
+        offensive: rec.offensive ? acc.offensive + 1 : acc.offensive,
+        picking: rec.picking ? acc.picking + 1 : acc.picking,
+        reactionTime: rec.reactionTime ? acc.reactionTime + 1 : acc.reactionTime,
+        roaming: rec.roaming ? acc.roaming + 1 : acc.roaming,
+        skirmishing: rec.skirmishing ? acc.skirmishing + 1 : acc.skirmishing,
+        steadiness: rec.steadiness ? acc.steadiness + 1 : acc.steadiness,
+        timing: rec.timing ? acc.timing + 1 : acc.timing,
+      }
+      return acc
+    },
+    {
+      coordination: 0,
+      deffensive: 0,
+      dueling: 0,
+      farming: 0,
+      offensive: 0,
+      picking: 0,
+      reactionTime: 0,
+      roaming: 0,
+      skirmishing: 0,
+      steadiness: 0,
+      timing: 0,
+    }
+  )
+
+  const skillMap = {
+    teamPlayer: 'Team Player',
+    leadership: 'Leadership',
+    criticalThinking: 'Critical',
+    problemSolving: 'Problem Solving',
+  }
+
+  const personalSkills = Object.keys(pSkills)
+    .map((key) => {
+      return { personalSkill: skillMap[key], value: pSkills[key] / reviews.length }
+    })
+    .sort((a, b) => (a.value > b.value ? -1 : 1))
+
+  return { personalSkills, skills }
 }

@@ -1,17 +1,16 @@
 import { NavLink } from 'react-router-dom'
-import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
-import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
+import Button from '../components/Button/Button'
 import Headline from '../components/Headline/Headline'
 import BodyText from '../components/BodyText/BodyText'
 import Input from '../components/Input/Input'
+import HeaderCreateAccount from '../components/Header/HeaderCreateAccount'
 
 function CreateAccountPlayer() {
   return (
     <div className="create-account-page-player">
-      <LandingPageNavMenu className="nav-side-menu" />
       <div className="create-account-page-player-container">
-        <Header />
+        <HeaderCreateAccount linkToNav="/create-account" />
         <main>
           <Headline text="Create an Account" color="#7dfaa4" textAlign="center" />
           <form action="">
@@ -20,9 +19,7 @@ function CreateAccountPlayer() {
             <Input placeholder="Enter your Team" label="Team*" type="text" />
             <Input placeholder="Enter your password" label="Password*" type="password" />
             <Input label="Agree to receive a scouting email from a player" type="checkbox" />
-            <NavLink to="/PlayerOverview" className="create-account-button">
-              <BodyText text="Create an Account" color="#080235" textAlign="center" />
-            </NavLink>
+            <Button type="submit" text="Create an Account" />
           </form>
           <div className="have-an-account">
             <BodyText text="Have an account? " />

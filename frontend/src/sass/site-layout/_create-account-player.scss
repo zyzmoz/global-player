@@ -4,6 +4,15 @@
   overflow-x: hidden;
 }
 
+.create-account-page-player .header-link {
+  border: 3px solid #7dfaa4;
+  border-radius: 0.5rem;
+  margin-left: 2rem;
+  padding: 0.25rem 1.2rem;
+  text-decoration: none;
+  color: #7dfaa4;
+}
+
 .create-account-page-player-container {
   grid-column: 1/-1;
   grid-row: 1/-1;
@@ -27,11 +36,11 @@
   flex-flow: column nowrap;
 
   div:nth-of-type(1) label,
-    div:nth-of-type(2) label,
-    div:nth-of-type(3) label,
-    div:nth-of-type(4) label {
-      padding-bottom: 0.5rem;
-    }
+  div:nth-of-type(2) label,
+  div:nth-of-type(3) label,
+  div:nth-of-type(4) label {
+    padding-bottom: 0.5rem;
+  }
 }
 
 .create-account-page-player-container form div {
@@ -120,5 +129,13 @@
   .create-account-page-player-container form {
     max-width: 500px;
     gap: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .create-account-page-player-container main {
+    display: unset;
+    margin: unset;
+    max-width: 100%;
   }
 }

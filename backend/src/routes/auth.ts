@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { isUser, IUser } from '../models/User'
+import { IUser } from '../models/User'
 import { findMany, findOne, insert, update } from '../shared/dbFunctions'
 import sha1 from 'sha1'
 import jwt from 'jsonwebtoken'
