@@ -22,47 +22,21 @@ export const getPlayerAnalysis = async (player) => {
 
   let matches = await findMany('playerMatches', {
     playerId: _id,
-  })
-
-  // get data when no matches
-  if (matches.length === 0) {
-    const matchIds = (await getMatchIds(puuid)) || []
-    const prMatches = matchIds.map(async (matchId) => {
-      const matchDetails = await getMatchesDetails(matchId, puuid)
-      await insert('playerMatches', { ...matchDetails, playerId: _id, matchId })
-    })
-    await Promise.all(prMatches)
-  }
-
-  // get data about empty matches
-  const emptyMatchesWithoutIds = matches
-    .filter((m: Object) => m.hasOwnProperty('assists') && m.hasOwnProperty('matchId'))
-    .map((m: any) => m._id)
-  await removeAll('playerMatches', { _id: { $in: emptyMatchesWithoutIds } })
-
-  const emptyMatchesWithIds = matches
-    .filter((m: Object) => m.hasOwnProperty('assists') && !m.hasOwnProperty('matchId'))
-    .map((m: any) => ({ _id: m._id, matchId: m.matchId }))
-
-  if (emptyMatchesWithIds.length > 0) {
-    const prMatches = emptyMatchesWithIds.map(async (match) => {
-      const matchDetails = await getMatchesDetails(match.matchId, puuid)
-      await update('playerMatches', { ...matchDetails, playerId: _id, ...match })
-    })
-    await Promise.all(prMatches)
-  }
-
-  const matchIds = (await getMatchIds(puuid)) || []
-  const prMatches = matchIds.map(async (matchId) => {
-    const matchDetails = await getMatchesDetails(matchId, puuid)
-    await insert('playerMatches', { ...matchDetails, playerId: _id, matchId })
-  })
-  await Promise.all(prMatches)
-
-  matches = await findMany('playerMatches', {
-    playerId: _id,
     assists: { $gte: 0 },
   })
+  if (matches.length < 2) {
+    await removeAll('playerMatches', { playerId: _id })
+    const matchIds = (await getMatchIds(puuid)) || []
+    const prMatches = matchIds.map(async (m) => {
+      const matchDetails = await getMatchesDetails(m, puuid)
+      await insert('playerMatches', { ...matchDetails, playerId: _id })
+    })
+    await Promise.all(prMatches)
+    matches = await findMany('playerMatches', {
+      playerId: _id,
+      assists: { $gte: 0 },
+    })
+  }
 
   const roles: any = matches.reduce(
     (acc: any, rec: any) => {
