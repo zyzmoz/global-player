@@ -19,7 +19,7 @@ export default BodyText
 BodyText.defaultProps = {
   fontSize: '20pt',
   color: 'white',
-  textAlign: 'left',
+  textAlign: '',
   text: '',
 }
 

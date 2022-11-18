@@ -1,0 +1,57 @@
+.line-chart {
+  .linechart-headline-labels-wrapper {
+    padding-bottom: 2rem;
+  }
+  .labels-wrapper {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    .label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      .player1-label-span,
+      .player2-label-span {
+        width: 1.3rem;
+        height: 1.3rem;
+        background-color: $primary-color-bright-green;
+        border-radius: 50%;
+      }
+      .player2-label-span {
+        background-color: $secondary-color-sky-blue;
+      }
+    }
+  }
+  .linechart-container {
+    width: 26rem;
+    overflow: scroll;
+  }
+  .linechart-wrapper {
+    width: 57rem;
+    padding-right: 3rem;
+  }
+
+  // Lables wrapper for Desktop screen
+  @media screen and (min-width: 1000px) {
+    .label {
+      gap: 4rem;
+      .label {
+        .player1-label-span,
+        .player2-label-span {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+    }
+    .linechart-container {
+      width: unset;
+      overflow: unset;
+    }
+    .linechart-wrapper {
+      padding-right: 1rem;
+    }
+  }
+}
