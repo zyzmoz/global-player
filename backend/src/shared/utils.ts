@@ -1,6 +1,6 @@
 import { getMatchesDetails, getMatchIds } from '../integrations/RiotAPI'
 import { IReview } from '../models/Review'
-import { findMany, insert, removeAll, update, upsert } from './dbFunctions'
+import { findMany, insert, removeAll, update } from './dbFunctions'
 
 const DECIMAL_PLACES = Math.pow(10, 1)
 
