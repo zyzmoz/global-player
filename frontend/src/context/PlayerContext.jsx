@@ -23,8 +23,8 @@ function PlayerProvider({ children }) {
     summonerName: null,
   })
   const [playersToCompare, setPlayersToCompare] = useState({
-    player1: '6360a91735cadfcd8230dd7e',
-    player2: '6360a91735cadfcd8230dd60',
+    player1: null,
+    player2: null,
   })
 
   return (
