@@ -28,15 +28,11 @@ function ComparisonResultsPage({ axiosClient }) {
   const context = React.useContext(PlayerContext)
 
   const { data: player1 } = useQuery('player1', () =>
-    axiosClient.get(
-      `${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/player/${context.playersToCompare.player1.id}`
-    )
+    axiosClient.get(`/api/v1/analytics/player/${context.playersToCompare.player1.id}`)
   )
 
   const { data: player2 } = useQuery('player2', () =>
-    axiosClient.get(
-      `${process.env.REACT_APP_SERVER_URL}/api/v1/analytics/player/${context.playersToCompare.player2.id}`
-    )
+    axiosClient.get(`/api/v1/analytics/player/${context.playersToCompare.player2.id}`)
   )
 
   const { data: player1Matches } = useQuery('player1Matches', () =>
