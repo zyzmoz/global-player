@@ -38,6 +38,11 @@ export const getPlayerAnalysis = async (player) => {
     })
   }
 
+  matches = await findMany('playerMatches', {
+    playerId: _id,
+    assists: { $gte: 0 },
+  })
+
   const roles: any = matches.reduce(
     (acc: any, rec: any) => {
       if (rec.role === 'JUNGLE' || rec.teamPosition === 'JUNGLE') {
