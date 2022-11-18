@@ -107,78 +107,8 @@
     justify-content: center;
   }
 
-  // Best Player Ranking Table
   .table-headline-container h1:nth-child(1) {
     font-size: 2rem;
-  }
-
-  .table {
-    margin: auto;
-    color: $neutral-color-white;
-    background-origin: border-box;
-    border: 2px solid transparent;
-    border-collapse: collapse;
-    border-radius: 25px;
-    font-size: 0.875rem;
-    background-image: linear-gradient(180deg, #7dfaa4 0%, #7856ff 50%, #7dfaa4 100%);
-    .icon {
-      width: 2.1rem;
-      height: auto;
-    }
-  }
-  tr:nth-child(n) {
-    background: #281f5a;
-  }
-  tr:nth-child(1) {
-    background: $background-gradient-color;
-    color: $secondary-color-sky-blue;
-    border-radius: 25px;
-    border-bottom: 1px solid $primary-color-deep-purple;
-  }
-  tr:nth-child(2n) {
-    background: #160f4b;
-  }
-
-  th {
-    font-weight: normal;
-    font-family: 'Chakra Petch', sans-serif;
-    padding: 1.2rem 0.8rem;
-    text-align: center;
-  }
-  td {
-    padding: 0.8rem;
-    text-align: center;
-  }
-  th:nth-child(1) {
-    border-top-left-radius: 25px;
-  }
-  th:nth-last-child(1) {
-    border-top-right-radius: 25px;
-  }
-  tr:nth-last-child(1) td:nth-child(1) {
-    border-bottom-left-radius: 25px;
-  }
-  tr:nth-last-child(1) td:nth-last-child(1) {
-    border-bottom-right-radius: 25px;
-  }
-  td:nth-last-child(1) {
-    padding-bottom: 0;
-  }
-  td .name {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 0.5rem;
-    padding-left: 0.3rem;
-    font-size: 0.875rem;
-  }
-  td:nth-child(4) {
-    color: $primary-color-bright-green;
-  }
-  .personality {
-    display: flex;
-    flex-flow: column;
-    gap: 0.3rem;
   }
 
   .button {
@@ -282,39 +212,6 @@
 
     .down-icon-container {
       display: none;
-    }
-
-    // Table for desktop view
-    .table {
-      font-size: 1.25rem;
-    }
-    th {
-      padding: 1.5rem 1rem;
-    }
-    td {
-      padding: 1rem;
-    }
-    td .name {
-      gap: 1rem;
-      font-size: 1.25rem;
-    }
-  }
-
-  // Table for mobile view
-  @media screen and (max-width: 1000px) {
-    th:nth-child(6),
-    th:nth-child(7) {
-      display: none;
-    }
-    td:nth-child(6),
-    td:nth-child(7) {
-      display: none;
-    }
-    th:nth-child(5) {
-      border-top-right-radius: 25px;
-    }
-    tr:nth-last-child(1) td:nth-child(5) {
-      border-bottom-right-radius: 25px;
     }
   }
 }

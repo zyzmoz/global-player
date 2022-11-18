@@ -10,44 +10,79 @@
   .comparison-results-page-wrapper {
     display: flex;
     flex-flow: column;
-    gap: 5rem;
+    gap: 3rem;
     align-items: center;
+
+    h1 {
+      font-size: 2rem;
+    }
   }
 
-  .card-content {
-    padding: 0.5rem 0.5rem 1rem 0.5rem;
-    justify-content: center;
-    .cross-icon-container {
-      text-align: right;
-      height: 1.6rem;
-    }
-    .crossIcon {
-      width: 1.6rem;
-      height: 1.6rem;
-    }
-    .card-content-container {
-      display: flex;
-      flex-flow: column;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-    }
-    .avatar + h1 {
-      font-size: 1rem;
-    }
-    .kda-wrapper,
-    .pkill-wrapper {
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-      font-size: 1rem;
-    }
-  }
+  // Comparison cards
   .comparison-cards-container {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+    flex-grow: 1;
+    gap: 1rem;
+    position: relative;
+
+    .card {
+      width: 13rem;
+      height: 26rem;
+    }
+    .card-content {
+      padding: 0.5rem 0.5rem 1rem 0.5rem;
+      justify-content: center;
+      position: relative;
+      .cross-icon-container {
+        text-align: right;
+        height: 1.6rem;
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+      }
+      .crossIcon {
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+      }
+      .card-content-container {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        padding-top: 1rem;
+        h1 {
+          font-size: 1.6rem;
+        }
+      }
+      .avatar + h1 {
+        font-size: 1.2rem;
+      }
+      .avatar {
+        margin-bottom: 0.5rem;
+      }
+      p {
+        font-size: 1.2rem;
+      }
+      .kda-wrapper,
+      .pkill-wrapper {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+      }
+      .kda-wrapper p:nth-child(1),
+      .pkill-wrapper p:nth-child(1) {
+        font-weight: bold;
+      }
+    }
+    .comparisonIcon-wrapper {
+      position: absolute;
+      z-index: 10;
+    }
   }
 
   // Winrate Section
@@ -57,17 +92,41 @@
     gap: 1rem;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
+    h1 {
+      font-size: 1.7rem;
+    }
     .winrate-cards-wrapper {
       display: flex;
       flex-flow: row nowrap;
       justify-content: center;
       align-items: center;
-    }
-    .card-content {
-      padding: 1rem;
-    }
-    .doughnut-chart {
-      padding: 2rem;
+      flex-grow: 1;
+      gap: 1rem;
+      position: relative;
+      .card {
+        width: 13rem;
+        height: 13rem;
+      }
+      .card-content {
+        padding: 0.8rem;
+        position: relative;
+      }
+      .doughnut-chart {
+        padding: 0 1rem 0 1rem;
+      }
+      #winrate {
+        padding-top: 0;
+        p {
+          font-family: 'Gothic A1', sans-serif;
+          font-size: 1.2rem;
+          font-weight: normal;
+        }
+      }
+      .comparisonIcon-wrapper {
+        position: absolute;
+        z-index: 10;
+      }
     }
   }
 
@@ -78,30 +137,65 @@
     gap: 1rem;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
+    h1 {
+      font-size: 1.7rem;
+    }
     .overall-rating-cards-wrapper {
       display: flex;
       flex-flow: row nowrap;
       justify-content: center;
       align-items: center;
+      gap: 1rem;
+      .card {
+        width: 13rem;
+        height: 13rem;
+      }
+    }
+    .card-content {
+      padding: 0.8rem;
+      justify-content: space-between;
+      position: relative;
     }
     .badge-score-wrapper {
       display: flex;
       justify-content: space-between;
     }
     .icon-text-wrapper {
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-      justify-content: center;
-      .icon {
-        width: 9.375rem;
-        height: 9.375rem;
+      position: absolute;
+      top: 1.8rem;
+      left: 2.3rem;
+      .icon-text {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding-bottom: 0.6rem;
+        .icon {
+          width: 8.3rem;
+          height: 8.3rem;
+          padding-bottom: 0.3rem;
+        }
+        p {
+          position: absolute;
+          bottom: 0;
+          padding-bottom: 0.6rem;
+        }
       }
     }
     .name-tier-wrapper {
       display: flex;
       justify-content: space-between;
     }
+    .comparisonIcon-wrapper {
+      position: absolute;
+      z-index: 10;
+    }
+  }
+
+  .comparison-cards-container-desktop {
+    display: none;
   }
 
   // Skills Section
@@ -111,28 +205,45 @@
     gap: 1rem;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
+    h1 {
+      font-size: 1.7rem;
+    }
     .skills-cards-wrapper {
       display: flex;
-      flex-flow: row nowrap;
+      flex-flow: column;
       justify-content: center;
       align-items: center;
+      gap: 1rem;
+      .card {
+        width: 26rem;
+        height: 41rem;
+      }
     }
     .card-content {
       gap: 1rem;
+      padding: 1rem 2rem;
     }
     .name-avatar-wrapper {
       display: flex;
       flex-flow: column;
       justify-content: center;
       align-items: center;
+      gap: 0.5rem;
+      p {
+        font-size: 1.5rem;
+      }
     }
     .personal-skills-wrapper {
       display: flex;
       flex-flow: column;
       gap: 1rem;
-      padding: 1rem;
-      padding-bottom: 3rem;
+      padding-bottom: 2rem;
       border-bottom: 2px solid $primary-color-bright-green;
+      p {
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
     }
     .progressbar-wrapper {
       display: flex;
@@ -140,13 +251,294 @@
       gap: 0.8rem;
     }
     .tech-skills-wrapper {
-      padding: 1rem;
-      padding-top: 3rem;
+      padding-top: 1rem;
+      position: relative;
+      p {
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+      .radarchart {
+        margin: auto;
+        padding: 0 2.2rem;
+        position: absolute;
+        bottom: 0;
+        top: 1rem;
+      }
+    }
+    .comparisonIcon-wrapper {
+      transform: rotate(90deg);
     }
   }
 
   // Statistics Section
-  .statistics-headline-wrapper {
-    padding-bottom: 1rem;
+  .statistics-cards-container {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    h1 {
+      font-size: 1.7rem;
+    }
+    .card {
+      width: 26rem;
+      height: 33rem;
+    }
+  }
+
+  // Extra Data Section
+  .extra-data-cards-container {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+    h1 {
+      font-size: 1.7rem;
+    }
+    .tables-wrapper {
+      display: flex;
+      flex-flow: column;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+    .comparisonIcon-wrapper {
+      transform: rotate(90deg);
+    }
+  }
+
+  // Up Icon
+  .up-icon-container {
+    display: none;
+  }
+
+  // Desktop screen
+  @media screen and (min-width: 1000px) {
+    .comparison-results-page-wrapper {
+      margin: 2rem;
+      gap: 4rem;
+      h1 {
+        font-size: 2rem;
+      }
+    }
+    .comparison-cards-container,
+    .winrate-cards-container,
+    .overall-rating-cards-container {
+      display: none;
+    }
+
+    // Comparison Cards for Desktop
+    .comparison-cards-container-desktop {
+      display: flex;
+      gap: 2rem;
+      .card {
+        width: 26rem;
+        height: 36rem;
+      }
+      .card-content {
+        position: relative;
+        justify-content: center;
+        .cross-icon-container {
+          position: absolute;
+          right: 0.5rem;
+          top: 0.5rem;
+          .crossIcon {
+            width: 2rem;
+            height: 2rem;
+            cursor: pointer;
+          }
+        }
+        .avatar {
+          margin-bottom: 0rem;
+        }
+      }
+      .card-content-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .name-avatar-rank-wrapper {
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        p {
+          font-size: 1.5rem;
+          padding-bottom: 1rem;
+        }
+        h1 {
+          font-size: 1.2rem;
+          padding-top: 1rem;
+        }
+      }
+      .kda-pkill-matches-wrapper {
+        display: flex;
+        flex-flow: column;
+        gap: 0.5rem;
+        justify-content: flex-end;
+        align-items: center;
+        text-align: center;
+        p,
+        div {
+          font-size: 1.2rem;
+        }
+        .kda-wrapper p:nth-child(1),
+        .pkill-wrapper p:nth-child(1) {
+          font-weight: bold;
+        }
+        .matches-wrapper {
+          display: flex;
+          gap: 0.3rem;
+          padding-top: 1rem;
+        }
+      }
+      .winrate-wrapper {
+        width: 11rem;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        h1 {
+          font-size: 1.5rem;
+          padding: 1.5rem 0 0.5rem 0;
+        }
+        #winrate {
+          padding-top: 0.5rem;
+          p {
+            font-family: 'Gothic A1', sans-serif;
+            font-size: 1.2rem;
+            font-weight: normal;
+          }
+        }
+      }
+      .overall-rating-wrapper {
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        position: relative;
+        text-align: center;
+        .badge-score-wrapper {
+          display: flex;
+          flex-flow: column;
+          gap: 1rem;
+          p {
+            font-size: 1rem;
+          }
+        }
+        h1 {
+          font-size: 1.5rem;
+          padding: 1.5rem 0 0.5rem 0;
+        }
+        .icon-wrapper {
+          position: absolute;
+          top: 6.5rem;
+        }
+        .icon {
+          width: 8.3rem;
+          height: 8.3rem;
+        }
+        .icon-bottom-wrapper {
+          width: 100%;
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-around;
+          p {
+            font-size: 1rem;
+          }
+        }
+      }
+      .comparisonIcon-wrapper {
+        position: unset;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        .border1-around-compareIcon {
+          height: 9.5rem;
+          border: 1px solid;
+          border-image-slice: 1;
+          border-image-source: linear-gradient(to top, rgba(125, 250, 164, 100%), rgba(125, 250, 164, 0%));
+        }
+        .border2-around-compareIcon {
+          height: 9.5rem;
+          border: 1px solid;
+          border-image-slice: 1;
+          border-image-source: linear-gradient(to top, rgba(125, 250, 164, 0%), rgba(125, 250, 164, 100%));
+        }
+      }
+    }
+
+    // Skills Cards Section
+    .skills-cards-container {
+      gap: 3rem;
+      .skills-headline-wrapper h1 {
+        font-size: 2rem;
+      }
+      .card-content {
+        padding: 1rem 2rem;
+      }
+      .skills-cards-wrapper {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 2rem;
+        .personal-skills-wrapper {
+          text-align: center;
+          padding-bottom: 2rem;
+          .progressbar-wrapper {
+            width: 90%;
+            margin: auto;
+          }
+        }
+        .tech-skills-wrapper {
+          text-align: center;
+          display: flex;
+          flex-flow: column;
+          padding-top: .8rem;
+          .radarchart {
+            top: 1rem;
+            padding: 0 2.2rem;
+          }
+        }
+      }
+      .comparisonIcon-wrapper {
+        transform: unset;
+      }
+    }
+
+    // Statistics Section
+    .statistics-cards-container {
+      gap: 3rem;
+      .statistics-headline-wrapper h1 {
+        font-size: 2rem;
+      }
+      .card {
+        width: 59rem;
+        height: 33rem;
+      }
+    }
+
+    // Extra Data Section
+    .extra-data-cards-container {
+      gap: 3rem;
+      margin-bottom: 0;
+      .extra-data-headline-wrapper {
+        h1 {
+          font-size: 2rem;
+        }
+      }
+    }
+
+    // Up Icon
+    .up-icon-container {
+      display: block;
+      cursor: pointer;
+    }
   }
 }
