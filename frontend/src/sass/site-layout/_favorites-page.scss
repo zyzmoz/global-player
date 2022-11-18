@@ -1,0 +1,160 @@
+.favorites-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow-x: hidden;
+
+  .h1-wrapper h1 {
+    margin-bottom: 5rem;
+  }
+
+  .player-information-wrapper {
+    max-width: 358px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .favorites-container {
+    display: grid;
+    grid-template-columns: repeat((auto-fill, minmax(335px, 1fr)));
+    gap: 2rem 1rem;
+  }
+
+  .name-division-container {
+    display: grid;
+    grid-template-columns: 1fr 110px;
+
+    h1:nth-of-type(1) {
+      grid-row: 1;
+      grid-column: 1;
+    }
+
+    h1:nth-of-type(2) {
+      text-transform: uppercase;
+      font-size: 16px;
+      letter-spacing: 0.32em;
+      grid-row: 2;
+      grid-column: 1;
+    }
+
+    img {
+      grid-row: 1/3;
+      grid-column: 2;
+    }
+  }
+
+  .favorites-page-container {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+  }
+
+  .player-information-detail {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #402cac 0%, #1a1051 100%);
+    border-radius: 25px;
+    padding: 1rem;
+    position: relative;
+  }
+
+  .border-wrapper {
+    width: 100%;
+    height: 330px;
+    background: linear-gradient(180deg, #7dfaa4 0%, #7856ff 100%);
+    border-radius: 25px;
+    padding: 2px;
+  }
+
+  .avatar-icons-container .avatar {
+    width: 130px;
+    height: auto;
+
+    img {
+      width: 130px;
+      height: auto;
+    }
+  }
+
+  .heartIconFav {
+    background: none;
+    cursor: pointer;
+    border: none;
+
+    .heartIconItem {
+      fill: #7dfaa4;
+    }
+
+    .heartIconItem:hover {
+      fill: none;
+    }
+  }
+
+  .avatar-icons-container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    margin-top: 1rem;
+
+    .avatar {
+      grid-row: 1/-1;
+    }
+  }
+
+  .role-icon-wrapper {
+    margin: 0 auto;
+    display: block;
+    svg {
+      background: #402cac;
+      border: 2px solid #7dfaa4;
+      border-radius: 50%;
+      margin: 0 auto;
+    }
+  }
+
+  .contactPlayerButton {
+    color: #7dfaa4;
+    background: none;
+    border: #7dfaa4 2px solid;
+    letter-spacing: 1.25px;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    margin-top: 1.5rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+  }
+
+  .hexagon {
+    position: absolute;
+    top: -1.5rem;
+    right: 0.5rem;
+  }
+
+  .removeFav {
+    background: none;
+    border: none;
+    width: 31.55px;
+    height: auto;
+    cursor: pointer;
+
+    svg path:nth-of-type(2) {
+      background: $primary-color-deep-purple;
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .favorites-page {
+    .favorites-content {
+      margin-left: 9rem;
+    }
+
+    .player-information-wrapper {
+      max-width: 85%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

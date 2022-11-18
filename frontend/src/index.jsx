@@ -20,6 +20,7 @@ import PlayerReviewOverview from './pages/PlayerReviewOverview'
 import ReviewPlayer from './pages/ReviewPlayer'
 import ComparisonResultsPage from './pages/ComparisonResultsPage'
 import PlayerComparisonSelectPage from './pages/PlayerComparisonSelectPage'
+import FavoritesPage from './pages/FavoritesPage'
 
 const router = createBrowserRouter([
   {
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
   {
     path: 'player-comparison-select-page',
     element: <PlayerComparisonSelectPage />,
+  },
+  {
+    path: 'favorites',
+    element: <FavoritesPage />,
   },
 ])
 

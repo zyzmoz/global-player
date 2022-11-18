@@ -14,7 +14,7 @@ function Sidebar() {
         </NavLink>
       </div>
       <div className="sidebar-menu">
-        <NavLink to="/Dashboard" className="sidebar-link">
+        <NavLink to="/topplayers" className="sidebar-link">
           <DashboardIcon stroke={Colors.primaryColorBrightGreen} />
           <span className="visually-hidden">Dashboard</span>
         </NavLink>
