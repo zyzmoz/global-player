@@ -6,6 +6,7 @@ function RoleIcons(role, color) {
     TOP: <TopLaneIcon fill={color ?? 'black'} />,
     MIDDLE: <MidLaneIcon fill={color ?? 'black'} />,
     CARRY: <BotLaneIcon fill={color ?? 'black'} />,
+    BOTTOM: <BotLaneIcon fill={color ?? 'black'} />,
     SUPPORT: <SupportIcon fill={color ?? 'black'} />,
   }
 

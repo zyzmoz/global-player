@@ -1,6 +1,6 @@
 import { getMatchesDetails, getMatchIds } from '../integrations/RiotAPI'
 import { IReview } from '../models/Review'
-import { findMany, insert, removeAll, update, upsert } from './dbFunctions'
+import { findMany, insert, removeAll, update } from './dbFunctions'
 
 const DECIMAL_PLACES = Math.pow(10, 1)
 
@@ -37,6 +37,11 @@ export const getPlayerAnalysis = async (player) => {
       assists: { $gte: 0 },
     })
   }
+
+  matches = await findMany('playerMatches', {
+    playerId: _id,
+    assists: { $gte: 0 },
+  })
 
   const roles: any = matches.reduce(
     (acc: any, rec: any) => {
