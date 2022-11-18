@@ -22,7 +22,7 @@ import RoleIcons from '../components/RoleIcons/RoleIcons'
 import { DownIcon, SupportIcon, UserIcon } from '../components/Icon/icons'
 import { PlayerContext } from '../context/PlayerContext'
 import withAuthentication from '../hoc/withAuthentication'
-import SearchPlayer from '../components/SearchPlayer.jsx/SearchPlayer'
+import SearchPlayer from '../components/SearchPlayer/SearchPlayer'
 
 function TopPlayersPage({ axiosClient }) {
   const navigate = useNavigate()

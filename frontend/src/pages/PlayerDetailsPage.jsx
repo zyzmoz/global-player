@@ -34,7 +34,7 @@ function PlayerDetailsPage({ axiosClient }) {
   }
   const navigateToComparePlayer = () => {
     context.setPlayersToCompare({
-      player1: playerDetail?.data.id,
+      player1: playerDetail?.data,
       player2: null,
     })
     navigate(`/comparison`)
