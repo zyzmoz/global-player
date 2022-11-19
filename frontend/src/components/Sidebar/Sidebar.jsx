@@ -24,7 +24,7 @@ function Sidebar() {
           <HeartIcon stroke={Colors.primaryColorBrightGreen} />
           <span className="visually-hidden">Favorites</span>
         </NavLink>
-        <NavLink to="/comparison" className="sidebar-link">
+        <NavLink to="/player-comparison-select-page" className="sidebar-link">
           <CompareIcon fill={Colors.primaryColorBrightGreen} />
           <span className="visually-hidden">Compare</span>
         </NavLink>

@@ -37,22 +37,22 @@ function ComparisonPage() {
               <CrossIcon className="crossIcon" fill={Colors.primaryColorBrightGreen} />
             </div>
             <div className="card-content-container">
-              <Headline text={playersToCompare.player1.summonerName} color={Colors.primaryColorBrightGreen} />
+              <Headline text={playersToCompare.player1?.summonerName} color={Colors.primaryColorBrightGreen} />
               <Avatar
-                summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${playersToCompare.player1.profileIconId}.png`}
+                summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${playersToCompare.player1?.profileIconId}.png`}
               />
               <Headline text="Challenger" />
               <div className="kda-wrapper">
                 <BodyText text="KDA" color={Colors.primaryColorBrightGreen} />
                 <BodyText
-                  text={`${playersToCompare.player1.kills} / ${playersToCompare.player1.deaths} / ${playersToCompare.player1.assists}`}
+                  text={`${playersToCompare.player1?.kills} / ${playersToCompare.player1?.deaths} / ${playersToCompare.player1?.assists}`}
                 />
               </div>
               <div className="pkill-wrapper">
-                <BodyText text={`${playersToCompare.player1.kda}:1`} />
-                <BodyText text={`P/Kill ${playersToCompare.player1.pkill}%`} />
+                <BodyText text={`${playersToCompare.player1?.kda}:1`} />
+                <BodyText text={`P/Kill ${playersToCompare.player1?.pkill}%`} />
               </div>
-              <BodyText text={`Matches: ${playersToCompare.player1.matches}`} color={Colors.primaryColorBrightGreen} />
+              <BodyText text={`Matches: ${playersToCompare.player1?.matches}`} color={Colors.primaryColorBrightGreen} />
             </div>
           </Card>
 
