@@ -14,7 +14,9 @@ function Input({ placeholder, onChange, label, type, text, id }) {
   return (
     <div className="input">
       {label && <label htmlFor={id}>{label}</label>}
-      <input id={id || randomId} type={type} placeholder={placeholder} onChange={handleChange} value={inputValue} />
+      <div className="input-wrapper">
+        <input id={id || randomId} type={type} placeholder={placeholder} onChange={handleChange} value={inputValue} />
+      </div>
     </div>
   )
 }
