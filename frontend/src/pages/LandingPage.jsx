@@ -1,7 +1,8 @@
+import { useNavigate } from 'react-router-dom'
 import Headline from '../components/Headline/Headline'
 import BodyText from '../components/BodyText/BodyText'
 import Button from '../components/Button/Button'
-import { DownIcon } from '../components/Icon/icons'
+import { CheckIcon, DownIcon } from '../components/Icon/icons'
 import Header from '../components/Header/Header'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
 import Image from '../components/Image/Image'
@@ -10,14 +11,20 @@ import Footer from '../components/Footer/Footer'
 import Table from '../components/Table/Table'
 import TableHeader from '../components/Table/TableHeader'
 import TableItem from '../components/Table/TableItem'
+import Colors from '../sass/variables/_colors.scss'
 
-const randomImage1 = 'https://picsum.photos/536/354?random=1'
-const randomImage2 = 'https://picsum.photos/536/354?random=2'
-const randomImage3 = 'https://picsum.photos/536/354?random=3'
-const randomImage4 = 'https://picsum.photos/536/354?random=4'
-const videoLink = 'https://www.youtube.com/embed/ZPCfoCVCx3U'
+import randomImage1 from '../assets/images/box1.png'
+import GB from '../assets/images/GB.png'
+import BG from '../assets/images/BG.png'
+import LG from '../assets/images/LG.png'
+import randomImage2 from '../assets/images/box2.png'
+import randomImage3 from '../assets/images/box3.png'
+import randomImage4 from '../assets/images/box4.png'
+
+const videoLink = 'https://www.youtube.com/embed/F6iniHQXxqk'
 
 function LandingPage() {
+  const navigate = useNavigate()
   return (
     <div className="landing-page">
       <LandingPageNavMenu className="nav-side-menu" />
@@ -31,7 +38,7 @@ function LandingPage() {
               fontSize="16pt"
               textAlign=""
             />
-            <Button text="Get started" disabled={false} />
+            <Button text="Get started" disabled={false} onClick={() => navigate('/topplayers')} />
           </div>
           <div className="down-icon-container">
             <DownIcon className="icon" fill="#53BCF9" />
@@ -106,33 +113,33 @@ function LandingPage() {
             <TableHeader
               headers={[
                 { property: 'feautures', title: 'Feautures' },
-                { property: 'gpicon', title: 'GB Icon' },
-                { property: 'blitzicon', title: 'BZ Icon' },
-                { property: 'logicon', title: 'LG Icon' },
+                { property: 'gpicon', title: <Image imageUrl={GB} /> },
+                { property: 'blitzicon', title: <Image imageUrl={BG} /> },
+                { property: 'logicon', title: <Image imageUrl={LG} /> },
               ]}
             />
             {[
               {
                 feautures: 'Display data',
-                gpicon: 'check',
-                blitzicon: 'check',
-                logicon: 'check',
+                gpicon: <CheckIcon fill={Colors.primaryColorBrightGreen} />,
+                blitzicon: <CheckIcon fill={Colors.primaryColorBrightGreen} />,
+                logicon: <CheckIcon fill={Colors.primaryColorBrightGreen} />,
               },
               {
                 feautures: 'Review players',
-                gpicon: 'check',
+                gpicon: <CheckIcon fill={Colors.primaryColorBrightGreen} />,
                 blitzicon: '',
                 logicon: '',
               },
               {
                 feautures: 'Compare to players',
-                gpicon: 'check',
+                gpicon: <CheckIcon fill={Colors.primaryColorBrightGreen} />,
                 blitzicon: '',
                 logicon: '',
               },
               {
                 feautures: 'Contact players',
-                gpicon: 'check',
+                gpicon: <CheckIcon fill={Colors.primaryColorBrightGreen} />,
                 blitzicon: '',
                 logicon: '',
               },
@@ -148,7 +155,7 @@ function LandingPage() {
               />
             ))}
           </Table>
-          <Button text="Try now" disabled={false} />
+          <Button text="Try now" disabled={false} onClick={() => navigate('/topplayers')} />
         </div>
 
         <Footer />
