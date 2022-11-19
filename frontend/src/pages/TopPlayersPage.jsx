@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { Axios } from 'axios'
@@ -44,6 +44,11 @@ function TopPlayersPage({ axiosClient }) {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  const [showMore, setShowMore] = useState(false)
+  const showMoreFunction = () => {
+    setShowMore(!showMore)
+  }
 
   return (
     <div className="top-players-page">
@@ -240,7 +245,7 @@ function TopPlayersPage({ axiosClient }) {
               { property: 'personality', title: 'Personality' },
             ]}
           />
-          {allPlayers?.data?.map((player, i) => {
+          {allPlayers?.data?.slice(0, 7).map((player, i) => {
             const playerData = {
               rank: `#${i + 4}`,
               summonerName: (
@@ -284,8 +289,61 @@ function TopPlayersPage({ axiosClient }) {
               />
             )
           })}
+          {showMore &&
+            allPlayers?.data?.slice(8).map((player, i) => {
+              const playerData = {
+                rank: `#${i + 11}`,
+                summonerName: (
+                  <div className="name">
+                    <Image
+                      imageUrl={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${player.profileIconId}.png`}
+                      imageWidth="2.25rem"
+                      imageHeight="2.25rem"
+                    />
+                    {player.summonerName}
+                  </div>
+                ),
+                role: RoleIcons(player.role, Colors.primaryColorBrightGreen),
+                winRate: `${player.winRate}%`,
+                kda: `${player.kills} / ${player.deaths} / ${player.assists}`,
+                matches: `${player.matches}`,
+                personality: (
+                  <div className="personality">
+                    <ProgressBar
+                      progress={player.skills.personalSkills[0]?.value || 0}
+                      widthSize="140px"
+                      heightSize="16px"
+                    />
+                    <BodyText
+                      text={player.skills.personalSkills[0]?.personalSkill}
+                      textAlign="center"
+                      fontSize="small"
+                    />
+                  </div>
+                ),
+              }
+              return (
+                <TableItem
+                  onClick={() => navigateToDetails(player.id)}
+                  item={playerData}
+                  headers={[
+                    { property: 'rank', title: 'Rank' },
+                    { property: 'summonerName', title: 'Name' },
+                    { property: 'role', title: 'Role' },
+                    { property: 'winRate', title: 'Win Rate' },
+                    { property: 'kda', title: 'KDA' },
+                    { property: 'matches', title: 'Matches' },
+                    { property: 'personality', title: 'Personality' },
+                  ]}
+                />
+              )
+            })}
         </Table>
-        <Button text="Show more" />
+        {!showMore ? (
+          <Button text="Show more" onClick={showMoreFunction} />
+        ) : (
+          <Button text="Show less" onClick={showMoreFunction} />
+        )}
         <Footer />
       </div>
     </div>
