@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import Image from '../Image/Image'
-import { DashboardIcon, VectorIcon, CompareIcon, Group15Icon } from '../Icon/icons'
+import { DashboardIcon, HeartIcon, CompareIcon, HelpIcon } from '../Icon/icons'
 import Colors from '../../sass/variables/_colors.scss'
 
 function Sidebar() {
@@ -14,21 +14,23 @@ function Sidebar() {
         </NavLink>
       </div>
       <div className="sidebar-menu">
-        <NavLink to="/topplayers" className="sidebar-link">
-          <DashboardIcon stroke={Colors.primaryColorBrightGreen} />
+        <NavLink to="/TopPlayers" className="sidebar-link">
+          <div className="icon-wrapper">
+            <DashboardIcon stroke={Colors.primaryColorBrightGreen} />
+          </div>
           <span className="visually-hidden">Dashboard</span>
         </NavLink>
-        <NavLink to="/Favorites" className="sidebar-link">
-          <VectorIcon stroke={Colors.primaryColorBrightGreen} />
+        <NavLink to="/favorites" className="sidebar-link">
+          <HeartIcon stroke={Colors.primaryColorBrightGreen} />
           <span className="visually-hidden">Favorites</span>
         </NavLink>
-        <NavLink to="/Compare" className="sidebar-link">
+        <NavLink to="/comparison" className="sidebar-link">
           <CompareIcon fill={Colors.primaryColorBrightGreen} />
           <span className="visually-hidden">Compare</span>
         </NavLink>
 
-        <NavLink to="/Help" className="sidebar-link">
-          <Group15Icon stroke={Colors.primaryColorBrightGreen} />
+        <NavLink to="/help" className="sidebar-link">
+          <HelpIcon stroke={Colors.primaryColorBrightGreen} />
           <span className="visually-hidden">Help</span>
         </NavLink>
       </div>

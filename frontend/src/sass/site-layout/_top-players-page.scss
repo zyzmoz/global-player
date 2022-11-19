@@ -12,7 +12,7 @@
   .main-contents {
     display: flex;
     flex-flow: column;
-    gap: 3rem;
+    gap: 2rem;
   }
   .main-contents > h1 {
     font-size: 2rem;
@@ -32,7 +32,7 @@
   .card-container-wrapper {
     display: flex;
     flex-flow: column;
-    gap: 5rem;
+    gap: 3rem;
   }
   .card-container {
     display: flex;
@@ -51,6 +51,9 @@
     .winrate-kda-wrapper {
       display: grid;
       grid-template-columns: 1.5fr 1fr;
+      #winrate p {
+        font-size: 1.1rem;
+      }
     }
     .kda-wrapper {
       display: flex;
@@ -106,7 +109,12 @@
     display: flex;
     justify-content: center;
   }
-
+  .table {
+    width: 90%;
+    td {
+      cursor: pointer;
+    }
+  }
   .table-headline-container h1:nth-child(1) {
     font-size: 2rem;
   }
@@ -151,6 +159,7 @@
     }
 
     .search-player-component {
+      position: relative;
       ::-webkit-scrollbar {
         display: none;
       }
@@ -161,7 +170,10 @@
         margin-top: 5px;
         overflow: hidden;
         overflow-y: auto;
-        height: 200px;
+        max-height: 200px;
+        position: absolute;
+        width: 100%;
+        background-color: #19124d;
 
         .results-as-buttons {
           background: none;
@@ -197,11 +209,13 @@
       flex-flow: row;
       gap: 1rem;
       justify-content: center;
+      margin-top: 1rem;
     }
     .card-container:nth-child(1) {
       transform: scale(1.1);
       margin: 0 1rem;
       order: 0;
+      margin-bottom: 4.5rem;
     }
     .card-container:nth-child(2) {
       order: -1;
@@ -210,8 +224,8 @@
       order: 1;
     }
 
-    .down-icon-container {
-      display: none;
-    }
+    // .down-icon-container {
+    //   display: none;
+    // }
   }
 }
