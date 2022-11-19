@@ -17,6 +17,9 @@
   .input,
   .password-wrapper {
     width: 100%;
+    display: flex;
+    flex-flow: column;
+    gap: .2rem;
   }
   .input-wrapper {
     border: 2px solid transparent;
@@ -32,6 +35,32 @@
     color: white;
     border: 2px solid transparent;
     // background: $border-gradient-color;
+  }
+  .password-wrapper {
+    a {
+      text-decoration: none;
+    }
+  }
+  .button {
+    margin: 0;
+    margin-top: 1rem;
+  }
+  .new-here-wrapper {
+    display: flex;
+    gap: .5rem;
+    a {
+      text-decoration: none;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    .input,
+    .password-wrapper {
+      max-width: 30rem;
+      label {
+        color: white;
+      }
+    }
   }
 }
 
