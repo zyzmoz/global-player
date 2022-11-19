@@ -37,6 +37,14 @@ import { ReactComponent as UserIcon } from '../../assets/icons/User.svg'
 import { ReactComponent as VectorIcon } from '../../assets/icons/Vector.svg'
 import { ReactComponent as WorldIcon } from '../../assets/icons/World.svg'
 import { ReactComponent as LikeIcon } from '../../assets/icons/Like.svg'
+import { ReactComponent as HelpIcon } from '../../assets/icons/Help.svg'
+import { ReactComponent as HeartIcon } from '../../assets/icons/Heart.svg'
+import { ReactComponent as ArrowIcon } from '../../assets/icons/Arrow.svg'
+import { ReactComponent as LoLIcon } from '../../assets/icons/LoL.svg'
+import { ReactComponent as TermsConditionsIcon } from '../../assets/icons/TermsConditions.svg'
+import { ReactComponent as Rank1Icon } from '../../assets/icons/rank_number_1.svg'
+import { ReactComponent as Rank2Icon } from '../../assets/icons/rank_number_2.svg'
+import { ReactComponent as Rank3Icon } from '../../assets/icons/rank_number_3.svg'
 
 export {
   AddIcon,
@@ -78,4 +86,12 @@ export {
   VectorIcon,
   WorldIcon,
   LikeIcon,
+  HelpIcon,
+  HeartIcon,
+  ArrowIcon,
+  LoLIcon,
+  TermsConditionsIcon,
+  Rank1Icon,
+  Rank2Icon,
+  Rank3Icon,
 }
