@@ -38,7 +38,7 @@ function LandingPage() {
               fontSize="16pt"
               textAlign=""
             />
-            <Button text="Get started" disabled={false} onClick={() => navigate('/topplayers')} />
+            <Button text="Get started" disabled={false} onClick={() => navigate('/login')} />
           </div>
           <div className="down-icon-container">
             <DownIcon className="icon" fill="#53BCF9" />
@@ -155,7 +155,7 @@ function LandingPage() {
               />
             ))}
           </Table>
-          <Button text="Try now" disabled={false} onClick={() => navigate('/topplayers')} />
+          <Button text="Try now" disabled={false} onClick={() => navigate('/login')} />
         </div>
 
         <Footer />
