@@ -78,7 +78,7 @@ const upsert = async <T>(collectionName: string, obj: Omit<T, '_id'>): Promise<v
 const remove = async <T>(collectionName: string, id: string): Promise<T> => {
   const db = await DbConnection.getInstance()
   const collection = db.collection(collectionName)
-
+  
   const data = await collection.deleteOne({ _id: new ObjectId(id) })
 
   return data as T

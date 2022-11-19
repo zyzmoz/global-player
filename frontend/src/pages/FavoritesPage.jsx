@@ -11,11 +11,10 @@ import Headline from '../components/Headline/Headline'
 import Favorites from '../components/Favorites/Favorites'
 
 function FavoritesPage({ axiosClient, userId }) {
-  const { data: favoritePlayers } = useQuery('favoritePlayersData', () => {
-    axiosClient.get(`/api/v1/favorite/${userId}`)
-  })
-
-  console.log(favoritePlayers, userId)
+  const { data: favoritePlayers } = useQuery('favoritePlayersData', () => axiosClient.get(`/api/v1/favorite/${userId}`))
+  const removeFav = (favoriteId) => {
+    axiosClient.delete(`/api/v1/favorite/${favoriteId}`)
+  }
 
   return (
     <div className="favorites-page">
@@ -30,9 +29,14 @@ function FavoritesPage({ axiosClient, userId }) {
             <Headline text="Favorites" color="#34FF9B" fontSize="48px" textAlign="center" className="headerFavorites" />
           </div>
           <div className="favorites-container">
-            <Favorites playerRole="Jungle" />
-            <Favorites playerRole="Support" />
-            <Favorites playerRole="Middle" />
+            {favoritePlayers?.data.map((player) => (
+              <Favorites
+                summonerName={player.summonerName}
+                playerRole={player.role}
+                summonerIcon={player.profileIconId}
+                removeFav={() => removeFav(player.favoriteId)}
+              />
+            ))}
           </div>
         </div>
         <Footer />

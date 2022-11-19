@@ -1,3 +1,4 @@
+import { string } from 'prop-types'
 import { useQuery } from 'react-query'
 import { Axios } from 'axios'
 import React, { useState, useEffect } from 'react'
@@ -21,14 +22,16 @@ import Sidebar from '../components/Sidebar/Sidebar'
 import ProgressBar from '../components/ProgressBar/ProgressBar'
 import RadarChart from '../components/RadarChart/RadarChart'
 
-function PlayerDetailsPage({ axiosClient }) {
+function PlayerDetailsPage({ axiosClient, userId }) {
   const context = React.useContext(PlayerContext)
+
+  const { data: favoritePlayers } = useQuery('favoritePlayersData', () => axiosClient.get(`/api/v1/favorite/${userId}`))
 
   const { data: playerDetail } = useQuery('playerDetail', () =>
     axiosClient.get(`/api/v1/analytics/player/${context.playerId}`)
   )
 
-  const [likeIt, setLikeIt] = useState(false)
+  const [likeIt, setLikeIt] = useState(favoritePlayers?.data.filter((f) => f.id !== playerDetail?.data.id).length > 0)
 
   const navigate = useNavigate()
   const navigateToContactPlayer = () => {
@@ -49,6 +52,20 @@ function PlayerDetailsPage({ axiosClient }) {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  const handleFavorite = async () => {
+    if (likeIt) {
+      const player = favoritePlayers?.data?.find((fav) => fav.id === playerDetail?.data?.id)
+      await axiosClient.delete(`/api/v1/favorite/${player.favoriteId}`)
+      setLikeIt(false)
+    } else {
+      await axiosClient.post('/api/v1/favorite', {
+        userId,
+        playerId: playerDetail?.data.id,
+      })
+      setLikeIt(true)
+    }
+  }
 
   return (
     <div className="player-details-wrapper-1">
@@ -83,7 +100,7 @@ function PlayerDetailsPage({ axiosClient }) {
                       <div className="role">{RoleIcons(playerDetail?.data.role || '')}</div>
                     </div>
                     {likeIt && (
-                      <button type="button" className="btn-no-background" onClick={() => setLikeIt(false)}>
+                      <button type="button" className="btn-no-background" onClick={handleFavorite}>
                         <LikeIcon
                           height={42}
                           width={42}
@@ -92,7 +109,7 @@ function PlayerDetailsPage({ axiosClient }) {
                       </button>
                     )}
                     {!likeIt && (
-                      <button type="button" className="btn-no-background" onClick={() => setLikeIt(true)}>
+                      <button type="button" className="btn-no-background" onClick={handleFavorite}>
                         <LikeIcon height={42} width={42} style={{ marginLeft: '.4rem' }} />
                       </button>
                     )}
@@ -244,10 +261,12 @@ function PlayerDetailsPage({ axiosClient }) {
 
 PlayerDetailsPage.propTypes = {
   axiosClient: Axios,
+  userId: string,
 }
 
 PlayerDetailsPage.defaultProps = {
   axiosClient: Axios,
+  userId: '',
 }
 
 export default withAuthentication(PlayerDetailsPage)

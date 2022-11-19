@@ -38,12 +38,10 @@ function ComparisonResultsPage({ axiosClient }) {
   const { data: player1Matches } = useQuery('player1Matches', () =>
     axiosClient.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/playerMatch/${context.playersToCompare.player1}`)
   )
-  console.log(player1Matches)
 
   const { data: player2Matches } = useQuery('player2Matches', () =>
     axiosClient.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/playerMatch/${context.playersToCompare.player2}`)
   )
-  // console.log(player2Matches)
 
   const createKdaArray = (matches) =>
     matches
@@ -55,8 +53,6 @@ function ComparisonResultsPage({ axiosClient }) {
   // eslint-disable-next-line array-callback-return
   const player1KdaArray = createKdaArray(player1Matches?.data)
   const player2KdaArray = createKdaArray(player2Matches?.data)
-
-  console.log({ player1KdaArray, data: player1Matches })
 
   return (
     <div className="comparison-results-page">

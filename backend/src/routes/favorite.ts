@@ -9,12 +9,25 @@ const router = Router()
 
 router.get('/:userId', async (req, res) => {
   const { userId } = req.params
-  const favoritePlayerIds = (await findMany<IFavorite>('favoritePlayers', { userId })).map((f) => f.playerId)
+  // _id
+  const favoritePlayers = await findMany<IFavorite>('favoritePlayers', { userId })
+  const favoritePlayerIds = favoritePlayers.map((f) => f.playerId)
 
   const players = await findMany('players', { _id: { $in: favoritePlayerIds } })
   const pr = players.map(async (p) => await getPlayerAnalysis(p))
   const favorites = await Promise.all(pr)
-  res.json(favorites)
+
+  const favs = favorites.map((player: any) => {
+    // 1. find the fav id
+    // @ts-ignore
+    const res = favoritePlayers.filter((f) => f.playerId !== player.id)
+
+    // 2. return the data containing fav id
+    // @ts-ignore
+    return { ...player, favoriteId: res[0]._id }
+  })
+
+  res.json(favs)
 })
 
 router.post('/', async (req, res) => {
