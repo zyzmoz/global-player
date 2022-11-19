@@ -1,6 +1,20 @@
 .progress {
-    display: flex;
-    align-items: center;
-    padding-left: 15px;
-    color: $neutral-color-dark-blue;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  color: $neutral-color-dark-blue;
+  position: relative;
+}
+
+.progressbar {
+	position: relative;
+  .fix-progress-text {
+    position: absolute;
+    right: 0;
+		left: 0;
+		top: 0;
+		color: white;
+		text-align: left;
+		padding: 0 1rem ;
+  }
 }

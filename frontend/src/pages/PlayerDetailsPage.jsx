@@ -128,7 +128,7 @@ function PlayerDetailsPage({ axiosClient, userId }) {
                   {playerDetail?.data.skills.personalSkills.map((skill) => (
                     <>
                       <BodyText text={skill.personalSkill} />
-                      <ProgressBar progress={skill.value} text={`${skill.value.toFixed(1)}%`} heightSize="1.125rem" />
+                      <ProgressBar progress={skill.value} text={`${skill.value?.toFixed(1)}%`} heightSize="1.125rem" />
                     </>
                   ))}
                 </div>

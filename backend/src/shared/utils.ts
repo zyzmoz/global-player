@@ -18,6 +18,7 @@ export const getPlayerAnalysis = async (player) => {
     inactive,
     veteran,
     hotStreak,
+    leaguePoints,
   } = player
 
   let matches = await findMany('playerMatches', {
@@ -42,6 +43,19 @@ export const getPlayerAnalysis = async (player) => {
     playerId: _id,
     assists: { $gte: 0 },
   })
+
+  // get the tier
+  /*[{
+  $group: {
+    _id: null,
+    totaLeaguePoints: {
+    $sum: '$leaguePoints'
+    },
+    totalPlayers: {
+    $sum: 1
+    }
+  }
+}] */
 
   const roles: any = matches.reduce(
     (acc: any, rec: any) => {
@@ -115,6 +129,7 @@ export const getPlayerAnalysis = async (player) => {
     veteran,
     hotStreak,
     skills,
+    leaguePoints,
   }
 
   return data
