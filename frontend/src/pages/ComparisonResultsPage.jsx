@@ -150,7 +150,7 @@ function ComparisonResultsPage({ axiosClient }) {
             <Card>
               <div className="badge-score-wrapper">
                 <BodyText text="GP Badge" color={Colors.secondaryColorSkyBlue} />
-                <BodyText text="Score: 85" color={Colors.primaryColorBrightGreen} />
+                <BodyText text={`Score: ${player1?.data.leaguePoints}`} color={Colors.primaryColorBrightGreen} />
               </div>
               <div className="icon-text-wrapper">
                 <div className="icon-text">
@@ -169,7 +169,7 @@ function ComparisonResultsPage({ axiosClient }) {
             <Card>
               <div className="badge-score-wrapper">
                 <BodyText text="GP Badge" color={Colors.secondaryColorSkyBlue} />
-                <BodyText text="Score: 85" color={Colors.primaryColorBrightGreen} />
+                <BodyText text={`Score: ${player1?.data.leaguePoints}`} color={Colors.primaryColorBrightGreen} />
               </div>
               <div className="icon-text-wrapper">
                 <div className="icon-text">
@@ -227,7 +227,7 @@ function ComparisonResultsPage({ axiosClient }) {
               <div className="overall-rating-wrapper">
                 <div className="badge-score-wrapper">
                   <Headline text="GP Badge" color={Colors.primaryColorBrightGreen} />
-                  <BodyText text="Score: 85" color={Colors.primaryColorBrightGreen} />
+                  <BodyText text={`Score: ${player1?.data.leaguePoints}`} color={Colors.primaryColorBrightGreen} />
                 </div>
                 <div className="icon-wrapper">
                   <TrophyIcon className="icon" fill={Colors.secondaryColorSkyBlue} />
@@ -287,7 +287,7 @@ function ComparisonResultsPage({ axiosClient }) {
               <div className="overall-rating-wrapper">
                 <div className="badge-score-wrapper">
                   <Headline text="GP Badge" color={Colors.primaryColorBrightGreen} />
-                  <BodyText text="Score: 85" color={Colors.primaryColorBrightGreen} />
+                  <BodyText text={`Score: ${player2?.data.leaguePoints}`} color={Colors.primaryColorBrightGreen} />
                 </div>
                 <div className="icon-wrapper">
                   <TrophyIcon className="icon" fill={Colors.secondaryColorSkyBlue} />
@@ -322,14 +322,25 @@ function ComparisonResultsPage({ axiosClient }) {
               <div className="personal-skills-wrapper">
                 <BodyText text="Personal Skills" color={Colors.secondaryColorSkyBlue} />
                 <div className="progressbar-wrapper">
-                  <ProgressBar text="Team Player" progress={80} heightSize="1.6rem" />
-                  <ProgressBar text="Agressive" progress={60} heightSize="1.6rem" />
-                  <ProgressBar text="Bold" progress={60} heightSize="1.6rem" />
+                  {player1?.data.skills.personalSkills.map((skill) => (
+                    <ProgressBar progress={skill.value} text={skill.personalSkill} heightSize="1.6rem" fixedText />
+                  ))}
                 </div>
               </div>
-              <div className="tech-skills-wrapper">
+              <div className="tech-skills-wrapper" style={{ paddingBottom: '1rem' }}>
                 <BodyText text="Tech Skills" color={Colors.secondaryColorSkyBlue} />
-                <RadarChart playerSkills={{ data: [8, 6, 7, 6, 6, 8] }} />
+                <RadarChart
+                  playerSkills={{
+                    data: [
+                      player1?.data.skills.skills.farming,
+                      player1?.data.skills.skills.dueling,
+                      player1?.data.skills.skills.timing,
+                      player1?.data.skills.skills.picking,
+                      player1?.data.skills.skills.deffensive,
+                      player1?.data.skills.skills.roaming,
+                    ],
+                  }}
+                />
               </div>
             </Card>
             <div className="comparisonIcon-wrapper">
@@ -347,14 +358,25 @@ function ComparisonResultsPage({ axiosClient }) {
               <div className="personal-skills-wrapper">
                 <BodyText text="Personal Skills" color={Colors.secondaryColorSkyBlue} />
                 <div className="progressbar-wrapper">
-                  <ProgressBar text="Team Player" progress={80} heightSize="1.6rem" />
-                  <ProgressBar text="Agressive" progress={60} heightSize="1.6rem" />
-                  <ProgressBar text="Bold" progress={60} heightSize="1.6rem" />
+                  {player2?.data.skills.personalSkills.map((skill) => (
+                    <ProgressBar progress={skill.value} text={skill.personalSkill} heightSize="1.6rem" fixedText />
+                  ))}
                 </div>
               </div>
               <div className="tech-skills-wrapper">
                 <BodyText text="Tech Skills" color={Colors.secondaryColorSkyBlue} />
-                <RadarChart playerSkills={{ data: [8, 6, 7, 6, 6, 8] }} />
+                <RadarChart
+                  playerSkills={{
+                    data: [
+                      player2?.data.skills.skills.farming,
+                      player2?.data.skills.skills.dueling,
+                      player2?.data.skills.skills.timing,
+                      player2?.data.skills.skills.picking,
+                      player2?.data.skills.skills.deffensive,
+                      player2?.data.skills.skills.roaming,
+                    ],
+                  }}
+                />
               </div>
             </Card>
           </div>

@@ -1,17 +1,27 @@
 import { Router } from 'express'
 import { ObjectId } from 'mongodb'
 import { IPlayerMatch, isPlayerMatch } from '../models/PlayerMatches'
-import { findMany, findOne, insert, remove, update } from '../shared/dbFunctions'
+import { findMany, insert, remove, update } from '../shared/dbFunctions'
+import RedisClient from '../shared/redis'
 
 const router = Router()
 
 router.get('/:playerId', async (req, res) => {
   const { playerId } = req.params
-  const matches = await findMany<IPlayerMatch>('playerMatches', {
-    playerId: new ObjectId(playerId),
-    assists: { $gte: 0 },
-  })
-  res.json(matches)
+  const redisClient = RedisClient.getInstance()
+
+  const cachedData = await redisClient.get(`playerMatches:${playerId}`)
+  if (cachedData) {
+    res.status(200).json(JSON.parse(cachedData))
+  } else {
+    const matches = await findMany<IPlayerMatch>('playerMatches', {
+      playerId: new ObjectId(playerId),
+      assists: { $gte: 0 },
+    })
+
+    await redisClient.set(`playerMatches:${playerId}`, JSON.stringify(matches))
+    res.json(matches)
+  }
 })
 
 router.post('/', async (req, res) => {
