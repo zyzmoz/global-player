@@ -35,7 +35,7 @@ function PlayerDetailsPage({ axiosClient, userId }) {
 
   const navigate = useNavigate()
   const navigateToContactPlayer = () => {
-    navigate(`/`)
+    navigate(`/contact-player`)
   }
   const navigateToComparePlayer = () => {
     context.setPlayersToCompare({

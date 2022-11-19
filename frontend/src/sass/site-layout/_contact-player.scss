@@ -1,0 +1,49 @@
+.contact-player-content {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
+  h1 {
+    margin-bottom: 3rem;
+  }
+
+  .icon-summoname {
+    display: flex;
+    align-items: center;
+
+    p {
+      margin-left: 1.5rem;
+    }
+  }
+
+  .contact-information {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  .hr-divider {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  form {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    .input {
+      margin-bottom: 1rem;
+    }
+
+    .send-btn {
+      margin-top: 2rem;
+    }
+  }
+
+  input,
+  label,
+  textarea {
+    display: block;
+  }
+}
