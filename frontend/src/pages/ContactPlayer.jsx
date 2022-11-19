@@ -39,7 +39,6 @@ function ContactPlayer({ axiosClient }) {
         <div className="hr-divider" />
         <form
           onSubmit={() => {
-            alert(`Succeeded! Your message has been sent to ${playerDetail?.data.summonerName}`)
             navigate('/player-details')
           }}
         >
