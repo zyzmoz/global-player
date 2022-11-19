@@ -6,7 +6,7 @@ import Avatar from '../Avatar/Avatar'
 import { VectorIcon, DeleteIcon } from '../Icon/icons'
 import RoleIcons from '../RoleIcons/RoleIcons'
 
-function Favorites({ summonerName, summonerIcon, playerRole, ContactFunc, RemoveFav }) {
+function Favorites({ summonerName, summonerIcon, playerRole, contactFunc, removeFav }) {
   return (
     <section className="player-information-wrapper">
       <div className="border-wrapper">
@@ -23,18 +23,21 @@ function Favorites({ summonerName, summonerIcon, playerRole, ContactFunc, Remove
             </div>
           </div>
           <div className="avatar-icons-container">
-            <Avatar summonerIcon={summonerIcon} />
+            <Avatar
+              summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${summonerIcon}.png`}
+              alt="player icon"
+            />
             <div className="role-icon-wrapper"> {RoleIcons(`${playerRole}`, 'white')}</div>
-            <button type="button" className="heartIconFav" onClick={RemoveFav}>
+            <button type="button" className="heartIconFav" onClick={removeFav}>
               <VectorIcon stroke={Colors.primaryColorBrightGreen} className="heartIconItem" />
             </button>
           </div>
-          <button onClick={ContactFunc} type="button" className="contactPlayerButton">
+          <button onClick={contactFunc} type="button" className="contactPlayerButton">
             {' '}
             Contact player
           </button>
           <div className="hexagon">
-            <button type="button" className="removeFav">
+            <button type="button" className="removeFav" onClick={removeFav}>
               <p className="visually-hidden">Remove Favorite</p>
               <DeleteIcon fill={Colors.primaryColorBrightGreen} stroke={Colors.primaryColorBrightGreen} />
             </button>
@@ -49,16 +52,16 @@ Favorites.propTypes = {
   summonerName: PropTypes.string,
   summonerIcon: PropTypes.string,
   playerRole: PropTypes.string,
-  ContactFunc: PropTypes.func,
-  RemoveFav: PropTypes.func,
+  contactFunc: PropTypes.func,
+  removeFav: PropTypes.func,
 }
 
 Favorites.defaultProps = {
   summonerName: 'MissingName',
   summonerIcon: 'https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/27.png',
-  playerRole: 'Support',
-  ContactFunc: '',
-  RemoveFav: '',
+  playerRole: '',
+  contactFunc: '',
+  removeFav: '',
 }
 
 export default Favorites
