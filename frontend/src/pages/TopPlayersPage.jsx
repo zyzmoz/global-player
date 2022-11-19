@@ -19,7 +19,7 @@ import Colors from '../sass/variables/_colors.scss'
 import Footer from '../components/Footer/Footer'
 import Image from '../components/Image/Image'
 import RoleIcons from '../components/RoleIcons/RoleIcons'
-import { DownIcon, SupportIcon, UserIcon } from '../components/Icon/icons'
+import { DownIcon, UserIcon, Rank1Icon, Rank2Icon, Rank3Icon } from '../components/Icon/icons'
 import { PlayerContext } from '../context/PlayerContext'
 import withAuthentication from '../hoc/withAuthentication'
 import SearchPlayer from '../components/SearchPlayer/SearchPlayer'
@@ -58,7 +58,7 @@ function TopPlayersPage({ axiosClient }) {
         <Headline text="Top Players" color={Colors.primaryColorBrightGreen} textAlign="center" />
         <div className="card-container-wrapper">
           <div className="card-container">
-            <SupportIcon className="Icon" fill={Colors.primaryColorBrightGreen} />
+            <Rank1Icon className="Icon" stroke={Colors.primaryColorBrightGreen} />
             <Card width="18.125rem">
               <Headline
                 text={topPlayers?.data[0].summonerName}
@@ -112,7 +112,7 @@ function TopPlayersPage({ axiosClient }) {
             </Card>
           </div>
           <div className="card-container">
-            <SupportIcon className="Icon" fill={Colors.primaryColorBrightGreen} />
+            <Rank2Icon className="Icon" stroke={Colors.primaryColorBrightGreen} />
             <Card width="18.125rem">
               <Headline
                 text={topPlayers?.data[1].summonerName}
@@ -166,7 +166,7 @@ function TopPlayersPage({ axiosClient }) {
             </Card>
           </div>
           <div className="card-container">
-            <SupportIcon className="Icon" fill={Colors.primaryColorBrightGreen} />
+            <Rank3Icon className="Icon" stroke={Colors.primaryColorBrightGreen} />
             <Card width="18.125rem">
               <Headline
                 text={topPlayers?.data[2].summonerName}
