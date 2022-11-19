@@ -92,6 +92,7 @@ body {
     border: 0;
     width: 100%;
     font-size: 16px;
+    padding: 1.25rem 0 1rem 0;
   }
 
   ::placeholder {
@@ -132,6 +133,7 @@ body {
 
     .add-vs-btn {
       border: 1px solid $primary-color-bright-green;
+      border-radius: 8px;
       padding: 0.25rem 1.25rem;
     }
   }

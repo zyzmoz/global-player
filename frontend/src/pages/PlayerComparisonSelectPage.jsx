@@ -1,10 +1,10 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { Axios } from 'axios'
 import Header from '../components/Header/Header'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
-import { CrossIcon, DownIcon } from '../components/Icon/icons'
+import { DownIcon, UpIcon } from '../components/Icon/icons'
 import Headline from '../components/Headline/Headline'
 import Button from '../components/Button/Button'
 import BodyText from '../components/BodyText/BodyText'
@@ -18,6 +18,11 @@ import SearchPlayerSelection from '../components/SearchPlayerSelection/SearchPla
 function PlayerComparisonSelectPage({ axiosClient }) {
   const { playersToCompare, setPlayersToCompare } = useContext(PlayerContext)
   const navigate = useNavigate()
+
+  const [showMore, setShowMore] = useState(false)
+  const showMoreFunction = () => {
+    setShowMore(!showMore)
+  }
 
   const { data: allPlayers } = useQuery('allPlayersData', () => axiosClient.get('/api/v1/analytics/all-players'))
 
@@ -44,9 +49,6 @@ function PlayerComparisonSelectPage({ axiosClient }) {
           <Header />
 
           <div className="title-cross-icon-container">
-            <button type="button" className="close-btn no-background-btn">
-              <CrossIcon fill={Colors.primaryColorBrightGreen} />
-            </button>
             <Headline text="Compare" textAlign="center" color={Colors.primaryColorBrightGreen} fontSize="32px" />
           </div>
 
@@ -101,9 +103,39 @@ function PlayerComparisonSelectPage({ axiosClient }) {
                   </button>
                 </div>
               ))}
-              <button type="button" className="down-btn no-background-btn">
-                <DownIcon fill={Colors.primaryColorBrightGreen} />
-              </button>
+
+              {showMore &&
+                allPlayers?.data?.slice(9, 17).map((player) => (
+                  <div className="avatar-name-container-btn">
+                    <div className="avatar-name-container">
+                      <Avatar
+                        summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${player.profileIconId}.png`}
+                      />
+
+                      <BodyText text={player.summonerName} color={Colors.secondaryColorSkyBlue} />
+                    </div>
+                    <button
+                      onClick={() => {
+                        handlePlayerSelectionBtn(player)
+                      }}
+                      type="button"
+                      className="add-vs-btn no-background-btn"
+                      style={{ color: Colors.primaryColorBrightGreen }}
+                    >
+                      + VS
+                    </button>
+                  </div>
+                ))}
+
+              {!showMore ? (
+                <button type="button" className="down-btn no-background-btn">
+                  <DownIcon fill={Colors.primaryColorBrightGreen} onClick={showMoreFunction} />
+                </button>
+              ) : (
+                <button type="button" className="down-btn no-background-btn">
+                  <UpIcon fill={Colors.primaryColorBrightGreen} onClick={showMoreFunction} />
+                </button>
+              )}
               <Button onClick={navigateToComparisonResults} text="Compare" />
             </section>
           </main>
