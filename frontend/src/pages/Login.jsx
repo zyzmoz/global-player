@@ -39,22 +39,26 @@ function Login() {
       <div className="login-page-wrapper">
         <Headline text="Log In" color={Colors.primaryColorBrightGreen} />
         <Input id="email" label="Email" type="text" placeholder="Enter your email" value={email} onChange={setEmail} />
-        <Input
-          id="password"
-          label="Password"
-          type="password"
-          placeholder="Enter your password"
-          value={password}
-          onChange={setPassword}
-        />
-        <Link to="/">
-          <BodyText text="Forgot my password" color={Colors.primaryColorBrightGreen} />
-        </Link>
+        <div className="password-wrapper">
+          <Input
+            id="password"
+            label="Password"
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={setPassword}
+          />
+          <Link to="/">
+            <BodyText text="Forgot my password" color={Colors.primaryColorBrightGreen} />
+          </Link>
+        </div>
         <Button onClick={handleLogin} text="Login" />
-        <BodyText text="New here?" />
-        <Link to="/create-account">
-          <BodyText text="Create an account" color={Colors.primaryColorBrightGreen} />
-        </Link>
+        <div className="new-here-wrapper">
+          <BodyText text="New here?" />
+          <Link to="/create-account">
+            <BodyText text="Create an account" color={Colors.primaryColorBrightGreen} />
+          </Link>
+        </div>
       </div>
       <Footer />
     </div>
