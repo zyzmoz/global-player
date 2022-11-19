@@ -36,12 +36,12 @@ function ComparisonResultsPage({ axiosClient }) {
   )
 
   const { data: player1Matches } = useQuery('player1Matches', () =>
-    axiosClient.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/playerMatch/${context.playersToCompare.player1}`)
+    axiosClient.get(`/api/v1/playerMatch/${context.playersToCompare.player1.id}`)
   )
   console.log(player1Matches)
 
   const { data: player2Matches } = useQuery('player2Matches', () =>
-    axiosClient.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/playerMatch/${context.playersToCompare.player2}`)
+    axiosClient.get(`/api/v1/playerMatch/${context.playersToCompare.player2.id}`)
   )
   // console.log(player2Matches)
 
