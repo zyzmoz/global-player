@@ -8,9 +8,20 @@
     display: flex;
     flex-flow: column;
     align-items: center;
+    gap: 2rem;
+    margin: 0 3rem;
     h1 {
       font-size: 2rem;
     }
+  }
+  .input,
+  .password-wrapper {
+    width: 100%;
+  }
+  .input-wrapper {
+    border: 2px solid transparent;
+    background-image: linear-gradient(180deg, #7dfaa4 0%, #7856ff 50%, #7dfaa4 100%);
+    border-radius: 25px;
   }
   input {
     box-sizing: border-box;
@@ -19,6 +30,8 @@
     background: linear-gradient(180deg, #402cac 0%, #1a1051 100%);
     border-radius: 25px;
     color: white;
+    border: 2px solid transparent;
+    // background: $border-gradient-color;
   }
 }
 
