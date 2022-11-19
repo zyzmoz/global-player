@@ -1,4 +1,9 @@
 .landing-page {
+  .main-header {
+    align-items: flex-start;
+    margin-top: 1rem;
+  }
+
   .table {
     color: $neutral-color-white;
     border: 3px solid $primary-color-bright-green;
@@ -90,9 +95,6 @@
   }
   tr:nth-last-child(1) td:nth-last-child(1) {
     border-bottom-right-radius: 25px;
-  }
-  td:nth-last-child(1) {
-    padding-bottom: 0;
   }
   td .name {
     display: flex;

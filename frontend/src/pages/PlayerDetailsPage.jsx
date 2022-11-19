@@ -206,7 +206,7 @@ function PlayerDetailsPage({ axiosClient, userId }) {
                     </div>
                     <div className="kda-content losses-container-copy">
                       <Headline text="LOSSES" textAlign="center" color="" />
-                      <BodyText text="25" textAlign="left" />
+                      <BodyText text={playerDetail?.data.losses} textAlign="left" />
                     </div>
                   </div>
                 </div>
