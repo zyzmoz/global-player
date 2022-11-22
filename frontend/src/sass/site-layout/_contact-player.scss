@@ -1,7 +1,23 @@
-.contact-player-wrapper {
+.contact-us-wrapper {
+  .contact-information {
+    margin-bottom: 7rem;
+  }
+}
+
+.contact-player-wrapper,
+.contact-us-wrapper {
+  .nav {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
   height: 100vh;
 
-  .contact-player-content {
+  .contact-player-content,
+  .contact-us-content {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -36,7 +52,8 @@
       margin-bottom: 3rem;
     }
 
-    .contact-player-form {
+    .contact-player-form,
+    .contact-us-form {
       max-width: 60%;
       display: block;
       margin-left: auto;

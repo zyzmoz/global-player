@@ -11,7 +11,7 @@ function Footer() {
       <Image imageUrl={smallLogo} alt="Global Player logo" className="footer-desktop-logo" imageWidth="73px" />
 
       <div className="nav-links-footer">
-        <NavLink to="/ContactUs" className="footer-link">
+        <NavLink to="/contact-us" className="footer-link">
           Contact Us
         </NavLink>
         <NavLink to="/FAQ" className="footer-link">
