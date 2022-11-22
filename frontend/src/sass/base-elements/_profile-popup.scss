@@ -15,6 +15,7 @@
     gap: 1rem;
     background-color: $neutral-color-dark-blue;
     visibility: hidden;
+    z-index: 100;
     a {
       display: flex;
       align-items: center;

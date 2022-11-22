@@ -45,6 +45,8 @@ import { ReactComponent as TermsConditionsIcon } from '../../assets/icons/TermsC
 import { ReactComponent as Rank1Icon } from '../../assets/icons/rank_number_1.svg'
 import { ReactComponent as Rank2Icon } from '../../assets/icons/rank_number_2.svg'
 import { ReactComponent as Rank3Icon } from '../../assets/icons/rank_number_3.svg'
+import { ReactComponent as CompareFilledIcon } from '../../assets/icons/ComparionFilled.svg'
+import { ReactComponent as AddPlayerShapeIcon } from '../../assets/icons/AddPlayer.svg'
 
 export {
   AddIcon,
@@ -94,4 +96,6 @@ export {
   Rank1Icon,
   Rank2Icon,
   Rank3Icon,
+  CompareFilledIcon,
+  AddPlayerShapeIcon,
 }
