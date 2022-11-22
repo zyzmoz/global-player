@@ -102,8 +102,8 @@ const router = createBrowserRouter([
   {
     path: 'terms-conditions',
     element: <TermsConditionsPage />,
-   },
-   {
+  },
+  {
     path: 'contact-us',
     element: <ContactUs />,
   },
