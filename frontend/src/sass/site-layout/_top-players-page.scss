@@ -40,6 +40,10 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    .rankIcon {
+      width: 4rem;
+      height: 4rem;
+    }
   }
 
   .card {
@@ -209,7 +213,7 @@
       flex-flow: row;
       gap: 1rem;
       justify-content: center;
-      margin-top: 1rem;
+      margin-top: 3rem;
     }
     .card-container:nth-child(1) {
       transform: scale(1.1);
@@ -219,13 +223,17 @@
     }
     .card-container:nth-child(2) {
       order: -1;
+      margin-top: .2rem;
+      .card {
+        margin: 0;
+      }
     }
     .card-container:nth-child(3) {
       order: 1;
+      margin-top: .2rem;
+      .card {
+        margin: 0;
+      }
     }
-
-    // .down-icon-container {
-    //   display: none;
-    // }
   }
 }

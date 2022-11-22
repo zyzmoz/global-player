@@ -64,7 +64,7 @@ function TopPlayersPage({ axiosClient }) {
         <Headline text="Top Players" color={Colors.primaryColorBrightGreen} textAlign="center" />
         <div className="card-container-wrapper">
           <div className="card-container">
-            <Rank1Icon className="Icon" stroke={Colors.primaryColorBrightGreen} />
+            <Rank1Icon className="rankIcon" stroke={Colors.primaryColorBrightGreen} />
             <Card width="18.125rem">
               <Headline
                 text={topPlayers?.data[0].summonerName}
@@ -118,7 +118,7 @@ function TopPlayersPage({ axiosClient }) {
             </Card>
           </div>
           <div className="card-container">
-            <Rank2Icon className="Icon" stroke={Colors.primaryColorBrightGreen} />
+            <Rank2Icon className="rankIcon" stroke={Colors.primaryColorBrightGreen} />
             <Card width="18.125rem">
               <Headline
                 text={topPlayers?.data[1].summonerName}
@@ -172,7 +172,7 @@ function TopPlayersPage({ axiosClient }) {
             </Card>
           </div>
           <div className="card-container">
-            <Rank3Icon className="Icon" stroke={Colors.primaryColorBrightGreen} />
+            <Rank3Icon className="rankIcon" stroke={Colors.primaryColorBrightGreen} />
             <Card width="18.125rem">
               <Headline
                 text={topPlayers?.data[2].summonerName}

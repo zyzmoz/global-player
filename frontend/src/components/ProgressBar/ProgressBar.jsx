@@ -1,7 +1,18 @@
 import PropTypes from 'prop-types'
 import Colors from '../../sass/variables/_colors.scss'
 
-function ProgressBar({ progress, color, border, borderline, text, widthSize, heightSize, fixedText }) {
+function ProgressBar({
+  progress,
+  color,
+  border,
+  borderline,
+  text,
+  widthSize,
+  heightSize,
+  fixedText,
+  textColor,
+  textSize,
+}) {
   return (
     <div className="progressbar-wrapper" style={{ width: widthSize }}>
       <div
@@ -21,13 +32,17 @@ function ProgressBar({ progress, color, border, borderline, text, widthSize, hei
             borderRadius: border,
             height: heightSize,
             justifyContent: 'end',
-            color: 'white',
+            color: textColor,
             paddingRight: '4px',
           }}
         >
           {!fixedText && text}
         </div>
-        {fixedText && <div className="fix-progress-text">{text}</div>}
+        {fixedText && (
+          <div className="fix-progress-text" style={{ color: textColor, fontSize: textSize }}>
+            {text}
+          </div>
+        )}
       </div>
     </div>
   )
@@ -44,6 +59,8 @@ ProgressBar.defaultProps = {
   widthSize: '',
   heightSize: '20px',
   fixedText: '',
+  textColor: 'white',
+  textSize: '14px',
 }
 
 ProgressBar.propTypes = {
@@ -55,4 +72,6 @@ ProgressBar.propTypes = {
   widthSize: PropTypes.string,
   heightSize: PropTypes.string,
   fixedText: PropTypes.string,
+  textColor: PropTypes.string,
+  textSize: PropTypes.string,
 }

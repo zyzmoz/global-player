@@ -6,13 +6,16 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
     justify-content: center;
     .label {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 0.5rem;
+      p {
+        max-width: 5.5rem;
+      }
       .player1-label-span,
       .player2-label-span {
         width: 1.3rem;
@@ -36,13 +39,17 @@
 
   // Lables wrapper for Desktop screen
   @media screen and (min-width: 1000px) {
-    .label {
-      gap: 4rem;
+    .labels-wrapper {
       .label {
-        .player1-label-span,
-        .player2-label-span {
-          width: 1.5rem;
-          height: 1.5rem;
+        p {
+          max-width: 10rem;
+        }
+        .label {
+          .player1-label-span,
+          .player2-label-span {
+            width: 1.5rem;
+            height: 1.5rem;
+          }
         }
       }
     }
@@ -51,6 +58,7 @@
       overflow: unset;
     }
     .linechart-wrapper {
+      width: unset;
       padding-right: 1rem;
     }
   }

@@ -81,6 +81,12 @@
     position: absolute;
     z-index: 10;
   }
+  .compareIcon {
+    display: none;
+  }
+  .compareFilledIcon {
+    transform: rotate(90deg);
+  }
   // Add card
   .add-card-container {
     flex-grow: 1;
@@ -187,6 +193,12 @@
         width: 10rem;
         border-radius: 15px;
       }
+    }
+    .compareIcon {
+      display: block;
+    }
+    .compareFilledIcon {
+      display: none;
     }
   }
 }

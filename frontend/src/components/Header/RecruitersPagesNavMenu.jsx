@@ -20,16 +20,16 @@ function RecruitersPagesNavMenu({ className }) {
         </button>
         <Image imageUrl={smallLogo} alt="Global Player logo" className="logo-mobile" imageWidth="42.14px" />
       </div>
-      <NavLink to="/Dashboard" className="sidebar-link">
+      <NavLink to="/TopPlayers" className="sidebar-link">
         Dashboard
       </NavLink>
-      <NavLink to="/Favorites" className="sidebar-link">
+      <NavLink to="/favorites" className="sidebar-link">
         Favorites
       </NavLink>
-      <NavLink to="/Compare" className="sidebar-link">
+      <NavLink to="/player-comparison-select-page" className="sidebar-link">
         Compare
       </NavLink>
-      <NavLink to="/Help" className="sidebar-link">
+      <NavLink to="/help" className="sidebar-link">
         Help
       </NavLink>
     </div>
