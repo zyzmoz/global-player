@@ -6,6 +6,10 @@
 @import './favorites-page';
 @import './contact-player';
 
+html {
+  scroll-behavior: smooth;
+}
+
 .App {
   color: white;
 
@@ -36,6 +40,7 @@
   grid-column: 1/-1;
   grid-row: 1/-1;
   overflow: hidden;
+  background: #080235;
 }
 
 .landing-page {
@@ -54,16 +59,31 @@
     color: $primary-color-bright-green;
     text-align: center;
     margin-bottom: 2.5rem;
+    font-size: 32px;
   }
 
   p {
     text-align: center;
     margin-bottom: 2.5rem;
+    font-size: 16px;
   }
 
   .button {
     align-self: center;
+    padding: 1rem;
+    height: unset;
   }
+}
+
+.landing-page .image-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  background: rgb(125, 250, 164);
+  background: linear-gradient(100deg, rgba(125, 250, 164, 1) 0%, rgba(125, 250, 164, 0.2) 100%);
+  border-radius: 0 30px;
+  padding: .15rem;
+  height: fit-content;
 }
 
 .feauture-wrapper {
@@ -72,9 +92,15 @@
   display: flex;
   flex-flow: column;
 
+  @media screen and (min-width: 1000px) {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   h1 {
     text-align: center;
-    margin: 3rem 0 2rem 0;
+    margin: 1.5rem 0 2rem 0;
   }
 
   p {
@@ -249,15 +275,9 @@
     grid-row: 1/2;
   }
 
-  .image-container {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-  }
-
-  .image-container img {
-    max-width: 75%;
-  }
+  // .image-container img {
+  //   max-width: 75%;
+  // }
 
   .feauture-container-right .text-container {
     grid-column: 1/2;
