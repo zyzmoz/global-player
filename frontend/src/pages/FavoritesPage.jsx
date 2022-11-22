@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Axios } from 'axios'
 import { string } from 'prop-types'
 import { useQuery } from 'react-query'
@@ -11,9 +12,15 @@ import Headline from '../components/Headline/Headline'
 import Favorites from '../components/Favorites/Favorites'
 
 function FavoritesPage({ axiosClient, userId }) {
-  const { data: favoritePlayers } = useQuery('favoritePlayersData', () => axiosClient.get(`/api/v1/favorite/${userId}`))
-  const removeFav = (favoriteId) => {
-    axiosClient.delete(`/api/v1/favorite/${favoriteId}`)
+  const { data: favoritePlayersR } = useQuery('favoritePlayersData', () =>
+    axiosClient.get(`/api/v1/favorite/${userId}`)
+  )
+
+  const [favoritePlayers, setFavoritePlayers] = useState(favoritePlayersR?.data || [])
+
+  const removeFav = async (favoriteId) => {
+    await axiosClient.delete(`/api/v1/favorite/${favoriteId}`)
+    setFavoritePlayers(favoritePlayers.filter((f) => f.favoriteId !== favoriteId))
   }
 
   return (
@@ -29,7 +36,7 @@ function FavoritesPage({ axiosClient, userId }) {
             <Headline text="Favorites" color="#34FF9B" fontSize="48px" textAlign="center" className="headerFavorites" />
           </div>
           <div className="favorites-container">
-            {favoritePlayers?.data.map((player) => (
+            {favoritePlayers?.map((player) => (
               <Favorites
                 summonerName={player.summonerName}
                 playerRole={player.role}
