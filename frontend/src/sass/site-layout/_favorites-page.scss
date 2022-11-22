@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr;
   overflow-x: hidden;
+  justify-content: space-between;
 
   .h1-wrapper h1 {
     margin-bottom: 5rem;
@@ -17,6 +18,14 @@
     display: grid;
     grid-template-columns: repeat((auto-fill, minmax(335px, 1fr)));
     gap: 2rem 1rem;
+    
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
   }
 
   .name-division-container {
@@ -130,6 +139,10 @@
     position: absolute;
     top: -1.5rem;
     right: 0.5rem;
+    svg {
+      width: 48px;
+      height: 48px;
+    }
   }
 
   .removeFav {
@@ -146,6 +159,10 @@
 }
 
 @media screen and (min-width: 1000px) {
+  .sidebar:hover + .favorites-content{
+    margin-left: 15.625rem;
+  }
+
   .favorites-page {
     .favorites-content {
       margin-left: 9rem;

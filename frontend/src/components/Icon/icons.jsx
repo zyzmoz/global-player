@@ -6,6 +6,7 @@ import { ReactComponent as CrossIcon } from '../../assets/icons/Cross.svg'
 import { ReactComponent as CrownIcon } from '../../assets/icons/Crown.svg'
 import { ReactComponent as DashboardIcon } from '../../assets/icons/Dashboard.svg'
 import { ReactComponent as DeleteIcon } from '../../assets/icons/Delete.svg'
+import { ReactComponent as DeleteIcon2 } from '../../assets/icons/Delete2.svg'
 import { ReactComponent as DownIcon } from '../../assets/icons/Down.svg'
 import { ReactComponent as FilterIcon } from '../../assets/icons/Filter.svg'
 import { ReactComponent as FrameIcon } from '../../assets/icons/Frame.svg'
@@ -57,6 +58,7 @@ export {
   CrownIcon,
   DashboardIcon,
   DeleteIcon,
+  DeleteIcon2,
   DownIcon,
   FilterIcon,
   FrameIcon,

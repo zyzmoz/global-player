@@ -1,7 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Axios } from 'axios'
 import { string } from 'prop-types'
-import { useQuery } from 'react-query'
 import withAutentication from '../hoc/withAuthentication'
 import RecruitersPagesNavMenu from '../components/Header/RecruitersPagesNavMenu'
 import Sidebar from '../components/Sidebar/Sidebar'
@@ -12,11 +11,11 @@ import Headline from '../components/Headline/Headline'
 import Favorites from '../components/Favorites/Favorites'
 
 function FavoritesPage({ axiosClient, userId }) {
-  const { data: favoritePlayersR } = useQuery('favoritePlayersData', () =>
-    axiosClient.get(`/api/v1/favorite/${userId}`)
-  )
+  const [favoritePlayers, setFavoritePlayers] = useState([])
 
-  const [favoritePlayers, setFavoritePlayers] = useState(favoritePlayersR?.data || [])
+  useEffect(() => {
+    axiosClient.get(`/api/v1/favorite/${userId}`).then((res) => setFavoritePlayers(res.data))
+  }, [axiosClient, userId])
 
   const removeFav = async (favoriteId) => {
     await axiosClient.delete(`/api/v1/favorite/${favoriteId}`)
