@@ -62,8 +62,10 @@ router.delete('/:id', async (req, res) => {
   }
 
   const favorite = await findOne('favoritePlayers', id)
-  const redisClient = RedisClient.getInstance()
-  await redisClient.del(`favorite:${favorite.userId}`)
+  if (favorite && favorite?.userId) {
+    const redisClient = RedisClient.getInstance()
+    await redisClient.del(`favorite:${favorite.userId}`)
+  }
 
   await remove<IFavorite>('favoritePlayers', id)
 
