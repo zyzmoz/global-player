@@ -23,6 +23,7 @@ function CreateAccountRecruiter() {
       companyName: companyName.value,
       jobTitle: jobTitle.value,
       password: password.value,
+      isPlayer: false,
     }
 
     try {
