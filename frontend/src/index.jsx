@@ -22,6 +22,7 @@ import ComparisonResultsPage from './pages/ComparisonResultsPage'
 import PlayerComparisonSelectPage from './pages/PlayerComparisonSelectPage'
 import FavoritesPage from './pages/FavoritesPage'
 import ContactPlayer from './pages/ContactPlayer'
+import ChoosePlanPage from './pages/ChoosePlanPage'
 
 const router = createBrowserRouter([
   {
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
   {
     path: 'contact-player',
     element: <ContactPlayer />,
+  },
+  {
+    path: 'choose-plan',
+    element: <ChoosePlanPage />,
   },
 ])
 
