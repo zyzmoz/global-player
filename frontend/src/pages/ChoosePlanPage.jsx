@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import Header from '../components/Header/Header'
+import HeaderCreateAccount from '../components/Header/HeaderCreateAccount'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
 import Headline from '../components/Headline/Headline'
 import BodyText from '../components/BodyText/BodyText'
@@ -14,8 +14,9 @@ function PlansPage() {
     <div className="plans-page">
       <LandingPageNavMenu className="nav-side-menu" />
       <div className="plans-page-container">
-        <Header />
-
+        <div className="header-choose-plan">
+          <HeaderCreateAccount />
+        </div>
         <Headline text="Enterprise Plans" color="" fontSize="" textAlign="" />
         <BodyText textAlign="center" text="Get access to customized data for recruiters, team owners and coaches" />
 

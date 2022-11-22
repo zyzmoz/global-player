@@ -3,6 +3,60 @@
   grid-template-columns: 1fr;
   overflow: hidden;
 }
+
+.plan-card-container .card:nth-child(2) .get-started-link {
+  margin: 6rem;
+
+  a {
+    background-color: #7dfaa4;
+    color: #080235;
+    font-size: 14pt;
+    font-weight: 500;
+    border-radius: 15px;
+    width: auto;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 5px 4px 20px 5px #34ff9b;
+
+    &:hover {
+      background: radial-gradient(105.5% 711.76% at 0% 49.35%, #d7ffe3 0%, rgba(255, 255, 255, 0) 100%) #16ff8c;
+    }
+  }
+}
+
+.plan-card-container .card:nth-child(1) {
+  .get-started-link {
+    margin: 6rem;
+
+    a {
+      background: #7dfaa4;
+      color: #080235;
+      font-size: 14pt;
+      font-weight: 500;
+      border-radius: 15px;
+      width: auto;
+      height: 50px;
+      border: none;
+      cursor: pointer;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+
+      &:hover {
+        background: radial-gradient(105.5% 711.76% at 0% 49.35%, #d7ffe3 0%, rgba(255, 255, 255, 0) 100%) #16ff8c;
+      }
+    }
+  }
+}
+
 .plans-page-container {
   padding: 1rem;
   width: 100%;
@@ -45,10 +99,41 @@
       }
     }
 
+    .create-free-account {
+      color: #7dfaa4;
+      text-decoration: none;
+      border: #7dfaa4 3px solid;
+      border-radius: 10px;
+      padding: .5rem 1rem;
+    }
+
     @media screen and (min-width: 600px) {
       flex-direction: row;
       max-width: 1000px;
-      margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+
+      .card:nth-child(3) {
+        grid-column: 1/-1;
+        display: flex;
+        flex-flow: row nowrap;
+        margin-bottom: 5rem;
+
+        .card-content {
+          width: 100%;
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          padding: 0 2rem;
+
+          ul {
+            display: flex;
+            flex-flow: row nowrap;
+          }
+        }
+      }
     }
   }
 
@@ -98,6 +183,14 @@
       .plan-info-icons {
         display: flex;
       }
+
+      .plan-card-container {
+        margin-top: 2rem;
+      }
     }
   }
+}
+
+.header-choose-plan .header-link {
+  display: none;
 }
