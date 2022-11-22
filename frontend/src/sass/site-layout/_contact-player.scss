@@ -1,49 +1,132 @@
-.contact-player-content {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-
-  h1 {
-    margin-bottom: 3rem;
+.contact-us-wrapper {
+  .contact-information {
+    margin-bottom: 7rem;
   }
+}
 
-  .icon-summoname {
+.contact-player-wrapper,
+.contact-us-wrapper {
+  .nav {
+    width: 90%;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  height: 100vh;
+
+  .contact-player-content,
+  .contact-us-content {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
+    h1 {
+      font-size: 40px;
+    }
 
     p {
-      margin-left: 1.5rem;
-    }
-  }
-
-  .contact-information {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-  }
-
-  .hr-divider {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-  }
-
-  form {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-
-    .input {
-      margin-bottom: 1rem;
+      font-size: 16px;
     }
 
-    .send-btn {
-      margin-top: 2rem;
-    }
-  }
+    .icon-summoname {
+      display: flex;
+      align-items: center;
+      margin-top: 3rem;
 
-  input,
-  label,
-  textarea {
-    display: block;
+      h1 {
+        margin-left: 1.5rem;
+        font-size: 36px;
+      }
+    }
+
+    .contact-information {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+    }
+
+    .hr-divider {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-player-form,
+    .contact-us-form {
+      max-width: 60%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+
+      .input-wrapper {
+        margin-bottom: 2rem;
+        background-image: linear-gradient(180deg, #7dfaa4, #7856ff 50%, #7dfaa4);
+        border: 2px solid transparent;
+        border-radius: 25px;
+        width: 100%;
+        height: 32px;
+      }
+
+      input {
+        background: linear-gradient(180deg, #402cac, #1a1051);
+        border: 2px solid transparent;
+        border-radius: 25px;
+        box-sizing: border-box;
+        color: #fff;
+        width: 100%;
+        padding-left: 1rem;
+      }
+
+      label {
+        color: white;
+        font-size: 16px;
+        .label-text {
+          margin-bottom: 1rem;
+        }
+      }
+
+      .textarea-wrapper {
+        margin-bottom: 1rem;
+        background-image: linear-gradient(180deg, #7dfaa4, #7856ff 50%, #7dfaa4);
+        border: 2px solid transparent;
+        border-radius: 25px;
+        max-width: 100%;
+        max-height: 192px;
+      }
+
+      textarea {
+        background: linear-gradient(180deg, #402cac, #1a1051);
+        border: 2px solid transparent;
+        border-radius: 25px;
+        box-sizing: border-box;
+        color: #fff;
+        width: 100%;
+        height: 190px;
+        resize: none;
+        padding-left: 1rem;
+      }
+
+      ::placeholder {
+        padding-top: 0.25rem;
+      }
+
+      .button {
+        margin-top: 3.5rem;
+      }
+    }
+
+    .toast {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .toast-wrapper {
+      p {
+        margin-bottom: 1rem;
+      }
+    }
   }
 }
