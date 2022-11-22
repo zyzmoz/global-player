@@ -40,7 +40,7 @@ router.post('/create-account', async (req, res) => {
 
   const user = await insert<IUser>('users', { ...data, password: hashPassword })
 
-  res.json(user)
+  res.json({ token: jwt.sign({ email: user.email, userId: user._id }, APP_SECRET) })
 })
 
 // logout
