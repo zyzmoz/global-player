@@ -19,10 +19,11 @@ import Colors from '../sass/variables/_colors.scss'
 import Footer from '../components/Footer/Footer'
 import Image from '../components/Image/Image'
 import RoleIcons from '../components/RoleIcons/RoleIcons'
-import { DownIcon, UserIcon, Rank1Icon, Rank2Icon, Rank3Icon } from '../components/Icon/icons'
+import { DownIcon, Rank1Icon, Rank2Icon, Rank3Icon } from '../components/Icon/icons'
 import { PlayerContext } from '../context/PlayerContext'
 import withAuthentication from '../hoc/withAuthentication'
 import SearchPlayer from '../components/SearchPlayer/SearchPlayer'
+import ProfilePopUp from '../components/ProfilePopUp/ProfilePopUp'
 
 function TopPlayersPage({ axiosClient }) {
   const navigate = useNavigate()
@@ -58,7 +59,7 @@ function TopPlayersPage({ axiosClient }) {
       <div className="main-contents">
         <div className="search-userIcon-wrapper">
           <SearchPlayer className="search-player-component" placeholder="Search" axiosClient={axiosClient} />
-          <UserIcon className="userIcon" fill={Colors.primaryColorBrightGreen} />
+          <ProfilePopUp />
         </div>
         <Headline text="Top Players" color={Colors.primaryColorBrightGreen} textAlign="center" />
         <div className="card-container-wrapper">
