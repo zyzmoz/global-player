@@ -55,7 +55,7 @@ function Login() {
         <Button onClick={handleLogin} text="Login" />
         <div className="new-here-wrapper">
           <BodyText text="New here?" />
-          <Link to="/create-account">
+          <Link to="/plans">
             <BodyText text="Create an account" color={Colors.primaryColorBrightGreen} />
           </Link>
         </div>

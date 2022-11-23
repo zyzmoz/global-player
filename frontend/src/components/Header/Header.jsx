@@ -15,7 +15,7 @@ function Header() {
   return (
     <header className="main-header">
       <NavLink to="/">
-        <Image imageUrl={logoType} alt="Global Player logo" className="logo-desktop" />
+        <Image imageUrl={logoType} alt="Global Player logo" className="logo-desktop" imageWidth="236px" />
         <Image imageUrl={smallLogo} alt="Global Player logo" className="logo-mobile" imageWidth="33px" />
       </NavLink>
       <button type="button" className="side-button" onClick={() => toggleSideMenu()}>

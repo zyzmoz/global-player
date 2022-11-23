@@ -5,18 +5,33 @@
   margin-right: 0;
 }
 
-.image-container img {
-  outline: 3px solid #7DFAA4;
-
-}
+// .image-container img {
+//   outline: 3px solid #7dfaa4;
+// }
 
 .video-wrapper {
-  border-top: 3px solid #7DFAA4;
-  border-bottom: 3px solid #7DFAA4;
+  // border-top: 3px solid #7DFAA4;
+  // border-bottom: 3px solid #7DFAA4;
+  border: 3px solid #7dfaa4;
+  padding: 0.1rem;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: 1000px) {
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+
+    iframe {
+      width: 80vw;
+      height: calc(80vw / 1.77);
+      margin: 0;
+    }
+  }
 }
 
 iframe {
   width: 100vw;
-  height: calc(100vw/1.77);
+  height: calc(100vw / 1.77);
   margin: 0;
- }
+}

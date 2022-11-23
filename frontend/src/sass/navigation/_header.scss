@@ -33,6 +33,10 @@ header {
 @media screen and (min-width: 600px) {
   header {
     padding-top: 1rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    
     .logo-desktop {
       display: block;
     }

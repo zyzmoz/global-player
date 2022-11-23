@@ -40,6 +40,10 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    .rankIcon {
+      width: 4rem;
+      height: 4rem;
+    }
   }
 
   .card {
@@ -47,6 +51,9 @@
     .card-content {
       align-items: center;
       gap: 0.6rem;
+    }
+    .avatar {
+      margin-bottom: .5rem;
     }
     .winrate-kda-wrapper {
       display: grid;
@@ -120,10 +127,8 @@
   }
 
   .button {
-    font-size: 1rem;
     width: 8.688rem;
     height: 3.313rem;
-    font-weight: 700;
   }
 
   // Desktop View
@@ -145,7 +150,7 @@
       position: absolute;
       top: 0;
       right: 0;
-      left: 15.625rem;
+      left: 10rem;
     }
 
     input[type='search'] {
@@ -209,7 +214,7 @@
       flex-flow: row;
       gap: 1rem;
       justify-content: center;
-      margin-top: 1rem;
+      margin-top: 3rem;
     }
     .card-container:nth-child(1) {
       transform: scale(1.1);
@@ -219,13 +224,17 @@
     }
     .card-container:nth-child(2) {
       order: -1;
+      margin-top: .2rem;
+      .card {
+        margin: 0;
+      }
     }
     .card-container:nth-child(3) {
       order: 1;
+      margin-top: .2rem;
+      .card {
+        margin: 0;
+      }
     }
-
-    // .down-icon-container {
-    //   display: none;
-    // }
   }
 }

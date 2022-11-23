@@ -21,6 +21,10 @@ import ReviewPlayer from './pages/ReviewPlayer'
 import ComparisonResultsPage from './pages/ComparisonResultsPage'
 import PlayerComparisonSelectPage from './pages/PlayerComparisonSelectPage'
 import FavoritesPage from './pages/FavoritesPage'
+import ContactPlayer from './pages/ContactPlayer'
+import ChoosePlanPage from './pages/ChoosePlanPage'
+import TermsConditionsPage from './pages/TermsConditionsPage'
+import ContactUs from './pages/ContactUs'
 
 const router = createBrowserRouter([
   {
@@ -86,6 +90,22 @@ const router = createBrowserRouter([
   {
     path: 'favorites',
     element: <FavoritesPage />,
+  },
+  {
+    path: 'contact-player',
+    element: <ContactPlayer />,
+  },
+  {
+    path: 'choose-plan',
+    element: <ChoosePlanPage />,
+  },
+  {
+    path: 'terms-conditions',
+    element: <TermsConditionsPage />,
+  },
+  {
+    path: 'contact-us',
+    element: <ContactUs />,
   },
 ])
 

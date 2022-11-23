@@ -3,7 +3,7 @@ import Headline from '../Headline/Headline'
 import Image from '../Image/Image'
 import Colors from '../../sass/variables/_colors.scss'
 import Avatar from '../Avatar/Avatar'
-import { VectorIcon, DeleteIcon } from '../Icon/icons'
+import { VectorIcon, DeleteIcon2 } from '../Icon/icons'
 import RoleIcons from '../RoleIcons/RoleIcons'
 
 function Favorites({ summonerName, summonerIcon, playerRole, contactFunc, removeFav }) {
@@ -28,7 +28,7 @@ function Favorites({ summonerName, summonerIcon, playerRole, contactFunc, remove
               alt="player icon"
             />
             <div className="role-icon-wrapper"> {RoleIcons(`${playerRole}`, 'white')}</div>
-            <button type="button" className="heartIconFav" onClick={removeFav}>
+            <button type="button" className="heartIconFav">
               <VectorIcon stroke={Colors.primaryColorBrightGreen} className="heartIconItem" />
             </button>
           </div>
@@ -39,7 +39,7 @@ function Favorites({ summonerName, summonerIcon, playerRole, contactFunc, remove
           <div className="hexagon">
             <button type="button" className="removeFav" onClick={removeFav}>
               <p className="visually-hidden">Remove Favorite</p>
-              <DeleteIcon fill={Colors.primaryColorBrightGreen} stroke={Colors.primaryColorBrightGreen} />
+              <DeleteIcon2 fill={Colors.primaryColorBrightGreen} stroke={Colors.primaryColorBrightGreen} />
             </button>
           </div>
         </div>

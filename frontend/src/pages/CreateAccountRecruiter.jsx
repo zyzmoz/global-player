@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate, useSearchParams } from 'react-router-dom'
 import Footer from '../components/Footer/Footer'
 import Headline from '../components/Headline/Headline'
 import BodyText from '../components/BodyText/BodyText'
@@ -10,6 +10,9 @@ import { recruiterSchema } from '../utils/userValidation'
 import HeaderCreateAccount from '../components/Header/HeaderCreateAccount'
 
 function CreateAccountRecruiter() {
+  const [searchParams] = useSearchParams()
+  const plan = searchParams.get('plan')
+
   const [error, setError] = useState(null)
   const navigate = useNavigate()
 
@@ -23,13 +26,19 @@ function CreateAccountRecruiter() {
       companyName: companyName.value,
       jobTitle: jobTitle.value,
       password: password.value,
+      isPlayer: false,
     }
 
     try {
       recruiterSchema.validateSync(newUser)
 
       // create acc
-      await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/auth/create-account`, newUser)
+      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/auth/create-account`, {
+        ...newUser,
+        planId: plan,
+      })
+
+      sessionStorage.setItem('token', res.data.token)
 
       // navigate to login
       navigate('/login')

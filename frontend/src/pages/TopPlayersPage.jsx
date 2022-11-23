@@ -19,10 +19,11 @@ import Colors from '../sass/variables/_colors.scss'
 import Footer from '../components/Footer/Footer'
 import Image from '../components/Image/Image'
 import RoleIcons from '../components/RoleIcons/RoleIcons'
-import { DownIcon, UserIcon, Rank1Icon, Rank2Icon, Rank3Icon } from '../components/Icon/icons'
+import { DownIcon, Rank1Icon, Rank2Icon, Rank3Icon } from '../components/Icon/icons'
 import { PlayerContext } from '../context/PlayerContext'
 import withAuthentication from '../hoc/withAuthentication'
 import SearchPlayer from '../components/SearchPlayer/SearchPlayer'
+import ProfilePopUp from '../components/ProfilePopUp/ProfilePopUp'
 
 function TopPlayersPage({ axiosClient }) {
   const navigate = useNavigate()
@@ -58,12 +59,12 @@ function TopPlayersPage({ axiosClient }) {
       <div className="main-contents">
         <div className="search-userIcon-wrapper">
           <SearchPlayer className="search-player-component" placeholder="Search" axiosClient={axiosClient} />
-          <UserIcon className="userIcon" fill={Colors.primaryColorBrightGreen} />
+          <ProfilePopUp />
         </div>
         <Headline text="Top Players" color={Colors.primaryColorBrightGreen} textAlign="center" />
         <div className="card-container-wrapper">
           <div className="card-container">
-            <Rank1Icon className="Icon" stroke={Colors.primaryColorBrightGreen} />
+            <Rank1Icon className="rankIcon" stroke={Colors.primaryColorBrightGreen} />
             <Card width="18.125rem">
               <Headline
                 text={topPlayers?.data[0].summonerName}
@@ -117,7 +118,7 @@ function TopPlayersPage({ axiosClient }) {
             </Card>
           </div>
           <div className="card-container">
-            <Rank2Icon className="Icon" stroke={Colors.primaryColorBrightGreen} />
+            <Rank2Icon className="rankIcon" stroke={Colors.primaryColorBrightGreen} />
             <Card width="18.125rem">
               <Headline
                 text={topPlayers?.data[1].summonerName}
@@ -171,7 +172,7 @@ function TopPlayersPage({ axiosClient }) {
             </Card>
           </div>
           <div className="card-container">
-            <Rank3Icon className="Icon" stroke={Colors.primaryColorBrightGreen} />
+            <Rank3Icon className="rankIcon" stroke={Colors.primaryColorBrightGreen} />
             <Card width="18.125rem">
               <Headline
                 text={topPlayers?.data[2].summonerName}

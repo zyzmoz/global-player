@@ -9,7 +9,8 @@ import Avatar from '../components/Avatar/Avatar'
 import BodyText from '../components/BodyText/BodyText'
 import Colors from '../sass/variables/_colors.scss'
 import Footer from '../components/Footer/Footer'
-import { UserIcon, CrossIcon, CompareIcon, AddIcon } from '../components/Icon/icons'
+import ProfilePopUp from '../components/ProfilePopUp/ProfilePopUp'
+import { CrossIcon, CompareIcon, AddIcon, CompareFilledIcon, AddPlayerShapeIcon } from '../components/Icon/icons'
 import { PlayerContext } from '../context/PlayerContext'
 
 function ComparisonPage() {
@@ -28,7 +29,7 @@ function ComparisonPage() {
       <Sidebar />
       <div className="main-contents">
         <div className="userIcon-wrapper">
-          <UserIcon className="userIcon" fill={Colors.primaryColorBrightGreen} />
+          <ProfilePopUp />
         </div>
         <Headline text="Player Comparison" color={Colors.primaryColorBrightGreen} textAlign="center" fontSize="2rem" />
         <div className="comparison-cards-container">
@@ -59,12 +60,13 @@ function ComparisonPage() {
           <div className="comparisonIcon-wrapper">
             <span className="border1-around-compareIcon" />
             <CompareIcon className="compareIcon" fill={Colors.primaryColorBrightGreen} />
+            <CompareFilledIcon className="compareFilledIcon" fill={Colors.primaryColorBrightGreen} />
             <span className="border2-around-compareIcon" />
           </div>
           <Card>
             <div className="add-card-container">
               <span className="span1" />
-              <span className="span2" />
+              <AddPlayerShapeIcon className="addPlayerShapeIcon" />
               <div className="addicon-container">
                 <AddIcon onClick={navigateToComparisonSelect} className="addIcon" fill="white" />
               </div>

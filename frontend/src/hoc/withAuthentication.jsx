@@ -16,7 +16,7 @@ const withAuthentication = (Component) => (props) => {
 
   if (token) {
     // eslint-disable-next-line react/jsx-props-no-spreading
-    return <Component axiosClient={axiosClient} userId={user?.userId} {...props} />
+    return <Component axiosClient={axiosClient} userId={user?.userId} userEmail={user?.email} {...props} />
   }
 
   return <Navigate to="/login" />

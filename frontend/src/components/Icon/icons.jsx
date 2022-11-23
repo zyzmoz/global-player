@@ -6,6 +6,7 @@ import { ReactComponent as CrossIcon } from '../../assets/icons/Cross.svg'
 import { ReactComponent as CrownIcon } from '../../assets/icons/Crown.svg'
 import { ReactComponent as DashboardIcon } from '../../assets/icons/Dashboard.svg'
 import { ReactComponent as DeleteIcon } from '../../assets/icons/Delete.svg'
+import { ReactComponent as DeleteIcon2 } from '../../assets/icons/Delete2.svg'
 import { ReactComponent as DownIcon } from '../../assets/icons/Down.svg'
 import { ReactComponent as FilterIcon } from '../../assets/icons/Filter.svg'
 import { ReactComponent as FrameIcon } from '../../assets/icons/Frame.svg'
@@ -45,6 +46,8 @@ import { ReactComponent as TermsConditionsIcon } from '../../assets/icons/TermsC
 import { ReactComponent as Rank1Icon } from '../../assets/icons/rank_number_1.svg'
 import { ReactComponent as Rank2Icon } from '../../assets/icons/rank_number_2.svg'
 import { ReactComponent as Rank3Icon } from '../../assets/icons/rank_number_3.svg'
+import { ReactComponent as CompareFilledIcon } from '../../assets/icons/ComparionFilled.svg'
+import { ReactComponent as AddPlayerShapeIcon } from '../../assets/icons/AddPlayer.svg'
 
 export {
   AddIcon,
@@ -55,6 +58,7 @@ export {
   CrownIcon,
   DashboardIcon,
   DeleteIcon,
+  DeleteIcon2,
   DownIcon,
   FilterIcon,
   FrameIcon,
@@ -94,4 +98,6 @@ export {
   Rank1Icon,
   Rank2Icon,
   Rank3Icon,
+  CompareFilledIcon,
+  AddPlayerShapeIcon,
 }

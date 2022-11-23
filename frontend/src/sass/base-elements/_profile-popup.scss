@@ -1,0 +1,71 @@
+.profile-pop-up {
+  position: relative;
+  .userIcon {
+    cursor: pointer;
+  }
+  .pop-up-wrapper {
+    position: absolute;
+    right: 0;
+    border: 1px solid $primary-color-bright-green;
+    border-radius: 8px;
+    padding: 1rem 1rem 1.3rem 0.8rem;
+    width: 18rem;
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    background-color: $neutral-color-dark-blue;
+    visibility: hidden;
+    z-index: 100;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.3rem;
+      text-decoration: none;
+      .termsconditions-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      .arrowicon-wrapper {
+        padding-top: 0.5rem;
+        svg {
+          width: 1rem;
+          transform: rotate(-90deg);
+        }
+      }
+    }
+    a.logout-button {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.3rem;
+      cursor: pointer;
+    }
+    svg {
+      width: 1.8rem;
+    }
+  }
+  .pop-up-show {
+    visibility: visible;
+    -webkit-animation: fadeIn 0.5s;
+    animation: fadeIn 0.5s;
+  }
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

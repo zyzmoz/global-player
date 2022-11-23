@@ -1,9 +1,9 @@
+import { NavLink } from 'react-router-dom'
 import Header from '../components/Header/Header'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
 import Headline from '../components/Headline/Headline'
 import BodyText from '../components/BodyText/BodyText'
 import Card from '../components/Card/Card'
-import Button from '../components/Button/Button'
 import Footer from '../components/Footer/Footer'
 import { CompareIcon, ReviewIcon, Stats1Icon, UserIcon } from '../components/Icon/icons'
 
@@ -21,9 +21,11 @@ function PlansPage() {
 
         <div className="plan-card-container">
           <Card>
-            <Headline text="Scouting Essentials" textAlign="center" color="" fontSize="medium" />
-            <Headline text="$29.99 /mo" color="" fontSize="" textAlign="" />
-            <Button text="Get Started" />
+            <Headline text="Essentials" textAlign="center" color="#53BCF9" fontSize="36px" />
+            <Headline text="$299 /mo" color="" fontSize="" textAlign="" />
+            <div className="get-started-link">
+              <NavLink to="/create-account?plan=6349e5601f9dcc9918d6dcd7">Get Started</NavLink>
+            </div>
 
             <ul>
               <li>Contact 5 players per month</li>
@@ -33,9 +35,11 @@ function PlansPage() {
             </ul>
           </Card>
           <Card>
-            <Headline text="Scouting Premium" textAlign="center" color="" fontSize="medium" />
-            <Headline text="$59.99 /mo" color="" fontSize="" textAlign="" />
-            <Button text="Get Started" />
+            <Headline text="Premium" textAlign="center" color="#53BCF9" fontSize="36px" />
+            <Headline text="$599 /mo" color="" fontSize="" textAlign="" />
+            <div className="get-started-link">
+              <NavLink to="/create-account?plan=6354273fe2ef9242b60207b9">Get Started</NavLink>
+            </div>
 
             <ul>
               <li>
@@ -50,14 +54,20 @@ function PlansPage() {
               <li>Compare Players</li>
             </ul>
           </Card>
+          <Card>
+            <Headline text="Basic" textAlign="left" color="#53BCF9" fontSize="36px" />
+            <ul>
+              <li>Check top 3 players</li>
+              <li>Check players ranking</li>
+            </ul>
+            <NavLink to="/create-account?plan=6354273fe2ef9242b60207b9" className="create-free-account">
+              Continue for free
+            </NavLink>
+          </Card>
         </div>
 
         <div className="plan-info">
-          <BodyText text="7-day refund policy across our paid plans." textAlign="center" />
-
-          <Button text="Start 15 days trial here" />
-
-          <Headline text="Why Choose Global Player?" color="" textAlign="center" />
+          <Headline text="Why Choose Global Player?" color="white" textAlign="center" fontSize="40px" />
 
           <div className="plan-info-icons">
             <div className="plan-info-wrapper">
