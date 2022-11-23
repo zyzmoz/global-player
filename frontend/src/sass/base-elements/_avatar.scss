@@ -13,9 +13,10 @@
     svg {
       width: 32px;
       height: 32px;
-      border: 1px solid black;
+      border: 1px solid $primary-color-bright-green;
       border-radius: 50%;
-      background-color: rgba($color: #fff, $alpha: 0.7);
+      background-color: $primary-color-deep-purple;
+      fill: white;
     }
   }
 }

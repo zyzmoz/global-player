@@ -4,16 +4,19 @@ import { useQuery } from 'react-query'
 import { Axios } from 'axios'
 import Tag from '../components/Tag/Tag'
 import Button from '../components/Button/Button'
+import Header from '../components/Header/Header'
+import RecruitersPagesNavMenu from '../components/Header/RecruitersPagesNavMenu'
 import { PlayerContext } from '../context/PlayerContext'
 import Footer from '../components/Footer/Footer'
 import Headline from '../components/Headline/Headline'
+import ProfilePopUp from '../components/ProfilePopUp/ProfilePopUp'
 import Colors from '../sass/variables/_colors.scss'
-import { CrossIcon, UserIcon } from '../components/Icon/icons'
-import Sidebar from '../components/Sidebar/Sidebar'
+import { LeftIcon } from '../components/Icon/icons'
 import Image from '../components/Image/Image'
 import ProgressBar from '../components/ProgressBar/ProgressBar'
 import RadarChart from '../components/RadarChart/RadarChart'
 import withAuthentication from '../hoc/withAuthentication'
+import BodyText from '../components/BodyText/BodyText'
 
 function PlayerReviewOverview({ axiosClient }) {
   const { playerData, playerId } = React.useContext(PlayerContext)
@@ -23,10 +26,13 @@ function PlayerReviewOverview({ axiosClient }) {
   return (
     <div className="player-review">
       <div className="nav">
-        <CrossIcon onClick={() => navigate(-1)} className="userIcon" fill={Colors.primaryColorBrightGreen} />
-        <UserIcon className="userIcon" fill={Colors.primaryColorBrightGreen} />
+        <RecruitersPagesNavMenu className="nav-side-menu" />
+        <Header />
+        <div className="nav-desktop">
+          <LeftIcon onClick={() => navigate(-1)} className="leftIcon" fill={Colors.primaryColorBrightGreen} />
+          <ProfilePopUp />
+        </div>
       </div>
-      <Sidebar />
       <Headline textAlign="center" text="Recruiter Reviews" color={Colors.primaryColorBrightGreen} />
 
       <div className="player-info">
@@ -43,13 +49,41 @@ function PlayerReviewOverview({ axiosClient }) {
       <Headline textAlign="center" text="Soft Skills" color={Colors.primaryColorBrightGreen} fontSize="medium" />
 
       <div className="progress-wrapper">
-        <ProgressBar heightSize="30.42px" progress={playerOverview?.data.teamPlayer} text="Team Player" />
-        <ProgressBar heightSize="30.42px" progress={playerOverview?.data.leadership} text="Leadership" />
-        <ProgressBar heightSize="30.42px" progress={playerOverview?.data.criticalThinking} text="Critical Thinking" />
-        <ProgressBar heightSize="30.42px" progress={playerOverview?.data.problemSolving} text="Problem Solving" />
+        <div className="progressbar-label-container">
+          <BodyText text="Team Player" />
+          <ProgressBar
+            heightSize="30.42px"
+            progress={playerOverview?.data.teamPlayer}
+            text={`${playerOverview?.data.teamPlayer?.toFixed(1)}%`}
+          />
+        </div>
+        <div className="progressbar-label-container">
+          <BodyText text="Leadership" />
+          <ProgressBar
+            heightSize="30.42px"
+            progress={playerOverview?.data.leadership}
+            text={`${playerOverview?.data.leadership?.toFixed(1)}%`}
+          />
+        </div>
+        <div className="progressbar-label-container">
+          <BodyText text="Critical Thinking" />
+          <ProgressBar
+            heightSize="30.42px"
+            progress={playerOverview?.data.criticalThinking}
+            text={`${playerOverview?.data.criticalThinking?.toFixed(1)}%`}
+          />
+        </div>
+        <div className="progressbar-label-container">
+          <BodyText text="Problem Solving" />
+          <ProgressBar
+            heightSize="30.42px"
+            progress={playerOverview?.data.problemSolving}
+            text={`${playerOverview?.data.problemSolving?.toFixed(1)}%`}
+          />
+        </div>
       </div>
 
-      <div className="hr-divider" style={{ margin: '8rem' }} />
+      <div className="hr-divider" />
 
       <Headline textAlign="center" text="Techinical Skills" color={Colors.primaryColorBrightGreen} fontSize="medium" />
 

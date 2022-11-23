@@ -11,7 +11,7 @@ function Tag({ reviews, text }) {
         border: '2px #7DFAA4 solid',
         borderRadius: '49px',
         filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
-        padding: '.5rem 1rem',
+        padding: '.8rem 1.3rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

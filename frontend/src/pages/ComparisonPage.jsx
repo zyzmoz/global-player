@@ -10,7 +10,7 @@ import BodyText from '../components/BodyText/BodyText'
 import Colors from '../sass/variables/_colors.scss'
 import Footer from '../components/Footer/Footer'
 import ProfilePopUp from '../components/ProfilePopUp/ProfilePopUp'
-import { CrossIcon, CompareIcon, AddIcon, CompareFilledIcon } from '../components/Icon/icons'
+import { CrossIcon, CompareIcon, AddIcon, CompareFilledIcon, AddPlayerShapeIcon } from '../components/Icon/icons'
 import { PlayerContext } from '../context/PlayerContext'
 
 function ComparisonPage() {
@@ -66,7 +66,7 @@ function ComparisonPage() {
           <Card>
             <div className="add-card-container">
               <span className="span1" />
-              <span className="span2" />
+              <AddPlayerShapeIcon className="addPlayerShapeIcon" />
               <div className="addicon-container">
                 <AddIcon onClick={navigateToComparisonSelect} className="addIcon" fill="white" />
               </div>

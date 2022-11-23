@@ -1,63 +1,142 @@
 .player-review {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  padding-left: 17.625rem;
-
-  h1{
-    margin-bottom: 1rem;
+  gap: 2rem;
+  .nav-side-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+  .nav-desktop {
+    display: none;
+  }
+  .leftIcon {
+    cursor: pointer;
   }
 
-  .tag{
-    margin: 0.5rem;
+  h1 {
+    font-size: 2rem;
+  }
+  .skills-headline-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 80%;
+    margin: auto;
   }
 
-  .progressbar-wrapper {
-    width: 70%;
-    margin: 0 auto;
+  .tag {
+    margin: 0.4rem 0.2rem;
   }
 
-  .progressbar-wrapper, .slider-container {
-    padding: 1rem;
+  .progress-wrapper,
+  .all-sliders-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 25rem;
+    margin: auto;
+  }
+  .progressbar-label-container {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
   }
 
   .player-info {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4rem;
-    padding: 4rem;
+    gap: 1rem;
+    position: relative;
+    padding: 1.3rem 2rem;
+    margin: auto;
+    h1 {
+      font-size: 1.5rem;
+    }
   }
 
-  .techinical-skills{
+  .hr-divider {
+    margin: 4rem 2rem;
+  }
+
+  .techinical-skills {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 4rem
+    flex-direction: column;
+    gap: 2rem;
   }
 
   .review-buttons {
     display: flex;
-    flex-flow: column wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    button {
-      margin: 0.5rem;
+    flex-flow: row wrap;
+    justify-content: center;
+    max-width: 90%;
+    margin: auto;
+    .button {
+      background: $primary-color-bright-green;
+      border-radius: 49px;
+      padding: .8rem 1.3rem;
+      margin: 0.4rem 0.2rem;
+      font-size: unset;
+      width: unset;
+      height: unset;
+      border: 2px solid $primary-color-bright-green;
+      font-size: 1.1rem;
+    }
+    .button-outline {
+      border: 2px solid $primary-color-bright-green;
+      background-color: unset;
     }
   }
   .submit-wrapper {
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-
-    padding: 4rem;
+    margin: 3rem 0;
   }
 
   @media screen and (min-width: 600px) {
     margin: 0 auto;
+    gap: 4rem;
+    header,
+    .nav-side-menu {
+      display: none;
+    }
+    .nav-desktop {
+      flex-basis: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 3rem 5rem 0 5rem;
+    }
+    h1 {
+      font-size: 2.3rem;
+    }
+    .skills-headline-wrapper {
+      gap: 2rem;
+    }
+    .progress-wrapper,
+    .all-sliders-container {
+      gap: 2rem;
+      width: 40rem;
+      max-width: 90%;
+    }
+    .hr-divider {
+      margin: 4rem 5rem;
+    }
     .review-buttons {
-      justify-content: unset;
+      max-width: 40rem;
+      .button {
+        margin: 0.5rem;
+      }
+    }
+    .add-reviews {
+      max-width: 60%;
+    }
+    .techinical-skills {
+      flex-flow: row nowrap;
+      gap: 0;
+      margin: auto;
+      max-width: 90%;
     }
   }
 }
