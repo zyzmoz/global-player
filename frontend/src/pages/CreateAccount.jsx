@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import HeaderCreateAccount from '../components/Header/HeaderCreateAccount'
 import Headline from '../components/Headline/Headline'
 import BodyText from '../components/BodyText/BodyText'
@@ -9,6 +9,9 @@ function CreateAccount() {
   const recruiterIcon = './images/RecruiterIcon.png'
   const playerIcon = './images/PlayerIcon.png'
 
+  const [searchParams] = useSearchParams()
+  const plan = searchParams.get('plan')
+
   return (
     <div className="create-account-page-choice">
       <div className="create-account-page-container">
@@ -18,7 +21,7 @@ function CreateAccount() {
 
           <div className="choices-container">
             <div className="choice-container">
-              <Link to="/create-account-player">
+              <Link to={`/create-account-player?plan=${plan}`}>
                 <Image imageUrl={playerIcon} imageWidth="67px" imageHeight="auto" alt="Player Icon" />
                 <BodyText text="I'm a player" fontSize="16pt" color="#000000" textAlign="center" />
               </Link>
@@ -26,7 +29,7 @@ function CreateAccount() {
             <div className="vr-divider-create" />
 
             <div className="choice-container">
-              <Link to="/create-account-recruiter">
+              <Link to={`/create-account-recruiter?plan=${plan}`}>
                 <Image imageUrl={recruiterIcon} imageWidth="105px" imageHeight="auto" alt="Recruiter Icon" />
                 <BodyText text="I'm a recruiter" fontSize="16pt" color="#000000" textAlign="center" />
               </Link>

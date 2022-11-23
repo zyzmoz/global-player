@@ -30,15 +30,27 @@ router.post('/login', async (req, res) => {
 
 // create account
 router.post('/create-account', async (req, res) => {
-  const data: IUser = req.body
+  const { planId, ...data } = req.body
+  const userData = data
 
-  const hashPassword = sha1(req.body.password)
-
+  const hashPassword = sha1(userData.password)
+  
   if (!data) {
     res.status(500).end()
   }
 
-  const user = await insert<IUser>('users', { ...data, password: hashPassword })
+  const user = await insert<IUser>('users', { ...userData, password: hashPassword })
+
+  /**_id: string
+  ownerId: string
+  userLimit: number
+  price: number
+  planId: string */
+
+  await insert('licenses', {
+    ownerId: user._id,
+    planId
+  })
 
   res.json({ token: jwt.sign({ email: user.email, userId: user._id }, APP_SECRET) })
 })

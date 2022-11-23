@@ -4,12 +4,16 @@
   overflow-x: hidden;
   justify-content: space-between;
 
+  .favorites-content {
+    padding: 2rem;
+  }
+
   .h1-wrapper h1 {
     margin-bottom: 5rem;
   }
 
   .player-information-wrapper {
-    max-width: 358px;
+    width: 358px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -18,14 +22,6 @@
     display: grid;
     grid-template-columns: repeat((auto-fill, minmax(335px, 1fr)));
     gap: 2rem 1rem;
-  }
-
-  footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: calc(100% - 15.625rem);
-    margin-left: 15.625rem;
   }
 
   .name-division-container {
@@ -168,6 +164,15 @@
       max-width: 85%;
       margin-left: auto;
       margin-right: auto;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: calc(100% - 15.625rem);
+      margin-left: 15.625rem;
+     
     }
   }
 }

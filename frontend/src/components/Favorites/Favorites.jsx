@@ -28,7 +28,7 @@ function Favorites({ summonerName, summonerIcon, playerRole, contactFunc, remove
               alt="player icon"
             />
             <div className="role-icon-wrapper"> {RoleIcons(`${playerRole}`, 'white')}</div>
-            <button type="button" className="heartIconFav" onClick={removeFav}>
+            <button type="button" className="heartIconFav">
               <VectorIcon stroke={Colors.primaryColorBrightGreen} className="heartIconItem" />
             </button>
           </div>
