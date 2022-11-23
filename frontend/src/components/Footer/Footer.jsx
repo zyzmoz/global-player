@@ -17,7 +17,7 @@ function Footer() {
         <NavLink to="/FAQ" className="footer-link">
           FAQ
         </NavLink>
-        <NavLink to="/Terms" className="footer-link">
+        <NavLink to="/terms-conditions" className="footer-link">
           Terms
         </NavLink>
       </div>
