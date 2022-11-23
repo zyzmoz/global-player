@@ -92,8 +92,9 @@ function PlayerComparisonSelectPage({ axiosClient }) {
                     <BodyText text={player.summonerName} color={Colors.secondaryColorSkyBlue} />
                   </div>
                   <button
-                    onClick={() => {
+                    onClick={(e) => {
                       handlePlayerSelectionBtn(player)
+                      e.currentTarget.classList.toggle('hello-asd')
                     }}
                     type="button"
                     className="add-vs-btn no-background-btn"
