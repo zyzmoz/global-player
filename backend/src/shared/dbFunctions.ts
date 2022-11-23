@@ -37,10 +37,10 @@ const insert = async <T>(collectionName: string, obj: T): Promise<T> => {
   const db = await DbConnection.getInstance()
   const collection = db.collection(collectionName)
 
-  const { insertId } = await collection.insertOne(obj)
-  const data = await collection.findOne({ _id: new ObjectId(insertId) })
+  const { insertedId } = await collection.insertOne(obj)
+  const data = await collection.findOne({ _id: new ObjectId(insertedId) })
 
-  return data as T
+  return { ...data, password: null } as T
 }
 
 const insertMany = async <T>(collectionName: string, obj: T[]): Promise<boolean> => {
@@ -78,7 +78,7 @@ const upsert = async <T>(collectionName: string, obj: Omit<T, '_id'>): Promise<v
 const remove = async <T>(collectionName: string, id: string): Promise<T> => {
   const db = await DbConnection.getInstance()
   const collection = db.collection(collectionName)
-  
+
   const data = await collection.deleteOne({ _id: new ObjectId(id) })
 
   return data as T

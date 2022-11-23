@@ -2,13 +2,18 @@
   display: grid;
   grid-template-columns: 1fr;
   overflow-x: hidden;
+  justify-content: space-between;
+
+  .favorites-content {
+    padding: 2rem;
+  }
 
   .h1-wrapper h1 {
     margin-bottom: 5rem;
   }
 
   .player-information-wrapper {
-    max-width: 358px;
+    width: 358px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -130,6 +135,10 @@
     position: absolute;
     top: -1.5rem;
     right: 0.5rem;
+    svg {
+      width: 48px;
+      height: 48px;
+    }
   }
 
   .removeFav {
@@ -148,13 +157,22 @@
 @media screen and (min-width: 1000px) {
   .favorites-page {
     .favorites-content {
-      margin-left: 9rem;
+      margin-left: 15.625rem;
     }
 
     .player-information-wrapper {
       max-width: 85%;
       margin-left: auto;
       margin-right: auto;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: calc(100% - 15.625rem);
+      margin-left: 15.625rem;
+     
     }
   }
 }

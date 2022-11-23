@@ -24,7 +24,7 @@ function PlansPage() {
             <Headline text="Essentials" textAlign="center" color="#53BCF9" fontSize="36px" />
             <Headline text="$299 /mo" color="" fontSize="" textAlign="" />
             <div className="get-started-link">
-              <NavLink to="/create-account">Get Started</NavLink>
+              <NavLink to="/create-account?plan=6349e5601f9dcc9918d6dcd7">Get Started</NavLink>
             </div>
 
             <ul>
@@ -38,7 +38,7 @@ function PlansPage() {
             <Headline text="Premium" textAlign="center" color="#53BCF9" fontSize="36px" />
             <Headline text="$599 /mo" color="" fontSize="" textAlign="" />
             <div className="get-started-link">
-              <NavLink to="/create-account">Get Started</NavLink>
+              <NavLink to="/create-account?plan=6354273fe2ef9242b60207b9">Get Started</NavLink>
             </div>
 
             <ul>
@@ -60,7 +60,7 @@ function PlansPage() {
               <li>Check top 3 players</li>
               <li>Check players ranking</li>
             </ul>
-            <NavLink to="/create-account" className="create-free-account">
+            <NavLink to="/create-account?plan=6354273fe2ef9242b60207b9" className="create-free-account">
               Continue for free
             </NavLink>
           </Card>
