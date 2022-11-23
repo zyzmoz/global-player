@@ -1,6 +1,11 @@
 .slider-container {
   display: flex;
   flex-direction: column;
+  label {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+  }
 }
 
 input[type='range'].slider {

@@ -104,12 +104,6 @@
       width: 9rem;
       height: 2.5rem;
     }
-    .span2 {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      margin-bottom: 2.9rem;
-    }
     .span3 {
       width: 9rem;
       height: 3.8rem;
@@ -128,6 +122,11 @@
       position: absolute;
       display: flex;
       justify-content: center;
+    }
+    .addPlayerShapeIcon {
+      width: 115px;
+      height: 115px;
+      margin-bottom: 2rem;
     }
     .addIcon {
       cursor: pointer;
