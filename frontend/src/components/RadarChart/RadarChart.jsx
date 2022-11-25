@@ -55,7 +55,7 @@ function RadarChart({ width, height, playerSkills }) {
                 padding: 15,
                 color: 'white',
                 font: {
-                  size: 14,
+                  size: 12,
                 },
               },
               angleLines: {
