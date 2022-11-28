@@ -21,15 +21,8 @@
 
 .contact-player-wrapper,
 .contact-us-wrapper {
-  .nav {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
   height: 100vh;
+  padding: 2rem;
 
   .contact-player-content,
   .contact-us-content {
@@ -144,5 +137,13 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+/////////////////////// DESKTOP VIEW ///////////////////////
+@media screen and (min-width: 1000px) {
+  .contact-player-wrapper {
+    padding-left: 17.625rem;
+    overflow-x: hidden;
   }
 }
