@@ -1,12 +1,9 @@
 import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { Axios } from 'axios'
-import Header from '../components/Header/Header'
-import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
-import { DownIcon, UpIcon } from '../components/Icon/icons'
+import { DownIcon, UpIcon, LeftIcon } from '../components/Icon/icons'
 import Headline from '../components/Headline/Headline'
-import Button from '../components/Button/Button'
 import BodyText from '../components/BodyText/BodyText'
 import Avatar from '../components/Avatar/Avatar'
 import Footer from '../components/Footer/Footer'
@@ -14,10 +11,23 @@ import Colors from '../sass/variables/_colors.scss'
 import { PlayerContext } from '../context/PlayerContext'
 import withAuthentication from '../hoc/withAuthentication'
 import SearchPlayerSelection from '../components/SearchPlayerSelection/SearchPlayerSelection'
+import ProfilePopUp from '../components/ProfilePopUp/ProfilePopUp'
+import Sidebar from '../components/Sidebar/Sidebar'
 
 function PlayerComparisonSelectPage({ axiosClient }) {
   const { playersToCompare, setPlayersToCompare } = useContext(PlayerContext)
   const navigate = useNavigate()
+
+  const [searchParams] = useSearchParams()
+  const sidebar = searchParams.get('sidebar')
+
+  const goBack = () => {
+    if (sidebar) {
+      navigate('/TopPlayers')
+    } else {
+      navigate(-1)
+    }
+  }
 
   const [showMore, setShowMore] = useState(false)
   const showMoreFunction = () => {
@@ -36,17 +46,18 @@ function PlayerComparisonSelectPage({ axiosClient }) {
   }
 
   const navigateToComparisonResults = () => {
-    if (playersToCompare.player1 && playersToCompare.player2) {
-      navigate('/comparison-results')
-    }
+    navigate('/comparison-results')
   }
 
   return (
     <div className="player-comparison-select-page-wrapper">
-      <LandingPageNavMenu className="nav-side-menu" />
+      <Sidebar />
       <div className="player-comparison-select-page-container-1">
         <div className="player-comparison-select-page-container-2">
-          <Header />
+          <div className="nav">
+            <LeftIcon onClick={goBack} className="userIcon" fill={Colors.primaryColorBrightGreen} />
+            <ProfilePopUp className="userIcon" fill={Colors.primaryColorBrightGreen} />
+          </div>
 
           <div className="title-cross-icon-container">
             <Headline text="Compare" textAlign="center" color={Colors.primaryColorBrightGreen} fontSize="32px" />
@@ -88,17 +99,15 @@ function PlayerComparisonSelectPage({ axiosClient }) {
                     <Avatar
                       summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${player.profileIconId}.png`}
                     />
-
                     <BodyText text={player.summonerName} color={Colors.secondaryColorSkyBlue} />
                   </div>
                   <button
                     onClick={(e) => {
                       handlePlayerSelectionBtn(player)
-                      e.currentTarget.classList.toggle('hello-asd')
+                      e.currentTarget.classList.toggle('background-btn')
                     }}
                     type="button"
                     className="add-vs-btn no-background-btn"
-                    style={{ color: Colors.primaryColorBrightGreen }}
                   >
                     + VS
                   </button>
@@ -116,12 +125,12 @@ function PlayerComparisonSelectPage({ axiosClient }) {
                       <BodyText text={player.summonerName} color={Colors.secondaryColorSkyBlue} />
                     </div>
                     <button
-                      onClick={() => {
+                      onClick={(e) => {
                         handlePlayerSelectionBtn(player)
+                        e.currentTarget.classList.toggle('background-btn')
                       }}
                       type="button"
                       className="add-vs-btn no-background-btn"
-                      style={{ color: Colors.primaryColorBrightGreen }}
                     >
                       + VS
                     </button>
@@ -137,7 +146,14 @@ function PlayerComparisonSelectPage({ axiosClient }) {
                   <UpIcon fill={Colors.primaryColorBrightGreen} onClick={showMoreFunction} />
                 </button>
               )}
-              <Button onClick={navigateToComparisonResults} text="Compare" />
+              <button
+                type="button"
+                className="button"
+                onClick={navigateToComparisonResults}
+                disabled={!playersToCompare.player1 || !playersToCompare.player2}
+              >
+                Compare
+              </button>
             </section>
           </main>
 

@@ -15,6 +15,17 @@ body {
   grid-row: 1/-1;
   overflow: hidden;
   padding: 0;
+
+  :disabled {
+    background: #28474f;
+    color: #1a253e;
+  }
+}
+
+.player-comparison-select-page-container-2 {
+  .nav {
+    padding: 2rem;
+  }
 }
 
 .main-player-comparison-select-page {
@@ -135,6 +146,12 @@ body {
       border: 1px solid $primary-color-bright-green;
       border-radius: 8px;
       padding: 0.25rem 1.25rem;
+      color: $primary-color-bright-green;
+    }
+
+    .background-btn {
+      background: $primary-color-bright-green;
+      color: $neutral-color-dark-blue;
     }
   }
 
@@ -161,7 +178,11 @@ body {
 }
 
 /////////////////////// DESKTOP VIEW ///////////////////////
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 1000px) {
+  .player-comparison-select-page-container-1 {
+    padding: 2rem;
+    padding-left: 17.625rem;
+  }
   .main-player-comparison-select-page {
     max-width: 700px;
     display: grid;
