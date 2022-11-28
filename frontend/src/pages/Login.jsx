@@ -48,9 +48,6 @@ function Login() {
             value={password}
             onChange={setPassword}
           />
-          <Link to="/">
-            <BodyText text="Forgot my password" color={Colors.primaryColorBrightGreen} />
-          </Link>
         </div>
         <Button onClick={handleLogin} text="Login" />
         <div className="new-here-wrapper">
