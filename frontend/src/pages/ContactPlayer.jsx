@@ -28,6 +28,10 @@ function ContactPlayer({ axiosClient, userEmail }) {
 
   const form = useRef()
 
+  const changeBackground = () => {
+    document.getElementById('toastBackgroundPlayer').classList.add('toast-background')
+  }
+
   const clearInputs = () => {
     document.getElementById('subject').value = ''
     document.getElementById('message').value = ''
@@ -41,56 +45,71 @@ function ContactPlayer({ axiosClient, userEmail }) {
       .then(() => {
         setShowToast(true)
         clearInputs()
+        changeBackground()
       })
   }
 
   return (
-    <div className="contact-player-wrapper">
-      <div className="nav">
-        <LeftIcon onClick={() => navigate(-1)} className="userIcon" fill={Colors.primaryColorBrightGreen} />
-        <ProfilePopUp className="userIcon" fill={Colors.primaryColorBrightGreen} />
-      </div>
-      <Sidebar />
-      <main className="contact-player-content">
-        <div className="contact-information">
-          <Headline text="Contact a Player" color={Colors.primaryColorBrightGreen} />
-          <div className="icon-summoname">
-            <Avatar
-              summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${playerDetail?.data.profileIconId}.png`}
-            />
-            <Headline text={playerDetail?.data.summonerName} color={Colors.primaryColorBrightGreen} />
-          </div>
+    <div className="wrapper-for-toast">
+      <div className="contact-player-wrapper" id="toastBackgroundPlayer">
+        <div className="nav">
+          <LeftIcon onClick={() => navigate(-1)} className="userIcon" fill={Colors.primaryColorBrightGreen} />
+          <ProfilePopUp className="userIcon" fill={Colors.primaryColorBrightGreen} />
         </div>
-        <div className="hr-divider" />
-        <form ref={form} className="contact-player-form" onSubmit={sendEmail}>
-          <label htmlFor="subject">
-            <div className="label-text">Subject *</div>
-            <input className="visually-hidden" type="text" name="player_name" value={playerDetail?.data.summonerName} />
-            <input className="visually-hidden" type="text" name="user_email" defaultValue={userEmail} />
+        <Sidebar />
+        <main className="contact-player-content">
+          <div className="contact-information">
+            <Headline text="Contact a Player" color={Colors.primaryColorBrightGreen} />
+            <div className="icon-summoname">
+              <Avatar
+                summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${playerDetail?.data.profileIconId}.png`}
+              />
+              <Headline text={playerDetail?.data.summonerName} color={Colors.primaryColorBrightGreen} />
+            </div>
+          </div>
+          <div className="hr-divider" />
+          <form ref={form} className="contact-player-form" onSubmit={sendEmail}>
+            <label htmlFor="subject">
+              <div className="label-text">Subject *</div>
+              <input
+                className="visually-hidden"
+                type="text"
+                name="player_name"
+                value={playerDetail?.data.summonerName}
+              />
+              <input className="visually-hidden" type="text" name="user_email" defaultValue={userEmail} />
 
-            <div className="input-wrapper">
-              <input type="text" className="subject" placeholder="Enter subject" id="subject" name="subject" required />
-            </div>
-          </label>
-          <label htmlFor="message">
-            {' '}
-            <div className="label-text">Message *</div>
-            <div className="textarea-wrapper">
-              <textarea label="Message *" placeholder="Enter message" id="message" name="message" required />
-            </div>
-          </label>
-          <Button className="send-btn" type="submit" text="Send Message" />
-        </form>
-        {showToast && (
-          <Toast
-            pageRoute="TopPlayers"
-            headlineToast="Succeeded!"
-            bodyToast={`Your message has been sent to ${playerDetail?.data.summonerName}`}
-            buttonTextToast="Back to Dashboard"
-          />
-        )}
-      </main>
-      <Footer />
+              <div className="input-wrapper">
+                <input
+                  type="text"
+                  className="subject"
+                  placeholder="Enter subject"
+                  id="subject"
+                  name="subject"
+                  required
+                />
+              </div>
+            </label>
+            <label htmlFor="message">
+              {' '}
+              <div className="label-text">Message *</div>
+              <div className="textarea-wrapper">
+                <textarea label="Message *" placeholder="Enter message" id="message" name="message" required />
+              </div>
+            </label>
+            <Button className="send-btn" type="submit" text="Send Message" />
+          </form>
+        </main>
+        <Footer />
+      </div>
+      {showToast && (
+        <Toast
+          pageRoute="TopPlayers"
+          headlineToast="Succeeded!"
+          bodyToast={`Your message has been sent to ${playerDetail?.data.summonerName}`}
+          buttonTextToast="Back to Dashboard"
+        />
+      )}
     </div>
   )
 }

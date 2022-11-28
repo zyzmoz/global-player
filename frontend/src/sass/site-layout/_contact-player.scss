@@ -1,3 +1,18 @@
+.wrapper-for-toast {
+  .toast {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .toast-wrapper {
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
 .contact-us-wrapper {
   .contact-information {
     margin-bottom: 7rem;
@@ -11,9 +26,10 @@
 
   .contact-player-content,
   .contact-us-content {
-    max-width: 800px;
+    min-width: 352px;
     margin-left: auto;
     margin-right: auto;
+    padding: 1.5rem;
 
     h1 {
       font-size: 40px;
@@ -27,9 +43,9 @@
       display: flex;
       align-items: center;
       margin-top: 3rem;
+      gap: 1rem;
 
       h1 {
-        margin-left: 1.5rem;
         font-size: 36px;
       }
     }
@@ -47,8 +63,6 @@
 
     .contact-player-form,
     .contact-us-form {
-      max-width: 60%;
-      display: block;
       margin-left: auto;
       margin-right: auto;
 
@@ -108,19 +122,21 @@
         margin-top: 3.5rem;
       }
     }
+  }
+}
 
-    .toast {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .toast-wrapper {
-      p {
-        margin-bottom: 1rem;
-      }
-    }
+/////////////////////// DESKTOP VIEW ///////////////////////
+@media screen and (min-width: 500px) {
+  .contact-player-content,
+  .contact-us-content {
+    max-width: 800px;
+  }
+  .contact-player-form,
+  .contact-us-form {
+    max-width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
