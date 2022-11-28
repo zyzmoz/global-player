@@ -21,7 +21,7 @@ import randomImage2 from '../assets/images/box1.png'
 import randomImage3 from '../assets/images/box3.png'
 import randomImage4 from '../assets/images/box2.png'
 
-const videoLink = 'https://www.youtube.com/embed/F6iniHQXxqk'
+const videoLink = 'https://www.youtube.com/embed/wh0THLE8pcY'
 
 function LandingPage() {
   const navigate = useNavigate()

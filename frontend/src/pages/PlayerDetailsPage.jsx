@@ -3,7 +3,6 @@ import { useQuery } from 'react-query'
 import { Axios } from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
 import Headline from '../components/Headline/Headline'
 import BodyText from '../components/BodyText/BodyText'
 import Image from '../components/Image/Image'
@@ -13,7 +12,7 @@ import Button from '../components/Button/Button'
 import Card from '../components/Card/Card'
 import Tag from '../components/Tag/Tag'
 import DoughnutChart from '../components/DoughnutChart/DoughnutChart'
-import { CheckIcon, LikeIcon, CrossIcon, UserIcon } from '../components/Icon/icons'
+import { CheckIcon, LikeIcon, CrossIcon, LeftIcon } from '../components/Icon/icons'
 import Footer from '../components/Footer/Footer'
 import Colors from '../sass/variables/_colors.scss'
 import { PlayerContext } from '../context/PlayerContext'
@@ -21,6 +20,7 @@ import withAuthentication from '../hoc/withAuthentication'
 import Sidebar from '../components/Sidebar/Sidebar'
 import ProgressBar from '../components/ProgressBar/ProgressBar'
 import RadarChart from '../components/RadarChart/RadarChart'
+import ProfilePopUp from '../components/ProfilePopUp/ProfilePopUp'
 
 function PlayerDetailsPage({ axiosClient, userId }) {
   const context = React.useContext(PlayerContext)
@@ -44,9 +44,14 @@ function PlayerDetailsPage({ axiosClient, userId }) {
     })
     navigate(`/comparison`)
   }
-  const navigateToPlayerSkills = () => {
+  const navigateToAllReviews = () => {
     context.setPlayerData(playerDetail.data)
     navigate('/player-review-overview')
+  }
+
+  const navigateToAddReview = () => {
+    context.setPlayerData(playerDetail.data)
+    navigate('/review-player')
   }
 
   useEffect(() => {
@@ -69,11 +74,10 @@ function PlayerDetailsPage({ axiosClient, userId }) {
 
   return (
     <div className="player-details-wrapper-1">
-      {/* <LandingPageNavMenu className="nav-side-menu" /> */}
       <div className="player-details-page-container-1">
         <div className="nav">
-          <CrossIcon onClick={() => navigate(-1)} className="userIcon" fill={Colors.primaryColorBrightGreen} />
-          <UserIcon className="userIcon" fill={Colors.primaryColorBrightGreen} />
+          <LeftIcon onClick={() => navigate(-1)} className="userIcon" fill={Colors.primaryColorBrightGreen} />
+          <ProfilePopUp className="userIcon" fill={Colors.primaryColorBrightGreen} />
         </div>
         <Sidebar />
         <div className="player-details-page-wrapper">
@@ -123,6 +127,12 @@ function PlayerDetailsPage({ axiosClient, userId }) {
             </section>
             <section className="player-skills detail">
               <Card width="">
+                <div className="review-titles">
+                  <Headline text="REVIEWS FROM RECRUITERS" color={Colors.primaryColorBrightGreen} />
+                  <button className="no-background-btn" type="button" onClick={navigateToAllReviews}>
+                    <p>Show all reviews</p>
+                  </button>
+                </div>
                 <Headline text="PERSONAL SKILLS" />
                 <div className="progress-bar-container">
                   {playerDetail?.data.skills.personalSkills.map((skill) => (
@@ -156,7 +166,7 @@ function PlayerDetailsPage({ axiosClient, userId }) {
                   <Tag text="Deffensive" />
                   <Tag text="Offensive" />
                 </div>
-                <Button text="Show more" className="button" onClick={() => navigateToPlayerSkills()} />
+                <Button text="Add a review" className="button" onClick={() => navigateToAddReview()} />
               </Card>
             </section>
             <section className="player-game-data detail">
@@ -205,7 +215,7 @@ function PlayerDetailsPage({ axiosClient, userId }) {
                       <BodyText text={`P/Kill ${playerDetail?.data.pkill}%`} />
                     </div>
                     <div className="kda-content losses-container-copy">
-                      <Headline text="LOSSES" textAlign="center" color="" />
+                      <Headline text="LOSSES" color="" />
                       <BodyText text={playerDetail?.data.losses} textAlign="left" />
                     </div>
                   </div>

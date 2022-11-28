@@ -6,13 +6,15 @@ import { useQuery } from 'react-query'
 import { Axios } from 'axios'
 import Avatar from '../components/Avatar/Avatar'
 import Headline from '../components/Headline/Headline'
-import { CrossIcon, UserIcon } from '../components/Icon/icons'
+import { LeftIcon } from '../components/Icon/icons'
 import Colors from '../sass/variables/_colors.scss'
 import Button from '../components/Button/Button'
 import Toast from '../components/Toast/Toast'
 import Footer from '../components/Footer/Footer'
 import { PlayerContext } from '../context/PlayerContext'
 import withAuthentication from '../hoc/withAuthentication'
+import ProfilePopUp from '../components/ProfilePopUp/ProfilePopUp'
+import Sidebar from '../components/Sidebar/Sidebar'
 
 function ContactPlayer({ axiosClient, userEmail }) {
   const navigate = useNavigate()
@@ -45,9 +47,10 @@ function ContactPlayer({ axiosClient, userEmail }) {
   return (
     <div className="contact-player-wrapper">
       <div className="nav">
-        <CrossIcon onClick={() => navigate(-1)} className="userIcon" fill={Colors.primaryColorBrightGreen} />
-        <UserIcon className="userIcon" fill={Colors.primaryColorBrightGreen} />
+        <LeftIcon onClick={() => navigate(-1)} className="userIcon" fill={Colors.primaryColorBrightGreen} />
+        <ProfilePopUp className="userIcon" fill={Colors.primaryColorBrightGreen} />
       </div>
+      <Sidebar />
       <main className="contact-player-content">
         <div className="contact-information">
           <Headline text="Contact a Player" color={Colors.primaryColorBrightGreen} />
