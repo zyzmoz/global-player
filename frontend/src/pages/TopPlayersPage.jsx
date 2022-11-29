@@ -228,9 +228,11 @@ function TopPlayersPage({ axiosClient }) {
         </div>
 
         <div className="down-icon-container">
-          <DownIcon className="icon" fill="#53BCF9" />
+          <a href="#top-players-ranking-table">
+            <DownIcon className="icon" fill="#53BCF9" />
+          </a>
         </div>
-        <div className="table-headline-container">
+        <div className="table-headline-container" id="top-players-ranking-table">
           <Headline text="League of Legends" color={Colors.primaryColorBrightGreen} textAlign="center" />
           <Headline text="Best Player Ranking" color={Colors.primaryColorBrightGreen} textAlign="center" />
         </div>
