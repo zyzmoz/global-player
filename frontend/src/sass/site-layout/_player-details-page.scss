@@ -56,7 +56,6 @@
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-around;
-    // align-items: flex-start;
 
     .avatar {
       width: 140px;
@@ -110,6 +109,18 @@
   .card-content {
     padding-left: 2rem;
     padding-right: 2rem;
+
+    .review-titles {
+      .no-background-btn {
+        padding: 0;
+      }
+
+      p {
+        font-size: 16px;
+        color: $primary-color-bright-green;
+        border-bottom: 2px solid $primary-color-bright-green;
+      }
+    }
 
     h1 {
       font-size: 15px;
@@ -330,7 +341,7 @@
 }
 
 /////////////////////// DESKTOP VIEW ///////////////////////
-@media screen and (min-width: 1240px) {
+@media screen and (min-width: 1298px) {
   .player-details-wrapper-1 {
     padding-left: 17.625rem;
     overflow-x: hidden;
@@ -413,12 +424,6 @@
           h1 {
             margin-top: 0;
           }
-
-          p {
-            font-size: 16px;
-            color: $primary-color-bright-green;
-            border-bottom: 2px solid $primary-color-bright-green;
-          }
         }
 
         h1:nth-child(2) {
@@ -429,14 +434,12 @@
         h1:nth-child(6) {
           grid-column: 3/4;
           grid-row: 2/3;
-          // background-color: forestgreen;
           z-index: 1;
         }
 
         .radarchart {
           grid-column: 3/4;
           grid-row: 2/3;
-          // background-color: red;
         }
 
         .hr-divider {
