@@ -1,0 +1,90 @@
+.help-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+
+  .nav-side-menu {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+  }
+
+  .help-page-container {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    padding: 2rem;
+  }
+
+  .nav .userIcon {
+    cursor: pointer;
+  }
+
+  .help-page-content {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    height: 95vh;
+  }
+
+  .container-help {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .border {
+    text-align: center;
+    background: linear-gradient(0deg, rgba(120, 86, 255, 1) 0%, rgba(125, 250, 164, 1) 100%);
+    border-radius: 25px;
+    padding: 2px;
+
+    .contact-support,
+    .check-faq {
+      background: linear-gradient(180deg, #402cac 0%, #1a1051 100%);
+      border-radius: 25px;
+    }
+
+    a {
+      text-decoration: none;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      width: 250px;
+      height: 220px;
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .help-page {
+    background-image: url('../../../public/images/background-help.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .help-page-content {
+      margin-left: 13rem;
+      width: calc(100% - 13rem);
+      height: 90vh;
+
+      
+    }
+
+    h1 {
+        margin-top: -6rem;
+        margin-right: 2rem;
+    }
+
+    .help-page-container {
+      padding: 3rem;
+    }
+
+    .container-help {
+      flex-flow: row nowrap;
+      gap: 7rem;
+      margin-right: 2rem;
+    }
+  }
+}
