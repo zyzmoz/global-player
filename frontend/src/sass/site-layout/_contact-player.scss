@@ -145,5 +145,9 @@
   .contact-player-wrapper {
     padding-left: 17.625rem;
     overflow-x: hidden;
+
+    footer {
+      display: none;
+    }
   }
 }

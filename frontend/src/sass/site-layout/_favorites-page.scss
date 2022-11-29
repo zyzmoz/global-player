@@ -168,12 +168,7 @@
     }
 
     footer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: calc(100% - 15.625rem);
-      margin-left: 15.625rem;
-     
+      display: none;
     }
   }
 }

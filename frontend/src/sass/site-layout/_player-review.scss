@@ -154,3 +154,11 @@
     }
   }
 }
+
+@media screen and (min-width: 1000px) {
+  .player-review {
+    footer {
+      display: none;
+    }
+  }
+}
