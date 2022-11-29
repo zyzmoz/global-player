@@ -25,6 +25,7 @@ import ContactPlayer from './pages/ContactPlayer'
 import ChoosePlanPage from './pages/ChoosePlanPage'
 import TermsConditionsPage from './pages/TermsConditionsPage'
 import ContactUs from './pages/ContactUs'
+import FaqPage from './pages/FaqPage'
 
 const router = createBrowserRouter([
   {
@@ -106,6 +107,10 @@ const router = createBrowserRouter([
   {
     path: 'contact-us',
     element: <ContactUs />,
+  },
+  {
+    path: 'faq',
+    element: <FaqPage />,
   },
 ])
 

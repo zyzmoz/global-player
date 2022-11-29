@@ -1,0 +1,44 @@
+.faqpage {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+
+  .nav-side-menu {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+  }
+
+  .faqpage-container {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+  }
+
+  .large {
+    font-size: 32px;
+    margin-bottom: 3rem;
+
+    @media screen and (min-width: 600px) {
+      font-size: 48px;
+    }
+  }
+
+  .accordion-containers {
+    padding: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .accordion-wrapper h1 {
+    font-size: 20px;
+  }
+}
+
+/* @media screen and (min-width: SIZE){
+    ELEMENT {
+    
+}
+} */
