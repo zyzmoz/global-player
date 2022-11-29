@@ -31,12 +31,53 @@ header {
 }
 
 @media screen and (min-width: 600px) {
+  .top-players-page header {
+    width: 100%;
+    padding: 1rem;
+    margin: 0;
+    display: unset;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo-desktop {
+      display: none;
+    }
+
+    .logo-mobile {
+      display: unset;
+    }
+
+    .side-button {
+      display: unset;
+    }
+
+    .nav-header-menu {
+      display: none;
+
+      a {
+        text-decoration: none;
+        color: $primary-color-bright-green;
+      }
+
+      .side-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 48px;
+        height: 48px;
+      }
+    }
+  }
+
   header {
     padding-top: 1rem;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    
+
     .logo-desktop {
       display: block;
     }

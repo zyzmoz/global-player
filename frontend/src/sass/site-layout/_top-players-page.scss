@@ -132,15 +132,22 @@
   }
 
   // Desktop View
-  @media screen and (min-width: 600px) {
+  // @media screen and (min-width: 600px) {
+  //   header {
+  //     display: none;
+  //   }
+  //   footer {
+  //     display: none;
+  //   }
+  // }
+  @media screen and (min-width: 1000px) {
+
     header {
       display: none;
     }
     footer {
       display: none;
     }
-  }
-  @media screen and (min-width: 1000px) {
     .nav-side-menu {
       display: none;
     }
