@@ -83,7 +83,7 @@ html {
   background: rgb(125, 250, 164);
   background: linear-gradient(100deg, rgba(125, 250, 164, 1) 0%, rgba(125, 250, 164, 0.2) 100%);
   border-radius: 0 30px;
-  padding: .15rem;
+  padding: 0.15rem;
   height: fit-content;
 }
 
@@ -165,12 +165,20 @@ html {
 // End Accordion Component
 
 // Toast Component
+.toast-background {
+  height: auto;
+  opacity: 0.1;
+  overflow-y: hidden;
+}
+
 .toast {
   background: $border-gradient-color;
   padding: 2px;
-  overflow: hidden;
   border-radius: 25px;
   display: flex;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s;
 }
 
 .toast-wrapper {
