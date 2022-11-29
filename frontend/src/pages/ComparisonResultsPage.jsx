@@ -63,7 +63,11 @@ function ComparisonResultsPage({ axiosClient }) {
         <RecruitersPagesNavMenu className="nav-side-menu" />
         <Header />
         <div className="desktop-header">
-          <LeftIcon className="leftIcon" fill={Colors.primaryColorBrightGreen} onClick={() => navigate(-1)} />
+          <LeftIcon
+            className="leftIcon"
+            fill={Colors.primaryColorBrightGreen}
+            onClick={() => navigate(`/player-comparison-select-page`)}
+          />
           <ProfilePopUp />
         </div>
         <div className="comparison-results-page-wrapper">

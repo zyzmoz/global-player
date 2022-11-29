@@ -25,7 +25,7 @@ function PlayerComparisonSelectPage({ axiosClient }) {
     if (sidebar) {
       navigate('/TopPlayers')
     } else {
-      navigate(-1)
+      navigate(`/comparison`)
     }
   }
 
