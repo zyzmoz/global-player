@@ -12,6 +12,10 @@ function RecruitersPagesNavMenu({ className }) {
 
   const smallLogo = './logos/smallLogo.png'
 
+  const logout = () => {
+    sessionStorage.removeItem('token')
+  }
+
   return (
     <div className={className}>
       <div className="top-nav-side-menu">
@@ -31,6 +35,9 @@ function RecruitersPagesNavMenu({ className }) {
       </NavLink>
       <NavLink to="/help" className="sidebar-link">
         Help
+      </NavLink>
+      <NavLink to="/" className="sidebar-link" onClick={() => logout()}>
+        Log out
       </NavLink>
     </div>
   )

@@ -180,8 +180,12 @@ body {
 /////////////////////// DESKTOP VIEW ///////////////////////
 @media screen and (min-width: 1000px) {
   .player-comparison-select-page-container-1 {
-    padding: 2rem;
-    padding-left: 17.625rem;
+    padding: 3rem;
+    padding-left: 15.625rem;
+  }
+
+  .player-comparison-select-page-container-2 .nav {
+    padding: 0rem;
   }
   .main-player-comparison-select-page {
     max-width: 700px;
@@ -225,6 +229,11 @@ body {
       .hide-til-activate {
         display: flex;
       }
+    }
+  }
+  .player-comparison-select-page-container-2 {
+    footer {
+      display: none;
     }
   }
 }

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import Headline from '../components/Headline/Headline'
 import BodyText from '../components/BodyText/BodyText'
 import Button from '../components/Button/Button'
-import { CheckIcon, DownIcon } from '../components/Icon/icons'
+import { CheckIcon, DownIcon, CrossIcon } from '../components/Icon/icons'
 import Header from '../components/Header/Header'
 import LandingPageNavMenu from '../components/Header/LandingPageNavMenu'
 import Image from '../components/Image/Image'
@@ -119,27 +119,27 @@ function LandingPage() {
             {[
               {
                 feautures: 'Display data',
-                gpicon: <CheckIcon fill={Colors.primaryColorBrightGreen} />,
-                blitzicon: <CheckIcon fill={Colors.primaryColorBrightGreen} />,
-                logicon: <CheckIcon fill={Colors.primaryColorBrightGreen} />,
+                gpicon: <CheckIcon fill={Colors.primaryColorBrightGreen} className="checkIcon" />,
+                blitzicon: <CheckIcon fill={Colors.primaryColorBrightGreen} className="checkIcon" />,
+                logicon: <CheckIcon fill={Colors.primaryColorBrightGreen} className="checkIcon" />,
               },
               {
                 feautures: 'Review players',
-                gpicon: <CheckIcon fill={Colors.primaryColorBrightGreen} />,
-                blitzicon: '',
-                logicon: '',
+                gpicon: <CheckIcon fill={Colors.primaryColorBrightGreen} className="checkIcon" />,
+                blitzicon: <CrossIcon fill={Colors.primaryColorBrightGreen} className="crossIcon" />,
+                logicon: <CrossIcon fill={Colors.primaryColorBrightGreen} className="crossIcon" />,
               },
               {
                 feautures: 'Compare to players',
-                gpicon: <CheckIcon fill={Colors.primaryColorBrightGreen} />,
-                blitzicon: '',
-                logicon: '',
+                gpicon: <CheckIcon fill={Colors.primaryColorBrightGreen} className="checkIcon" />,
+                blitzicon: <CrossIcon fill={Colors.primaryColorBrightGreen} className="crossIcon" />,
+                logicon: <CrossIcon fill={Colors.primaryColorBrightGreen} className="crossIcon" />,
               },
               {
                 feautures: 'Contact players',
-                gpicon: <CheckIcon fill={Colors.primaryColorBrightGreen} />,
-                blitzicon: '',
-                logicon: '',
+                gpicon: <CheckIcon fill={Colors.primaryColorBrightGreen} className="checkIcon" />,
+                blitzicon: <CrossIcon fill={Colors.primaryColorBrightGreen} className="crossIcon" />,
+                logicon: <CrossIcon fill={Colors.primaryColorBrightGreen} className="crossIcon" />,
               },
             ].map((item) => (
               <TableItem

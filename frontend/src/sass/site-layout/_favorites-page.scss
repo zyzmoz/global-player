@@ -158,6 +158,7 @@
   .favorites-page {
     .favorites-content {
       margin-left: 15.625rem;
+      padding: 3rem;
     }
 
     .player-information-wrapper {
@@ -167,12 +168,7 @@
     }
 
     footer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: calc(100% - 15.625rem);
-      margin-left: 15.625rem;
-     
+      display: none;
     }
   }
 }

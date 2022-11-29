@@ -341,6 +341,13 @@
 }
 
 /////////////////////// DESKTOP VIEW ///////////////////////
+@media screen and (min-width: 1000px) {
+  .player-details-page-wrapper {
+    footer {
+      display: none;
+    }
+  }
+}
 @media screen and (min-width: 1298px) {
   .player-details-wrapper-1 {
     padding-left: 17.625rem;

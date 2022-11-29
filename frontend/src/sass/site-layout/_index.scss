@@ -6,6 +6,8 @@
 @import './favorites-page';
 @import './contact-player';
 @import './terms-conditions-page';
+@import './faq-page';
+@import './help-page';
 
 html {
   scroll-behavior: smooth;
@@ -21,10 +23,13 @@ html {
 
 .header-full-size {
   height: 100vh;
+  // background-image: radial-gradient(85.99% 85.99% at 47.4% 16.42%, rgba(8, 2, 53, 0.4) 0%, #080235 100%),
+  //   url(../../assets/images/background-league-of-legends.png);
   background-image: radial-gradient(85.99% 85.99% at 47.4% 16.42%, rgba(8, 2, 53, 0.4) 0%, #080235 100%),
-    url(../../assets/images/background-league-of-legends.png);
+    url(../../assets/images/background-league-of-legends-animated-gif.gif);
   background-position: center top;
   background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -311,4 +316,19 @@ html {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.landing-page {
+  .checkIcon path:nth-of-type(2),
+  .crossIcon path:nth-of-type(3) {
+    display: none;
+  }
+
+  .checkIcon {
+    transform: scale(1.7);
+  }
+
+  .crossIcon {
+    transform: scale(1.5);
+  }
 }

@@ -25,7 +25,7 @@ function PlayerComparisonSelectPage({ axiosClient }) {
     if (sidebar) {
       navigate('/TopPlayers')
     } else {
-      navigate(-1)
+      navigate(`/comparison`)
     }
   }
 
@@ -37,11 +37,17 @@ function PlayerComparisonSelectPage({ axiosClient }) {
   const { data: allPlayers } = useQuery('allPlayersData', () => axiosClient.get('/api/v1/analytics/all-players'))
 
   const handlePlayerSelectionBtn = (player) => {
+    if (!playersToCompare.player2) {
+      setPlayersToCompare({ ...playersToCompare, player2: player })
+    }
+    if (playersToCompare.player2 === player) {
+      setPlayersToCompare({ ...playersToCompare, player2: null })
+    }
     if (!playersToCompare.player1) {
       setPlayersToCompare({ ...playersToCompare, player1: player })
     }
-    if (!playersToCompare.player2) {
-      setPlayersToCompare({ ...playersToCompare, player2: player })
+    if (playersToCompare.player1 === player) {
+      setPlayersToCompare({ ...playersToCompare, player1: null })
     }
   }
 
@@ -93,8 +99,8 @@ function PlayerComparisonSelectPage({ axiosClient }) {
 
             <section className="add-player-wrapper">
               <BodyText text="Often compared with..." color={Colors.secondaryColorSkyBlue} textAlign="left" />
-              {allPlayers?.data?.slice(0, 8).map((player) => (
-                <div className="avatar-name-container-btn">
+              {allPlayers?.data?.slice(0, 8).map((player, i) => (
+                <div className="avatar-name-container-btn" id={`player-container-${i + 1}`}>
                   <div className="avatar-name-container">
                     <Avatar
                       summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${player.profileIconId}.png`}
@@ -102,12 +108,13 @@ function PlayerComparisonSelectPage({ axiosClient }) {
                     <BodyText text={player.summonerName} color={Colors.secondaryColorSkyBlue} />
                   </div>
                   <button
-                    onClick={(e) => {
+                    onClick={() => {
                       handlePlayerSelectionBtn(player)
-                      e.currentTarget.classList.toggle('background-btn')
                     }}
                     type="button"
-                    className="add-vs-btn no-background-btn"
+                    className={`add-vs-btn no-background-btn ${
+                      player === playersToCompare.player1 || player === playersToCompare.player2 ? 'background-btn' : ''
+                    }`}
                   >
                     + VS
                   </button>
@@ -115,8 +122,8 @@ function PlayerComparisonSelectPage({ axiosClient }) {
               ))}
 
               {showMore &&
-                allPlayers?.data?.slice(9, 17).map((player) => (
-                  <div className="avatar-name-container-btn">
+                allPlayers?.data?.slice(9, 17).map((player, i) => (
+                  <div className="avatar-name-container-btn" id={`player-container-${i + 9}`}>
                     <div className="avatar-name-container">
                       <Avatar
                         summonerIcon={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${player.profileIconId}.png`}
@@ -125,12 +132,15 @@ function PlayerComparisonSelectPage({ axiosClient }) {
                       <BodyText text={player.summonerName} color={Colors.secondaryColorSkyBlue} />
                     </div>
                     <button
-                      onClick={(e) => {
+                      onClick={() => {
                         handlePlayerSelectionBtn(player)
-                        e.currentTarget.classList.toggle('background-btn')
                       }}
                       type="button"
-                      className="add-vs-btn no-background-btn"
+                      className={`add-vs-btn no-background-btn ${
+                        player === playersToCompare.player1 || player === playersToCompare.player2
+                          ? 'background-btn'
+                          : ''
+                      }`}
                     >
                       + VS
                     </button>

@@ -228,72 +228,30 @@ function TopPlayersPage({ axiosClient }) {
         </div>
 
         <div className="down-icon-container">
-          <DownIcon className="icon" fill="#53BCF9" />
+          <a href="#top-players-ranking-table">
+            <DownIcon className="icon" fill="#53BCF9" />
+          </a>
         </div>
-        <div className="table-headline-container">
+        <div className="table-headline-container" id="top-players-ranking-table">
           <Headline text="League of Legends" color={Colors.primaryColorBrightGreen} textAlign="center" />
           <Headline text="Best Player Ranking" color={Colors.primaryColorBrightGreen} textAlign="center" />
         </div>
-        <Table className="table-player-ranking">
-          <TableHeader
-            headers={[
-              { property: 'rank', title: 'Rank' },
-              { property: 'summonerName', title: 'Name' },
-              { property: 'role', title: 'Role' },
-              { property: 'winRate', title: 'Win Rate' },
-              { property: 'kda', title: 'KDA' },
-              { property: 'matches', title: 'Matches' },
-              { property: 'personality', title: 'Personality' },
-            ]}
-          />
-          {allPlayers?.data?.slice(0, 7).map((player, i) => {
-            const playerData = {
-              rank: `#${i + 4}`,
-              summonerName: (
-                <div className="name">
-                  <Image
-                    imageUrl={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${player.profileIconId}.png`}
-                    imageWidth="2.25rem"
-                    imageHeight="2.25rem"
-                  />
-                  {player.summonerName}
-                </div>
-              ),
-              role: RoleIcons(player.role, Colors.primaryColorBrightGreen),
-              winRate: `${player.winRate}%`,
-              kda: `${player.kills} / ${player.deaths} / ${player.assists}`,
-              matches: `${player.matches}`,
-              personality: (
-                <div className="personality">
-                  <ProgressBar
-                    progress={player.skills.personalSkills[0]?.value || 0}
-                    widthSize="140px"
-                    heightSize="16px"
-                  />
-                  <BodyText text={player.skills.personalSkills[0]?.personalSkill} textAlign="center" fontSize="small" />
-                </div>
-              ),
-            }
-            return (
-              <TableItem
-                onClick={() => navigateToDetails(player.id)}
-                item={playerData}
-                headers={[
-                  { property: 'rank', title: 'Rank' },
-                  { property: 'summonerName', title: 'Name' },
-                  { property: 'role', title: 'Role' },
-                  { property: 'winRate', title: 'Win Rate' },
-                  { property: 'kda', title: 'KDA' },
-                  { property: 'matches', title: 'Matches' },
-                  { property: 'personality', title: 'Personality' },
-                ]}
-              />
-            )
-          })}
-          {showMore &&
-            allPlayers?.data?.slice(8).map((player, i) => {
+        <div className="top-players-ranking-wrapper">
+          <Table className="table-player-ranking">
+            <TableHeader
+              headers={[
+                { property: 'rank', title: 'Rank' },
+                { property: 'summonerName', title: 'Name' },
+                { property: 'role', title: 'Role' },
+                { property: 'winRate', title: 'Win Rate' },
+                { property: 'kda', title: 'KDA' },
+                { property: 'matches', title: 'Matches' },
+                { property: 'personality', title: 'Personality' },
+              ]}
+            />
+            {allPlayers?.data?.slice(0, 7).map((player, i) => {
               const playerData = {
-                rank: `#${i + 11}`,
+                rank: `#${i + 4}`,
                 summonerName: (
                   <div className="name">
                     <Image
@@ -339,7 +297,57 @@ function TopPlayersPage({ axiosClient }) {
                 />
               )
             })}
-        </Table>
+            {showMore &&
+              allPlayers?.data?.slice(8).map((player, i) => {
+                const playerData = {
+                  rank: `#${i + 11}`,
+                  summonerName: (
+                    <div className="name">
+                      <Image
+                        imageUrl={`https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/${player.profileIconId}.png`}
+                        imageWidth="2.25rem"
+                        imageHeight="2.25rem"
+                      />
+                      {player.summonerName}
+                    </div>
+                  ),
+                  role: RoleIcons(player.role, Colors.primaryColorBrightGreen),
+                  winRate: `${player.winRate}%`,
+                  kda: `${player.kills} / ${player.deaths} / ${player.assists}`,
+                  matches: `${player.matches}`,
+                  personality: (
+                    <div className="personality">
+                      <ProgressBar
+                        progress={player.skills.personalSkills[0]?.value || 0}
+                        widthSize="140px"
+                        heightSize="16px"
+                      />
+                      <BodyText
+                        text={player.skills.personalSkills[0]?.personalSkill}
+                        textAlign="center"
+                        fontSize="small"
+                      />
+                    </div>
+                  ),
+                }
+                return (
+                  <TableItem
+                    onClick={() => navigateToDetails(player.id)}
+                    item={playerData}
+                    headers={[
+                      { property: 'rank', title: 'Rank' },
+                      { property: 'summonerName', title: 'Name' },
+                      { property: 'role', title: 'Role' },
+                      { property: 'winRate', title: 'Win Rate' },
+                      { property: 'kda', title: 'KDA' },
+                      { property: 'matches', title: 'Matches' },
+                      { property: 'personality', title: 'Personality' },
+                    ]}
+                  />
+                )
+              })}
+          </Table>
+        </div>
         {!showMore ? (
           <Button text="Show more" onClick={showMoreFunction} />
         ) : (
