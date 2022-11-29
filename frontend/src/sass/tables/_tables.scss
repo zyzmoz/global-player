@@ -47,12 +47,16 @@
 .top-players-page,
 .landing-page,
 .comparison-results-page {
+  table {
+    overflow: hidden;
+  }
   .table {
     margin: auto;
     color: $neutral-color-white;
     background-origin: border-box;
-    border: 2px solid transparent;
+    // border: 2px solid transparent;
     border-collapse: collapse;
+    -webkit-border-radius: 25px;
     border-radius: 25px;
     font-size: 0.875rem;
     background-image: linear-gradient(180deg, #7dfaa4 0%, #7856ff 50%, #7dfaa4 100%);
@@ -150,6 +154,50 @@
   }
 }
 
+// Table design for Top Players Dashboard
+.top-players-page {
+  .top-players-ranking-wrapper {
+    border: 2px solid transparent;
+    border-radius: 25px;
+    background-image: linear-gradient(180deg, #7dfaa4 0%, #7856ff 50%, #7dfaa4 100%);
+    margin: auto;
+  }
+  .table {
+    border: unset;
+    width: 100%;
+    font-size: 0.7rem;
+  }
+  th {
+    padding: 1rem 0.8rem;
+  }
+  td {
+    padding: 0.5rem;
+  }
+  td .name {
+    font-size: 0.7rem;
+  }
+
+  @media screen and (min-width: 1000px) {
+    .top-players-ranking-wrapper {
+      width: unset;
+      max-width: 100rem;
+      .table {
+        font-size: 1.25rem;
+      }
+      th {
+        padding: 1.5rem 1rem;
+      }
+      td {
+        padding: 1rem;
+      }
+      td .name {
+        gap: 1rem;
+        font-size: 1.25rem;
+      }
+    }
+  }
+}
+
 // Table design for Comparison Results page
 .comparison-results-page {
   .extra-data-table-wrapper {
@@ -158,10 +206,12 @@
     background-image: linear-gradient(180deg, #7dfaa4 0%, #7856ff 50%, #7dfaa4 100%);
   }
   .extra-data-table {
-    width: 26rem;
+    width: 24rem;
+    max-width: 85vw;
   }
   .table {
-    width: 26rem;
+    width: 24rem;
+    max-width: 85vw;
     border: unset;
     font-size: 1rem;
     th {
