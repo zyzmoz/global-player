@@ -20,11 +20,18 @@ function CreateAccount() {
           <Headline text="Choose your role" color="" fontSize="" textAlign="" />
 
           <div className="choices-container">
-            <div className="choice-container">
-              <Link to={`/create-account-player?plan=${plan}`}>
+            <div className="choice-container-player">
+              {/* <Link to={`/create-account-player?plan=${plan}`}> */}
+              <div className="create-player">
                 <Image imageUrl={playerIcon} imageWidth="67px" imageHeight="auto" alt="Player Icon" />
                 <BodyText text="I'm a player" fontSize="16pt" color="#000000" textAlign="center" />
-              </Link>
+                <BodyText
+                  text="This feature will be available on the next future updates."
+                  textAlign="center"
+                  color="#7DFAA4"
+                  className="warning-create-player"
+                />
+              </div>
             </div>
             <div className="vr-divider-create" />
 
