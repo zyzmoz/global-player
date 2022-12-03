@@ -31,6 +31,10 @@ function PlayerDetailsPage({ axiosClient, userId }) {
     axiosClient.get(`/api/v1/analytics/player/${context.playerId}`)
   )
 
+  const { data: playerOverview } = useQuery('playerOverview', () =>
+    axiosClient.get(`/api/v1/review/${context.playerId}`)
+  )
+
   const [likeIt, setLikeIt] = useState(favoritePlayers?.data.filter((f) => f.id !== playerDetail?.data.id).length > 0)
 
   const navigate = useNavigate()
@@ -150,12 +154,12 @@ function PlayerDetailsPage({ axiosClient, userId }) {
                   height="auto"
                   playerSkills={{
                     data: [
-                      playerDetail?.data.skills.skills.farming,
-                      playerDetail?.data.skills.skills.dueling,
-                      playerDetail?.data.skills.skills.timing,
-                      playerDetail?.data.skills.skills.picking,
-                      playerDetail?.data.skills.skills.deffensive,
-                      playerDetail?.data.skills.skills.roaming,
+                      playerOverview?.data.farming,
+                      playerOverview?.data.dueling,
+                      playerOverview?.data.timing,
+                      playerOverview?.data.picking,
+                      playerOverview?.data.deffensive,
+                      playerOverview?.data.roaming,
                     ],
                   }}
                 />
@@ -189,7 +193,7 @@ function PlayerDetailsPage({ axiosClient, userId }) {
                   </div>
                   <div className="ranked-info-box3">
                     <Headline text="LEAGUEPOINTS" textAlign="" color="" />
-                    <BodyText text="100" textAlign="" />
+                    <BodyText text={playerDetail?.data.leaguePoints} textAlign="" />
                   </div>
                 </div>
                 <div className="doughnut-chart-container">
